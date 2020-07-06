@@ -1,0 +1,117 @@
+/* docsify-themable custom settings */
+:root {
+    /* Cover */
+    --cover-color        : #000000;
+    --cover-heading-color: #000000;
+    --cover-max-width    : 80em;
+
+    /* Reduce the font size */
+    --base-font-size: 14px;
+
+    /* Change navbar's style*/
+    --sidebar-nav-pagelink-background-image: none;
+    --sidebar-nav-link-before-content-l3   : none;
+
+    /* Change table's style */
+    --table-cell-border-color : #d9d9d9;
+    --table-cell-border-width : 1px;
+    --table-head-border-width : 2px;
+    --table-head-border-color : var(--table-cell-border-color);
+    --table-body-border-width : 2px;
+    --table-body-border-color : var(--table-cell-border-color);
+    --table-row-odd-background: var(--table-row-even-background);
+
+    /* Change quote's style */
+    --blockquote-color: #696969;
+
+    /* Change link's style */
+    --link-color                 : var(--theme-color);
+    --link-text-decoration       : none;
+
+    /* Remove left padding for line number */
+    --code-block-padding: 1.75em 1.5em 1.5em 0em;
+}
+
+/* Change table's border style */
+.markdown-section td,
+.markdown-section th {
+    border-color: var(--table-cell-border-color);
+    border-style: dashed;
+    border-width: var(--table-cell-border-width, 0);
+}
+
+/* Fix sidebar fold arrow */
+
+.sidebar-nav li>a[href^='#/']:not([href*='?id=']):not(:only-child) {
+    background-image: var(--sidebar-nav-pagelink-background-image--collapse,
+            var(--sidebar-nav-pagelink-background-image--loaded,
+                var(--sidebar-nav-pagelink-background-image)));
+    background-position: var(--sidebar-nav-pagelink-background-position--collapse,
+            var(--sidebar-nav-pagelink-background-position--loaded,
+                var(--sidebar-nav-pagelink-background-image)));
+}
+
+.sidebar-nav li.open>a[href^='#/']:not([href*='?id=']):not(:only-child) {
+    background-image: var(--sidebar-nav-pagelink-background-image--active,
+            var(--sidebar-nav-pagelink-background-image--loaded,
+                var(--sidebar-nav-pagelink-background-image)));
+    background-position: var(--sidebar-nav-pagelink-background-position--active,
+            var(--sidebar-nav-pagelink-background-position--loaded,
+                var(--sidebar-nav-pagelink-background-image)));
+}
+
+/* Justify button size in the cover */
+.cover p {
+    font-size: large;
+}
+
+/**
+ * Personal styles
+ * .io class: Input/Output blocks
+ * .sdsc class: Standard specifications
+ * .table-code: Code blocks in table
+*/
+pre.io,
+pre.table-code,
+pre.sdsc {
+    background-color: var(--code-theme-background);
+    padding         : var(--code-block-padding);
+    padding-left    : 1.5em;
+}
+
+pre.table-code {
+    max-width: 300px;
+    overflow : auto;
+}
+
+pre.sdsc i {
+    font-style: normal;
+    color     : #0b87da;
+}
+
+.markdown-section pre[data-lang] {
+    /* 
+     * Fix line number in code block. 
+     * Change this overflow attr to <pre> not the <code>.
+    */
+    overflow: auto !important;
+}
+
+/* Fix line number. */
+.markdown-section pre[data-lang] code {
+    overflow: visible;
+}
+
+/* Change line number style */
+.line-numbers .line-numbers-rows {
+    border-right : 2px solid white;
+    /* Fix paddings to align with code.*/
+    padding      : var(--code-block-padding);
+    padding-left : 0;
+    padding-right: 0;
+}
+
+/* Remove decoration of <a> */
+.markdown-section a.anchor:hover {
+    text-decoration: none;
+}
