@@ -11,7 +11,7 @@ jobs:
     - name: Sync to Coding
       uses: wearerequired/git-mirror-action@master
       env:
-          SSH_PRIVATE_KEY: ${{ secrets.CODING_PRIVATE_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.SYNC_PRIVATE_KEY }}
       with:
           source-repo: "git@github.com:Guyutongxue/MyCppTutorial.git"
-          destination-repo: "git@e.coding.net:guyutongxue/mycpptutorial/mycpptutorial.git"
+          destination-repo: "git@gitee.com:guyutongxue/MyCppTutorial.git"
