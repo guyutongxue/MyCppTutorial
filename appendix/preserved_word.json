@@ -1,0 +1,65 @@
+[
+  {
+    "keyword": "override",
+    "usage": [
+      {
+        "info": "用于面向对象：指定某子类函数必将覆盖基类中的虚函数。<br><code>返回类型 函数名() override;</code>",
+        "example": "struct A {\n    virtual void f() = 0;\n};\nstruct B : A {\n    void f() override {}\n};"
+      }
+    ]
+  },
+  {
+    "keyword": "final",
+    "usage": [
+      {
+        "info": "用于面向对象：指定该类不可继承。<br><code>class|struct 类名 final { 成员列表 };</code>",
+        "example": "struct A final {};\n// can't write: struct B : A ;"
+      }
+    ]
+  },
+  {
+    "keyword": "import",
+    "usage": [
+      {
+        "info": "用于模块：导入一个模块。也兼容将一个头文件作为模块导入。<br><code>import 模块名;</code><br><code>import <头文件>;</code>",
+        "example": "// main.cpp\nimport my.app.hello;\nimport <iostream>\nint main() {\n    std::cout << sayHello();\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "module",
+    "usage": [
+      {
+        "info": "用于模块：声明一个模块实现单元（Module Implementation Unit）或者模块接口单元(Module Interface Unit。<br><code>[export] module 模块名;</code>",
+        "example": "// hello.cpp\nexport module my.app.hello\nexport auto sayHello();\n// hello_impl.cpp\nmodule my.app.hello\nauto sayHello() {\n    return \"hello!\";\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "transaction_safe",
+    "usage": [
+      {
+        "info": "（实验性功能）用于事务：声明某函数为事务安全的。<br><code>返回类型 函数名() transaction_safe;</code>",
+        "example": "int f() transaction_safe {}"
+      }
+    ]
+  },
+  {
+    "keyword": "transaction_safe",
+    "usage": [
+      {
+        "info": "（实验性功能）用于事务：声明某虚函数为事务安全的，即它的最终覆盖函数也是事务安全的。<br><code>virtual 返回类型 函数名() transaction_safe_dynamic;</code>",
+        "example": "struct S {\n    virtual int f() transaction_safe_dynamic {}\n};"
+      }
+    ]
+  },
+  {
+    "keyword": "_Pragma",
+    "usage": [
+      {
+        "info": "用于预处理器：控制编译器的行为，与 <code>#pragma</code> 相似。<br><code>_Pragma(字符串字面量)</code>",
+        "example": "_Pragma(\"pack(4)\")"
+      }
+    ]
+  }
+]

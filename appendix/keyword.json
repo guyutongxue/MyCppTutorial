@@ -1,0 +1,980 @@
+[
+  {
+    "keyword": "alignas",
+    "usage": [
+      {
+        "info": "<p>用于声明：指示类型的对齐要求。</p>\n<p>struct|class alignas(表达式) 类名 {\n            成员列表 };\n</p>\n<p>struct|class alignas(类型) 类名 {\n            成员列表 };\n</p>\n        ",
+        "example": "struct alignas(8) S {\n    char m;\n};\nstruct alignas(int) S {\n    char m;\n};"
+      }
+    ]
+  },
+  {
+    "keyword": "alignof",
+    "usage": [
+      {
+        "info": "<p>\n            用于运算符：查询类型的对齐要求。C++要求任何类型必须对齐到内存中2的整数次幂个字节数。</p>\n<p>alignof(类型)\n</p>\n        ",
+        "example": "struct S {\n    char c;\n    int i;\n};\nint main() {\n    alignof(char); //1\n    alignof(S); // 4 maybe\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "and",
+    "usage": [
+      {
+        "info": "<p>用于运算符：&amp;&amp;的替代写法。</p>\n<p>左侧操作数 and 右侧操作数</p>\n        ",
+        "example": "x > 0 and x < 5;"
+      }
+    ]
+  },
+  {
+    "keyword": "and_eq",
+    "usage": [
+      {
+        "info": "<p>用于运算符：&amp;=的替代写法。</p>\n<p>左侧操作数 and_eq 右侧操作数</p>\n        ",
+        "example": "x and_eq (1 << i);"
+      }
+    ]
+  },
+  {
+    "keyword": "asm",
+    "usage": [
+      {
+        "info": "<p>其它：嵌入汇编语言。对于不同编译环境规则不同。</p>\n<p>asm(字符串字面量)\n</p>\n        ",
+        "example": "// exit in Linux\nasm (\"movq $60, %rax\\n\\t\"\n     \"movq $0,  %rdi\\n\\t\"\n     \"syscall\");"
+      }
+    ]
+  },
+  {
+    "keyword": "atomic_cancel",
+    "usage": [
+      {
+        "info": "<p>（实验性功能）用于事务：声明原子块且可被取消。</p>\n<p>atomic_cancel 复合语句</p>\n        ",
+        "example": "int f() {\n    static int i = 0;\n    atomic_cancel {\n        ++i;\n        return i;\n    }\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "atomic_commit",
+    "usage": [
+      {
+        "info": "<p>（实验性功能）用于事务：声明原子块且抛出异常。</p>\n<p>atomic_cancel 复合语句</p>\n        ",
+        "example": "int f() {\n    static int i = 0;\n    atomic_commit {\n        ++i;\n        return i;\n    }\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "atomic_noexcept",
+    "usage": [
+      {
+        "info": "<p>（实验性功能）用于事务：声明原子块且遇异常正常提交。</p>\n<p>atomic_noexcept 复合语句</p>\n        ",
+        "example": "int f() {\n    static int i = 0;\n    atomic_noexcept {\n        ++i;\n        return i;\n    }\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "auto",
+    "usage": [
+      {
+        "info": "<p>1.\n            用于声明：自动推导类型声明符。对于变量，将通过初始化值推导其类型；对于函数，将通过return语句推导其返回类型。对于模板形参，通过实参推导其类型。</p>\n<p>auto 声明符 = 初始化值;\n</p>\n<p>decltype(auto) 声明符 = 初始化值;\n</p>\n        ",
+        "example": "int a = 42;\nint& ra = a;\nauto a1 = ra; // int\ndecltype(auto) a2 = ra; // int&\nauto f() {\n    return 42;\n} // int f();"
+      },
+      {
+        "info": "<p>2. 用于声明：声明结构化绑定。</p>\n<p>auto <i>[</i>&amp;<i>|</i>&amp;&amp;<i>]</i> [标识符列表] =\n            表达式;\n</p>\n        ",
+        "example": "int a[2] = {1, 2};\nauto [x, y] = a; // copy\nauto& [x, y] = a; // ref"
+      }
+    ]
+  },
+  {
+    "keyword": "bitand",
+    "usage": [
+      {
+        "info": "<p>用于运算符：&amp;的替代写法</p>\n<p>左侧操作数 bitand 右侧操作数</p>\n        ",
+        "example": "a bitand b;"
+      }
+    ]
+  },
+  {
+    "keyword": "bitor",
+    "usage": [
+      {
+        "info": "<p>用于运算符：|的替代写法</p>\n<p>左侧操作数 bitor 右侧操作数</p>\n        ",
+        "example": "a bitor b;"
+      }
+    ]
+  },
+  {
+    "keyword": "bool",
+    "usage": [
+      {
+        "info": "<p>用于声明：布尔类型变量的类型说明符。</p>\n<p>bool 变量名;\n</p>\n        ",
+        "example": "bool flag = false;"
+      }
+    ]
+  },
+  {
+    "keyword": "break",
+    "usage": [
+      {
+        "info": "<p>\n            用于控制成分：break语句跳出当前for、while、do-while或switch语句。</p>\n<p>break;\n</p>\n        ",
+        "example": "for(int i = 0; i < 10; i++) {\n    if (i == 5) break;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "case",
+    "usage": [
+      {
+        "info": "<p>用于控制成分：在switch语句中，作为语句标号确定入口。</p>\n<p>case 常量 : 语句</p>\n        ",
+        "example": "switch(score) {\n    case 100: n++; break;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "catch",
+    "usage": [
+      {
+        "info": "<p>用于异常处理：捕获异常并处理。</p>\n<p>try 复合语句</p>\n<p>catch (<i>声明序列</i><i>|</i>...) 复合语句</p>\n        ",
+        "example": "try {\n    str.substr(10);\n} catch (std::exception e) {\n    std::cerr << e.what();\n}\ntry {\n    f();\n} catch (...) {\n    // who cares?\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "char",
+    "usage": [
+      {
+        "info": "<p>用于声明：字符类型变量的类型说明符。</p>\n<p>char 变量名;\n</p>\n        ",
+        "example": "char result = 'G';"
+      }
+    ]
+  },
+  {
+    "keyword": "char8_t",
+    "usage": [
+      {
+        "info": "<p>用于声明：UTF-8字符类型变量的类型说明符。</p>\n<p>char8_t 变量名;\n</p>\n        ",
+        "example": "char8_t ch = u8'G'"
+      }
+    ]
+  },
+  {
+    "keyword": "char16_t",
+    "usage": [
+      {
+        "info": "<p>用于声明：UTF-16字符类型变量的类型说明符。</p>\n<p>char16_t 变量名;\n</p>\n        ",
+        "example": "char16_t hanzi = u'字';"
+      }
+    ]
+  },
+  {
+    "keyword": "char32_t",
+    "usage": [
+      {
+        "info": "<p>用于声明：UTF-32字符类型变量的类型说明符。</p>\n<p>char32_t 变量名;\n</p>\n        ",
+        "example": "char32_t emoji = U'🍌';"
+      }
+    ]
+  },
+  {
+    "keyword": "class",
+    "usage": [
+      {
+        "info": "<p>1. 用于声明：声明默认为私有成员的类类型。</p>\n<p>class 类名 {\n</p>\n<p>&nbsp;&nbsp;&nbsp; 成员列表</p>\n<p>};\n</p>\n        ",
+        "example": "class Student {\npublic:\n    int no;\n    std::string name;\n    bool sex;\n};"
+      },
+      {
+        "info": "<p>2. 用于声明：声明有作用域枚举类型。</p>\n<p>enum class|struct 枚举名 { 枚举项列表 };\n</p>\n        ",
+        "example": "enum class Color {\n    Red,\n    Blue,\n    Green\n};"
+      },
+      {
+        "info": "<p>3. 用于模板：用于引入类型模板形参，与typename等价。</p>\n<p>template &lt;class|typename 类型形参&gt;\n</p>\n<p>声明</p>\n        ",
+        "example": "template <class T>\nT& max(const T& a,const T& b) {\n    return a > b ? a : b;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "compl",
+    "usage": [
+      {
+        "info": "<p>用于运算符：~的替代写法</p>\n<p>compl 操作数</p>\n        ",
+        "example": "compl a;"
+      }
+    ]
+  },
+  {
+    "keyword": "concept",
+    "usage": [
+      {
+        "info": "<p>用于约束：定义一个概念（又称约束集合）。</p>\n<p>template &lt;模板形参列表&gt;\n</p>\n<p>concept 概念名 = 约束表达式;\n</p>\n        ",
+        "example": "template <typename T, typename U>\nconcept Derived = std::is_base_of<U, T>::value;"
+      }
+    ]
+  },
+  {
+    "keyword": "const",
+    "usage": [
+      {
+        "info": "<p>1. 用于声明：限定变量只读。</p>\n<p>const 类型说明符变量名;\n</p>\n        ",
+        "example": "const float PI = 3.14f;"
+      },
+      {
+        "info": "<p>2. 用于声明：限定成员函数对成员只读。</p>\n<p>返回类型函数名(形参列表) const;\n</p>\n        ",
+        "example": "struct Coord {\n    int x;\n    int y;\n    double mod() const {\n        return std::sqrt(x * x + y * y);\n    }\n};"
+      }
+    ]
+  },
+  {
+    "keyword": "consteval",
+    "usage": [
+      {
+        "info": "<p>用于声明：指示函数为即时函数（Immediate Function），即每次调用必须在产生编译期常量。</p>\n<p>consteval 返回类型函数名(形参列表);\n\n</p>\n        ",
+        "example": "consteval int sqr(int n) {\nreturn n*n;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "constexpr",
+    "usage": [
+      {
+        "info": "<p>1. 用于声明：指示函数或者变量的值可以用于常量表达式。对于变量，限定为只读的。</p>\n<p>constexpr 类型说明符变量名;\n</p>\n<p>constexpr 返回类型函数名\n            (形参列表);\n</p>\n        ",
+        "example": "constexpr int fact (int n) {\n    return n <= 1? 1 : (n * factorial(n - 1));\n}\nconstexpr int a = fact(4);"
+      },
+      {
+        "info": "<p>2. 用于控制成分：限定if语句的条件必须为常量表达式。</p>\n<p>if constexpr (常量表达式) <i>true</i><i>分支语句</i></p>\n<p><i>[</i>else <i>false</i><i>分支语句</i><i>]</i></p>\n        ",
+        "example": "void f() {\n    if constexpr (true) {i++;\n    }\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "constinit",
+    "usage": [
+      {
+        "info": "<p>用于声明：指示变量的初始化必须为静态初始化（零初始化或者常量初始化），但不限定为只读的。</p>\n<p>constinit 类型说明符变量名;\n</p>\n        ",
+        "example": "constexpr int fact (int n) {\n    return n <= 1? 1 : (n * factorial(n - 1));\n}\nconstinit int a = fact(4);"
+      }
+    ]
+  },
+  {
+    "keyword": "const_cast",
+    "usage": [
+      {
+        "info": "<p>用于运算符：对于指针和引用进行转换，可以移除常量性。</p>\n<p>const_cast&lt;新类型&gt;(操作数)\n</p>\n        ",
+        "example": "const int a = 42;\nint* pa = const_cast<int*>(a);\nint& ra = const_cast<int&>(a);"
+      }
+    ]
+  },
+  {
+    "keyword": "continue",
+    "usage": [
+      {
+        "info": "<p>\n            用于控制成分：continue语句用于跳过for、while或do-while的剩余部分。</p>\n<p>continue;\n</p>\n        ",
+        "example": "for (int i = 0; i < 10; i++) {\n    if(i != 5) continue;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "co_await",
+    "usage": [
+      {
+        "info": "<p>用于协程：此运算符暂停当前协程直至恢复。</p>\n<p>co_await 等待体</p>\n        ",
+        "example": "task<> tcp_echo_server() {\n    char data[1024];\n    for (;;) {\n        std::size_t n = co_await socket.async_read_some(buffer(data));\n        co_await async_write(socket, buffer(data, n));\n    }\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "co_return",
+    "usage": [
+      {
+        "info": "<p>用于协程：此语句完成协程执行，并返回一个值。</p>\n<p>co_return;\n</p>\n<p>co_return 返回值;\n</p>\n        ",
+        "example": "lazy<int> f() {\n    co_return 7;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "co_yield",
+    "usage": [
+      {
+        "info": "<p>用于协程：此运算符暂停当前协程并返回一个值。</p>\n<p>co_yield 操作数</p>\n        ",
+        "example": "generator<int> iota(int n = 0) {\n    while(true)\n        co_yield n++;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "decltype",
+    "usage": [
+      {
+        "info": "<p>1. 用于声明等：检查变量、表达式的类型。</p>\n<p>decltype(变量)\n</p>\n<p>decltype(表达式)\n</p>\n        ",
+        "example": "int a;\ndecltype(a) x; // int\ndecltype((a)) y; // int&\ndecltype(42) z; // int"
+      },
+      {
+        "info": "<p>2. 用于声明：配合auto说明符，保留引用语义。</p>\n<p>decltype(auto) 变量名 = 初始化值;\n</p>\n        ",
+        "example": "int a;\nint& ra = a;\ndecltype(auto) a2 = ra; // int&"
+      }
+    ]
+  },
+  {
+    "keyword": "default",
+    "usage": [
+      {
+        "info": "<p>1. 用于控制成分：在switch语句中，作为语句标号确定默认入口。</p>\n<p>default: 语句</p>\n        ",
+        "example": "switch(score){\n    default: n++;\n}"
+      },
+      {
+        "info": "<p>2. 用于声明：显示声明默认的成员函数（默认构造函数、复制构造函数、移动构造函数、赋值运算符、析构函数和三路比较运算符）。</p>\n<p>[返回类型] 函数名(形参列表) =\n            default;\n</p>\n        ",
+        "example": "struct S {\n    int m;\n    S() = default;\n    auto operator<=>(const S&) const = default;\n};"
+      }
+    ]
+  },
+  {
+    "keyword": "delete",
+    "usage": [
+      {
+        "info": "<p>1. 用于运算符：释放new表达式分配的指针所指向的内存。</p>\n<p>delete 指针</p>\n<p>delete[] &nbsp;指针</p>\n        ",
+        "example": "int* p1 = new int(42);\nint* p2 = new int[10];\ndelete p1;\ndelete[] p2;"
+      },
+      {
+        "info": "<p>2. 用于声明：声明成员函数被弃置。</p>\n<p>[返回类型] 函数名(形参列表) =\n            delete;\n</p>\n        ",
+        "example": "struct S {\n    S(const S&) = delete;\n};"
+      }
+    ]
+  },
+  {
+    "keyword": "do",
+    "usage": [
+      {
+        "info": "<p>用于控制成分：形成do-while循环。</p>\n<p>do\n</p>\n<p>&nbsp;&nbsp;&nbsp; 语句</p>\n<p>while(表达式);\n</p>\n        ",
+        "example": "int i = 0;\ndo {\n    i++;\n} while (i < 10);"
+      }
+    ]
+  },
+  {
+    "keyword": "double",
+    "usage": [
+      {
+        "info": "<p>用于声明：双精度浮点类型变量的类型说明符。</p>\n<p>double 变量名;\n</p>\n        ",
+        "example": "double score = 60.5;"
+      }
+    ]
+  },
+  {
+    "keyword": "dynamic_cast",
+    "usage": [
+      {
+        "info": "<p>用于运算符：将指向类的指针沿继承层级安全地转换到其它类的指针。若转型失败，返回空指针。</p>\n<p>dynamic_cast&lt;新类型&gt;(指针)\n</p>\n        ",
+        "example": "struct Base {\n    virtual ~Base() {}\n}\nstruct Derived : Base {}\nint main(){\n    Base* b = new Base;\n    Derived* d = dynamic_cast<Derived*>(b);"
+      }
+    ]
+  },
+  {
+    "keyword": "else",
+    "usage": [
+      {
+        "info": "<p>用于控制成分。形成if语句的false分支。</p>\n<p>if (表达式)\n</p>\n<p>&nbsp;&nbsp;&nbsp; true分支</p>\n<p>else\n</p>\n<p>&nbsp;&nbsp;&nbsp; false分支</p>\n        ",
+        "example": "if (flag) {\n    std::cout << \"Yes\";\nelse\n    std::cout << \"No\";\n\n   "
+      }
+    ]
+  },
+  {
+    "keyword": "enum",
+    "usage": [
+      {
+        "info": "<p>用于声明：声明枚举类型。</p>\n<p>enum [class|struct] 枚举名 [: 基] {\n            枚举项列表 };\n</p>\n        ",
+        "example": "enum Color { Red, Black };\nenum class Status { Free, Busy };"
+      }
+    ]
+  },
+  {
+    "keyword": "explicit",
+    "usage": [
+      {
+        "info": "<p>用于声明：限制构造函数为显式，即不能用于隐式转换和复制初始化。可后接常量表达式，当常量表达式为true时为显式。</p>\n<p>explict 构造函数名(形参列表);\n</p>\n<p>explict (常量表达式)\n            构造函数名(形参列表);\n</p>\n        ",
+        "example": "struct A {\n    explicit A(int) { }\n};\nstruct B {\n    explicit (true) B(int) { }\n};\nint main() {\n    A a(42); // not A a = 42;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "export",
+    "usage": [
+      {
+        "info": "<p>用于模块：标记一个声明或一个模块被当前模块导出。</p>\n<p>export module 模块名;\n</p>\n<p>export 声明;\n</p>\n<p>等</p>\n        ",
+        "example": "// hello.cpp\nexport module my.app.hello;\nexport auto sayHello() {\n    return \"Hello!\";\n}\n// main.cpp\nimport my.app.hello;\nimport <iostream>\nint main() {\n    std::cout << sayHello();\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "extern",
+    "usage": [
+      {
+        "info": "<p>1. 用于声明：声明对象具有静态存储期和外部连接；即在其它文件中寻找对象的定义。</p>\n<p>extern 类型说明符变量名;\n</p>\n        ",
+        "example": "// score.cpp\nint score = 60;\n// main.cpp\n#include <iostream>\nextern int score;\nint main() {\n    std::cout << score;\n} // 60"
+      },
+      {
+        "info": "<p>2. 其它：用于连接其它语言编写的代码。一般只支持C语言。</p>\n<p>extern 字符串字面量 { 声明序列 } |\n            声明</p>\n        ",
+        "example": "extern \"C\" {\n    static void f();\n}\nextern \"C\" void g() {\n     printf(\"Hello\");\n}"
+      },
+      {
+        "info": "<p>3. 用于模板：显式实例化声明类模板，但跳过隐式实例化步骤；即在其它文件中寻找实例化定义。</p>\n<p>extern template class|struct 模板名&lt;模板实参列表&gt;;\n</p>\n        ",
+        "example": "template<typename T> struct Z { };\n// find instantiation in other place\nextern template struct Z<double>;"
+      }
+    ]
+  },
+  {
+    "keyword": "false",
+    "usage": [
+      {
+        "info": "<p>用于数据成分：表示假的布尔类型字面值。</p>\n<p>false\n</p>\n        ",
+        "example": "bool flag = false;"
+      }
+    ]
+  },
+  {
+    "keyword": "float",
+    "usage": [
+      {
+        "info": "<p>用于声明：单精度浮点类型变量的类型说明符。</p>\n<p>float 变量名;\n</p>\n        ",
+        "example": "float score = 60.5f;"
+      }
+    ]
+  },
+  {
+    "keyword": "for",
+    "usage": [
+      {
+        "info": "<p>1. 用于控制成分：形成for循环语句。</p>\n<p>for ( 语句条件表达式 ;\n            表达式 ) 循环体语句</p>\n        ",
+        "example": "for (int i = 0; i < 10; i++){\n    std::cout << i;\n}"
+      },
+      {
+        "info": "<p>2. 用于控制成分：形成基于范围的for循环语句。范围可以是数组或容器等。</p>\n<p>for ( 范围声明 : 范围表达式)\n            循环体语句</p>\n        ",
+        "example": "int a[10] = {};\nfor (auto i : a) {\n    i++;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "friend",
+    "usage": [
+      {
+        "info": "<p>用于声明：声明函数或类为友元函数或友元类。友元函数和友元类可以访问其它类中的私有成员。</p>\n<p>friend 函数声明或定义</p>\n<p>friend 类型说明符;\n</p>\n        ",
+        "example": "struct Y;\nclass X {\n    friend Y;\n    friend void g();\n    int a = 0;  // private\n};\nX x;\nstruct Y {\n    int b = x.a;\n};\nvoid g() {\n    x.a;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "goto",
+    "usage": [
+      {
+        "info": "<p>用于控制成分：goto语句可无差别跳转到对应标号的语句。</p>\n<p>goto 语句标号;\n</p>\n        ",
+        "example": "loop: x++;\nif (x < 10) goto loop;"
+      }
+    ]
+  },
+  {
+    "keyword": "if",
+    "usage": [
+      {
+        "info": "<p>用于控制成分：if语句形成简单的分支流程。</p>\n<p>if [constexpr] ( [初始化语句] 条件表达式 )\n</p>\n<p>&nbsp;&nbsp;&nbsp; true分支语句</p>\n<p>[else\n</p>\n<p>&nbsp;&nbsp;&nbsp; false分支语句]\n</p>\n        ",
+        "example": "if (flag) {\n    std::cout << \"Yes\";\n}\nif (int x = getRes(); flag)\n    std::cout << x;\nelse std::cout << -x;"
+      }
+    ]
+  },
+  {
+    "keyword": "inline",
+    "usage": [
+      {
+        "info": "<p>1. 用于声明：声明函数或变量为内联的。内联的声明可以容许多次等同的定义；对于内联函数可能会优先内联而不跳转。</p>\n<p>inline 函数或对象声明</p>\n        ",
+        "example": "inline max(const int& a, const int& b) {\n    return a > b ? a : b;\n}"
+      },
+      {
+        "info": "<p>2. 用于命名空间：声明命名空间为内联的，即该命名空间的成员如同视为外层命名空间的成员。</p>\n<p>inline namespace 命名空间名 { 声明序列 }\n</p>\n        ",
+        "example": "namespace literals {\n    inline namespace string_literals {//[...]\n    }\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "int",
+    "usage": [
+      {
+        "info": "<p>用于声明：基础有符号整数类型变量的类型说明符，或者作为其它整型变量的类型说明符的部分。</p>\n<p>int 变量名;\n</p>\n        ",
+        "example": "int number = 42;"
+      }
+    ]
+  },
+  {
+    "keyword": "long",
+    "usage": [
+      {
+        "info": "<p>用于声明：有符号长整型变量的类型说明符，或者作为其它整型变量的类型说明符的部分。</p>\n<p>long 变量名;\n</p>\n        ",
+        "example": "long number = 42;"
+      }
+    ]
+  },
+  {
+    "keyword": "mutable",
+    "usage": [
+      {
+        "info": "<p>1. 用于声明：容许包含该对象的对象被声明为只读时仍可修改。</p>\n<p>mutable 类型说明符变量名;\n</p>\n        ",
+        "example": "class X {\n    mutable int m;\n    void f() const {m++;\n    }\n};"
+      },
+      {
+        "info": "<p>2.\n            用于Lambda表达式：允许Lambda表达式函数体修改复制捕获的实参。</p>\n<p>[捕获](参数列表) mutable <i>[</i>-&gt;\n            返回类型<i>] </i>{ 函数体 }\n</p>\n        ",
+        "example": "int a = 3;\nauto add = [a]() mutable -> void { a++; };"
+      }
+    ]
+  },
+  {
+    "keyword": "namespace",
+    "usage": [
+      {
+        "info": "<p>1. 用于命名空间：建立命名空间或引入命名空间，从而避免命名冲突。</p>\n<p>[inline] namespace 命名空间名 { 声明序列 }\n</p>\n<p>using namespace 命名空间名;\n</p>\n        ",
+        "example": "using namespace std;\nnamespace MyApp {\n    int x;\n}\nint main() {\n    MyApp::x;\n}"
+      },
+      {
+        "info": "<p>2. 用于命名空间：创立命名空间别名。</p>\n<p>namespace 别名 = 命名空间名;\n</p>\n        ",
+        "example": "namespace foo {\n    namespace bar {int m;\n    }\n}\nnamespace fb = foo::bar;\nint main() {\n    fb::m;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "new",
+    "usage": [
+      {
+        "info": "<p>用于运算符：创建并初始化具有动态存储期的对象，返回指向该对象的指针或者指向数组首元素的指针。</p>\n<p>new 类型;\n</p>\n<p>new 类型[];\n</p>\n        ",
+        "example": "int* p1 = new int(42);\nint* p2 = new int[10];\ndelete p1;\ndelete[] p2;"
+      }
+    ]
+  },
+  {
+    "keyword": "noexcept",
+    "usage": [
+      {
+        "info": "<p>1.\n            用于声明：指示该函数不会抛出异常，从而编译时优化。可后随常量表达式，当表达式为true时不会抛出异常。</p>\n<p>返回类型函数名(形参列表) noexcept;\n</p>\n<p>返回类型函数名(形参列表)\n            noexcept(常量表达式);\n</p>\n        ",
+        "example": "void f() noexcept {}\nvoid g() noexcept(false) {} // g may throw exception\nvoid h() noexcept(true) {}"
+      },
+      {
+        "info": "<p>2.\n            用于运算符：检查表达式是否可能抛出异常。若不可能，返回true；否则返回false。该运算符不对表达式求值。</p>\n<p>noexcept(表达式)\n</p>\n        ",
+        "example": "void f() noexcept {}\nvoid g() {}\nint main() {\n    noexcept(f()); // true\n    noexcept(g()); // false\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "not",
+    "usage": [
+      {
+        "info": "<p>用于运算符：!的替代写法。</p>\n<p>not 操作数</p>\n        ",
+        "example": "not isOK;"
+      }
+    ]
+  },
+  {
+    "keyword": "not_eq",
+    "usage": [
+      {
+        "info": "<p>用于运算符：!=的替代写法</p>\n<p>左侧操作数 not_eq 右侧操作数</p>\n        ",
+        "example": "a not_eq b;"
+      }
+    ]
+  },
+  {
+    "keyword": "nullptr",
+    "usage": [
+      {
+        "info": "<p>用于数据成分：空指针字面量，可与其余类型指针隐式或显式转换。</p>\n<p>nullptr\n</p>\n        ",
+        "example": "int* pointer = nullptr;"
+      }
+    ]
+  },
+  {
+    "keyword": "operator",
+    "usage": [
+      {
+        "info": "<p>用于声明：声明重载运算符。</p>\n<p>返回类型 operator 运算符 (形参列表);\n\n</p>\n        ",
+        "example": "struct A {\n    int m;\n    bool operator<(const A& b) const {return m < b.m;\n    }\n};"
+      }
+    ]
+  },
+  {
+    "keyword": "or",
+    "usage": [
+      {
+        "info": "<p>用于运算符：||的替代写法。</p>\n<p>左侧操作数 or 右侧操作数</p>\n        ",
+        "example": "a or b;"
+      }
+    ]
+  },
+  {
+    "keyword": "or_eq",
+    "usage": [
+      {
+        "info": "<p>用于运算符：|=的替代写法。</p>\n<p>左侧操作数 or_eq 右侧操作数</p>\n        ",
+        "example": "a or_eq b;"
+      }
+    ]
+  },
+  {
+    "keyword": "private",
+    "usage": [
+      {
+        "info": "<p>用于面向对象：指明其后的成员为私有成员，或者指明该类为私有继承。</p>\n<p>private: 成员说明</p>\n<p>class|struct 类名 : private 父类名 {\n            成员列表 };\n</p>\n        ",
+        "example": "struct A {\nprivate:\n    int m;\n};\nstruct B : private A {};"
+      }
+    ]
+  },
+  {
+    "keyword": "protected",
+    "usage": [
+      {
+        "info": "<p>用于面向对象：指明其后的成员为受保护成员，或者指明该类为受保护继承。</p>\n<p>protected: 成员说明</p>\n<p>class|struct 类名 : protected 父类名 {\n            成员列表 };\n</p>\n        ",
+        "example": "struct A {\nprotected:\n    int m;\n};\nstruct B : protected A {};"
+      }
+    ]
+  },
+  {
+    "keyword": "public",
+    "usage": [
+      {
+        "info": "<p>用于面向对象：指明其后的成员为公有成员，或者指明该类为受公开继承。</p>\n<p>public: 成员说明</p>\n<p>class|struct 类名 : public 父类名 {\n            成员列表 };\n</p>\n        ",
+        "example": "class A {\npublic:\n    int m;\n};\nclass B : public A {};"
+      }
+    ]
+  },
+  {
+    "keyword": "reflexpr",
+    "usage": [
+      {
+        "info": "<p>（草案）用于反射。</p>\n        ",
+        "example": "   "
+      }
+    ]
+  },
+  {
+    "keyword": "register",
+    "usage": [
+      {
+        "info": "<p>（此关键字被保留，暂时不使用。）</p>\n        ",
+        "example": "   "
+      }
+    ]
+  },
+  {
+    "keyword": "reinterpret_cast",
+    "usage": [
+      {
+        "info": "<p>用于运算符：将指针的基类型重解释为新的基类型。</p>\n<p>reinterpret_cast&lt;新类型&gt;(指针)\n</p>\n        ",
+        "example": "int a = 42;\nint* pa = &a;\nlong* pb = reinterpret_cast<long*>(pa);"
+      }
+    ]
+  },
+  {
+    "keyword": "requires",
+    "usage": [
+      {
+        "info": "<p>1.\n            用于概念：requires子句对模板实参或函数声明指定一个约束，这个约束可以是概念（约束集合）或者它们的合取、析取或原子约束，或者一个requires表达式。</p>\n<p>template&lt;<i>模板形参列表</i>&gt; requires\n            <i>requires</i><i>子句</i></p>\n<p><i>声明</i><i></i></p>\n<p>template&lt;<i>模板形参列表</i>&gt;\n</p>\n<p><i>函数声明</i><i> requires</i><i>子句</i><i> </i></p>\n        ",
+        "example": "template<typename T> requires Addable<T>\nT f(T a, T b) {\n    return a + b;\n}\ntemplate<typename T>\nT g(T a, T b) requires Addable<T> {\n    return a + b;\n}"
+      },
+      {
+        "info": "<p>2. 用于概念：requires表达式构造一个约束。</p>\n<p>requires (形参列表) { 要求序列 }\n</p>\n        ",
+        "example": "template<typename T>\nconcept Addable = requires (T x) { x + x; }"
+      }
+    ]
+  },
+  {
+    "keyword": "return",
+    "usage": [
+      {
+        "info": "<p>用于函数：终止当前函数。若可能，则返回值给上级函数。</p>\n<p>return;\n</p>\n<p>return 表达式;\n</p>\n        ",
+        "example": "void f(int i) {\nif (i==2)return;\n    std::cout << i;\n}\nint square(int x) {\n    return x*x;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "short",
+    "usage": [
+      {
+        "info": "<p>用于声明：有符号短整型变量的类型说明符，或者作为其它整型变量的类型说明符的部分。</p>\n<p>short 变量名;\n</p>\n        ",
+        "example": "short i = 0;"
+      }
+    ]
+  },
+  {
+    "keyword": "signed",
+    "usage": [
+      {
+        "info": "<p>用于声明：基础有符号整数类型的类型说明符，或者作为其他有符号整型变量的类型说明符的部分。</p>\n<p>signed 变量名;\n</p>\n        ",
+        "example": "signed score = 60; // same as int"
+      }
+    ]
+  },
+  {
+    "keyword": "sizeof",
+    "usage": [
+      {
+        "info": "<p>1. 用于运算符：sizeof运算符查询操作数或类型的大小。它是不求值运算符。</p>\n<p>sizeof(类型)\n</p>\n<p>sizeof 操作数</p>\n        ",
+        "example": "sizeof(int);\nsizeof 42;"
+      },
+      {
+        "info": "<p>2. 用于运算符：sizeof...运算符查询形参包所含的元素数量。</p>\n<p>sizeof...(形参包)\n</p>\n        ",
+        "example": "template <typename... Args>\nstd::size_t f() {\n    return sizeof...(Args);\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "static",
+    "usage": [
+      {
+        "info": "<p>1. 用于声明：声明全局变量具有静态存储期和内部连接，即仅能在本文件中使用。</p>\n<p>static 类型说明符变量名;\n</p>\n        ",
+        "example": "static int num = 42;"
+      },
+      {
+        "info": "<p>2. 用于声明：声明局部变量具有静态存储期，即内存分配时段与程序本身相同，仅初始化一次。</p>\n<p>static 类型说明符变量名;\n</p>\n        ",
+        "example": "void f() {\n    static int v = 42;\n    v++;\n    std::cout << v;\n}\nint main() {\n    f(); // 43\n    f(); // 44\n}"
+      },
+      {
+        "info": "<p>3. 用于声明：声明静态成员，即该成员不绑定到类的实例，为所有该类对象共有。</p>\n<p>static 成员或函数声明</p>\n        ",
+        "example": "class X {\n    static int n = 42;\n}\nint main() {\n    X::n;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "static_assert",
+    "usage": [
+      {
+        "info": "<p>其它：进行编译期断言检查。若常量表达式为真则不执行操作，否则编译错误并提示字符串字面量的内容（若有）。</p>\n<p>static_assert(常量表达式[, 字符串字面量]);\n</p>\n        ",
+        "example": "static_assert(false, \"Message\");\n// Compilation Error: Message"
+      }
+    ]
+  },
+  {
+    "keyword": "static_cast",
+    "usage": [
+      {
+        "info": "<p>\n            用于运算符：进行显式类型转换，但不能移除指针或引用的const或volatile限定。任意隐式转换均可用词运算符显式转换。亦存在到void或void的指针的转换、整数类型和枚举类型的转换。</p>\n<p>static_cast&lt;类型&gt;(操作数)\n</p>\n        ",
+        "example": "int n = static_cast<int>(3.14);"
+      }
+    ]
+  },
+  {
+    "keyword": "struct",
+    "usage": [
+      {
+        "info": "<p>1. 用于声明：声明默认为公有成员的类类型，即结构体类型。</p>\n<p>struct 类名 {\n</p>\n<p>&nbsp;&nbsp;&nbsp; 成员列表</p>\n<p>};\n</p>\n        ",
+        "example": "struct Student {\n    int no;\n    std::string name;\n    bool sex;\n};"
+      }
+    ]
+  },
+  {
+    "keyword": " ",
+    "usage": [
+      {
+        "info": "<p>2. 用于声明：声明有作用域枚举类型。</p>\n<p>enum class|struct 枚举名 { 枚举项列表 };\n</p>\n        ",
+        "example": "enum struct Color {\n    Red,\n    Blue,\n    Green\n};"
+      }
+    ]
+  },
+  {
+    "keyword": "switch",
+    "usage": [
+      {
+        "info": "<p>用于控制成分：switch语句形成多分支结构。</p>\n<p>switch([初始化语句] 表达式) {\n</p>\n<p>&nbsp;&nbsp;&nbsp;\n            带case或default标号的语句</p>\n<p>}\n</p>\n        ",
+        "example": "switch(score) {\n    case 0: a++; break;\n    case 1: b++; break;\n    default: c++;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "synchronized",
+    "usage": [
+      {
+        "info": "<p>（实验性功能）用于事务：指明复合语句为同步块，即如同在全局锁下执行。</p>\n<p>synchronized 复合语句</p>\n        ",
+        "example": "int f() {\n    static int i = 0;\n    sychronized {++i;return i;\n    }\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "template",
+    "usage": [
+      {
+        "info": "<p>用于模板：声明模板。可以是类模板、函数模板、别名模板、变量模板或者概念。</p>\n<p>template&lt;形参列表&gt; [requires子句]\n            类、变量或函数声明</p>\n<p>template&lt;形参列表&gt;\n</p>\n<p>using 别名 = 类型说明符;\n</p>\n<p>template&lt;形参列表&gt;\n</p>\n<p>concept 概念名 = 约束表达式;\n</p>\n        ",
+        "example": "template<typename T>\nT& max(const T& a, const T& b) {\n    return a > b ? a : b;\n}\ntemplate<typename T>\nusing Ptr = T*;\ntemplate<typename T>\nconcept Derived = std::is_base_of<U, T>::value;"
+      }
+    ]
+  },
+  {
+    "keyword": "this",
+    "usage": [
+      {
+        "info": "<p>\n            用于面向对象：一个右值指针，指向当前正在调用成员函数的对象的地址。对于允许this关键字的环境，调用非静态成员时会自动添加隐含的this-&gt;。</p>\n<p>this\n</p>\n        ",
+        "example": "struct S {\n    int x;\n    void add() {this->x += 1;\n    }\n};"
+      }
+    ]
+  },
+  {
+    "keyword": "thread_local",
+    "usage": [
+      {
+        "info": "<p>用于声明：声明对象具有线程存储期。对象的存储在线程开始时分配，而在线程结束时解分配。</p>\n<p>thread_local 类型说明符变量名;\n</p>\n        ",
+        "example": "thread_local unsigned int rage = 1;"
+      }
+    ]
+  },
+  {
+    "keyword": "throw",
+    "usage": [
+      {
+        "info": "<p>用于运算符：将表达式复制并作为异常抛出，或者重新抛出当前正在处理的异常。</p>\n<p>throw 表达式</p>\n<p>throw\n</p>\n        ",
+        "example": "try {\n    throw std::overflow_error(\"too big\");\n} catch (const std::exception& e) {\n    throw; // overflow_error\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "true",
+    "usage": [
+      {
+        "info": "<p>用于数据成分：表示真的布尔类型字面值。</p>\n<p>true\n</p>\n        ",
+        "example": "bool flag = true;"
+      }
+    ]
+  },
+  {
+    "keyword": "try",
+    "usage": [
+      {
+        "info": "<p>用于异常处理：关联一个复合语句使得其中的异常可以被处理。</p>\n<p>try 复合语句</p>\n<p>catch (<i>声明序列</i><i>|</i>...) 复合语句</p>\n        ",
+        "example": "try {\n    str.substr(10);\n} catch (std::exception e) {\n    std::cerr << e.what();\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "typedef",
+    "usage": [
+      {
+        "info": "<p>用于声明：创建替代类型名的别名，但不能是模板名。此声明将声明符的名字作为类型的别名。</p>\n<p>typedef 类型名声明符</p>\n        ",
+        "example": "typedef unsigned int uint;\ntypedef int arr10OfInt[10];\ntypedef void (*ptr2Func)();"
+      }
+    ]
+  },
+  {
+    "keyword": "typeid",
+    "usage": [
+      {
+        "info": "<p>\n            用于运算符：查询类型的信息，或者操作数的类型的信息，返回std::type_info对象，可以通过name()成员函数获取类型名。对于部分编译环境，此结果可能需要c++filt进行转译。</p>\n<p>typeid(类型)\n</p>\n<p>typeid(表达式)\n</p>\n        ",
+        "example": "#include <typeinfo> // must\nstruct Base {\n    virtual ~Base() {}\n};\nstruct Derived : Base {};\nint main() {\n    Base* ptr = new Derived;\n    typeid(*ptr).name(); // Derived or 7Derived or sth else\n    typeid(int* (*)()).name();// int* (*)* or PFPivE or sth else\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "typename",
+    "usage": [
+      {
+        "info": "<p>1. 用于模板：在模板声明中用以引入类型模板形参，与class等价。</p>\n<p>template &lt;class|typename 类型形参&gt;\n</p>\n<p>声明</p>\n        ",
+        "example": "template <typename T>\nT& max(const T& a,const T& b) {\n    return a > b ? a : b;\n}"
+      },
+      {
+        "info": "<p>2. 用于模板：在模板声明中指明某个待决名为类型，以区别于静态成员变量，防止编译错误。</p>\n<p>typename 待决名余下声明;\n</p>\n        ",
+        "example": "template<typename T>\nvoid f(T t) {\n    typename T::iterator iter;\n    iter = t.begin();\n}"
+      },
+      {
+        "info": "<p>3. 用于概念：在requires表达式的要求中，用于校验类型名是否合法。</p>\n<p>typename 类型名</p>\n        ",
+        "example": "template<typename T>\nconcept HaveInner =\nrequires {\n    typename T::inner;\n};"
+      }
+    ]
+  },
+  {
+    "keyword": "union",
+    "usage": [
+      {
+        "info": "<p>用于声明：声明联合体，即一个时刻只能保有一个非静态数据成员的类型。</p>\n<p>union 联合体名 { 成员列表 };\n</p>\n        ",
+        "example": "union ID {\n    int no;\n    char name[32];\n};"
+      }
+    ]
+  },
+  {
+    "keyword": "unsigned",
+    "usage": [
+      {
+        "info": "<p>用于声明：基础无符号整数类型的类型说明符，或者作为其他无符号整型变量的类型说明符的部分。</p>\n<p>unsigned 变量名;\n</p>\n        ",
+        "example": "unsigned score = 60;"
+      }
+    ]
+  },
+  {
+    "keyword": "using",
+    "usage": [
+      {
+        "info": "<p>1. 用于命名空间：引入命名空间或者命名空间中的对象。</p>\n<p>using namespace 命名空间名;\n</p>\n<p>using 对象名;\n</p>\n        ",
+        "example": "using namespace std;\nusing std::cin;\nusing std::cout;"
+      },
+      {
+        "info": "<p>2. 用于声明：用于创建指代类型名的别名，与typedef类似。亦可以创建别名模板。</p>\n<p>using 别名 = 类型说明符;\n</p>\n<p>template&lt;形参列表&gt;\n</p>\n<p>using 别名 = 类型说明符;\n</p>\n        ",
+        "example": "using uint = usigned int;\nusing array10OfInt = int[10];\nusing ptr2Func = void (*)();\ntemplate<typename T>\nusing Ptr = T*;"
+      }
+    ]
+  },
+  {
+    "keyword": "virtual",
+    "usage": [
+      {
+        "info": "<p>1. 用于面向对象：声明成员函数为虚函数，即在多态场景下，其可以被子类成员同名函数所覆盖。亦可声明为纯虚函数，则该类成为抽象类且不得有实例。</p>\n<p>virtual [返回类型] 函数名(形参列表);\n\n</p>\n<p>virtual [返回类型] 函数名(形参列表)\n            = 0;\n</p>\n        ",
+        "example": "struct Base {\n    virtual void f() {std::cout << \"Base Func\n  Called\";\n    }\n};\nstruct Derived : public Base {\n    void f() {std::cout << \"Derived\n  Called\";\n    }\n};\nint main() {\n    Base* b = new Derived;\n    b->f(); // Derived Called\n}"
+      },
+      {
+        "info": "<p>2. 用于面向对象：声明继承方式为虚继承，即在多重继承中，最终派生对象只有一个基类成员。</p>\n<p>class|struct 类名 : virtual [private|protected|public]\n            父类名 { 成员列表 };\n</p>\n        ",
+        "example": "struct A {\n    int n;\n};\nstruct B : virtual public A {};\nstruct C : virtual public A {};\nstruct D : B,C {\n    void f() {n;B::n;C::n; // same\n    }\n};"
+      }
+    ]
+  },
+  {
+    "keyword": "void",
+    "usage": [
+      {
+        "info": "<p>1. 用于声明：空类型的类型说明符。空类型是值的集合为空集的类型，不存在空类型的对象，但存在指向空类型的指针和返回空类型的函数。</p>\n<p>void* 指针名;\n</p>\n<p>void 函数名(形参列表);\n</p>\n        ",
+        "example": "void f() {   \n    int a = 42;\n    void* pa = reinterpret_cast<void*>(&a);\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "volatile",
+    "usage": [
+      {
+        "info": "<p>1. 用于声明：声明该变量只为易变的，即它的值可能会以某些不可检测的方式发生改变。因此此类变量每次修改将读写内存而非寄存器，且避免编译器进行优化。</p>\n<p>volatile 类型说明符变量名;\n</p>\n        ",
+        "example": "volatile double result = 2.56;"
+      },
+      {
+        "info": "<p>2. 用于声明：声明成员函数为易变的，即它所访问的成员的值可能会以某些不可检测的方式发生改变。</p>\n<p>返回类型函数名(形参列表) volatile;\n</p>\n        ",
+        "example": "struct S {\n    void f() volatile {}\n};"
+      }
+    ]
+  },
+  {
+    "keyword": "wchar_t",
+    "usage": [
+      {
+        "info": "<p>\n            用于声明：宽字符类型变量的类型说明符。宽字符类型是长度足够表示当前环境任何可编码字符的类型。在Linux中，一般为32位长度，但在Windows中为16位长度。</p>\n<p>wchar_t 变量名;\n</p>\n        ",
+        "example": "wchar_t hanzi = L'字';"
+      }
+    ]
+  },
+  {
+    "keyword": "while",
+    "usage": [
+      {
+        "info": "<p>用于控制成分：形成while循环。</p>\n<p>while(表达式)\n</p>\n<p>&nbsp;&nbsp;&nbsp; 语句</p>\n        ",
+        "example": "int i = 0;\nwhile (i < 10) {\n    i++;\n}"
+      }
+    ]
+  },
+  {
+    "keyword": "xor",
+    "usage": [
+      {
+        "info": "<p>用于运算符：^的替代写法。</p>\n<p>左侧操作数 xor 右侧操作数</p>\n        ",
+        "example": "a xor b;"
+      }
+    ]
+  },
+  {
+    "keyword": "xor_eq",
+    "usage": [
+      {
+        "info": "<p>用于运算符：^=的替代写法。</p>\n<p>左侧操作数 xor_eq 右侧操作数</p>\n        ",
+        "example": "flag xor_eq true;"
+      }
+    ]
+  }
+]
