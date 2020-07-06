@@ -1,0 +1,25 @@
+name: Sync
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Sync to Gitee
+      uses: wearerequired/git-mirror-action@master
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
+      with:
+          source-repo: "git@github.com:Guyutongxue/MyCppTutorial.git"
+          # 注意替换为你的 Gitee 目标仓库地址
+          destination-repo: "git@gitee.com:Guyutongxue/MyCppTutorial.git"
+
+    - name: Build Gitee Pages
+      uses: yanglbme/gitee-pages-action@master
+      with:
+          gitee-username: Guyutongxue
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          gitee-repo: git@gitee.com:Guyutongxue/MyCppTutorial.git
