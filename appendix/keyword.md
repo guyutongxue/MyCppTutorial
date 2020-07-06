@@ -73,6 +73,6 @@ function loadKeywords(json_path, target) {
         console.log(xhr);
     });
 };
-loadKeywords("/appendix/keyword.json",document.querySelector('#keywordTable'));
-loadKeywords("/appendix/preserved_word.json",document.querySelector('#preservedWordTable'));
+loadKeywords("appendix/keyword.json",document.querySelector('#keywordTable'));
+loadKeywords("appendix/preserved_word.json",document.querySelector('#preservedWordTable'));
 </script>
