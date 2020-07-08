@@ -98,6 +98,11 @@ pre.sdsc i {
 pre.sdsc u {
     font-style: normal;
     text-decoration: none;
+    /* Round border */
+    border-width: 3px;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: var(--standard-optional-color);
     background-color: var(--standard-optional-color);
     color     : var(--standard-placeholder-color);
 }
