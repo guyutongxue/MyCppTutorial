@@ -5,9 +5,6 @@
     --cover-heading-color: #000000;
     --cover-max-width    : 80em;
 
-    /* Reduce the font size */
-    --base-font-size: 14px;
-
     /* Change navbar's style*/
     --sidebar-nav-pagelink-background-image: none;
     --sidebar-nav-link-before-content-l3   : none;
@@ -25,11 +22,15 @@
     --blockquote-color: #696969;
 
     /* Change link's style */
-    --link-color                 : var(--theme-color);
-    --link-text-decoration       : none;
+    --link-color          : var(--theme-color);
+    --link-text-decoration: none;
 
     /* Remove left padding for line number */
     --code-block-padding: 1.75em 1.5em 1.5em 0em;
+
+    /* For .stsc class */
+    --standard-placeholder-color: #0b87da;
+    --standard-optional-color: #cce5ff;
 }
 
 /* Change table's border style */
@@ -84,9 +85,21 @@ pre.table-code {
     overflow : auto;
 }
 
+/* Change Chinese font to sans-serif, because the default font 宋体 is hard to read. */
+body[data-platform^="Win"] pre.sdsc {
+    font-family: Inconsolata, Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", Courier,"Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu, "SimHei", monospace;
+}
+
 pre.sdsc i {
     font-style: normal;
-    color     : #0b87da;
+    color     : var(--standard-placeholder-color);
+}
+
+pre.sdsc u {
+    font-style: normal;
+    text-decoration: none;
+    background-color: var(--standard-optional-color);
+    color     : var(--standard-placeholder-color);
 }
 
 .markdown-section pre[data-lang] {
@@ -114,4 +127,25 @@ pre.sdsc i {
 /* Remove decoration of <a> */
 .markdown-section a.anchor:hover {
     text-decoration: none;
+}
+
+/* Iconfont */
+@font-face {
+    font-family: 'iconfont';
+    /* project id 1894098 */
+    src        : url('//at.alicdn.com/t/font_1894098_kvwtdqcfpgd.eot');
+    src        : url('//at.alicdn.com/t/font_1894098_kvwtdqcfpgd.eot?#iefix') format('embedded-opentype'),
+        url('//at.alicdn.com/t/font_1894098_kvwtdqcfpgd.woff2') format('woff2'),
+        url('//at.alicdn.com/t/font_1894098_kvwtdqcfpgd.woff') format('woff'),
+        url('//at.alicdn.com/t/font_1894098_kvwtdqcfpgd.ttf') format('truetype'),
+        url('//at.alicdn.com/t/font_1894098_kvwtdqcfpgd.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family              : "iconfont" !important;
+    font-size                : 16px;
+    font-style               : normal;
+    -webkit-font-smoothing   : antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing  : grayscale;
 }
