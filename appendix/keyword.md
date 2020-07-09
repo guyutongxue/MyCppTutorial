@@ -52,7 +52,7 @@ function loadKeywords(json_path, target) {
             example.setAttribute('class', 'language-cpp');
             node.innerHTML += '<td class="info">' + data[i].usage[0].info + '</td>'+
                             '<td class="example"><pre class="table-code"><code class="language-cpp">' + example.outerHTML +
-                            '</code></pre></td>'
+                            '</code>```</td>'
             target.appendChild(node);
             if (data[i].usage.length > 1) {
                 for (let j = 1; j < data[i].usage.length; j++) {
@@ -62,7 +62,7 @@ function loadKeywords(json_path, target) {
                     example.setAttribute('class', 'language-cpp');
                     usage.innerHTML += '<td class="info">' + data[i].usage[j].info + '</td>'+
                                     '<td class="example"><pre class="table-code"><code class="language-cpp">' + example.outerHTML +
-                                    '</code></pre></td>'
+                                    '</code>```</td>'
                     target.appendChild(usage);
                 }
             }

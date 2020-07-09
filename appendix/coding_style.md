@@ -147,7 +147,7 @@ begin
         else writeln('div by 0');
     end;
 end.</code>
-</pre>
+```
 </td>
 <td>
 <pre class="table-code">
@@ -165,7 +165,7 @@ int main(){
         else printf("div by 0\n");
     }
 }</code>
-</pre>
+```
 </td>
 </tr>
 </tbody>

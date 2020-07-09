@@ -34,6 +34,7 @@
         * [算术类型隐式转换](ch02/part2/implicit_conversion)
     * [第 3 部分 控制成分](ch02/part3/)
         * [复合语句](ch02/part3/compound_statement)
+        * [分支语句](ch02/part3/branch_statement)
 * [附录](appendix/)
     * [运算符优先级和结合方向](appendix/operator)
     * [关键字列表](appendix/keyword)

@@ -30,7 +30,7 @@
 
     /* For .stsc class */
     --standard-placeholder-color: #0b87da;
-    --standard-optional-color: #cce5ff;
+    --standard-optional-color   : #cce5ff;
 }
 
 /* Change table's border style */
@@ -78,33 +78,48 @@ pre.sdsc {
     background-color: var(--code-theme-background);
     padding         : var(--code-block-padding);
     padding-left    : 1.5em;
+    overflow        : auto;
 }
+
+/* code.sdsc {
+    background: var(--code-theme-background) !important;
+} */
 
 pre.table-code {
     max-width: 300px;
-    overflow : auto;
 }
 
 /* Change Chinese font to sans-serif, because the default font 宋体 is hard to read. */
-body[data-platform^="Win"] pre.sdsc {
-    font-family: Inconsolata, Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", Courier,"Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu, "SimHei", monospace;
+body[data-platform^="Win"] .sdsc {
+    font-family: Inconsolata, Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu, "SimHei", monospace;
 }
 
-pre.sdsc i {
+/* Placeholder */
+.sdsc em {
     font-style: normal;
     color     : var(--standard-placeholder-color);
 }
 
-pre.sdsc u {
-    font-style: normal;
-    text-decoration: none;
+/* Optional */
+.sdsc .opt-block,
+.sdsc strong {
     /* Round border */
-    border-width: 3px;
-    border-radius: 4px;
-    border-style: solid;
-    border-color: var(--standard-optional-color);
+    border-width    : 3px;
+    border-radius   : 4px;
+    border-style    : solid;
+    border-color    : var(--standard-optional-color);
     background-color: var(--standard-optional-color);
-    color     : var(--standard-placeholder-color);
+    text-decoration : none;
+}
+
+.sdsc strong {
+    color      : var(--standard-placeholder-color);
+    font-style : normal;
+    font-weight: normal;
+}
+
+.sdsc .opt-block {
+    display: inline-block;
 }
 
 .markdown-section pre[data-lang] {

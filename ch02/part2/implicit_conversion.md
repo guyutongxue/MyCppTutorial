@@ -43,9 +43,9 @@ int main() {
 ```
 结果保持源值：
 
-<pre class="io">
+```io
 -123 42
-</pre>
+```
 
 ### 例1.2
 ```cpp
@@ -61,9 +61,9 @@ int main() {
 ```
 结果保持源值：
 
-<pre class="io">
+```io
 42
-</pre>
+```
 
 ### 例2
 ```cpp
@@ -79,9 +79,9 @@ int main() {
 ```
 结果保留低 16 位：
 
-<pre class="io">
+```io
 abcd
-</pre>
+```
 
 ### 例3
 ```cpp
@@ -98,10 +98,10 @@ int main() {
 ```
 不管是否有符号，保持内存存储不变：
 
-<pre class="io">
+```io
 4294967295
 ffffffff
-</pre>
+```
 
 ## 注意事项
 

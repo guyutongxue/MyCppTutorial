@@ -4,18 +4,18 @@
 
 咱们来写一个猜数的游戏。程序给定一个 1 到 100 之间的整数让用户来猜。用户输入大了或者小了程序都会提示——猜错的话还可以继续猜，直到猜对为止。比如程序设定的整数是 42。那么整个输入输出可能是以下这样的：
 
-<pre class="io">
-<b>50↵</b>
+```io
+**50↵**
 That's bigger than the answer. Try again?
-<b>25↵</b>
+**25↵**
 That's smaller than the answer. Try again?
-<b>37↵</b>
+**37↵**
 That's smaller than the answer. Try again?
-<b>43↵</b>
+**43↵**
 That's bigger than the answer. Try again?
-<b>42↵</b>
+**42↵**
 Bingo! You got the answer!
-</pre>
+```
 
 看上去还挺有意思的。那么这个程序该怎么写呢？
 
