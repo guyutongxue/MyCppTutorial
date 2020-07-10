@@ -127,7 +127,10 @@ cond=>condition: 条件\n成立？\n\
 st->cond\n\
 cond(yes)->true\n\
 true->e\n\
-cond(no)->e').drawSVG('if');
+cond(no)->e').drawSVG('if',{
+    'yes-text':'是',
+    'no-text':'否'
+});
 flowchart.parse('st=>start: 开始\n\
 e=>end: 结束\n\
 true=>operation: 真分支语句\n\
@@ -138,7 +141,8 @@ st->cond\n\
 cond(yes)->true\n\
 true->e\n\
 cond(no)->false\n\
-false->e').drawSVG('else');
-// replace Yes/No
-document.querySelector('#ifTable').innerHTML = document.querySelector('#ifTable').innerHTML.replace(/>yes</g,'>是<').replace(/>no</g,'>否<');
+false->e').drawSVG('else',{
+    'yes-text':'是',
+    'no-text':'否'
+});
 </script>

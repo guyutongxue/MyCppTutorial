@@ -38,6 +38,7 @@
         * [switch 语句](ch02/part3/switch_statement)
         * [while 语句](ch02/part3/while_statement)
         * [for 语句](ch02/part3/for_statement)
+        * [跳转语句](ch02/part3/jump_statement)
         * [空语句](ch02/part3/empty_statement)
         * [作用域](ch02/part3/scope)
 * [附录](appendix/)

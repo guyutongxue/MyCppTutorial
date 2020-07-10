@@ -77,9 +77,10 @@ cond=>condition: 条件\n成立？\n\
 st->cond\n\
 cond(yes)->bd\n\
 bd->cond\n\
-cond(no)->e').drawSVG('diagram');
-// replace Yes/No
-document.querySelector('#diagram').innerHTML = document.querySelector('#diagram').innerHTML.replace(/>yes</g,'>是<').replace(/>no</g,'>否<');
+cond(no)->e').drawSVG('diagram',{
+    'yes-text':'是',
+    'no-text':'否'
+});
 </script>
 
 > 除了 `while` 循环之外，还有许多种其它的循环；其中更常见的是 `for` 循环。但是任何其它的循环都可以简单地转换为 `while` 循环，因此现阶段只需理解 `while` 循环就足够了。
