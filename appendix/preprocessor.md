@@ -42,7 +42,7 @@ int MAX_NUMBER;    // 不进行替换
 #define *宏名*(*形参列表*) *带形参的替换文本*
 ```
 
-你可以在 `@*宏名*@` 后面附上 `@*参数列表*@` ，这样你可以像函数那样使用这个宏。替换的时候，会用你的实参去替换替换文本的形参。替换举几个例子的话：
+你可以在 `@*宏名*@` 后面附上 `@*形参列表*@` ，这样你可以像函数那样使用这个宏。替换的时候，会用你的实参去替换替换文本的形参。替换举几个例子的话：
 ```cpp
 #define print(sth) cout << sth << endl
 print("Hello");    // 替换为 cout << "Hello" << endl;
@@ -63,8 +63,8 @@ int score = sum(23, 42); // 替换为 int score = ((23) + (42));
 
 你可以使用 `__VA_ARGS__` 这个标识符来指代省略号所省略的内容（可以为空）。比如：
 ```cpp
-#define intArray(name, len, ...) int name[len] =  { __VA_ARGS__ }
-intArray(bar, 10, 3, 4, 5, 6); // 替换为 int bar[10] = { 3, 4, 5, 6 };
+#define intArray(name, len, ...) int name[len]{ __VA_ARGS__ }
+intArray(bar, 10, 3, 4, 5, 6); // 替换为 int bar[10]{ 3, 4, 5, 6 };
 ```
 
  

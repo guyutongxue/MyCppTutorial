@@ -56,7 +56,6 @@ int main() {
     unsigned int ui{0};
     ui = si;
     cout << ui << endl;
-    return 0;
 }
 ```
 结果保持源值：

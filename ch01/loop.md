@@ -51,13 +51,44 @@ int main() {
 - 现在我们刚好输出了从 1 到 20 的全部自然数。
 
 循环是一个非常强大的工具。有了循环，基本上许多问题都可以一定程度上得到解决。最后我用一张图来总结循环：
+
+<table>
+<tr>
+    <td>
+    <pre class="table-code sdsc">
+<em>开始</em>
+while (<em>条件</em>) {
+    <em>不断要做的事情</em>
+}
+<em>结束</em>
+</pre>
+    </td>
+    <td>
+        <div id="diagram"></div>
+    </td>
+</tr>
+</table>
+<script>
+flowchart.parse('st=>start: 开始\n\
+e=>end: 结束\n\
+bd=>operation: 不断要做的事情\n\
+cond=>condition: 条件\n成立？\n\
+\n\
+st->cond\n\
+cond(yes)->bd\n\
+bd->cond\n\
+cond(no)->e').drawSVG('diagram');
+// replace Yes/No
+document.querySelector('#diagram').innerHTML = document.querySelector('#diagram').innerHTML.replace(/>yes</g,'>是<').replace(/>no</g,'>否<');
+</script>
+
 > 除了 `while` 循环之外，还有许多种其它的循环；其中更常见的是 `for` 循环。但是任何其它的循环都可以简单地转换为 `while` 循环，因此现阶段只需理解 `while` 循环就足够了。
 
 ## 练习
 
 1. 尝试编写一个程序，使其输出 1 到 20 的偶数。请使用循环。
 1. 尝试编写一个程序，求出 1 到 20 之间所有奇数的和。
-1. 想一想，怎样编写一个无限循环的程序？试着写出来。（提示：如果你要运行它，请注意：按下 `Ctrl` + `C` 键可以强制退出程序的运行。）
+1. 想一想，怎样编写一个无限循环的程序？试着写出来。（提示：如果你要运行它，请注意：按下 <kbd>Ctrl + C</kbd> 键可以强制退出程序的运行。）
 
 ## 练习参考答案
 
