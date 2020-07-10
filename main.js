@@ -8,6 +8,7 @@ window.$docsify = {
     coverpage: true,
     name: '谷雨同学的 C++ 教程',
     loadSidebar: true,
+    notFoundPage: '404.html',
     alias: {
         '/.*/_sidebar.md': '/_sidebar.md'
     },

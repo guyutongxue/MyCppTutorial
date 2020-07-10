@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<style>
+    @media only screen and (min-width: 48em) {
+        #chino {
+            position: fixed;
+            z-index: 999;
+            bottom: 0;
+            right: 0;
+            max-width: 300px;
+            max-height: 80%;
+        }
+    }
+
+    @media only screen and (max-width: 48em) {
+        #chino {
+            width: 80%;
+            /* clip-path: polygon(0 0, 0 50%,100% 50%,100% 0); */
+        }
+    }
+</style>
+
+<body>
+    <h1>啊嘞？这个页面找不到了</h1>
+    <br>
+    <img id="chino" src="https://s1.ax1x.com/2020/07/11/UMHFde.png">
+    <pre data-lang="cpp" class="line-numbers language-cpp"><code class="language-cpp">#include&lt;iostream&gt;
+int main() {
+    std::cout &lt;&lt; 404 &lt;&lt; std::endl;
+}</code></pre>
+<script>
+document.querySelector('.docsify-pagination-container').remove();
+</script>
+</body>
+
+</html>
