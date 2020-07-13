@@ -52,14 +52,5 @@
         "example": "struct S {\n    virtual int f() transaction_safe_dynamic {}\n};"
       }
     ]
-  },
-  {
-    "keyword": "_Pragma",
-    "usage": [
-      {
-        "info": "用于预处理器：控制编译器的行为，与 <code>#pragma</code> 相似。<br><code>_Pragma(字符串字面量)</code>",
-        "example": "_Pragma(\"pack(4)\")"
-      }
-    ]
   }
 ]
