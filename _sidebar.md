@@ -44,6 +44,7 @@
     * [总结](ch02/summary)
 * [第三章 过程式编程](ch03/)
     * [初识函数](ch03/function_glance)
+    * [函数](ch03/function)
 * [第四章 C 数据结构](ch04/)
     * [数组](ch04/array/)
     * [指针](ch04/pointer/)
