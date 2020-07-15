@@ -149,6 +149,12 @@ body[data-platform^="Win"] .sdsc {
     text-decoration: none;
 }
 
+/* [TODO] */
+/* Temporary fix, see https://github.com/upupming/docsify-katex/issues/11 */
+.mathdefault {
+    font-style: italic;
+}
+
 /* Iconfont */
 @font-face {
     font-family: 'iconfont';
