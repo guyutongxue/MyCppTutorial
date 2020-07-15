@@ -35,8 +35,8 @@ window.$docsify = {
             code: function (code, lang) {
 
                 // For Standard Specification block and IO block.
-                if(lang == 'sdsc' | lang == 'io') {
-                    return '<pre class="'+ lang + '">' + htmlToElement(marked(code)).innerHTML + '</pre>';
+                if (lang == 'sdsc' | lang == 'io') {
+                    return '<pre class="' + lang + '">' + htmlToElement(marked(code)).innerHTML + '</pre>';
                 }
 
                 let cc = document.createElement('code');
@@ -57,8 +57,18 @@ window.$docsify = {
     /* Do highlighting after page loaded. */
     plugins: [
         function (hook, vm) {
-            hook.doneEach(function (html) {
+            hook.doneEach(function () {
                 Prism.highlightAll();
+                let utterances = document.createElement('script');
+                utterances.type = 'text/javascript';
+                utterances.async = true;
+                utterances.setAttribute('issue-term','title');
+                utterances.setAttribute('label','utterances');
+                utterances.setAttribute('theme','github-light');
+                utterances.setAttribute('repo','Guyutongxue/MyCppTutorial');
+                utterances.crossorigin = 'anonymous';
+                utterances.src = 'https://utteranc.es/client.js';
+                document.querySelector('.markdown-section').appendChild(utterances);
             })
         }
     ],
