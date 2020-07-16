@@ -59,19 +59,44 @@ window.$docsify = {
         function (hook, vm) {
             hook.doneEach(function () {
                 Prism.highlightAll();
+            })
+        },
+        function (hook, vm) {
+            hook.doneEach(function () {
+                // Add OGP meta info
+                if (document.querySelector('meta[property="og:title"]') === null) {
+                    let meta = document.createElement('meta');
+                    meta.setAttribute('property','og:title')
+                    document.head.appendChild(meta);
+                }
+                document.querySelector('meta[property="og:title"]').setAttribute('content', location.hash.split('?')[0]);
                 let utterances = document.createElement('script');
                 utterances.type = 'text/javascript';
                 utterances.async = true;
-                utterances.setAttribute('issue-term','title');
-                utterances.setAttribute('label','utterances');
-                utterances.setAttribute('theme','github-light');
-                utterances.setAttribute('repo','Guyutongxue/MyCppTutorial');
+                utterances.setAttribute('issue-term', 'og:title');
+                utterances.setAttribute('label', 'utterances');
+                utterances.setAttribute('theme', 'github-light');
+                utterances.setAttribute('repo', 'Guyutongxue/MyCppTutorial');
                 utterances.crossorigin = 'anonymous';
                 utterances.src = 'https://utteranc.es/client.js';
                 document.querySelector('.markdown-section').appendChild(utterances);
+                let ua = navigator.userAgent.toLowerCase();
+                if (ua.indexOf('applewebkit') > -1 && ua.indexOf('mobile') > -1 && ua.indexOf('safari') > -1 &&
+                    ua.indexOf('linux') === -1 && ua.indexOf('android') === -1 && ua.indexOf('chrome') === -1 &&
+                    ua.indexOf('ios') === -1 && ua.indexOf('browser') === -1) {
+                    setTimeout(function () {
+                        if (document.querySelector('.utterances').clientHeight > 0) {
+                            let warning = document.createElement('blockquote');
+                            warning.innerHTML = '若您正在使用 iOS 上的 Safari 浏览器，您的评论功能可能被禁用。关闭 <tt style="background:var(--code-inline-background);">设置 > Safari 浏览器 > 阻止跨网站跟踪</tt> 可解决此问题。';
+                            document.querySelector('.markdown-section').insertBefore(warning, document.querySelector('.utterances'));
+                        }
+                    }, 5000);
+                }
             })
         }
     ],
     auto2top: true,
     executeScript: true
+}
+window.onload = function () {
 }
