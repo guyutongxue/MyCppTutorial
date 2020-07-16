@@ -32,24 +32,24 @@ window.$docsify = {
     markdown: {
         renderer: {
             // Change code block rendering. Add line-numbers class.
-            code: function (code, lang) {
+            code: (code, lang) => {
 
                 // For Standard Specification block and IO block.
                 if (lang == 'sdsc' | lang == 'io') {
-                    return '<pre class="' + lang + '">' + htmlToElement(marked(code)).innerHTML + '</pre>';
+                    return `<pre class="${lang}">${htmlToElement(marked(code)).innerHTML}</pre>`;
                 }
 
                 let cc = document.createElement('code');
                 cc.textContent = code;
                 cc.setAttribute('class', 'language-' + lang);
-                return '<pre data-lang="' + lang + '" class="line-numbers">' + cc.outerHTML + '</pre>';
+                return `<pre data-lang="${lang}" class="line-numbers">${cc.outerHTML}</pre>`;
             },
             // Add Standard Specification inline block. The Syntax is `@text@`.
-            codespan: function (code) {
+            codespan: (code) => {
                 if (code.match(/^@.*@$/) === null) {
-                    return '<code>' + code + '</code>';
+                    return `<code>${code}</code>`;
                 } else {
-                    return '<code class="sdsc">' + htmlToElement(marked(code.substring(1, code.length - 1))).innerHTML + '</code>';
+                    return `<code class="sdsc">${htmlToElement(marked(code.substring(1, code.length - 1))).innerHTML}</code>`;
                 }
             }
         }
@@ -57,20 +57,31 @@ window.$docsify = {
     plugins: [
         // Do highlighting after page loaded.
         function (hook, vm) {
-            hook.doneEach(function () {
+            hook.doneEach(() => {
                 Prism.highlightAll();
+            })
+        },
+        function (hook, vm) {
+            hook.doneEach(() => {
+                document.addEventListener('copy', (event) => {
+                    if (document.getSelection().anchorNode.tagName && document.getSelection().anchorNode.tagName.toLowerCase() == 'pre')
+                        return;
+                    const pagelink = `\n\n————————————————\n转载自谷雨同学的 C++ 教程，未经许可不得以任何方式使用。\n原文链接： ${document.location.href}`;
+                    event.clipboardData.setData('text', document.getSelection() + pagelink);
+                    event.preventDefault();
+                });
             })
         },
         // Add comments powered by utterances
         function (hook, vm) {
-            hook.doneEach(function () {
+            hook.doneEach(() => {
                 // Add OGP meta info
                 if (document.querySelector('meta[property="og:title"]') === null) {
                     let meta = document.createElement('meta');
-                    meta.setAttribute('property','og:title')
+                    meta.setAttribute('property', 'og:title')
                     document.head.appendChild(meta);
                 }
-                document.querySelector('meta[property="og:title"]').setAttribute('content', location.hash.split('?')[0]);
+                document.querySelector('meta[property="og:title"]').setAttribute('content', '[Comment] ' + document.body.getAttribute('data-page'));
                 let utterances = document.createElement('script');
                 utterances.type = 'text/javascript';
                 utterances.async = true;
@@ -82,11 +93,11 @@ window.$docsify = {
                 utterances.src = 'https://utteranc.es/client.js';
                 document.querySelector('.markdown-section').appendChild(utterances);
                 // For Safari on iOS, show a warning because of  browser's policy
-                let ua = navigator.userAgent.toLowerCase();
+                const ua = navigator.userAgent.toLowerCase();
                 if (ua.indexOf('applewebkit') > -1 && ua.indexOf('mobile') > -1 && ua.indexOf('safari') > -1 &&
                     ua.indexOf('linux') === -1 && ua.indexOf('android') === -1 && ua.indexOf('chrome') === -1 &&
                     ua.indexOf('ios') === -1 && ua.indexOf('browser') === -1) {
-                    setTimeout(function () {
+                    setTimeout(() => {
                         if (document.querySelector('.utterances').clientHeight > 0) {
                             let warning = document.createElement('blockquote');
                             warning.innerHTML = '若您正在使用 iOS 上的 Safari 浏览器，您的评论功能可能被禁用。关闭 <tt style="background:var(--code-inline-background);">设置 > Safari 浏览器 > 阻止跨网站跟踪</tt> 可解决此问题。';
