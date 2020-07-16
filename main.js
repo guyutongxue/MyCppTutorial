@@ -54,13 +54,14 @@ window.$docsify = {
             }
         }
     },
-    /* Do highlighting after page loaded. */
     plugins: [
+        // Do highlighting after page loaded.
         function (hook, vm) {
             hook.doneEach(function () {
                 Prism.highlightAll();
             })
         },
+        // Add comments powered by utterances
         function (hook, vm) {
             hook.doneEach(function () {
                 // Add OGP meta info
@@ -80,6 +81,7 @@ window.$docsify = {
                 utterances.crossorigin = 'anonymous';
                 utterances.src = 'https://utteranc.es/client.js';
                 document.querySelector('.markdown-section').appendChild(utterances);
+                // For Safari on iOS, show a warning because of  browser's policy
                 let ua = navigator.userAgent.toLowerCase();
                 if (ua.indexOf('applewebkit') > -1 && ua.indexOf('mobile') > -1 && ua.indexOf('safari') > -1 &&
                     ua.indexOf('linux') === -1 && ua.indexOf('android') === -1 && ua.indexOf('chrome') === -1 &&
@@ -97,6 +99,4 @@ window.$docsify = {
     ],
     auto2top: true,
     executeScript: true
-}
-window.onload = function () {
 }

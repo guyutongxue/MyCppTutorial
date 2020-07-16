@@ -149,6 +149,11 @@ body[data-platform^="Win"] .sdsc {
     text-decoration: none;
 }
 
+/* Make inline codes auto-wrap */
+.markdown-section code:not([class*="lang-"]):not([class*="language-"]) {
+    white-space: pre-wrap;
+}
+
 /* [TODO] */
 /* Temporary fix, see https://github.com/upupming/docsify-katex/issues/11 */
 .mathdefault {
