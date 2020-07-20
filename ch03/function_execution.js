@@ -189,16 +189,12 @@ import { Arrow, Button, StatementSnippet, VariableSnippet, addCode, createFuncti
             d.setValue('5');
 
             // make arrow blink (really ugly implement)
-            let sh = setInterval(() => {
-                arrows.forEach(e => { e.show(); });
-            }, 400);
+            let sh = setInterval(() => arrows.forEach(e => e.show()), 400);
             await new Promise(r => setTimeout(r, 200));
-            let hi = setInterval(() => {
-                arrows.forEach(e => { e.hide(); });
-            }, 400)
+            let hi = setInterval(() => arrows.forEach(e => e.hide()), 400)
             await new Promise(r => setTimeout(r, 1200));
             clearInterval(sh), clearInterval(hi);
-            arrows.forEach(e => { e.hide(); });
+            arrows.forEach(e => e.hide());
         },
         () => {
             assign.show();

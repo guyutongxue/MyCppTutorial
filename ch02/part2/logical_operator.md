@@ -106,7 +106,7 @@ a && (b = 0)
 即对于逻辑与运算符来说，若左侧操作数求值结果为 `false` ，则不求值右侧操作数。同理，对于逻辑或运算符来说，若左侧操作数求值结果为 `true` ，则不求值右侧操作数。此特性被称作逻辑运算符的**短路求值（Short-circuiting）**特性。
 
 例如：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {

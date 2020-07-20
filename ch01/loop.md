@@ -14,7 +14,7 @@ int main() {
 }
 ```
 但是这样真的很繁琐乏味，复制粘贴都得折腾半天。这个时候，循环就派上了用场。先来看看使用了循环的代码：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -93,7 +93,7 @@ cond(no)->e').drawSVG('diagram',{
 
 ## 练习参考答案
 
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -104,7 +104,7 @@ int main() {
     }
 }
 ```
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -117,7 +117,7 @@ int main() {
     cout << s << endl;
 }
 ```
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {

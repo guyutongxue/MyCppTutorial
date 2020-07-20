@@ -1,7 +1,7 @@
 # for 语句
 
 在之前的学习中，我们会发现循环经常被用作计数，比如对一个数组输入输出：
-```cpp
+```CPP
 #include<iostream>
 using namespace std;
 int main() {
@@ -22,7 +22,7 @@ int main() {
 }
 ```
 这种循环的特点是，在循环开始前需要设置一个循环变量，而且要对这个变量做一次赋值（比如 `i = 0`）；同时，每一次循环体执行最后都需要让这个循环变量的值“步进”一次。基于这个共同点，C++ 引入了 for 语句。先来看看 for 语句如何写刚才那个程序：
-```cpp
+```CPP
 #include<iostream>
 using namespace std;
 int main() {
@@ -82,7 +82,7 @@ cond(no)->e').drawSVG('for',{
 ```
 
 举个简单的例子，下面这段代码可以输出 0 到 20 之间 3 的倍数：
-```cpp
+```CPP
 #include<iostream>
 using namespace std;
 int main() {
@@ -93,7 +93,7 @@ int main() {
 }
 ```
 通过调整初始语句、条件表达式和迭代表达式，你还可以让它倒着输出：
-```cpp
+```CPP
 #include<iostream>
 using namespace std;
 int main() {

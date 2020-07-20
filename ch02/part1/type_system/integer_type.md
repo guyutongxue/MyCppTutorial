@@ -124,7 +124,7 @@ $ 。这就是有符号整数类型在计算机中的存储方式。
 
 ## 练习参考答案
 
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {

@@ -4,7 +4,7 @@
 
 ## 输出一句话
 
-```cpp
+```CPP
 #include <iostream>
 int main() {
     std::cout << "Hello, world!" << std::endl;
@@ -13,7 +13,7 @@ int main() {
 你已经知道了这段代码编译并运行后的结果是“输出 `Hello, world` ”了。那么请直接猜一猜，如果我想让一个程序编译并运行后的结果是“输出 `I love C++` ”的话，这个代码应该如何写呢？
 
 聪明的你一定注意到了原来代码第三行双引号中间的正是 `Hello, world` 这句话。那么你会猜想输出 `I love C++` 的方法应该就是把这一段引号中间给他改掉就是了。没错，正是这样：
-```cpp
+```CPP
 #include <iostream>
 int main() {
     std::cout << "I love C++" << std::endl;
@@ -24,7 +24,7 @@ int main() {
 ## 输出一个数
 
 现在我们来试点别的新花样。看看这段代码：
-```cpp
+```CPP
 #include <iostream>
 int main() {
     std::cout << 42 << std::endl;
@@ -33,7 +33,7 @@ int main() {
 仔细观察它和之前的代码有什么不同。你会发现它很像，但是感觉“要输出的东西 `42` ”外面少了双引号。这是不是就错了呢？并不，它可以成功地编译和运行，且运行的结果确实是输出 `42` 。
 
 能够成功运行的原因是因为 `42`  可以是一个整数。事实上，你还可以输出一些别的整数——甚至——小数。尝试以下代码：
-```cpp
+```CPP
 #include <iostream>
 int main() {
     std::cout << 3.1415926 << std::endl;

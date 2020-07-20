@@ -3,7 +3,7 @@
 ## 赋值
 
 赋值是各种编程语言中最常见的一种操作。那么什么是赋值呢？就是**让一个变量的值变成我们想要的那个值**。看看下面这个例子：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -17,7 +17,7 @@ int main() {
 这里第 7 行就是赋值操作了。它做的就是让 `b` 的值变成 `42` 。所以这段程序实际上就是把输入加上 42 之后再输出出来。
 
 你会发现赋值的写法并不复杂，只需要用一个等号 `=` ：等号左边可以放一个变量，右边可以放我们想要赋给这个变量的东西，最后再加上一个分号就可以了。实际上，等号右边可以是一个数、一个变量，甚至一个简单的式子。比如最初的加法计算程序可以写成这样：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -32,7 +32,7 @@ int main() {
 与上次不同的是，我多定义了一个整数变量，它的名字叫做 `c` 。然后输入完 `a` 和 `b` 以后，执行这样的赋值操作：将 `a + b` 这个简单的式子的值赋给 `c` 。也就是说，从此开始 `c` 的值不再是 `0` 了，而是 `a` 和 `b`  的和。然后输出 `c` ，就能得到我们想要的结果。
 
 **赋值尽管长得像一个等式，但它并不是等式的含义。**请看下面这个例子：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -49,7 +49,7 @@ int main() {
 现在还是加法程序，我想再加点花样。我想让两个数的和不超过 100；如果超过 100 的话就输出 100 。这件事情该怎么完成呢？
 
 显然目前所学貌似很难实现这样的功能。因此我将介绍“分支”这个概念。废话不多说，上代码：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -83,7 +83,7 @@ if ( *条件* ) {
 !> 注意等于号 `==` 与赋值的符号 `=` 的区别！
 
 所谓 `@*如果条件成立就做的一些事情*@` 可以是任何我们学过的事情，比如输入输出、声明并定义变量，或者做赋值操作。所以看看下面这个例子：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -101,7 +101,7 @@ int main() {
 你能自己看懂这段代码想要表达的意思吗？试试看！
 
 这段代码是说，输入两个数 `a` 和 `b` ，然后判断 `a - b` 这个式子的结果的正负。如果这个式子结果是个正数，那么就输出 `a - b is positive!` ；如果是个负数就输出 `a - b is negative!` 。……啊，我们好像忘记了是零的情况。因此我在这里介绍一下分支的“否则”。
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -124,7 +124,7 @@ int main() {
 1. 在上一题的基础上，现在有这样的新评分标准：如果学生的缺勤次数超过 `3` 次，则学生在原成绩的基础上扣掉 `5` 分。现在编写一个程序，输入学生的原成绩和缺勤次数，输出这个学生是否及格。若及格，另起一行输出这个学生现在的成绩。
 
 ## 练习参考答案
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -138,7 +138,7 @@ int main() {
     }
 }
 ```
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -151,7 +151,7 @@ int main() {
     }
 }
 ```
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {

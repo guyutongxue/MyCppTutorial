@@ -154,6 +154,16 @@ body[data-platform^="Win"] .sdsc {
     white-space: pre-wrap;
 }
 
+.runcode {
+    margin    : -1em 0;
+    font-size : smaller;
+    text-align: right;
+}
+
+.runcode a {
+    color: gray;
+}
+
 /* [TODO] */
 /* Temporary fix, see https://github.com/upupming/docsify-katex/issues/11 */
 .mathdefault {
@@ -164,12 +174,12 @@ body[data-platform^="Win"] .sdsc {
 @font-face {
     font-family: 'iconfont';
     /* project id 1894098 */
-    src        : url('//at.alicdn.com/t/font_1894098_hgc23gtoc1.eot');
-    src        : url('//at.alicdn.com/t/font_1894098_hgc23gtoc1.eot?#iefix') format('embedded-opentype'),
-        url('//at.alicdn.com/t/font_1894098_hgc23gtoc1.woff2') format('woff2'),
-        url('//at.alicdn.com/t/font_1894098_hgc23gtoc1.woff') format('woff'),
-        url('//at.alicdn.com/t/font_1894098_hgc23gtoc1.ttf') format('truetype'),
-        url('//at.alicdn.com/t/font_1894098_hgc23gtoc1.svg#iconfont') format('svg');
+    src        : url('//at.alicdn.com/t/font_1894098_behy6707mi7.eot');
+    src        : url('//at.alicdn.com/t/font_1894098_behy6707mi7.eot?#iefix') format('embedded-opentype'),
+        url('//at.alicdn.com/t/font_1894098_behy6707mi7.woff2') format('woff2'),
+        url('//at.alicdn.com/t/font_1894098_behy6707mi7.woff') format('woff'),
+        url('//at.alicdn.com/t/font_1894098_behy6707mi7.ttf') format('truetype'),
+        url('//at.alicdn.com/t/font_1894098_behy6707mi7.svg#iconfont') format('svg');
 }
 
 .iconfont {

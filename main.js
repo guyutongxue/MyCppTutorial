@@ -36,14 +36,21 @@ window.$docsify = {
             code: (code, lang) => {
 
                 // For Standard Specification block and IO block.
-                if (lang == 'sdsc' | lang == 'io') {
+                if (lang === 'sdsc' | lang === 'io') {
                     return `<pre class="${lang}">${htmlToElement(marked(code)).innerHTML}</pre>`;
                 }
-
                 let cc = document.createElement('code');
                 cc.textContent = code;
                 cc.setAttribute('class', 'language-' + lang);
-                return `<pre data-lang="${lang}" class="line-numbers">${cc.outerHTML}</pre>`;
+                let html = `<pre data-lang="${lang}" class="line-numbers">${cc.outerHTML}</pre>`;
+
+                // Uppercase 'CPP' stands for a full code. Add 'run this code' link.
+                if (lang === 'CPP') {
+                    let param = new URLSearchParams();
+                    param.set('code', code);
+                    html += `<div class="runcode"><a href="https://guyutongxue.gitee.io/cppocui/?${param.toString()}" target="_blank">&#9654;&nbsp;在线编译运行</a></div>`;
+                }
+                return html;
             },
             // Add Standard Specification inline block. The Syntax is `@text@`.
             codespan: (code) => {

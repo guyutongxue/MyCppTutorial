@@ -13,7 +13,7 @@
 | `long double`  | 扩展双精度浮点型 | 不少于 `double`  | 不少于 `double`  | —— |
 
 上表中也说明了，这三种类型的区别主要在于“精度”，它们具体的体现就是所能表示的有效数字的多少。请看这个例子：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -59,7 +59,7 @@ $$(-1)^S\times 2^E\times M$$
 ## 注意事项
 
 正因为浮点数特殊的存储方式，我们避免将较大的数与较小的数相加。因为这样得到的结果有效数字可能超过精度限制。例如：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -78,7 +78,7 @@ int main() {
 
 ## 练习参考答案
 
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -88,7 +88,7 @@ int main() {
     cout << s << endl;
 }    
 ```
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {

@@ -79,6 +79,7 @@ class VariableSnippet extends Snippet {
         });
         super(ele, x + dx + w / 2, y + dy + h / 2, name);
         this.name = name;
+        this.content.attr('title', `变量 ${name}`);
     }
     /**
      * 
@@ -86,6 +87,7 @@ class VariableSnippet extends Snippet {
      */
     setValue(value) {
         this.setText(`${this.name} : ${value}`, true);
+        this.content.attr('title', `变量 ${this.name} 的值为 ${value}`);
     }
 }
 
@@ -114,6 +116,7 @@ class StatementSnippet extends Snippet {
             e.setAttribute('textLength', `${w - delta}`);
             e.setAttribute('lengthAdjust', 'spacingAndGlyphs');
         });
+        this.content.attr('title', `执行语句 ${name}`);
     }
 }
 
@@ -151,7 +154,7 @@ function addCode(func, code) {
     const width = func[0].attr('width') - 10;
     const l = func[0].attr('x') + 5;
     const t = func[0].attr('y') + 5;
-    let text = func.paper.text(l, t, code.join('\n')).attr({
+    let text = func[0].paper.text(l, t, code.join('\n')).attr({
         'text-anchor': 'start',
         'font-family': 'var(--code-font-family), monospace'
     });

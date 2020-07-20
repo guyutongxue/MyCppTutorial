@@ -6,7 +6,7 @@
 
 首先为了验证你的环境是否配置成功，我直接告诉你：以下这段代码
 
-```cpp
+```CPP
 #include <iostream>
 int main() {
     std::cout << "Hello, world!" << std::endl;

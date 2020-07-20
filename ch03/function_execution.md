@@ -56,7 +56,7 @@ int main() {
 首先你需要了解一件事情，就是目前计算机再执行一个程序的时候，是通过读取一系列的指令来实现的。实际上，计算机总是将一个函数作为一个整体进行读取；也就是说，计算机首先读取一个函数里面的所有指令，然后再依次执行这些指令。那么这些被读取的指令存放在哪里呢？它们实际上被存放在一个称为“内存”的存储空间里。
 
 举个例子。对于这段代码
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -74,10 +74,10 @@ int main() {
 </div>
 
 现在来考虑如果加上一个函数 `int max(int, int)` 并调用它，会发生什么呢？代码如下：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
-int max(int x,int y) {
+int max(int x, int y) {
     int z;
     if (x > y)
         z = x;
@@ -111,10 +111,10 @@ int main() {
 ## 参数传递
 
 现在来放大看一看在调用函数前，程序是如何传递参数的。还是刚才的例子：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
-int max(int x,int y) {
+int max(int x, int y) {
     int z;
     if (x > y)
         z = x;
@@ -137,13 +137,13 @@ int x{*main 函数里 a 的值*};
 int y{*main 函数里 b 的值*};
 ```
 
-所以人们常说，这是一个“复制”的过程。这是说，传递参数的过程相当于把原来 main 中的数据拷贝出来，初始化为 max 函数形参的值。这个时候，main 函数中的 x 和 y，与 max 函数中的 a 和 b 是没有任何关系的两组变量，只是它们的值相等罢了。
+所以人们常说，这是一个“复制”的过程。因为传递参数的过程相当于把原来 main 中的数据拷贝出来，初始化为 max 函数形参的值。这个时候，main 函数中的 x 和 y，与 max 函数中的 a 和 b 是没有任何关系的两组变量，只是它们的值相等罢了。
 
 下面来看这个例子：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
-void change(int c,int d) {
+void change(int c, int d) {
     c = 30;
     d = 50;
 }
@@ -162,5 +162,16 @@ int main() {
 <p id="fig3Text" class="info"></p>
 </div>
 
+因此 change 函数并不会更改 main 中变量的值，输出仍然是 `3 5`。那么如何让 change 函数更改这两个变量的值呢？其实存在至少三种方法可以实现，下一节我们将介绍其中一种。
+
+## 注意事项
+
+作为本节的结尾，还有最后一件事情需要强调：
+
+**C++ 规定，函数的形参不能是数组。**
+
+> 函数的形参也不能是另一个函数。
+
+如果你强行把一个数组作为形参，将会发生意想不到的事情。具体的讲解我们将放在下一章进行。
 
 <script type="module" src="ch03/function_execution.js"></script>

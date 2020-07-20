@@ -29,7 +29,7 @@ int f(int x) {
 目前咱们先不要管“为什么写成这个鬼样子”、“`return` 是啥意思”，照葫芦画瓢写就是了。
 
 你可以把这段代码放在 `int main() {` 的上面，然后你就可以像数学上的写法一样去使用这个函数。请看下面的例子：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int f(int x) {
@@ -53,7 +53,7 @@ int g(int x) {
 }
 ```
 同样地，你可以像刚才那样去使用这个函数。把这段代码放在最上面：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int g(int x) {
@@ -146,7 +146,7 @@ int max(int x1, int x2) {
 }
 ```
 然后你就可以这样去使用这个多元函数：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int max(int x1, int x2) {

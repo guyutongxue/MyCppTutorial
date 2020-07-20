@@ -53,7 +53,7 @@ C++标准规定 `char` 型的大小为 1 字节。这就是为什么有的时�
 | `\xnn`  | 任意十六进制值 | 字节 nn |
 
 同样地，转义字符也可以作为“一句话”的一部分出现在双引号内。下面是一个使用转义字符的例子：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -73,7 +73,7 @@ This is the first line!
 > 响铃与否取决于你使用的终端。如果直接在终端运行的话，Windows 10 会发出“噔咚咚”的响铃；macOS 可能会发出“嘟”的一声。
 
 你可能已经注意到了，字符型和布尔型都属于整数类型的范畴。因此它们都可以像整数那样进行计算如加法、减法等：比如 `'A' + 1` 的结果就是 `'B'` 。下面这个例子简单演示了字符类型的运算：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -193,7 +193,7 @@ int main() {
 
 ## 练习参考答案
 
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {

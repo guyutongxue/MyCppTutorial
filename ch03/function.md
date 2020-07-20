@@ -19,7 +19,7 @@ int max(int x1, int x2) {
 在 C++ 中，**函数（Function）是体现一段过程的代码**。即 C++ 通过函数来构造发给计算机的命令序列。**函数的主体是多条语句**，一般负责完成一项特定的任务。
 
 你会发现这里函数的定义与数学上截然不同。实际上，计算机中函数又被称为“子程序”（Subprogram），这是因为函数其实**相当于把程序的一部分提取出来**。请看下例：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -35,7 +35,7 @@ int main() {
 }
 ```
 这段程序可以输出输入的两个数之中较大的那个；而使用函数把比较的那一部分拿出来的话：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int max(int x1, int x2) {
@@ -96,7 +96,7 @@ unsigned int abs(int x) { // unsigned int 是函数的返回值类型
 ```
 
 如果一个函数不需要传回任何数据，那么可以不写返回值。此时需要强调的是，返回值类型被称为 `void`。请看下例：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 void printNum(int x) {
@@ -113,7 +113,7 @@ int main() {
 > 实际上，空类型是永远无法被完整定义的不完整类型。
 
 最后一个例子展示了既没有形参，也没有返回值的一个函数。
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 void show() {
