@@ -48,7 +48,7 @@ window.$docsify = {
                 if (lang === 'CPP') {
                     let param = new URLSearchParams();
                     param.set('code', code);
-                    html += `<div class="runcode"><a href="https://guyutongxue.gitee.io/cppocui/?${param.toString()}" target="_blank">&#9654;&nbsp;在线编译运行</a></div>`;
+                    html += `<div class="runcode"><a href="https://guyutongxue.gitee.io/cppocui/?${param.toString()}" target="_blank"><i class="far fa-play-circle"></i>&nbsp;在线编译运行</a></div>`;
                 }
                 return html;
             },

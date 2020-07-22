@@ -58,4 +58,4 @@
     * [关键字列表](appendix/keyword)
     * [预编译指令](appendix/preprocessor)
     * [代码风格](appendix/coding_style)
-    * [ASCII 码表&nbsp;&nbsp;<i class="iconfont">&#xe711;</i>](https://www.kdocs.cn/l/sLP90gSzs ':target=_blank')
+    * [ASCII 码表&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i>](https://www.kdocs.cn/l/sLP90gSzs ':target=_blank')
