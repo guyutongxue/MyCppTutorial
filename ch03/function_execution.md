@@ -1,31 +1,7 @@
 # 函数的执行
 
 <style>
-div.fig {
-    position: relative;
-    border  : 1px dashed grey;
-    overflow: auto;
-}
-div.fig:after {
-    content  : '图片仅供示意';
-    position : absolute;
-    bottom   : 0;
-    right    : 0;
-    font-size: smaller;
-    color    : grey;
-}
-div.raphael {
-    display        : flex;
-    justify-content: center;
-}
-.raphael text {
-    white-space: pre;
-    user-select:  none;
-}
-p.info {
-    padding: 0 2em;
-    min-height: 4em;
-}
+@import url(ch03/fig.css)
 </style>
 
 ## main 函数
