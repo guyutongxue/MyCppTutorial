@@ -29,8 +29,9 @@
     --code-block-padding: 1.75em 1.5em 1.5em 0em;
 
     /* For .stsc class */
-    --standard-placeholder-color: #0b87da;
-    --standard-optional-color   : #cce5ff;
+    --standard-placeholder-color   : #0b87da;
+    --standard-optional-color      : #0b87da30;
+    /* --standard-optional-color   : #cce5ff; */
 }
 
 /* Change table's border style */
@@ -87,6 +88,7 @@ pre.sdsc {
 
 pre.table-code {
     max-width: 300px;
+    padding  : .8em;
 }
 
 /* Change Chinese font to sans-serif, because the default font 宋体 is hard to read. */
@@ -95,31 +97,62 @@ body[data-platform^="Win"] .sdsc {
 }
 
 /* Placeholder */
-.sdsc em {
+.sdsc em,
+.sdsc i {
     font-style: normal;
     color     : var(--standard-placeholder-color);
 }
 
 /* Optional */
-.sdsc .opt-block,
-.sdsc strong {
+.sdsc opt-block,
+.sdsc strong,
+.sdsc b {
     /* Round border */
-    border-width    : 3px;
+    padding         : 3px;
     border-radius   : 4px;
-    border-style    : solid;
-    border-color    : var(--standard-optional-color);
+    border-style    : none;
     background-color: var(--standard-optional-color);
     text-decoration : none;
 }
 
-.sdsc strong {
+.sdsc strong,
+.sdsc b {
     color      : var(--standard-placeholder-color);
     font-style : normal;
     font-weight: normal;
 }
 
-.sdsc .opt-block {
+.sdsc opt-block {
     display: inline-block;
+}
+
+.sdsc x-or {
+    display      : inline;
+    padding      : 2px;
+    border       : 1px solid var(--standard-placeholder-color);
+    border-radius: 3px;
+    overflow     : hidden;
+}
+.sdsc x-or hr {
+    height             : calc(1.2em + 5px);
+    width              : 2em;
+    margin             : 0;
+    margin-bottom      : calc(-0.2em - 3px);
+    border             : none;
+    display            : inline-block;
+    border-bottom      : 0;
+    background-image   : url(assets/or.svg);
+    background-size    : calc(1.2em + 6px) calc(1.2em + 6px);
+    background-position: 0.2em 0;
+    background-repeat  : no-repeat;
+}
+
+.sdsc hr {
+    margin: 1em 0;
+}
+
+.sdsc.table-code {
+    font-size: smaller;
 }
 
 .markdown-section pre[data-lang] {

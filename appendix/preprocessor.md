@@ -122,8 +122,8 @@ int x = stick(123, 456) // 替换为 int x = (123456);
 ```sdsc
 #if *常量表达式*
 *代码1*
-<s class="opt-block">#else
-*代码2*</s>
+<opt-block>#else
+*代码2*</opt-block>
 #endif
 ```
 
