@@ -139,3 +139,5 @@ int main() {
 </div>
 
 因此 change 函数并不会更改 main 中变量的值，输出仍然是 `3 5`。那么如何让 change 函数更改这两个变量的值呢？其实存在至少三种方法可以实现，下一节我们将介绍其中一种。
+
+<script type="module" src="ch03/function_execution.js"></script>
