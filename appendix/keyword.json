@@ -68,7 +68,7 @@
         "sdsc": [
           "atomic_cancel <i>复合语句</i>"
         ],
-        "example": "int f() {\n    static int i = 0;\n    atomic_cancel {\n        ++i;\n        return i;\n    }\n}"
+        "example": "int f() {\n    static int i{0};\n    atomic_cancel {\n        ++i;\n        return i;\n    }\n}"
       }
     ]
   },
@@ -80,7 +80,7 @@
         "sdsc": [
           "atomic_ommit <i>复合语句</i>"
         ],
-        "example": "int f() {\n    static int i = 0;\n    atomic_commit {\n        ++i;\n        return i;\n    }\n}"
+        "example": "int f() {\n    static int i{0};\n    atomic_commit {\n        ++i;\n        return i;\n    }\n}"
       }
     ]
   },
@@ -92,7 +92,7 @@
         "sdsc": [
           "atomic_noexcept <i>复合语句</i>"
         ],
-        "example": "int f() {\n    static int i = 0;\n    atomic_noexcept {\n        ++i;\n        return i;\n    }\n}"
+        "example": "int f() {\n    static int i{0};\n    atomic_noexcept {\n        ++i;\n        return i;\n    }\n}"
       }
     ]
   },
@@ -160,7 +160,7 @@
         "sdsc": [
           "break;"
         ],
-        "example": "for(int i = 0; i < 10; i++) {\n    if (i == 5) break;\n}"
+        "example": "for(int i{0}; i < 10; i++) {\n    if (i == 5) break;\n}"
       }
     ]
   },
@@ -208,7 +208,7 @@
         "sdsc": [
           "char8_t <i>变量名</i> <b>初始化器</b>;"
         ],
-        "example": "char8_t ch = u8'G'"
+        "example": "char8_t ch{u8'G'}"
       }
     ]
   },
@@ -220,7 +220,7 @@
         "sdsc": [
           "char16_t <i>变量名</i> <b>初始化器</b>;"
         ],
-        "example": "char16_t hanzi = u'字';"
+        "example": "char16_t hanzi{u'字'};"
       }
     ]
   },
@@ -232,7 +232,7 @@
         "sdsc": [
           "char32_t <i>变量名</i> <b>初始化器</b>;"
         ],
-        "example": "char32_t emoji = U'🍌';"
+        "example": "char32_t emoji{U'🍌'};"
       }
     ]
   },
@@ -355,7 +355,7 @@
       {
         "info": "用于运算符：对于指针和引用进行转换，可以移除常量性。",
         "sdsc": [
-          "const_cast&lt;<i>新类型</i>&gt;(<i>操作数</i>)"
+          "const_cast&lt;<i>新类型</i>&gt;(<i>指针或引用</i>)"
         ],
         "example": "const int a = 42;\nint* pa = const_cast<int*>(a);\nint& ra = const_cast<int&>(a);"
       }
@@ -369,7 +369,7 @@
         "sdsc": [
           "continue;"
         ],
-        "example": "for (int i = 0; i < 10; i++) {\n    if(i != 5) continue;\n}"
+        "example": "for (int i{0}; i < 10; i++) {\n    if(i != 5) continue;\n}"
       }
     ]
   },
@@ -405,7 +405,7 @@
         "sdsc": [
           "co_yield <i>操作数</i>"
         ],
-        "example": "generator<int> iota(int n = 0) {\n    while(true)\n        co_yield n++;\n}"
+        "example": "generator<int> iota(int n{0}) {\n    while(true)\n        co_yield n++;\n}"
       }
     ]
   },
@@ -472,9 +472,11 @@
     "keyword": "do",
     "usage": [
       {
-        "info": "用于控制成分：形成do-while循环。</p>\n<p>do\n</p>\n<p>&nbsp;&nbsp;&nbsp; 语句</p>\n<p>while(表达式);\n</p>\n        ",
-        "sdsc": [],
-        "example": "int i = 0;\ndo {\n    i++;\n} while (i < 10);"
+        "info": "用于控制成分：形成do-while循环。",
+        "sdsc": [
+          "do\n    <i>语句</i>\nwhile(<i>表达式</i>);"
+        ],
+        "example": "int i{0};\ndo {\n    i++;\n} while (i < 10);"
       }
     ]
   },
@@ -482,9 +484,11 @@
     "keyword": "double",
     "usage": [
       {
-        "info": "用于声明：双精度浮点类型变量的类型说明符。</p>\n<p>double 变量名;\n</p>\n        ",
-        "sdsc": [],
-        "example": "double score = 60.5;"
+        "info": "用于声明：双精度浮点类型变量的类型说明符。",
+        "sdsc": [
+          "double <i>变量名</i> <b>初始化器</b>"
+        ],
+        "example": "double score{60.5};"
       }
     ]
   },
@@ -492,8 +496,10 @@
     "keyword": "dynamic_cast",
     "usage": [
       {
-        "info": "用于运算符：将指向类的指针沿继承层级安全地转换到其它类的指针。若转型失败，返回空指针。</p>\n<p>dynamic_cast&lt;新类型&gt;(指针)\n</p>\n        ",
-        "sdsc": [],
+        "info": "用于运算符：将指向类的指针（引用）沿继承层级安全地转换到其它类的指针（引用）。若转型失败，返回空指针。（若为引用，抛出异常。）",
+        "sdsc": [
+          "dynamic_cast&lt;<i>新类型&</i>gt;(<i>指针或引用</i>)"
+        ],
         "example": "struct Base {\n    virtual ~Base() {}\n}\nstruct Derived : Base {}\nint main(){\n    Base* b = new Base;\n    Derived* d = dynamic_cast<Derived*>(b);"
       }
     ]
@@ -502,7 +508,7 @@
     "keyword": "else",
     "usage": [
       {
-        "info": "用于控制成分。形成if语句的false分支。</p>\n<p>if (表达式)\n</p>\n<p>&nbsp;&nbsp;&nbsp; true分支</p>\n<p>else\n</p>\n<p>&nbsp;&nbsp;&nbsp; false分支</p>\n        ",
+        "info": "用于控制成分。形成 if 语句的假分支。</p>\n<p>if (表达式)\n</p>\n<p>&nbsp;&nbsp;&nbsp; true分支</p>\n<p>else\n</p>\n<p>&nbsp;&nbsp;&nbsp; false分支</p>\n        ",
         "sdsc": [],
         "example": "if (flag) {\n    std::cout << \"Yes\";\nelse\n    std::cout << \"No\";\n\n   "
       }
@@ -584,7 +590,7 @@
       {
         "info": "1. 用于控制成分：形成for循环语句。</p>\n<p>for ( 语句条件表达式 ;\n            表达式 ) 循环体语句</p>\n        ",
         "sdsc": [],
-        "example": "for (int i = 0; i < 10; i++){\n    std::cout << i;\n}"
+        "example": "for (int i{0}; i < 10; i++){\n    std::cout << i;\n}"
       },
       {
         "info": "2. 用于控制成分：形成基于范围的for循环语句。范围可以是数组或容器等。</p>\n<p>for ( 范围声明 : 范围表达式)\n            循环体语句</p>\n        ",

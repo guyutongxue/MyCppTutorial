@@ -133,6 +133,7 @@ body[data-platform^="Win"] .sdsc {
     border-radius: 3px;
     overflow     : hidden;
 }
+
 .sdsc x-or hr {
     height             : calc(1.2em + 5px);
     width              : 2em;
