@@ -197,9 +197,3 @@ body[data-platform^="Win"] .sdsc {
 .runcode a {
     color: gray;
 }
-
-/* [TODO] */
-/* Temporary fix, see https://github.com/upupming/docsify-katex/issues/11 */
-.mathdefault {
-    font-style: italic;
-}
