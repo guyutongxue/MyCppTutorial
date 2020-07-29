@@ -59,4 +59,4 @@
     * [关键字列表](appendix/keyword.md)
     * [预编译指令](appendix/preprocessor.md)
     * [代码风格](appendix/coding_style.md)
-    * [ASCII 码表&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i>](https://www.kdocs.cn/l/sLP90gSzs ':target=_blank'.md)
+    * [ASCII 码表&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i>](https://www.kdocs.cn/l/sLP90gSzs ':target=_blank')
