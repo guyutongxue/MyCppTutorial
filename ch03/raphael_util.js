@@ -84,10 +84,12 @@ class VariableSnippet extends Snippet {
     /**
      * 
      * @param {string} value 
+     * @returns {VariableSnippet} this
      */
     setValue(value) {
         this.setText(`${this.name} : ${value}`, true);
         this.content.attr('title', `变量 ${this.name} 的值为 ${value}`);
+        return this;
     }
 }
 
@@ -252,7 +254,7 @@ class Button {
             if (this.step + 1 === this.num) {
                 buttonText.attr('text', '复原');
             }
-            this.textElement.textContent = this.infoArr[this.step];
+            this.textElement.innerHTML = this.infoArr[this.step];
             this.eventArr[this.step]();
         };
         this.set = this.paper.set().push(buttonElement, buttonText).click(next);
