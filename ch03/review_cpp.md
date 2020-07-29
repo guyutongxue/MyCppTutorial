@@ -30,14 +30,14 @@ C++ 语言本质上定义了一套如何从若干个 C++ 源文件转化为一�
 ```CPP
 #include <iostream>
 using namespace std;
-void plus(int x, int y) {
+void printSum(int x, int y) {
     cout << x + y << endl;
 }
 int answer{42};
 int main() {
     int a, b;
     cin >> a >> b;
-    plus(a, b);
+    printSum(a, b);
     cout << answer << endl;
 }
 ```
@@ -150,7 +150,7 @@ int main() {
 
 > `using namespace ...` 的标准术语叫“using 指令”而非“using 声明”，但它仍然是一个声明，本文为了便于理解而采取了错误的术语。
 
-> 所有命名空间都是可以嵌套的，如 `A::B::C::d`。所有命名空间都包含于全局命名空间中。当使用全局命名空间时，只需用两个冒号即可，如 `::answer` `::plus`。若不引起歧义，则双冒号是可省略的。
+> 所有命名空间都是可以嵌套的，如 `A::B::C::d`。所有命名空间都包含于全局命名空间中。当使用全局命名空间时，只需用两个冒号即可，如 `::answer` `::printSum`。若不引起歧义，则双冒号是可省略的。
 
 ### 其它
 
