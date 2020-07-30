@@ -6,7 +6,7 @@ C++ 是一门静态类型语言。静态类型（Static typing）是指，**任�
 
 C++ 拥有丰富的类型，这些类型共同构成了类型系统（Type system）。C++ 的类型系统可以简单地用下面这张图展示出来：
 
-<img src="assets/typesystem.svg" alt="Type System"/>
+<img src="assets/typesystem.svg" alt="Type System">
 
 > 上图中灰色字体的部分不会在本书中涉及，仅在附录中稍作介绍。
 

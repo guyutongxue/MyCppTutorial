@@ -49,6 +49,7 @@
     * [函数的执行](ch03/function_execution.md)
     * [再谈作用域](ch03/scope_again.md)
     * [重新认识 C++ 程序](ch03/review_cpp.md)
+    * [递归](ch03/recursion.md)
 * [第四章 C 数据结构](ch04/)
     * [数组](ch04/array/)
     * [指针](ch04/pointer/)
