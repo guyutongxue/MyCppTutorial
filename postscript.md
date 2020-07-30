@@ -4,7 +4,8 @@
 
 - 谭浩强《C++ 程序设计》
 - 郭炜《新标准 C++ 程序设计教程》
-- Scott Meyers, *Effective C++*
+- Scott Meyers, *Effective C++* （第 3 版，侯捷 译）
+- Stephen Prata, *C++ Primer Plus* （第 6 版，张海龙 袁国忠 译）
 
 
 ## 特别鸣谢
