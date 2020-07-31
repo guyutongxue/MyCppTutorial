@@ -97,7 +97,7 @@ do {
     cout << x % 10 << endl;
 } while (x /= 10);
 ```
-这里运用了[模运算](ch02/part2/arithmetic_operator)来取出整型变量 `x` 的最低位，用[复合赋值运算](ch02/part2/assignment_operator#复合赋值运算符)来“删除” `x` 的最低位。除此之外，还利用了整型到布尔类型的[隐式转换](ch02/part2/implicit_conversion#布尔类型与其它算术类型之间的转换)从而保证循环能够刚好终止。这里不再展开说明这段代码如何工作，感兴趣的读者可以自行研究。
+这里运用了[模运算](/ch02/part2/arithmetic_operator.md)来取出整型变量 `x` 的最低位，用[复合赋值运算](/ch02/part2/assignment_operator.md#复合赋值运算符)来“删除” `x` 的最低位。除此之外，还利用了整型到布尔类型的[隐式转换](/ch02/part2/implicit_conversion.md#布尔类型与其它算术类型之间的转换)从而保证循环能够刚好终止。这里不再展开说明这段代码如何工作，感兴趣的读者可以自行研究。
 
 我们用 while 语句的图示来结束本节的内容：
 

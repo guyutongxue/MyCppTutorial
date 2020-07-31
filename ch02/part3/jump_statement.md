@@ -4,7 +4,7 @@
 
 ## break 语句
 
-你在 [switch 语句](/ch02/part3/switch_statement)章节已经见过了 break 语句。它的写法就是：
+你在 [switch 语句](/ch02/part3/switch_statement.md)章节已经见过了 break 语句。它的写法就是：
 ```sdsc
 break;
 ```
@@ -129,7 +129,7 @@ goto *语句标号*;
 ```sdsc
 *标号*: *语句*
 ```
-其中 `@*标号*@` 的命名规则与[变量名](/ch02/part1/declaration_statement#变量名)是一致的。整个 goto 语句的含义就是：**无条件跳转**到 `@*语句标号*@` 所指明的那条 `@*语句*@` 上。
+其中 `@*标号*@` 的命名规则与[变量名](/ch02/part1/declaration_statement.md#变量名)是一致的。整个 goto 语句的含义就是：**无条件跳转**到 `@*语句标号*@` 所指明的那条 `@*语句*@` 上。
 
 还是刚才的问题，运用 goto 语句就可以这样写：
 ```cpp

@@ -14,9 +14,11 @@ window.$docsify = {
         '/.*/_sidebar.md': '/_sidebar.md'
     },
     search: {
-        paths: [],
+        paths: 'auto',
         placeholder: '搜索...',
         noData: '无结果',
+        depth: 2,
+        hideOtherSidebarContent: true
     },
     pagination: {
         previousText: '上一节',

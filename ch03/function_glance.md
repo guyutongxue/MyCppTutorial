@@ -77,7 +77,7 @@ $$\operatorname{abs}(x)=\begin{cases}
 x,&x\geqslant0\\
 -x,&x<0
 \end{cases}$$
-那么我可以用[条件表达式](/ch02/part2/other_operator#条件运算符)来写出它的解析式：
+那么我可以用[条件表达式](/ch02/part2/other_operator.md#条件运算符)来写出它的解析式：
 ```cpp
 unsigned int abs(int x) {  // 陪域设置为 unsigned int，因为绝对值必然是非负的
     return x >= 0 ? x : -x;
