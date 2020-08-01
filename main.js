@@ -110,7 +110,7 @@ window.$docsify = {
                     setTimeout(() => {
                         if (document.querySelector('.utterances').clientHeight > 0) {
                             let warning = document.createElement('blockquote');
-                            warning.innerHTML = '若您正在使用 iOS 上的 Safari 浏览器，您的评论功能可能被禁用。关闭 <tt style="background:var(--code-inline-background);">设置 > Safari 浏览器 > 阻止跨网站跟踪</tt> 可解决此问题。';
+                            warning.innerHTML = '若您正在使用 iOS 上的 Safari 浏览器，您的评论功能可能被禁用。关闭 <code>设置 > Safari 浏览器 > 阻止跨网站跟踪</code> 可解决此问题。';
                             document.querySelector('.markdown-section').insertBefore(warning, document.querySelector('.utterances'));
                         }
                     }, 5000);

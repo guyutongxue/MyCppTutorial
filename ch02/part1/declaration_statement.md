@@ -127,7 +127,7 @@ int a{42}, b{56};
 // 下面两个都是 double 类型
 double pi{3.14}, sqrt2{1.41421};
 // 下面两个都是 char 类型
-char letter{'G'}，symbol{'@'};
+char letter{'G'}, symbol{'@'};
 ```
 以后我们会经常使用这种简化。
 
