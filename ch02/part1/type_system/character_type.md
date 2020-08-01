@@ -152,7 +152,7 @@ int main() {
         <td>$0$ ~ $2^{32}$</td>
     </tr>
     <tr>
-        <td><code>long</code></td>
+        <td><code>long</code><sup>※</sup></td>
         <td>长整型</td>
         <td>4</td>
         <td>$-2^{31}$ ~ $2^{31}-1$</td>
@@ -186,6 +186,7 @@ int main() {
     </tbody>
 </table>
 </div>
+<p class="small">※ 在 64 位的 UNIX 或类 UNIX 系统下， <code>long</code> 占用 8 字节，表示范围与 <code>long long</code> 相同。</p>
 
 ## 练习
 

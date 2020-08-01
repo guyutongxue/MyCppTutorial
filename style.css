@@ -194,6 +194,11 @@ body[data-platform^="Win"] .sdsc {
     text-align: right;
 }
 
+div.table-wrapper+p.small {
+    margin-top: -1em;
+    font-size: var(--small-font-size);
+}
+
 .runcode a {
     color: gray;
 }
