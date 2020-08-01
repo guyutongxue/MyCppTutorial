@@ -53,7 +53,7 @@
     * [总结](ch03/summary.md)
 * [第四章 POD 类型与结构](ch04/)
     * [数组](ch04/array/)
-        * [声明、定义和初始化](ch04/array/array_init.md)
+        * [数组的定义和初始化](ch04/array/array_init.md)
     * [指针](ch04/pointer/)
     * [结构体](ch04/struct/)
     * [链表](ch04/list.md)
