@@ -630,7 +630,7 @@
         "info": "用于声明：声明函数或类为友元函数或友元类。友元函数和友元类可以访问其它类中的私有成员。",
         "sdsc": [
           "friend <i>函数声明</i>",
-          "friend <i>类型说明符</i>;"
+          "friend <i>类名</i>;"
         ],
         "example": "struct Y;\nclass X {\n    friend Y;\n    friend void g();\n    int a = 0;  // private\n};\nX x;\nstruct Y {\n    int b = x.a;\n};\nvoid g() {\n    x.a;\n}"
       }
@@ -1095,7 +1095,7 @@
         "info": "用于模板：声明模板。可以是类模板、函数模板、别名模板、变量模板或者概念。",
         "sdsc": [
           "template&lt;<b>形参列表</b>&gt; <b>requires 子句</b>\n    <i>类、变量或函数声明</i>",
-          "template&lt;<i>形参列表</i>&gt;\nusing <i>别名</i> = <i>类型说明符</i>;",
+          "template&lt;<i>形参列表</i>&gt;\nusing <i>别名</i> = <i>类型标识</i>;",
           "template&lt;<i>形参列表</i>&gt;\nconcept <i>概念名</i> = <i>约束表达式</i>;"
         ],
         "example": "template<typename T>\nT& max(const T& a, const T& b) {\n    return a > b ? a : b;\n}\ntemplate<typename T>\nusing Ptr = T*;\ntemplate<typename T>\nconcept Derived = std::is_base_of<U, T>::value;"
@@ -1252,8 +1252,8 @@
       {
         "info": "2. 用于声明：用于创建指代类型名的别名，与typedef类似。亦可以创建别名模板。",
         "sdsc": [
-          "using <i>别名</i> = <i>类型说明符</i>;",
-          "template&lt;<i>形参列表</i>&gt;\nusing <i>别名</i> = <i>类型说明符</i>;"
+          "using <i>别名</i> = <i>类型标识</i>;",
+          "template&lt;<i>形参列表</i>&gt;\nusing <i>别名</i> = <i>类型标识</i>;"
         ],
         "example": "using uint = usigned int;\nusing array10OfInt = int[10];\nusing ptr2Func = void (*)();\ntemplate<typename T>\nusing Ptr = T*;"
       }
@@ -1315,7 +1315,7 @@
     "keyword": "wchar_t",
     "usage": [
       {
-        "info": "\n            用于声明：宽字符类型变量的类型说明符。宽字符类型是长度足够表示当前环境任何可编码字符的类型。在Linux中，一般为32位长度，但在Windows中为16位长度。",
+        "info": "用于声明：宽字符类型变量的类型说明符。宽字符类型是长度足够表示当前环境任何可编码字符的类型。在Linux中，一般为32位长度，但在Windows中为16位长度。",
         "sdsc": [
           "wchar_t <i>变量名</i> <b>初始化器</b>;"
         ],

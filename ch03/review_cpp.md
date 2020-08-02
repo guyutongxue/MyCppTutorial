@@ -127,7 +127,7 @@ int main() {
 
 当你明白命名空间的作用之后，就能解释 `using namespace std;` 的作用了。在第一章中，如果我们不写这句话，你就需要通过 `std::cin` 和 `std::cout` 这种方式来输入输出。这是因为，`cin` 和 `cout` 这两个东西声明在了 `std` 命名空间中。事实上，标准库中所有引入的名字都声明在 `std` 命名空间中。如果我们经常用标准库中的东西的话，这些 `std::` 的前缀就会显得很啰嗦：
 ```cpp
-// 下面这一行是一个声明语句，引入了名字 a，就是它的类型说明符有点长
+// 下面这一行是一个声明语句，引入了名字 a，就是它的类型标识有点长
 std::priority_queue<std::string, std::vector<std::string>, std::greater<std::string>> a;
 ```
 这个时候，就可以用 using 声明来简化。using 声明的语法有两种：

@@ -54,6 +54,7 @@
 * [第四章 POD 类型与结构](ch04/)
     * [数组](ch04/array/)
         * [数组的定义和初始化](ch04/array/array_init.md)
+        * [二维数组](ch04/array/2d_array.md)
     * [指针](ch04/pointer/)
     * [结构体](ch04/struct/)
     * [链表](ch04/list.md)
