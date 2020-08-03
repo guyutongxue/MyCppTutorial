@@ -28,6 +28,8 @@
     /* Remove left padding for line number */
     --code-block-padding: 1.75em 1.5em 1.5em 0em;
 
+    --heading-h6-margin: 0;
+
     /* For .stsc class */
     --standard-placeholder-color   : #0b87da;
     --standard-optional-color      : #0b87da30;
