@@ -84,6 +84,17 @@ pre.sdsc {
     overflow        : auto;
 }
 
+.hint {
+    content: 输入输出;
+    position: absolute;
+    top: 0.75em;
+    right: 0.75em;
+    opacity: 0.6;
+    color: inherit;
+    font-size: var(--font-size-s);
+    line-height: 1;
+}
+
 /* code.sdsc {
     background: var(--code-theme-background) !important;
 } */

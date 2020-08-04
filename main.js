@@ -1,3 +1,6 @@
+/**
+ * @param {string} html 
+ */
 function htmlToElement(html) {
     let template = document.createElement('template');
     html = html.trim(); // Never return a text node of whitespace as the result
@@ -36,15 +39,18 @@ window.$docsify = {
         renderer: {
             // Change code block rendering. Add line-numbers class.
             code: (code, lang) => {
-
-                // For Standard Specification block and IO block.
-                if (lang === 'sdsc' | lang === 'io') {
-                    return `<pre class="${lang}">${htmlToElement(marked(code)).innerHTML}</pre>`;
+                // For Standard Specification block.
+                if (lang === 'sdsc') {
+                    return `<pre class="sdsc">${htmlToElement(marked(code)).innerHTML}</pre>`;
+                }
+                // For IO block.
+                if (lang === 'io') {
+                    return `<div style="position:relative;"><pre class="io">${code}</pre><div class="hint">输入输出</div></div>`;
                 }
                 let cc = document.createElement('code');
                 cc.textContent = code;
                 cc.setAttribute('class', 'language-' + lang);
-                let html = `<pre data-lang="${lang}" class="line-numbers">${cc.outerHTML}</pre>`;
+                let html = `<pre data-lang="${lang.toLowerCase()}" class="line-numbers">${cc.outerHTML}</pre>`;
 
                 // Uppercase 'CPP' stands for a full code. Add 'run this code' link.
                 if (lang === 'CPP') {
@@ -71,6 +77,7 @@ window.$docsify = {
                 Prism.highlightAll();
             })
         },
+        // Add copyright text after copying
         function (hook, vm) {
             hook.doneEach(() => {
                 document.addEventListener('copy', (event) => {
