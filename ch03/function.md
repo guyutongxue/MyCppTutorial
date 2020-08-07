@@ -131,3 +131,39 @@ int main() {
 
 ## 为什么？
 
+刚刚说过，函数的作用就是将程序的一部分过程提取出来。那么我们为什么非得要提取出来？直接放在原来的位置上不好吗？
+
+请看下面的例子：
+```CPP
+#include <iostream>
+using namespace std;
+int main() {
+    int a, b, c;
+    cin >> a >> b >> c;
+    int maxab;
+    if (a > b) maxab = a;
+    else maxab = b;
+    cout << "Max of (a, b) is " << maxab << endl;
+    int maxbc;
+    if (b > c) maxbc = b;
+    else maxbc = c;
+    cout << "Max of (b, c) is " << maxbc << endl;
+}
+```
+
+这段代码中，先求出 `a` 和 `b` 的最大值并输出，又求出 `b` 和 `c` 的最大值并输出。但你会发现这两次求值的代码几乎是一样的，只有变量名不同；也就是说我们几乎把一段代码抄了两遍。如果把这段过程用函数来概括起来，则原先的程序直接写作：
+```CPP
+#include <iostream>
+using namespace std;
+int max(int x,int y) {
+    if (x > y) return x;
+    else return y;
+}
+int main() {
+    int a, b, c;
+    cin >> a >> b >> c;
+    cout << "Max of (a, b) is " << max(a, b) << endl;
+    cout << "Max of (b, c) is " << max(b, c) << endl;
+}
+```
+这样我们用很少的代码量就实现了原来同样的功能。从这个角度出发，函数所体现的用途就是：减少重复或相似的代码，提高可读性。
