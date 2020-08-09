@@ -59,6 +59,8 @@
         * [C 风格字符串](ch04/array/c_string.md)
         * [输入输出成分](ch04/array/io/)
             * [输入](ch04/array/io/input.md)
+            * [输入失败状态](ch04/array/io/input_fail.md)
+            * [输出](ch04/array/io/output.md)
     * [指针](ch04/pointer/)
     * [结构体](ch04/struct/)
     * [链表](ch04/list/)
