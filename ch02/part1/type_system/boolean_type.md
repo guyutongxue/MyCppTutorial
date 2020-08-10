@@ -27,7 +27,7 @@ if (flag) {
 using namespace std;
 int main() {
     bool b1{true}, b2{false};
-    cout.setf(ios_base::boolalpha); // 这句话用于以文本形式输出布尔类型，否则将输出 0 或 1
+    cout << boolalpha; // 这句话用于以文本形式输出布尔类型，否则将输出 0 或 1
     cout << b1 << endl;
     cout << b2 << endl;
     b1 = 7 > 3; // 将布尔类型赋值给布尔类型

@@ -113,7 +113,7 @@ int main() {
     int a{42}, b{42}, c{42};
     bool result;
     result = ++a || ++b || ++c;
-    cout.setf(ios_base::boolalpha);
+    cout << boolalpha;
     cout << result << endl;
     cout << a << " " << b << " " << c << endl;
 }
