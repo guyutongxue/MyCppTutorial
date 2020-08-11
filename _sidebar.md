@@ -62,6 +62,7 @@
         * [输入失败状态](ch04/io/input_fail.md)
         * [输出](ch04/io/output.md)
     * [指针](ch04/pointer/)
+        * [何为指针](ch04/pointer/pointer.md)
     * [结构体](ch04/struct/)
     * [链表](ch04/list/)
     * [迁移到 C 语言](ch04/compare_with_c/)

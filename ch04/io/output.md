@@ -236,4 +236,4 @@ int main() {
 | `cout << uppercase;`   | 使用大写字母（科学记数法或十六进制中） |
 | `cout << nouppercase;` | 使用小写字母（科学记数法或十六进制中） |
 
-> `cout.precision()` `cout.width()` 和 `cout.fill()` 也可通过 `cout << setprecision()` `cout << setw()` 和 `cout << setfill()` 的形式来控制。后者被称为流操纵子，需要引入 `<iomanip>` 头文件。
+> `cout.precision()` `cout.width()` 和 `cout.fill()` 也可通过 `cout << setprecision()` `cout << setw()` 和 `cout << setfill()` 的形式来控制。后三者被称为流操纵子，需要引入 `<iomanip>` 头文件。
