@@ -20,6 +20,7 @@
 
     /* Change quote's style */
     --blockquote-color: #696969;
+    --blockquote-em-font-style: italic;
 
     /* Change link's style */
     --link-color          : var(--theme-color);
