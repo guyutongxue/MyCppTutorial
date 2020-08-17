@@ -41,27 +41,27 @@ using *别名* = *类型标识*;
 ```
 比如
 ```cpp
-using ArrayTo5Int = int[5];
+using ArrayOf5Int = int[5];
 ```
-这时，`ArrayTo5Int` 就完全等价于 `int[5]` 这个类型了。比如：
+这时，`ArrayOf5Int` 就完全等价于 `int[5]` 这个类型了。比如：
 ```cpp
-ArrayTo5Int b{};
+ArrayOf5Int b{};
 ```
 就声明了一个数组 `b`，它拥有 5 个 `int` 元素。类似地，我们可以很优雅地声明指向数组的指针：
 ```cpp
-ArrayTo5Int* p{nullptr};
+ArrayOf5Int* p{nullptr};
 ```
 看上去就正常不少。使用类型别名后，刚刚的代码可以改写成：
 ```CPP
 #include <iostream>
 using namespace std;
-using ArrayTo5Int = int[5];
-void f(ArrayTo5Int*);
+using ArrayOf5Int = int[5];
+void f(ArrayOf5Int*);
 int main() {
-    ArrayTo5Int a[4]{}; // 等价于 int a[4][5]{};
+    ArrayOf5Int a[4]{}; // 等价于 int a[4][5]{};
     f(a);
 }
-void f(ArrayTo5Int* p) {
+void f(ArrayOf5Int* p) {
     cout << sizeof(*p) << endl;
 }
 ```
