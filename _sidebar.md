@@ -68,6 +68,8 @@
         * [指针与数组](ch04/pointer/pointer_and_array.md)
         * [指针的定义 Ⅱ](ch04/pointer/pointer_def_2.md)
     * [结构体](ch04/struct/)
+        * [结构体的定义](ch04/struct/struct_def.md)
+        * [结构体的使用](ch04/struct/struct_usage.md)
     * [链表](ch04/list/)
     * [迁移到 C 语言](ch04/compare_with_c/)
 * [附录](appendix/)
