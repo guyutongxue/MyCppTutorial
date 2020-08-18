@@ -4,6 +4,8 @@
 
 ## 宏（ `#define` `#undef` ）
 
+<h6 id="idx_宏"></h6>
+
 宏使用 `#define` 定义。它大致有三种用法。
 
 ### 定义可供替换的宏
@@ -186,9 +188,57 @@ freopen("1.out","w",stdout); // 则重定向到文件输出
 ```
 你可以通过某些参数去修改编译器的行为（比如静态链接等）。具体的参数语法和形式各有不同，可以参照编译器的说明文档。
 
+常见的通用语法有 `#pragma once` 和 `#pragma pack`。
+
+`#pragama once` 指定这个文件只能被 `#include` 一次，也就是说等价于
+```cpp
+#ifndef LIBRARY_FILENAME_H
+#define LIBRARY_FILENAME_H
+
+// [...] 文件内容
+
+#endif // LIBRARY_FILENAME_H
+```
+
+`#pragma pack` 指定接下来定义的结构体的对齐。
+```sdsc
+#pragma pack(*对齐*)
+#pragma pack()
+```
+`#pragma pack` 可接受一个参数 `@*对齐*@`，它需要是 2 的整数次幂。当写下这条预编译指令后，之后的结构体对齐皆设置为 `@*对齐*@`。`#pragma pack()` 取消此设置，恢复默认对齐。比如：
+```CPP
+#include <iostream>
+using namespace std;
+#pragma pack(2)
+struct X {
+    int32_t n;
+    int32_t m;
+    int16_t c;
+};
+#pragma pack()
+int main() {
+    cout << sizeof(X) << endl; // 10
+}
+```
+
+但是，如果你使用 GCC 或 Clang，我们更推荐用属性（Attribute）来实现：
+```CPP
+#include <iostream>
+#include <tuple>
+using namespace std;
+struct [[using gnu: packed, aligned(2)]] X {
+    int32_t n;
+    int32_t m;
+    int16_t c;
+};
+int main() {
+    cout << sizeof(X) << endl; // 10
+}
+```
+
+`#line` 用于覆盖设置当前的行号或者当前的文件名。此语法一般用于机器生成的代码。
+
 ```sdsc
 #line *行号*
 #line *行号*&quot;*文件名*&quot;
 ```
-
-覆盖设置当前的行号或者当前的文件名。此语法一般用于机器生成的代码。

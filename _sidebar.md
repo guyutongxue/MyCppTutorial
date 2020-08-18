@@ -72,6 +72,8 @@
         * [结构体的使用](ch04/struct/struct_usage.md)
     * [链表](ch04/list/)
         * [存储期](ch04/list/storage_duration.md)
+        * [链表的构建](ch04/list/list_construct.md)
+        * [链表的增删](ch04/list/list_add_del.md)
     * [迁移到 C 语言](ch04/compare_with_c/)
 * [附录](appendix/)
     * [运算符优先级和结合方向](appendix/operator.md)
@@ -79,3 +81,4 @@
     * [预编译指令](appendix/preprocessor.md)
     * [代码风格](appendix/coding_style.md)
     * [ASCII 码表&nbsp;&nbsp;<i class="fas fa-external-link-alt"></i>](https://www.kdocs.cn/l/sLP90gSzs ':target=_blank')
+* [后记](postscript.md)
