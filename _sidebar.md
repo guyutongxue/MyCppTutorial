@@ -71,6 +71,7 @@
         * [结构体的定义](ch04/struct/struct_def.md)
         * [结构体的使用](ch04/struct/struct_usage.md)
     * [链表](ch04/list/)
+        * [存储期](ch04/list/storage_duration.md)
     * [迁移到 C 语言](ch04/compare_with_c/)
 * [附录](appendix/)
     * [运算符优先级和结合方向](appendix/operator.md)
