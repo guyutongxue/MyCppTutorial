@@ -20,3 +20,29 @@ void deleteElement(int* arr, unsigned int size, int index) {
 链表和数组类似，也可以存储一系列元素。但是它插入元素和删除元素的速度都远高于数组。它的结构长成这样：
 
 <img src="assets/Singly-linked-list.svg" alt="Linked List">
+
+这个图并不是那么好懂。我这样来解释：首先我们把一系列数据以一系列结构体的形式存放：
+```cpp
+struct Node {
+    int data;
+};
+Node a{12};
+Node b{99};
+Node c{37};
+```
+这些结构体称为链表的节点（Node）。然后，用指针把它们连起来：
+```cpp
+struct Node {
+    int data;
+    Node* next; // 指向下一节点的指针
+};
+Node a{12};
+Node b{99};
+Node c{37};
+a.next = &b;
+b.next = &c;
+c.next = nullptr;
+```
+这就形成了一个简单的链表结构。正因为链表时由指针连接的结构体，所以我们可以通过控制指针在节点中的连接方式，来增加或删除链表中的数据。
+
+但是在正式讲解如何构建链表之前，我们还需要一些预备知识。
