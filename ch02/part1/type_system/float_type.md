@@ -74,7 +74,7 @@ int main() {
 ## 练习
 
 1. 编写一段程序，输入圆的半径（可能是小数），计算圆的面积的近似值。
-1. 编写一段程序：先输入正整数 n ，然后输入 n 个整数；输出这 n 个数的平均值。
+1. 编写一段程序：先输入正整数 n ，然后输入 n 个数；输出这 n 个数的平均值。
 
 ## 练习参考答案
 
@@ -92,8 +92,8 @@ int main() {
 #include <iostream>
 using namespace std;
 int main() {
-    int n{0}, sum{0}, x{0};
-    double average{0};
+    int n{0};
+    double average{0.0}, sum{0.0}, x{0.0};
     cin >> n;
     int i{1}; // 计数用
     while (i <= n) {
