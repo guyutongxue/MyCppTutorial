@@ -1,3 +1,74 @@
 # 链表的构建
 
+我们尝试来构造一个链表。因为我们需要手动控制每一个节点的增删，所以每一个节点都得是动态存储期存储的。因此每一个节点都需要通过 new 表达式来创建。
+
+这里先复述一下节点这个结构体的定义：
+```cpp
+struct Node {
+    int data;
+    Node* next;
+}
+```
+
+我们先来创建第一个节点。链表的第一个节点称为头结点，用一个名叫 `head` 的指针指向它，并让其中 `data` 初始化为 `0`：
+```cpp
+Node* head{new Node{0}};
+```
+然后，定义一个指针 `current`，指向当前正在操作的节点。现在，就让 `current` 和 `head` 都指向头结点。
+```cpp
+Node* head{new Node{0}};
+Node* current{head};
+```
+现在做这样的操作：令 `current` 的 `next` 指针指向一个新节点，其 `data` 初始化为 `1`：
+```cpp
+Node* head{new Node{0}};
+Node* current{head};
+(*current).next = new Node{1};
+```
+接下来，我们需要把 `current` 指针挪到新节点上：
+```cpp
+Node* head{new Node{0}};
+Node* current{head};
+(*current).next = new Node{1};
+current = (*current).next;
+```
+我们现在已经生成了两个节点：第一个是头结点，其 `data` 为 `0`；第二个的 `data` 为 `1`。其实，接下来我们如果想要生成第三个节点，这个过程和之前是一样的。因为现在 `current` 节点就是第二个节点，将 `current` 节点的 `next` 指针指向一个新节点就生成了第三个节点。然后将 `current` 指向这个新节点，还可以继续生成第四个节点……
+```cpp
+Node* head{new Node{0}};
+Node* current{head};
+(*current).next = new Node{1};
+current = (*current).next;
+(*current).next = new Node{2};
+current = (*current).next;
+// 可以这样一直做下去
+```
+
+我们把这个过程用循环写出：
+```cpp
+Node* head{new Node{0}};
+Node* current{head};
+for (int i{1}; i < n; i++) { // n 是节点个数
+    (*current).next = new Node{i};
+    current = (*current).next;
+}
+// [...]
+```
+
+当生成完 n 个节点之后，我们用 `nullptr` 来表示链表的终点。
+```cpp
+Node* head{new Node{0}};
+Node* current{head};
+for (int i{1}; i < n; i++) { // n 是节点个数
+    (*current).next = new Node{i};
+    current = (*current).next;
+}
+(*current).next = nullptr;
+```
+
+这就完成了链表的构建。上述代码构造了由 n 个节点组成的链表，其中它们存储的数据分别是 $0\sim n - 1$ 的正整数。但是这个方法不能构建不含任何节点的链表（即 `head` 为 `nullptr`），这种情况需要特殊判断。
+
+## 链表的遍历
+
+
+
 ?> [TODO]
