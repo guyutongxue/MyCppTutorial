@@ -182,13 +182,13 @@ a ^= b;
 异或具有交换律和结合律（请读者自行验证），且对于任意数 $x$ 显然满足以下特性：
 
 - $x\oplus x=0$；
-- $x\oplus0=0$。
+- $x\oplus0=x$。
 
 我们用 $a_0$和 $a_0$表示运算前 `a` 和 `b` 的值，则
 
-- 第一行执行后， `a` 的值为 $a_0\oplus b_0$ ， `b` 的值为 $a_0\oplus b_0$ ；
-- 第二行执行后， `a` 的值为 $a_0\oplus b_0$ ， `b` 的值为 $a_0\oplus b_0$ ；
-- 第三行执行后， `a` 的值为 $a_0\oplus b_0\oplus b_0\oplus a_0\oplus b_0$ ， `b` 的值为 $a_0\oplus b_0\oplus b_0\oplus a_0\oplus b_0$ 。
+- 第一行执行后， `a` 的值为 $a_0\oplus b_0$ ， `b` 的值为 $b_0$ ；
+- 第二行执行后， `a` 的值为 $a_0\oplus b_0$ ， `b` 的值为 $b_0\oplus a_0\oplus b_0$ ；
+- 第三行执行后， `a` 的值为 $a_0\oplus b_0\oplus b_0\oplus a_0\oplus b_0$ ， `b` 的值为 $b_0\oplus a_0\oplus b_0$ 。
 
 这时， `a` 的值
 
