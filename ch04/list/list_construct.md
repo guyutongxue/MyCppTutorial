@@ -7,7 +7,7 @@
 struct Node {
     int data;
     Node* next;
-}
+};
 ```
 
 我们先来创建第一个节点。链表的第一个节点称为头结点，用一个名叫 `head` 的指针指向它，并让其中 `data` 初始化为 `0`：
@@ -69,6 +69,44 @@ for (int i{1}; i < n; i++) { // n 是节点个数
 
 ## 链表的访问
 
-链表可以很快地进行插入和删除操作，但相对地，若想访问其中一个节点就会比数组麻烦不少。如果想访问第 i 个节点，那我们不得不从 `head` 开始，一个一个 `next` 地去找，直到第 i 个为止。
+链表可以很快地进行插入和删除操作，但相对地，若想访问其中一个节点就会比数组麻烦不少。如果想访问第 x 个节点，那我们不得不从 `head` 开始，一个一个 `next` 地去找，直到第 x 个为止。
+```cpp
+/**
+ * 获取第 x 个节点（从 0 开始）
+ */
+Node* getNode(Node* head, unsigned int x) {
+    Node* current{head};
+    for (unsigned int{i}; i < x; i++) {
+        current = (*current).next;
+    }
+    return current;
+}
+```
+同样地，你可以按照这种方式一直遍历到结尾 `nullptr`：
+```cpp
+Node* current{head};
+while (current) { // 当 current 为 nullptr 时，得到 false
+    current = (*current).next;
+    cout << (*current).data << endl;
+}
+```
 
-?> [TODO]
+## 指针成员运算符
+
+在刚才的讨论中，我们频繁地使用一种形式的表达式：`*(a).b`，即访问一个指针指向的结构体的成员。C/C++ 为此提供了一个更方便的写法 `a->b`：
+
+| 运算符 | 名称           | 作用            |
+| ------ | -------------- | --------------- |
+| `a->b` | 指针成员运算符 | 等价于 `*(a).b` |
+
+其实 `->` 这个运算符只是提供了一个“快捷方式”，它实际上仍然是先解地址，然后取得其成员。有了它，我们可以把刚才的遍历代码改成这样：
+```cpp
+Node* current{head};
+while (current) {
+    current = current->next;
+    cout << current->data << endl;
+}
+```
+有些老师喜欢管这个运算符称为“箭头运算符”。
+
+> 指针成员运算符和成员指针运算符（`.*`）、指针成员指针运算符（`->*`）不是一个运算符。
