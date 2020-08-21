@@ -70,6 +70,9 @@ window.$docsify = {
             }
         }
     },
+    requestHeaders: {
+        'cache-control': 'no-cache',
+    },
     plugins: [
         // Do highlighting after page loaded.
         function (hook, vm) {
