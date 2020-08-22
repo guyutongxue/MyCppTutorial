@@ -30,7 +30,7 @@
         "info": "用于模块：导入一个模块。也兼容将一个头文件作为模块导入。",
         "sdsc": [
           "import <i>模块名</i>;",
-          "import &lt;<i>头文件</i>&gt;;"
+          "import &lt;<i>头文件</i>&gt;"
         ],
         "example": "// main.cpp\nimport my.app.hello;\nimport <iostream>\nint main() {\n    std::cout << sayHello();\n}"
       }
