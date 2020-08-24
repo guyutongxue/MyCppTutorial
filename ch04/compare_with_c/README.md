@@ -4,7 +4,7 @@
 
 ## 头文件不同
 
-在 C 中，头文件都是 `.h` 结尾的，而且和 C++ 头文件大有区别。比如，C 中不存在 `<iostream>` 头文件（以及里面定义的 `cin` 和 `cout`），你需要用 `stdio.h` 中的函数来实现输入输出（参见[后续](/ch04/compare_with_c/c_io.md)内容）。
+在 C 中，头文件都是 `.h` 结尾的，而且和 C++ 头文件大有区别。比如，C 中不存在 `iostream` 头文件（以及里面定义的 `cin` 和 `cout`），你需要用 `stdio.h` 中的函数来实现输入输出（参见[后续](/ch04/compare_with_c/c_io.md)内容）。
 
 ## 没有命名空间
 
@@ -47,5 +47,3 @@ int main(void) {
 ```
 
 这里 `scanf` 和 `printf` 就是没有 `cin` 和 `cout` 时，C 的输入输出。下一节将重点讲解它们。
-
-?> [TODO] 参考 [c_feature.md](/ch04/compare_with_c/c_feature.md)
