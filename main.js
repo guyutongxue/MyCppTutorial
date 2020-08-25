@@ -58,6 +58,11 @@ window.$docsify = {
                     param.set('code', code);
                     html += `<div class="runcode"><a href="https://guyutongxue.gitee.io/cppocui/?${param.toString()}" target="_blank"><i class="far fa-play-circle"></i>&nbsp;在线编译运行</a></div>`;
                 }
+                if (lang === 'C') {
+                    let param = new URLSearchParams();
+                    param.set('code', code);
+                    html += `<div class="runcode"><a href="https://guyutongxue.gitee.io/cppocui/c/?${param.toString()}" target="_blank"><i class="far fa-play-circle"></i>&nbsp;在线编译运行</a></div>`;
+                }
                 return html;
             },
             // Add Standard Specification inline block. The Syntax is `@text@`.

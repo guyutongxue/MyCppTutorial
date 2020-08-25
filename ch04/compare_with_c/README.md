@@ -26,7 +26,7 @@ int b[5] = {1, 2, 3, 4, 5};
 ## 例子
 
 这样的 C++ 程序：
-```cpp
+```CPP
 #include <iostream>
 using namespace std;
 int main() {
@@ -36,7 +36,7 @@ int main() {
 }
 ```
 你需要改写成这样：
-```c
+```C
 #include <stdio.h>
 int main(void) {
     int a = 0, b = 0;
