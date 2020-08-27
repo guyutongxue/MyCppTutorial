@@ -201,7 +201,7 @@ scanf("%d,%d", &a, &b);
 
 ## 输入失败（选读）
 
-若 `scanf` 未能按照占位符的规定读取到期望的值，亦或者没有匹配到期望的模式，异或出现了 EOF，则导致输入失败：`scanf` 返回值 `EOF`。`EOF` 是一个定义于头文件 `stdio.h` 的[宏](/appendix/preprocessor.md#idx_宏)，你可以把它理解成一个 `int` 类型的值。
+若 `scanf` 未能按照占位符的规定读取到期望的值，亦或者没有匹配到期望的模式，抑或出现了 EOF，则导致输入失败：`scanf` 返回值 `EOF`。`EOF` 是一个定义于头文件 `stdio.h` 的[宏](/appendix/preprocessor.md#idx_宏)，你可以把它理解成一个 `int` 类型的值。
 
 所以你可以这样判断输入是否出现问题：
 ```c
