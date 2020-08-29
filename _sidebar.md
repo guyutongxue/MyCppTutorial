@@ -74,6 +74,7 @@
         * [存储期](ch04/list/storage_duration.md)
         * [链表的构建](ch04/list/list_construct.md)
         * [链表的增删](ch04/list/list_add_del.md)
+        * [new[] 和 delete[]](ch04/list/arr_new_del.md)
     * [迁移到 C 语言](ch04/compare_with_c/)
         * [C 输入输出](ch04/compare_with_c/c_io.md)
         * [需要注意的 C 特性](ch04/compare_with_c/c_feature.md)

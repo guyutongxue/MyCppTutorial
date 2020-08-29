@@ -2,15 +2,32 @@
 
 ?> [TODO] 详细解释
 
+## 不同特性
+
+- 无参函数需显式指明 `void` （C++ 中不需要）
+- 字符字面量为 `int` 类型（C++ 中 `char`）
+- 字符串字面量为 `char[N]` 类型（C++ 中 `const char[N]`）
+- 循环或分支的条件只能为表达式（C++ 中允许声明）
+- 循环或分支的条件均隐式转换为 `int` （C++ 中为 `bool`）
+- 结构体详述类型说明符必须给出（C++ 中可省略）
+- 结构体不引入作用域（C++ 中引入）
+- 关键字 `inline` 含义为优先内联（C++ 中为容许重复定义）
+- 全局作用域只读变量拥有外部链接（C++ 中拥有内部链接）
+- `_Noreturn`（C++ 中 `[[noreturn]]`）
+- 布尔类型类型说明符为 `_Bool`（C++ 中 `bool`）
+- 对齐相关关键字 `_Alignas` `_Alignof`（C++ 中 `alignas` `alignof`）
+- 静态断言 `_Static_assert`（C++ 中 `static_assert`）
+- 线程存储期 `_Thread_local`（C++ 中 `thread_local`）
+
 ## 独有特性
 
-首先列举 C 中特有而 C++ 中没有的语法。
+接下来列举 C 中特有而 C++ 中没有的语法。
 
 ### 从 `void*` 到其它指针类型的隐式转换
 
 在 C++ 中，允许从任意指针类型 `T*` 到 `void*` 的隐式转换，但反过来不行。但是 C 中允许双向的转换。这使得以下代码
 ```c
-// 申请 sizeof(int) 这么多字节的内存，并将其地址初始化于 p
+/* 申请 sizeof(int) 这么多字节的内存，并将其地址初始化于 p */
 int* p = malloc(sizeof(int));
 ```
 得以正确编译。因为 `malloc` 是返回 `void*` 的函数，然后 `void*` 可以隐式转换到 `int*`。如果在 C++ 中，你需要加上显式转换才能编译通过：
@@ -29,22 +46,22 @@ enum Color {
     Green,
     Blue
 };
-int a = Red; // C/C++ 都合法
-enum Color b = 1; // C 合法，C++ 错误
+int a = Red; /* C/C++ 都合法 */
+enum Color b = 1; /* C 合法，C++ 错误 */
 ```
 
 ### 无初始化器的只读变量
 
 在 C 中，只读变量可以没有初始化器，然而在 C++ 中这是不允许的。
 ```c
-const int a; // 无初始化器：C 允许，C++ 错误
+const int a; /* 无初始化器：C 允许，C++ 错误 */
 ```
 
 ### 跨越声明语句的 goto 语句
 
 在 C 中，goto 语句可以跳过带初始化器的声明语句，但在 C++ 中不允许。
 ```c
-goto line; // C 允许，C++ 错误
+goto line; /* C 允许，C++ 错误 */
 {
     int a = 42;
     line: printf("%d", a);
@@ -206,6 +223,8 @@ struct Coordinate getOrigin() {
 };
 ```
 
+> 复合字面量是左值。在 C++ 可以通过转型表达式轻松得到类似的结构体“字面量”（但是是右值），如 `Coordinate{0, 0}`。C++ 需要类型别名才能实现数组右值“字面量”。
+
 ### 指派初始化（C99）
 
 在 C 中，数组和结构体还允许一种特殊的初始化方法，称为指派初始化。用结构体举例：
@@ -257,9 +276,11 @@ _Generic(*参数*, *关联列表*)
 
 比如：
 ```C
+// 函数声明（于 <stdlib.h> 中）
 int         abs(int       n);
 long       labs(long      n);
 long long llabs(long long n);
+// 泛型选择的典型使用方法：通过宏实现仿重载
 #define ABS(n) _Generic((n), \
     int      :   abs(n),     \
     long     :  labs(n),     \
@@ -275,24 +296,8 @@ int main() {
 - `_Atomic` 原子类型（作用类似 C++ 中 `std::atomic`）
 - 原生复数运算支持（作用类似 C++ 中 `std::complex`）
 
-## 不同特性
 
-- 无参函数需显式指明 `void` （C++ 中不需要）
-- 字符字面量为 `int` 类型（C++ 中 `char`）
-- 字符串字面量为 `char[N]` 类型（C++ 中 `const char[N]`）
-- 循环或分支的条件只能为表达式（C++ 中允许声明）
-- 循环或分支的条件均隐式转换为 `int` （C++ 中为 `bool`）
-- 结构体详述类型说明符必须给出（C++ 中可省略）
-- 结构体不引入作用域（C++ 中引入）
-- 关键字 `inline` 含义为优先内联（C++ 中为容许重复定义）
-- 全局作用域只读变量拥有外部链接（C++ 中拥有内部链接）
-- `_Noreturn`（C++ 中 `[[noreturn]]`）
-- 布尔类型类型说明符为 `_Bool`（C++ 中 `bool`）
-- 对齐相关关键字 `_Alignas` `_Alignof`（C++ 中 `alignas` `alignof`）
-- 静态断言 `_Static_assert`（C++ 中 `static_assert`）
-- 线程存储期 `_Thread_local`（C++ 中 `thread_local`）
-
-### C99 前
+## C99 前
 
 - 无单行注释（现有）
 - 隐式函数声明（现被弃用）

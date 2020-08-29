@@ -16,4 +16,4 @@
 - [ ] 链表图示
 - [ ] C 语言
 - [ ] `std::freopen`
-- [ ] `new[]` 和 `delete[]`
+- [x] `new[]` 和 `delete[]`
