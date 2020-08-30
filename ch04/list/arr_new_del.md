@@ -3,7 +3,7 @@
 在使用 new 表达式时，C++ 并不允许申请数组类型的空间：
 ```cpp
 using Arr = int[4]; // 定义类型别名 Arr 为 int[4]
-Arr* p{new Arr};   // 错误：不能 new 一个数组
+Arr* p{new Arr};    // 错误：不能 new 一个数组
 ``` 
 特别地，C++ 提供了一个称为 new[] 表达式的东西来实现相关的操作：
 

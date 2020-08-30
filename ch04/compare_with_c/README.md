@@ -30,6 +30,14 @@ int b[5] = {1, 2, 3, 4, 5};
 void* malloc(size_t n); /* 分配 n 个字节空间，并将首地址返回 */
 void free(void* p);     /* 将 p 所指向的空间释放 */
 ```
+用 `using` 关键字引入类型别名是 C++ 独有的语法，在 C 中需要用 typedef 实现。比如
+```cpp
+using Array = int[10];
+```
+在 C 中需比较别扭地写作
+```c
+typedef int Array[10];
+```
 
 除此外还有一些细节上的问题，我们会在稍后章节说明。
 

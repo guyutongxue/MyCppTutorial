@@ -4,17 +4,91 @@
 
 ## 不同特性
 
-- 无参函数需显式指明 `void` （C++ 中不需要）
-- 字符字面量为 `int` 类型（C++ 中 `char`）
-- 字符串字面量为 `char[N]` 类型（C++ 中 `const char[N]`）
-- 循环或分支的条件只能为表达式（C++ 中允许声明）
-- 循环或分支的条件均隐式转换为 `int` （C++ 中为 `bool`）
-- 结构体详述类型说明符必须给出（C++ 中可省略）
+就目前而言 C 和 C++ 的语法大致上相似，唯有如下不同：
+
+### 无参函数
+
+在 C 中，无参函数需在参数列表中写上 `void`：
+```c
+void f(void) { }
+int main(void) {
+    /* [...] */
+}
+```
+而在 C++ 中这是不需要的。
+
+> C 中，不写 `void` 的无参函数被认为是旧式函数定义（见下文）的一种，且接受任意多的参数调用，可能导致未定义行为。
+
+### 字符字面量
+
+在 C 中，字符字面量拥有 `int` 类型：
+```c
+sizeof('A'); /* 等价于 sizeof(int) */
+```
+而在 C++ 中，这种字符字面量是 `char` 类型的。
+
+### 字符串字面量
+
+在 C 中，字符串字面量拥有 `char[N]` 类型，其中 `N` 是追加空字符后的字符个数；而在 C++ 中，字符串字面量拥有 `const char[N]` 类型。
+
+尽管 C 的字符串字面量没有 `const` 限定，但仍然不允许修改；更改字符串字面量是未定义行为。
+
+### 循环或分支的条件
+
+第一，C 中要求循环或分支的条件只能是表达式，不能是声明：
+```cpp
+if(bool r = getResult()); // 合法 C++，但 C 中错误
+```
+第二，C 中循环和分支的条件时按语境转换到 `int` 的：若转换到 `int` 的值非零，则进入真分支（或继续循环）；若转换到 `int` 的值为 `0`，则进入假分支（或退出循环）。在 C++ 中，条件会按语境转换到布尔类型。
+
+### 详述类型说明符
+
+在 C 中，若想声明并定义一个结构体，需要在类型说明符前加上详述类型说明符 `struct`。比如：
+```c
+struct Coord {
+    int x, y;
+};
+Coord a;        /* C 中错误，C++ 中 OK */
+struct Coord a; /* C 和 C++ 都合法 */
+```
+即你在使用结构体名字前必须再额外写一个 `struct`，否则 C 编译器无法理解这个名字。你可以通过 typedef 声明来避免这个啰嗦：
+```c
+struct Coord_impl {
+    int x, y;
+};
+typedef struct Coord_impl Coord;
+Coord a; /* 合法 C */
+```
+或者直接：
+```c
+typedef struct {
+    int x, y;
+} Coord;
+Coord a; /* 合法 C */
+```
+这也被视为一种常见技巧。
+
+### 布尔类型（C99）
+
+在 C 中，布尔类型类型说明符为 `_Bool` 而非 `bool`，并且没有 `true` 和 `false` 关键字（你需要隐式转换来初始化它或者赋值）。
+```c
+_Bool a = 0; // 假值
+_Bool b = 1; // 真值
+```
+但是，`stdbool.h` 头文件中引入了 `bool` `true` 和 `false` 这三个宏。`bool` 定义为 `_Bool`，`true` 定义为 `1`，而 `false` 定义为 `0`：
+```c
+#include <stdbool.h>
+bool a = false;
+bool b = true; 
+```
+
+### 其它
+
+除了上述内容，C 和 C++ 的不同之处还有：
 - 结构体不引入作用域（C++ 中引入）
 - 关键字 `inline` 含义为优先内联（C++ 中为容许重复定义）
 - 全局作用域只读变量拥有外部链接（C++ 中拥有内部链接）
 - `_Noreturn`（C++ 中 `[[noreturn]]`）
-- 布尔类型类型说明符为 `_Bool`（C++ 中 `bool`）
 - 对齐相关关键字 `_Alignas` `_Alignof`（C++ 中 `alignas` `alignof`）
 - 静态断言 `_Static_assert`（C++ 中 `static_assert`）
 - 线程存储期 `_Thread_local`（C++ 中 `thread_local`）
@@ -84,7 +158,7 @@ void f( struct S { int x, y; } a);
 
 显然这样做会让程序变得更加晦涩，我们不太推荐。
 
-### 旧式（K&R 风格）函数定义
+### 旧式（K&R 风格）函数声明及定义
 
 在 C 中，函数参数的类型可以和函数的声明分离开来：
 ```c
@@ -102,7 +176,21 @@ int max(int a, int b) {
 }
 ```
 
-旧式函数定义是一种不再被推荐的写法，而且即将被弃用。你只可能在一些很老的代码里见到这种写法，了解即可。
+旧式函数声明则是不带任何参数类型的声明：
+```C
+int max();     /* 旧式函数声明无需指明参数 */
+int main(void) {
+    max(1, 2); /* 即可直接调用 */
+    return 0;
+}
+int max(a, b)  /* 这个是旧式函数定义 */
+    int a, b; {
+    return a > b ? a : b;
+}
+```
+使用旧式函数声明时，编译器**不会**检查函数调用表达式中传入的参数。如果传入参数类型和定义不匹配，则导致运行时未定义行为。
+
+旧式函数声明及定义是一种不再被推荐的写法，而且即将被弃用。你只可能在一些很老的代码里见到这种写法，了解即可。
 
 ?> 以下介绍的特性都是 C99 标准引入的，它们可能不在老编译器上支持。
 
@@ -218,7 +306,7 @@ struct Coordinate {
     int x, y;
 };
 // 返回原点，只需一句 return
-struct Coordinate getOrigin() {
+struct Coordinate getOrigin(void) {
     return (struct Coordinate){0, 0};
 };
 ```
@@ -286,22 +374,99 @@ long long llabs(long long n);
     long     :  labs(n),     \
     long long: llabs(n)      \
 )
-int main() {
+int main(void) {
     ABS(3);   // 调用 abs(3)
     ABS(3LL); // 调用 llabs(3)
 }
 ```
+
+### 其它
 
 除了上述内容外，C 的额外语法还有：
 - `_Atomic` 原子类型（作用类似 C++ 中 `std::atomic`）
 - 原生复数运算支持（作用类似 C++ 中 `std::complex`）
 
 
-## C99 前
+## 被移除的语法
 
-- 无单行注释（现有）
-- 隐式函数声明（现被弃用）
-- 全局 `int` 类型说明符可省略（现必需）
-- main 函数中 `return 0;` 必需（现可选）
-- for 循环初始语句只能为表达式（现允许声明）
-- 复合语句中声明必须出现在开头（现允许任意位置）
+C 是一门富有悠久历史的语言，其中的许多特性也已经被删除。下面列举了这些自 C99 其就被删除的语法——我们绝不推荐读者书写，但是可以稍作了解，从而能够阅读更多的代码。
+
+### 无单行注释
+
+在 C99 前，C 没有单行注释：
+```c
+int main(void) {
+    // 单行注释，C99 前错误
+    /* 多行注释 OK */
+    return 0;
+}
+```
+
+### 隐式函数声明
+
+在 C99 前，返回 `int` 类型的函数无需声明只可使用：
+```C
+int main(void) {
+    /* printf 未声明，但是可以使用：因为其返回 int */
+    printf("Hello, world!");
+    return 0;
+}
+```
+
+### 省略全局的 `int` 
+
+在 C99 前，全局的 `int` 都可以省略（这是非标准用法）：
+```c
+a;        /* 声明变量 a，但类型 int 被省略：即 int a; */
+b[10];    /* 声明数组 b，其类型为 int[10] */
+extern c; /* 等价于 extern int c; */
+main(void) {  /* main 函数的返回值类型 int 也可省略 */
+    return 0;
+}
+```
+
+### main 函数必须 return
+
+在 C99 前，要求 main 函数必须 return：
+```c
+int main(void) {
+    return 0; /* 不可省略 */
+}
+```
+而且标准未规定 `0` 是代表成功执行的返回值，更合适的做法是返回 `EXIT_SUCCESS` 宏：
+```c
+#include <stdlib.h>
+int main(void) {
+    return EXIT_SUCCESS;
+}
+```
+### for 初始语句的限制
+
+在 C99 前，for 语句的初始语句只能为表达式，不能声明一个变量：
+```c
+for (int i = 0; i < 10; i ++) ; /* C99 前非法 */
+```
+```c
+int i;
+for (i = 0; i < 10; i++) ; /* C99 前合法*/
+```
+
+### 声明语句位置限制
+
+在 C99 前，非全局的声明语句必须出现在复合语句的最开头：
+```c
+int main(void) {
+    printf("Hello");
+    int a = 0;       /* C99 前错误，声明语句没有出现在开头 */
+    printf("%d", a);
+    return 0;
+}
+```
+```c
+int main(void) {
+    int a = 0;       /* OK */
+    printf("Hello");
+    printf("%d", a);
+    return 0;
+}
+```
