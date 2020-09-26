@@ -78,6 +78,8 @@
     * [迁移到 C 语言](ch04/compare_with_c/)
         * [C 输入输出](ch04/compare_with_c/c_io.md)
         * [需要注意的 C 特性](ch04/compare_with_c/c_feature.md)
+* [第五章 初探面向对象](ch05/)
+    * [引用](ch05/reference.md)
 * [附录](appendix/)
     * [运算符优先级和结合方向](appendix/operator.md)
     * [关键字列表](appendix/keyword.md)
