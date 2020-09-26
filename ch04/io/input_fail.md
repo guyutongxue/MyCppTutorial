@@ -79,9 +79,7 @@ OK.
 但是仅仅清除失败状态时不够的，因为缓冲区中那些不符合期望的错误输入并不会清除掉（比如上例中输入的 `"Hello!"` ）。因此同时还需要写一个很复杂的语句来做这件事情：
 ```cpp
 // 可能需要 #include <limits>
-// 清除缓冲区中的全部字符
-cin.ignore(numeric_limits<streamsize>::max()); 
-// ……或者只清除到第一个换行符为止
+// 清除缓冲区到第一个换行符为止
 cin.ignore(numeric_limits<streamsize>::max(), '\n');
 ```
 
