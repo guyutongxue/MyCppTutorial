@@ -40,6 +40,8 @@ using Array = int[10];
 typedef int Array[10];
 ```
 
+C 中没有 `constexpr` 声明。你只能通过 `const` 限定的只读变量或者宏来定义常量。
+
 除此外还有一些细节上的问题，我们会在稍后章节说明。
 
 ## 例子
