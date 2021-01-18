@@ -1,8 +1,8 @@
-# 构造函数
+# 例子：简单的字符串
 
 回到面向对象的话题上来。根据本章最初的介绍，你应该已经了解到面向对象并不是什么特别高深的事情。当你向一个结构体中添加一些成员函数的时候，你已经在面向对象的路上了。
 
-好的，这一节我们一起来运用这种思想实现一个字符串类。在第四章中，我们已经了解到一个 `char` 数组可以当做一个 C 字符串来使用。我们回顾一下：
+好的，这一节我们一起来运用这种思想实现一个字符串结构体。在第四章中，我们已经了解到一个 `char` 数组可以当做一个 [C 风格字符串](ch04/array/c_string)来使用。我们回顾一下：
 ```cpp
 char str[30]{"Hello"};
 ```
@@ -93,11 +93,70 @@ int main() {
 struct String {
     char* str;
     void init(const char* initVal) {
-        unsigned len = std::strlen(initval); // 求出初始化字符串的长度
+        unsigned len = std::strlen(initVal); // 求出初始化字符串的长度
         str = new char[len];                 // 分配这么大空间，将 str 指向它
         for (unsigned i{0}; i < len; i++)
             str[i] = initVal[i];             // 然后将这片空间逐个赋值
     }
+    unsigned length(); // 同上
+};
+```
+
+接下来就需要这样使用这个字符串结构体了：
+```cpp
+int main() {
+    String a, b;
+    a.init("Hello"); // 使用 init 成员函数初始化
+    b.init("Hi");
+    std::cout << a.length() << std::endl;
+    std::cout << b.length() << std::endl;
+}
+```
+到这里仍然是可以正常运行的。而且注意到 `init` 成员函数中已经求出了字符串长度，所以在 `length` 成员函数中不必再次计算。所以可以改进成这个样子：
+```cpp
+struct String {
+    char* str;
+    unsigned len;                     // 新增一个成员变量记录字符串长度
+    void init(const char* initVal) {
+        len = std::strlen(initVal);   // 求出初始化字符串的长度，但这次赋值给成员变量
+        str = new char[len];
+        for (unsigned i{0}; i < len; i++)
+            str[i] = initVal[i];
+    }
+    unsigned length() {
+        return len;
+    }
+};
+```
+
+你可以验证它的正确性。尽管我们通过 `new[]` 分配空间的方法杜绝了字符串上限的问题，但这样做却引入了大量的新问题。比如如果想对这样的一个 `String` 类型变量进行赋值是行不通的。为此我们恐怕还要写一个赋值函数：
+```cpp
+struct String {
+    char* str;
+    unsigned len;
+    void init(const char* initVal); // 同上
+    unsigned length(); // 同上
+    void assign(const String assignVal) {
+        delete[] str;                       // 首先释放原先的空间
+        len = assignVal.len;                // 赋值长度
+        str = new char[len];                // 申请新的空间
+        for (unsigned i{0}; i < len; i++) {
+            str[i] = assignVal.str[i];      // 将字符串内容逐一复制过去
+        }
+    }
+};
+```
+然后才可以：
+```cpp
+int main() {
+    String a, b;
+    a.init("Hello");
+    b.init("Hi");
+    cout << a.length() << endl;
+    cout << b.length() << endl;
+    b.assign(a); // 使用 assign 成员函数赋值，即 b = a
+    cout << b.str << endl; // "Hello" 
 }
 ```
 
+如果不太理解 `assign` 成员函数的话，也没有关系。你只需要知道现在这种 `String` 的实现并不完美，不论是赋值还是初始化都需要通过一些自定义的函数才能做到。所以我们希望能够简化这些操作——下一节的构造函数将为我们做简化初始化的工作。
