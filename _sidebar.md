@@ -80,6 +80,8 @@
         * [需要注意的 C 特性](ch04/compare_with_c/c_feature.md)
 * [第五章 初探面向对象](ch05/)
     * [引用](ch05/reference.md)
+    * [例子：简单的字符串](ch05/easy_string.md)
+    * [构造函数](ch05/constructor.md)
 * [附录](appendix/)
     * [运算符优先级和结合方向](appendix/operator.md)
     * [关键字列表](appendix/keyword.md)
