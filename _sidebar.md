@@ -82,6 +82,7 @@
     * [引用](ch05/reference.md)
     * [例子：简单的字符串](ch05/easy_string.md)
     * [构造函数](ch05/constructor.md)
+    * 重载和成员初始化器列表
 * [附录](appendix/)
     * [运算符优先级和结合方向](appendix/operator.md)
     * [关键字列表](appendix/keyword.md)

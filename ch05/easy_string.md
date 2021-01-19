@@ -112,11 +112,10 @@ int main() {
     std::cout << b.length() << std::endl;
 }
 ```
-到这里仍然是可以正常运行的。而且注意到 `init` 成员函数中已经求出了字符串长度，所以在 `length` 成员函数中不必再次计算。所以可以改进成这个样子：
+到这里仍然是可以正常运行的。而且注意到 `init` 成员函数中已经求出了字符串长度，所以在 `length` 成员函数中不必再次计算。通过增加一个“私有”成员，可以改进成这个样子：
 ```cpp
 struct String {
     char* str;
-    unsigned len;                     // 新增一个成员变量记录字符串长度
     void init(const char* initVal) {
         len = std::strlen(initVal);   // 求出初始化字符串的长度，但这次赋值给成员变量
         str = new char[len];
@@ -126,6 +125,9 @@ struct String {
     unsigned length() {
         return len;
     }
+
+private:
+    unsigned len;                     // 新增一个成员变量记录字符串长度，它可以是“私有的”
 };
 ```
 
@@ -133,7 +135,6 @@ struct String {
 ```cpp
 struct String {
     char* str;
-    unsigned len;
     void init(const char* initVal); // 同上
     unsigned length(); // 同上
     void assign(const String assignVal) {
@@ -144,6 +145,9 @@ struct String {
             str[i] = assignVal.str[i];      // 将字符串内容逐一复制过去
         }
     }
+
+private:
+    unsigned len; // 同上
 };
 ```
 然后才可以：
@@ -152,10 +156,10 @@ int main() {
     String a, b;
     a.init("Hello");
     b.init("Hi");
-    cout << a.length() << endl;
-    cout << b.length() << endl;
+    std::cout << a.length() << std::endl;
+    std::cout << b.length() << std::endl;
     b.assign(a); // 使用 assign 成员函数赋值，即 b = a
-    cout << b.str << endl; // "Hello" 
+    std::cout << b.str << std::endl; // "Hello" 
 }
 ```
 
