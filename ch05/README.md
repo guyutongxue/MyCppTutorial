@@ -61,7 +61,7 @@ struct Rect {
 };
 ```
 我可以这样使用它：
-```
+```cpp
 Rect a;
 unsigned int sa{a.area()};
 ```

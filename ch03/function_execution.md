@@ -113,6 +113,8 @@ int x{*main 函数里 a 的值*};
 int y{*main 函数里 b 的值*};
 ```
 
+> 这种写法并不严格等同。（因为函数传参是[复制初始化](https://zh.cppreference.com/w/cpp/language/copy_initialization)，而大括号初始化不是。）
+
 所以人们常说，这是一个“复制”的过程。因为传递参数的过程相当于把原来 main 中的数据拷贝出来，初始化为 max 函数形参的值。这个时候，main 函数中的 x 和 y，与 max 函数中的 a 和 b 是没有任何关系的两组变量，只是它们的值相等罢了。
 
 下面来看这个例子：
