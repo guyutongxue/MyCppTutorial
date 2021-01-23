@@ -18,7 +18,7 @@ str.init("Hello");
 ```cpp
 String str("hello");
 ```
-只需要一条语句就够了。那么怎么写构造函数呢？方法很简单，只需要吧 `init` 成员函数的名字改成结构体名 `String` 就可以了：
+只需要一条语句就够了。那么怎么写构造函数呢？方法很简单，只需要把 `init` 成员函数的名字改成结构体名 `String` 就可以了：
 ```CPP
 #include <iostream>
 #include <cstring>
