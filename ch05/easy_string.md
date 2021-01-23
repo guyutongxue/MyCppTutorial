@@ -94,8 +94,8 @@ struct String {
     char* str;
     void init(const char* initVal) {
         unsigned len = std::strlen(initVal); // 求出初始化字符串的长度
-        str = new char[len];                 // 分配这么大空间，将 str 指向它
-        for (unsigned i{0}; i < len; i++)
+        str = new char[len + 1];             // 分配这么大空间，将 str 指向它；
+        for (unsigned i{0}; i <= len; i++)   // 其中 len+1 是为了存储 '\0' 结尾
             str[i] = initVal[i];             // 然后将这片空间逐个赋值
     }
     unsigned length(); // 同上
@@ -118,8 +118,8 @@ struct String {
     char* str;
     void init(const char* initVal) {
         len = std::strlen(initVal);   // 求出初始化字符串的长度，但这次赋值给成员变量
-        str = new char[len];
-        for (unsigned i{0}; i < len; i++)
+        str = new char[len + 1];
+        for (unsigned i{0}; i <= len; i++)
             str[i] = initVal[i];
     }
     unsigned length() {
@@ -138,11 +138,11 @@ struct String {
     void init(const char* initVal); // 同上
     unsigned length(); // 同上
     void assign(const String assignVal) {
-        delete[] str;                       // 首先释放原先的空间
-        len = assignVal.len;                // 赋值长度
-        str = new char[len];                // 申请新的空间
-        for (unsigned i{0}; i < len; i++) {
-            str[i] = assignVal.str[i];      // 将字符串内容逐一复制过去
+        delete[] str;                        // 首先释放原先的空间
+        len = assignVal.len;                 // 赋值长度
+        str = new char[len + 1];             // 申请新的空间
+        for (unsigned i{0}; i <= len; i++) {
+            str[i] = assignVal.str[i];       // 将字符串内容逐一复制过去
         }
     }
 

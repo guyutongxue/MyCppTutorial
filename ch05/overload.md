@@ -93,8 +93,8 @@ int main() {
 struct String {
     String(const char* initVal) {
         len = std::strlen(initVal);
-        str = new char[len];
-        for (unsigned i{0}; i < len; i++)
+        str = new char[len + 1];
+        for (unsigned i{0}; i <= len; i++)
             str[i] = initVal[i];
     }
     // [...]
@@ -109,9 +109,10 @@ String(unsigned num, char c);
 struct String {
     String(unsigned num, char c) { // 新的重载（#1）
         len = num;
-        str = new char[num];
-        for (unsigned i{0}; i < num; i++)
-            str[i] = c;
+        str = new char[num + 1];
+        for (unsigned i{0}; i <= num; i++)
+            str[i] = c;  // 前 num 位赋值为 c
+        str[num] = '\0'; // 最后是个 '\0' 结尾
     }
     String(const char* initVal); // 同上（#2）
     // [...]
@@ -134,13 +135,11 @@ struct String {
     String(unsigned num, char c); // 同上，重载 #1
     String(const char* initVal);  // 同上，重载 #2
     String() {                    // 重载 #3
-        len = 0;           // 空字符串长度为 0
-        str = new char[0]; // 嘛，先不用太管这句
+        len = 0;                  // 空字符串长度为 0
+        str = new char[1]{'\0'};  // 分配一个 '\0' 就够了
     }
 }
 ```
-
-> 为了简便起见，这里我使用了 `new T[0]` 的表达式：正如[这一节](ch04/list/arr_new_del)结尾所述，这是合法语句，但需要被 `delete[]`。
 
 随后，我们可以这样使用：
 ```cpp

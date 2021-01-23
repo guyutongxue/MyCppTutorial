@@ -28,8 +28,8 @@ struct String {
     // 原先的 void init(...) { ... }，将名字改成 String，去掉返回值类型说明
     String(const char* initVal) {
         len = std::strlen(initVal);   // 求出初始化字符串的长度，但这次赋值给成员变量
-        str = new char[len];
-        for (unsigned i{0}; i < len; i++)
+        str = new char[len + 1];
+        for (unsigned i{0}; i <= len; i++)
             str[i] = initVal[i];
     }
 
@@ -40,8 +40,8 @@ struct String {
     void assign(const String assignVal) {
         delete[] str;
         len = assignVal.len;
-        str = new char[len];
-        for (unsigned i{0}; i < len; i++) {
+        str = new char[len + 1];
+        for (unsigned i{0}; i <= len; i++) {
             str[i] = assignVal.str[i];
         }
     }

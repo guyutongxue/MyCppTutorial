@@ -86,7 +86,7 @@
     * [复制构造函数](ch05/copy_constructor.md)
     * [隐式构造函数](ch05/implicit_constructor.md)
     * [继续：简单的字符串](ch05/easy_string_cont.md)
-    * [总结](#)
+    * [总结](ch05/summary.md)
 * [附录](appendix/)
     * [运算符优先级和结合方向](appendix/operator.md)
     * [关键字列表](appendix/keyword.md)
