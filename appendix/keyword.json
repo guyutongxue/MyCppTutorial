@@ -329,7 +329,7 @@
         "example": "constexpr int fact (int n) {\n    return n <= 1 ? 1 : (n * factorial(n - 1));\n}\nconstexpr int a{fact(4)};"
       },
       {
-        "info": "2. 用于控制成分：限定if语句的条件必须为常量表达式。",
+        "info": "2. 用于控制成分：表明 if 语句含义为条件编译而非条件运行。",
         "sdsc": [
           "if constexpr (<i>常量表达式</i>) <i>真分支语句</i>\n<opt-block>else <i>假分支语句</i></opt-block>"
         ],
@@ -357,7 +357,7 @@
         "sdsc": [
           "const_cast&lt;<i>新类型</i>&gt;(<i>指针或引用</i>)"
         ],
-        "example": "const int a = 42;\nint* pa = const_cast<int*>(a);\nint& ra = const_cast<int&>(a);"
+        "example": "const int a = 42;\nint* pa = const_cast<int*>(&a);\nint& ra = const_cast<int&>(a);"
       }
     ]
   },
@@ -377,7 +377,7 @@
     "keyword": "co_await",
     "usage": [
       {
-        "info": "用于协程：此运算符暂停当前协程直至恢复。",
+        "info": "用于协程：此运算符暂停当前协程直至等待体恢复。",
         "sdsc": [
           "co_await <i>等待体</i>"
         ],
@@ -440,7 +440,7 @@
         "example": "switch(score){\n    default: n++;\n}"
       },
       {
-        "info": "2. 用于声明：显示声明默认的成员函数（默认构造函数、复制构造函数、移动构造函数、赋值运算符、析构函数和三路比较运算符）。",
+        "info": "2. 用于声明：显示声明隐式成员函数（默认构造函数、复制构造函数、移动构造函数、赋值运算符、析构函数和三路比较运算符）。",
         "sdsc": [
           "<b>返回类型</b> 函数名(<b>形参列表</b>) = default;"
         ],
@@ -588,7 +588,7 @@
         "sdsc": [
           "false"
         ],
-        "example": "bool flag = false;"
+        "example": "bool flag{false};"
       }
     ]
   },

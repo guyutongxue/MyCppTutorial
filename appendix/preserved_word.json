@@ -61,7 +61,7 @@
     ]
   },
   {
-    "keyword": "transaction_safe",
+    "keyword": "transaction_safe_dynamic",
     "usage": [
       {
         "info": "（实验性功能）用于事务：声明某虚函数为事务安全的，即它的最终覆盖函数也是事务安全的。",
