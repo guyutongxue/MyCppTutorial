@@ -30,7 +30,7 @@ prev->next = temp->next;
 delete temp;
 ```
 
-![图示](https://s3.ax1x.com/2021/01/26/sjlLng.png)
+![图示](https://s3.ax1x.com/2021/01/26/sj165n.png)
 
 删除 `head` 指向的头结点是同样的道理。
 
