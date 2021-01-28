@@ -88,8 +88,8 @@ class String {
 public:
     // [...]
     String operator+=(const String& b) {
-        String result(operator+(b)); // 直接调用 oeprator+ 成员函数
-        assign(result);              // 调用 assign 成员把结果赋值给自己
+        String result(operator+(b));
+        assign(result);
         return result;
     }
 };
