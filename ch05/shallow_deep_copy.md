@@ -61,14 +61,20 @@ int main() {
 也就是：不复制指针的值，而是将指针所指向的那片内存进行复制，然后让两个指针分别指向这两片复制出来的内存。那么怎么实现呢？显然，隐式复制构造只能实现“浅复制”，“深复制”需要靠我们自己写。
 
 ```cpp
-String(const String& initVal) {
-    len = initVal.len;                 // 复制长度
-    str = new char[len + 1];                // 申请新的内存空间
-    for (unsigned i{0}; i <= len; i++)
-        str[i] = initVal.str[i];       // 然后把内存里的值逐一复制
-}
+struct String {
+    String(const String& initVal) {
+        len = initVal.len;                 // 复制长度
+        str = new char[len + 1];                // 申请新的内存空间
+        for (unsigned i{0}; i <= len; i++)
+            str[i] = initVal.str[i];       // 然后把内存里的值逐一复制
+    }
+};
 ```
 
 然后再来试试 `f` 函数，这一次它不会再更改 `main` 中 `sth` 的内容了。可喜可贺。
 
-基于“浅复制”和“深复制”的原理，请读者回过头来再看一看我没有细讲的 `assign` 成员函数。它本质上仍然是做“深复制”的赋值，而避免默认的赋值导致的“浅复制”。我这里不再展开。
+基于“浅复制”和“深复制”的原理，请读者回过头来再看一看我没有细讲的 `assign` 成员函数。它本质上仍然是做“深复制”的赋值，而避免默认的赋值导致的“浅复制”。我这里仅仅把 `assign` 的函数类型稍作微调：
+```cpp
+void assign(const String& assignVal);
+```
+将参数类型改为 `const T&` 来避免复制。至于工作原理，这里不再展开；而目前 `assign` 函数隐含的小问题也留待下一章再作调整。

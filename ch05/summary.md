@@ -51,7 +51,8 @@ public:  // 公开成员有 str 和一些函数
         return len;
     }
     // 赋值用，原理也是“深复制”
-    void assign(const String assignVal) {
+    // 存在一些问题，下一章将修复
+    void assign(const String& assignVal) {
         delete[] str;
         len = assignVal.len;
         str = new char[len];

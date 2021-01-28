@@ -137,7 +137,7 @@ struct String {
     char* str;
     void init(const char* initVal); // 同上
     unsigned length(); // 同上
-    void assign(const String assignVal) {
+    void assign(const String assignVal) {    // 注：这个函数是有问题的，下一章将修复
         delete[] str;                        // 首先释放原先的空间
         len = assignVal.len;                 // 赋值长度
         str = new char[len + 1];             // 申请新的空间
