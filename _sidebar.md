@@ -91,7 +91,7 @@
 * [第六章 运算符重载](ch06/)
     * [`this` 指针](ch06/this.md)
     * [赋值运算符重载](ch06/assignment_overload.md)
-    * [赋值与初始化(待续)](#)
+    * [赋值与初始化(待续)](ch06/assignment_vs_construct.md)
     * [类型转换重载](#)
     * [类外定义](#)
     * [只读成员函数](#)
