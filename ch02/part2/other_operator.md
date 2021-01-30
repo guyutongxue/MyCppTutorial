@@ -99,7 +99,8 @@ expr1, expr2, expr3, ..., exprn
 例如：
 ```cpp
 int a{42};
-float x{1.0f},y{2.0f};
+float x{1.0f}, y{2.0f};
+// 以下是类型转换表达式
 (double)a;
 int(x + y);
 float(5 / 3);
