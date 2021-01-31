@@ -93,7 +93,7 @@
     * [赋值运算符重载](ch06/assignment_overload.md)
     * [赋值与初始化](ch06/assignment_vs_construct.md)
     * [类型转换重载](ch06/cast_overload.md)
-    * [类外定义(待续)](#)
+    * [类外定义成员函数(待续)](ch06/noninline_member_function.md)
     * [只读成员函数](#)
     * [静态成员](#)
     * [特殊运算符重载](#)

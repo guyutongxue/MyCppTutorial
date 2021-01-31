@@ -13,7 +13,7 @@ C++ 作为弱类型语言，其类型转换发生得非常频繁。其中，类�
 *类型*(*表达式*)
 (*类型*)*表达式*
 ```
-来让 `@*表达式*@` 做转换到 `@*类型*@` 这个类型。相必我也不用再次强调了，类型转换并不更改表达式的值，而是运算出一个新的临时结果。
+来让 `@*表达式*@` 做转换到 `@*类型*@` 这个类型。想必我也不用再次强调了，类型转换并不更改表达式的类型，而是运算出一个新的临时结果。
 
 而隐式类型转换发生的场合则比较多。我们已经知道的，在以下时机会发生从 `A` 类型到 `B` 类型的转换：
 - 用 `A` 类型初始化 `B` 类型的变量。这其中又包括：
@@ -76,7 +76,7 @@ public:
 如果用 `String` 类举例的话，我想定义从一个 C 风格字符串到 `String` 的转换。C 风格字符串是 `const char[N]` 类型的，而 `N` 是未知的，所以为了简便起见就用 `const char*` 类型好了。那么我们想要做的效果就是：
 ```cpp
 #include <iostream>
-// 截止目前的 String 类定义：https://paste.ubuntu.com/p/gFzDm4hfBj/
+// 截止目前的 String 类定义：https://paste.ubuntu.com/p/d4HYm4cZ4h/
 int main() {
     char a[]{"Hello"};
     String b;
@@ -138,7 +138,7 @@ struct C {};
 struct A {
     A() { }
     explicit A(const C&) { }              // 只允许显式的从 C 到 A 的转换
-    explicit operator B() { return B(); } // 只允许显式的从 A 到 B 的让人 
+    explicit operator B() { return B(); } // 只允许显式的从 A 到 B 的转换 
 };
 int main() {
     A a; B b; C c;
