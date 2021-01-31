@@ -113,7 +113,7 @@ body[data-platform^="Win"] .sdsc {
 /* Placeholder */
 .sdsc em,
 .sdsc i {
-    font-style: normal;
+    font-style: normal !important;
     color     : var(--standard-placeholder-color);
 }
 
@@ -133,7 +133,7 @@ body[data-platform^="Win"] .sdsc {
 .sdsc b {
     color      : var(--standard-placeholder-color);
     font-style : normal;
-    font-weight: normal;
+    font-weight: normal !important;
 }
 
 .sdsc opt-block {

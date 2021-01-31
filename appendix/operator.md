@@ -38,7 +38,7 @@
     <tr>
         <td><code>type{}</code></td>
         <td>列表风格转型运算符</td>
-        <td>将初始化列表转换为 <code>type</code> 类型</td>
+        <td><a href="#/ch06/cast_overload.md?id=idx_列表风格转型运算符">说明</a></td>
     </tr>
     <tr>
         <td><code>a()</code></td>
@@ -124,8 +124,8 @@
     </tr>
     <tr>
         <td><code>new[]</code></td>
-        <td>new 数组运算符</td>
-        <td>TODO</td>
+        <td>new[] 运算符</td>
+        <td><a href="#/ch04/list/arr_new_del" target="_blank">说明</a></td>
     </tr>
     <tr>
         <td><code>delete</code></td>
@@ -134,8 +134,8 @@
     </tr>
     <tr>
         <td><code>delete[]</code></td>
-        <td>delete 数组运算符</td>
-        <td>TODO</td>
+        <td>delete[] 运算符</td>
+        <td><a href="#/ch04/list/arr_new_del" target="_blank">说明</a></td>
     </tr>
     <tr>
         <td rowspan="21">&#10230;<br> 从左向右</td>
