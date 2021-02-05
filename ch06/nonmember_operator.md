@@ -31,7 +31,7 @@ namespace std {
 1 << 2; // 左移运算符的一般用法
 ```
 
-而这里，类似 `cout << a` 的写法其实是左移运算符的表达式。它的左操作数是 `std::ostream` 类型的变量，而右操作数可以是任何整数类型、C 风格字符串之类的东西。所以说，这里，标准库定义了若干个关于运算符 `<<` 的重载。比如，当我们写下
+而这里，类似 `cout << a` 的写法其实是左移运算符的表达式。它的左操作数是 `std::ostream` 类型的变量，而右操作数可以是任何算术类型、C 风格字符串之类的东西。所以说，这里，标准库定义了若干个关于运算符 `<<` 的重载。比如，当我们写下
 ```cpp
 int a;
 std::cout << a;
@@ -73,7 +73,7 @@ int main() {
 ```cpp
 class A {
 public:
-    T operator@(B/*可选地为引用，或带 const 限定*/ b ) /* 可选地带 const */;
+    T operator@(B/*可选地为引用，或带 const 限定*/ b) /* 可选地带 const */;
 };
 ```
 
@@ -90,7 +90,7 @@ String operator+(const char* a, const String& b) {
 
 > 非成员的运算符重载要求至少有一个操作数是类类型的。所以你不能“覆盖”原有内置类型的运算符运算规则。
 
-这就是类外定义运算符重载了。不过与此相比，对于 `opeartor+` 更好的处理是只在类外定义 `String operator+(const String& a, const String& b);`，这样任何可以隐式转换到 `String` 的类型出现在两侧都可以调用它。你会在[总结](ch06/summary.md)中看到这个版本。
+这就是非成员的运算符重载了。不过与此相比，对于 `opeartor+` 更好的处理是只定义非成员的 `String operator+(const String& a, const String& b);`，这样任何可以隐式转换到 `String` 的类型出现在两侧都可以调用它。你会在[总结](ch06/summary.md)中看到这个版本。
 
 ## 回到输出 `String`
 

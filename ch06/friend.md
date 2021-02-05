@@ -58,7 +58,7 @@ struct B {
     void f(); // 定义见下
 };
 
-class A {     // 这里需要 B 的定义，所有要放在 B 下面
+class A {     // 这里需要 B 的定义，所以要放在 B 下面
 private:
     int privateMem;
     friend void B::f(); // 友元声明
