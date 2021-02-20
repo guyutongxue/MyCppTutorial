@@ -104,6 +104,7 @@
 * [第七章 继承与多态(待续)](ch07/)
     * [简单的对象关系](ch07/object_relationships.md)
     * [继承关系](ch07/inheritance/)
+        * [派生类的构造](ch07/inheritance/derived_constructor.md)
     * [多态](ch07/polymorphism)
 * [第八章 模板基础](ch08/)
 * [附录](appendix/)
