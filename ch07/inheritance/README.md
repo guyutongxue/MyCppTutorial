@@ -4,13 +4,13 @@
 ```cpp
 class Person {
     std::string name;
-    unsigned age;
+    int age;
 public:
 
     // 简单的构造函数
-    Person(const std::string& name, unsigned age): name(name), age{age} { }
+    Person(const std::string& name, int age): name(name), age{age} { }
 
-    unsigned getAge() { return age; }
+    int getAge() { return age; }
 };
 ```
 然后如果不考虑继承关系的话，学生拥有人的全部特征，而且还附带“学号”这个信息：
@@ -18,28 +18,28 @@ public:
 class Student {
     // name 和 age 成员和 Person 一模一样
     std::string name;
-    unsigned age;
+    int age;
 
-    unsigned number; // 额外的学号信息
+    int number; // 额外的学号信息
 public:
 
     // 略微不同的构造函数
-    Student(const std::string& name, unsigned age, unsigned number)
+    Student(const std::string& name, int age, int number)
         : name(name), age{age}, number{number} { }
 
     // 和 Person 一样的成员函数
-    unsigned getAge() { return age; }
+    int getAge() { return age; }
 };
 ```
 
 你会发现，`Student` 是 `Person` 在编程语言上的体现就是：`Student` 拥有所有 `Person` 的成员。所以，通过标记 `Student` 是 `Person` 这个关系，就可以删去 `Student` 中“`Person` 部分”的成员。而标记的方法是这个样子的：
 ```cpp
 class Student : public Person {
-    unsigned number; // 额外的学号信息
+    int number; // 额外的学号信息
 public:
 
     // 略微不同的构造函数
-    Student(const std::string& name, unsigned age, unsigned number)
+    Student(const std::string& name, int age, int number)
         : /* 这里还不知道怎么写 */ { }
 };
 ```

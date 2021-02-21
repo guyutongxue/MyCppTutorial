@@ -4,29 +4,29 @@
 ```cpp
 class Person {
     std::string name;
-    unsigned age;
+    int age;
 public:
-    Person(const std::string& name, unsigned age): name(name), age{age} { }
+    Person(const std::string& name, int age): name(name), age{age} { }
 };
 
 class Student : public Person {
-    unsigned number;
+    int number;
 public:
-    Student(const std::string& name, unsigned age, unsigned number)
+    Student(const std::string& name, int age, int number)
         : /* 这里写什么？ */ { }
 };
 ```
 
 如果我们想当然地写：
 ```cpp
-Student(const std::string& name, unsigned age, unsigned number)
+Student(const std::string& name, int age, int number)
     : name(name), age{age}, number{number} { }
 ```
 编译器会抱怨 `name` `age` 不是成员名。确实，它们不是 `Student` 的成员，但它们是基类 `Person` 的成员啊。那么怎么初始化基类成员呢？
 
 思路是这样的：基类成员属于基类的一部分，所以它们的初始化工作应当交给基类进行。正确的写法是这样的：
 ```cpp
-Student(const std::string& name, unsigned age, unsigned number)
+Student(const std::string& name, int age, int number)
     : Person(name, age), number{number} { }
 ```
 这里，`Person(name, age)` 表示，用实参列表 `name, age` 调用 `Person` 的构造函数，从而初始化 `Person` 部分的成员。

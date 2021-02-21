@@ -53,7 +53,7 @@ class Dog;
 class Host {
 private:
     Dog* dogs[3];
-    unsigned num;
+    int num;
 
 public:
     void addDog(const Dog& d) {
