@@ -22,7 +22,7 @@ public:
 Student(const std::string& name, int age, int number)
     : name(name), age{age}, number{number} { }
 ```
-编译器会抱怨 `name` `age` 不是成员名。确实，它们不是 `Student` 的成员，但它们是基类 `Person` 的成员啊。那么怎么初始化基类成员呢？
+编译器会抱怨 `name` `age` 不是成员名。确实，它们不在 `Student` 的成员列表中，但它们是基类 `Person` 的成员啊。那么怎么初始化基类成员呢？
 
 思路是这样的：基类成员属于基类的一部分，所以它们的初始化工作应当交给基类进行。正确的写法是这样的：
 ```cpp
