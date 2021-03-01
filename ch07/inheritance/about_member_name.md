@@ -118,3 +118,39 @@ int main() {
 
 所以说，在派生类中使用和基类相同的成员名**并不会覆盖基类的成员定义**，仅仅是“隐藏”了这个定义。最终，这个派生类的布局中存在两个名字相同的成员，通过 `T::` 的形式可以区分它们。
 
+## 类作用域下的 `using` 声明（选读）
+
+之前我介绍过这样一种用法：
+```CPP
+#include <iostream>
+using std::cout;
+int main() {
+    cout << "Hello" << std::endl; // cout 无需 std::
+}
+```
+通过 `using` 声明将命名空间 `std` 下的名字 `cout` 导出到全局命名空间。既然类的成员也可以像命名空间一样处理，所以类的成员列表中也可以使用 `using` 声明。但这里，它的 `using` 只能从基类作用域中导出名字。
+```cpp
+struct Base {
+    int mem;
+};
+struct Derived : Base {
+    using Base::mem;
+//   int mem; // 相同作用域不允许重复定义
+    // [...]
+};
+```
+然而这样做并没有什么意义，只是说“手动”实现了成员的继承。它带来的效果仅仅就是 `Derived::` 作用域下的 `mem` 被这个 `using` 声明“占用”了，不能重复定义 `int mem;` 了。但这种写法其中一个有意义的场合是将基类的保护成员导出：
+```CPP
+struct Base {
+protected:
+    int mem;
+};
+struct Derived : Base {
+public:
+    using Base::mem; // 将基类的保护成员导出为派生类的公开成员
+};
+int main() {
+    Derived d;
+    d.mem; // 如果删去 using 声明，则报错：保护成员不可在类外访问
+}
+```
