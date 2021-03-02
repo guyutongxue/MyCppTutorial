@@ -49,4 +49,4 @@ ${object.info}
     });
 };
 loadKeywords("appendix/keyword.json", document.querySelector('#keywordTable'));
-loadKeywords("appendix/preserved_word.json", document.querySelector('#preservedWordTable'));
+loadKeywords("appendix/special_identifier.json", document.querySelector('#specialIdentifierTable'));

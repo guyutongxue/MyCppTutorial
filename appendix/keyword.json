@@ -890,9 +890,11 @@
     "keyword": "reflexpr",
     "usage": [
       {
-        "info": "（草案）用于反射。",
-        "sdsc": [],
-        "example": "   "
+        "info": "（实验性功能）用于反射。获取某个类型的反射元类型。（元类型是指包含这个类的元数据的类型，如类型名、成员列表元组等。）",
+        "sdsc": [
+          "reflexpr(<i>reflexpr操作数</i>)"
+        ],
+        "example": "struct S { /* ... */ };\nusing meta_S = reflexpr(S);"
       }
     ]
   },
