@@ -107,7 +107,7 @@
         * [派生类的构造](ch07/inheritance/derived_constructor.md)
         * [保护成员](ch07/inheritance/protected_member.md)
         * [关于成员名](ch07/inheritance/about_member_name.md)
-        * [继承中的隐式转换](#)
+        * [继承中的隐式转换](ch07/inheritance/implicit_cast_in_inheritance.md)
     * [多态](ch07/polymorphism)
         * [虚函数](#)
         * [RTTI](#)
