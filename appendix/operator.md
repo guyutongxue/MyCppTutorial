@@ -17,7 +17,7 @@
         <td>1</td>
         <td><code>::</code></td>
         <td>作用域解析运算符</td>
-        <td>将其后的变量名作为类的静态成员、命名空间的对象或枚举项处理</td>
+        <td><a href="#/ch03/review_cpp.md?id=idx_作用域解析运算符">说明</a></td>
     </tr>
     <tr>
         <td rowspan="8">2</td>
@@ -115,7 +115,7 @@
     <tr>
         <td><code>co_await</code></td>
         <td>await 运算符</td>
-        <td>用于协程，暂停执行可等待体。</td>
+        <td>用于协程，暂停当前协程的执行，直至可等待体返回。</td>
     </tr>
     <tr>
         <td><code>new</code></td>
