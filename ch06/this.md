@@ -51,7 +51,7 @@ class String {
 public:
     // [...]
     void operator+=(const String& b) {
-        String result(operator+(b)); // 直接调用 oeprator+ 成员函数
+        String result(operator+(b)); // 直接调用 operator+ 成员函数
         assign(result);              // 调用 assign 成员把结果赋值给自己
     }
 };
@@ -66,7 +66,7 @@ int main() {
     std::cout << a << std::endl;
 }
 ```
-成功输出了 `abcdef`。但是这个其实还有一点小问题，就是对于“内置的”类型比如 `int`，它的赋值运算符是[有结果的](ch02/part2/assigment_operator.md)。比如：
+成功输出了 `abcdef`。但是这个其实还有一点小问题，就是对于“内置的”类型比如 `int`，它的赋值运算符是[有结果的](ch02/part2/assignment_operator.md)。比如：
 ```CPP
 #include <iostream>
 int main() {
@@ -120,7 +120,7 @@ public:
 ```
 然后，再来看 `(a += b)` 是什么？回顾引用一词的含义，其实 `(a += b)` 是 `a` 的别名。所以，此时再对 `(a += b)` 做 `+=` 操作，就相当于对 `a` 做 `+=` 操作。那么我们的目标就实现了。
 
-最后一个问题：怎么返回绑定到 `a` 的引用？这里就需要引入 `this` 关键字了。`this` 是在成员函数中可以用到的一个特殊变量名，它的类型总是 `T*` 的，其中 `T` 是这个成员函数所归属的类型；作为一个指针，`this` 总是**指向调用这个函数的那个对象**。说来抽象，请看例子：
+最后一个问题：怎么返回绑定到 `a` 的引用？这里就需要引入 `this` 关键字了。`this` 是在成员函数中可以用到的一个特殊变量名，在这里它是 `T*` 类型的，其中 `T` 是这个成员函数所归属的类型；作为一个指针，`this` 总是**指向调用这个函数的那个对象**。说来抽象，请看例子：
 
 ```CPP
 #include <iostream>
@@ -161,3 +161,5 @@ public:
 };
 ```
 也就是 `*this`。接下来再试试之前的代码，相信你就能得出正确的结果了。
+
+> 在[只读成员函数](ch06/const_member_function.md)中，`this` 是 `const T*` 类型的。严格来讲，`this` 应当具有顶层只读限定（即不可以更改 `this` 的指向，其类型为 `T* const` 或 `const T* const`），但文中出于行文简便没有考虑它。

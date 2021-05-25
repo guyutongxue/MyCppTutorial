@@ -14,14 +14,14 @@ struct Animal {
 struct Cat : public Animal {
     std::string getName() const {
         return "cat";
-    };
-    void bark() const { }
+    }
+    void meow() const { }
 };
 struct Dog : public Animal {
     std::string getName() const {
         return "dog";
-    };
-    void meow() const { }
+    }
+    void bark() const { }
 };
 ```
 
@@ -31,7 +31,7 @@ struct Dog : public Animal {
 ```cpp
 void tryBark(const Animal* a) {
     if (a->getName() == "dog") {
-        const Dog* dog{(Dog*)a};
+        const Dog* dog{(const Dog*)a};
         dog->bark();
     }
 }

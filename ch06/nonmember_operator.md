@@ -90,7 +90,7 @@ String operator+(const char* a, const String& b) {
 
 > 非成员的运算符重载要求至少有一个操作数是类类型的。所以你不能“覆盖”原有内置类型的运算符运算规则。
 
-这就是非成员的运算符重载了。不过与此相比，对于 `opeartor+` 更好的处理是只定义非成员的 `String operator+(const String& a, const String& b);`，这样任何可以隐式转换到 `String` 的类型出现在两侧都可以调用它。你会在[总结](ch06/summary.md)中看到这个版本。
+这就是非成员的运算符重载了。不过与此相比，对于 `operator+` 更好的处理是只定义非成员的 `String operator+(const String& a, const String& b);`，这样任何可以隐式转换到 `String` 的类型出现在两侧都可以调用它。你会在[总结](ch06/summary.md)中看到这个版本。
 
 ## 回到输出 `String`
 
