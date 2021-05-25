@@ -130,6 +130,21 @@ window.$docsify = {
                         }
                     }, 5000);
                 }
+                // Add updated date for cover page
+                if (location.hash === '#/') {
+                    let url = 'https://api.github.com/repos/Guyutongxue/MyCppTutorial';
+                    if (location.hostname.includes("gitee")) {
+                        url = 'https://gitee.com/api/v5/repos/Guyutongxue/MyCppTutorial';
+                    }
+                    fetch(url)
+                        .then(r => r.json())
+                        .then((/** @type {{[key: string]: string}} */ json) => {
+                            if ("updated_at" in json) {
+                                document.querySelector("#date").innerHTML = json.updated_at.substr(0, 10) + " 更新";
+                            }
+                        })
+                }
+
             })
         }
     ],
