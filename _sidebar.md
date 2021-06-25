@@ -114,6 +114,7 @@
         * [其它小问题](ch07/inheritance/misc.md)
     * [多态](ch07/polymorphism/)
         * [虚函数](ch07/polymorphism/virtual_function.md)
+        * [C++ 风格类型转换](ch07/polymorphism/cpp_cast.md)
         * [RTTI](ch07/polymorphism/rtti.md)
         * [虚析构函数](#)
         * [纯虚函数与抽象类](#)

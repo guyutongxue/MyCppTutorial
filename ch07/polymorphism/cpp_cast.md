@@ -1,44 +1,36 @@
 # C++ 风格类型转换
 
-## 引入：向下转型
+在进行之后的讲解之前，容我现在此处插入一些“题外的”内容。我们之前已经了解了 [C 风格类型转换](ch02/part2/other_operator#类型转换运算符)，而现在我们要讲的是 C++ 风格类型转换。
 
-接下来几节将用于解决安全向下转型的问题。考虑之前的代码：
-```cpp
-#include <string>
-#include <iostream>
-struct Animal {
-    virtual std::string getName() const {
-        return "animal";
-    }
-};
-struct Cat : public Animal {
-    std::string getName() const {
-        return "cat";
-    }
-    void meow() const { }
-};
-struct Dog : public Animal {
-    std::string getName() const {
-        return "dog";
-    }
-    void bark() const { }
-};
+所谓“C 风格”、“C++ 风格”，从字面意思上就能看出，这只是一种代码风格上的区别。它们除了写法之外，做的事情都是一样的：转换一个操作数的类型。那么，回顾一下之前 C 风格的类型转换，它长成这样：
+
+```sdsc
+(*类型标识*)*操作数*
+*类型标识*(*操作数*)
 ```
 
-我在其中添加了两个成员函数：`Dog` 拥有自己独有的成员函数 `bark`，而 `Cat` 拥有自己独有的成员函数 `meow`。那么，如果我们想要编写这样一个功能：检查一个 `Animal` 是不是 `Dog`，如果是的话就让它 `bark()`，否则什么都不做。那么怎么去实现呢？
+而 C++ 风格不太一样，它长成这样：
 
-最基础的想法是利用之前的 `getName`。
-```cpp
-void tryBark(const Animal* a) {
-    if (a->getName() == "dog") {
-        const Dog* dog{(const Dog*)a};
-        dog->bark();
-    }
-}
+```sdsc
+*xxx*_cast&lt;*类型标识*&gt;(*操作数*)
 ```
 
-但是这带来一个问题：就是它依赖于这样一个不那么可靠的自定义函数 `getName`。为什么说“不那么可靠”呢？我们必须为每一个 `Animal` 的子类定义一个 `getName` 虚函数的覆盖，并且不同子类的返回值必须不同。（即只有 `Dog` 的 `getName` 会返回 `"dog"`。）那么这个维护成本就很高了。
+（其中 `@*xxx*@` 的意思后面会展开。）举一些例子：
+```cpp
+int a{42};
+float x{1.0f}, y{2.0f};
+// 以下三个是 C 风格转型：
+(double)a;
+int(x + y);
+float(5 / 3);
+// 对应的 C++ 风格转型长成这样：
+static_cast<double>(a);
+static_cast<int>(x + y);
+static_cast<float>(5 / 3);
+```
 
-> 除此之外，还有函数调用的时间和空间开销也是有可能存在的（但一般会被优化）。可以通过将 `getName` 定义为数据成员（只读，并在初始化时指定）而非函数来减少这个调用开销。
+在上面的例子中，C++ 风格转型都长成 `@static_cast<*类型标识*>(*操作数*)@` 这个样子（不得不说，比 C 风格要多打不少字）。但并不是说所有的 C++ 风格转型都是 `static_cast` 啥啥啥的；实际上，C++ 风格转型按照转换操作的危险程度分成四种，下面将一一介绍。
 
-一旦
+## `static_cast`
+
+`static_cast` 是最安全的一种转换。好巧不巧，刚才的三个例子在改写成 C++ 风格转型后全都是 `static_cast`。这并不是偶然，这其实是由 `static_cast` 的定义导致的。
