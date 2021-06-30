@@ -1,8 +1,8 @@
-# RTTI
+# RTTI（未完成）
 
-## 引入：向下转型
+## 引入
 
-接下来几节将用于解决安全向下转型的问题。考虑之前的代码：
+考虑之前的代码：
 ```cpp
 #include <string>
 #include <iostream>
@@ -41,7 +41,6 @@ void tryBark(const Animal* a) {
 
 > 除此之外，还有函数调用的时间和空间开销也是有可能存在的（但一般会被优化）。可以通过将 `getName` 定义为数据成员（只读，并在初始化时指定）而非函数来减少这个调用开销。
 
-一旦
 
 ?> 以下为草稿
 
@@ -49,9 +48,46 @@ void tryBark(const Animal* a) {
 
 运行时类型识别（RunTime Type Identification, RTTI）是一种 C++ 机制，可以一定程度上简化代码并保证代码的安全性。
 
-RTTI 
-- `dynamic_cast`
-- `typeid`
+## `dynamic_cast`
+
+`dynamic_cast` 目的是为了保证向下转型的安全。为了说明这一点，首先看下面的例子：
+
+```CPP
+struct B { };
+struct D1 : B {
+    int i;
+};
+struct D2 : B {
+    float f;
+};
+int main() {
+    B* b{new D1};
+    D2* d2{static_cast<D2*>(b)};
+    d2->f; // 未定义行为：d2 实际并不是 D2 类型的而是 D1 类型的
+    delete b;
+}
+```
+
+上面的例子用 `static_cast` 做了从 `B*` 到 `D2*` 的“向下转型”，但它可以非常直接地导致不可预期的未定义行为。此时，`dynamic_cast` 就可以出场了：
+
+```CPP
+#include <iostream>
+struct B {
+    virtual ~B() { }
+};
+struct D1 : B {
+    int i;
+};
+struct D2 : B {
+    float f;
+};
+int main() {
+    B* b{new D1};
+    D2* d2{dynamic_cast<D2*>(b)};
+    std::cout << d2 << std::endl;
+    delete b;
+}
+```
 
 > RTTI 的实现原理一般是在虚函数表中增加指向 `std::type_info` 的指针。每个 `std::type_info` 根据继承关系构成有向无环图。 `typeid` 直接获取虚函数表中的这个指针，而 `dynamic_cast` 需要在有向无环图中进行遍历搜索直至成功或失败。所以 `typeid` 的运行时性能与一般多态显著无差别，但 `dynamic_cast` 的性能消耗较大。但凡开启了 RTTI，由于需要存储这些 `std::type_info`，编译出的二进制文件也会变大。
 
