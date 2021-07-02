@@ -1,7 +1,5 @@
 # 虚函数
 
-## 引入
-
 按照上一节引入的子类型多态，首先来尝试一个现实的例子：
 ```CPP
 #include <string>
@@ -83,8 +81,32 @@ rb.f();  // 通过 Base& 调用虚函数
 virtual **返回值类型** *成员函数名*(**参数列表**) *函数体*
 ```
 
+在成员函数中也可调用虚函数。
+```CPP
+#include <iostream>
+struct Base {
+    void callF() {
+        f(); // 相当于 this->f();
+    }
+    virtual void f() { // 虚函数，可被子类覆盖
+        std::cout << "Base called" << std::endl;
+    }
+};
+struct Derived : Base {
+    void f() {
+        std::cout << "Derived called" << std::endl;
+    }
+};
+int main() {
+    Base* b{new Derived{}};
+    b->callF(); // 输出 Derived called
+}
+```
+
+这是因为成员函数中的成员使用相当于隐含了前缀 `this->`，而在这里的 `this->f()` 和刚刚的情形是一致的，会调用虚函数的实际覆盖函数而非 `this` 本身的类型。所以，`callF` 在刚才的例子中调用了 `Derived::f` 而非 `Base::f`。但是，构造函数和析构函数中的 `this` 无法调用虚函数：因为在运行构造函数和析构函数的时期派生类尚未形成或已经消失。
+
 最后需要注意的是，虚函数拥有这样的特点：任何用于覆盖虚函数的子类同名函数，也是虚函数。即：
-```cpp
+```CPP
 struct A {
     virtual void f() { }
 };
