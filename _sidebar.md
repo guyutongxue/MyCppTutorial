@@ -116,7 +116,7 @@
         * [虚函数](ch07/polymorphism/virtual_function.md)
         * [C++ 风格类型转换](ch07/polymorphism/cpp_cast.md)
         * [RTTI](ch07/polymorphism/rtti.md)
-        * [纯虚函数与抽象类(待续)](ch07/polymorphism/abstract_class.md)
+        * [抽象类(待续)](ch07/polymorphism/abstract_class.md)
         * [虚析构函数(待续)](ch07/polymorphism/virtual_destructor.md)
     * [多重继承（选读）(待续)](#)
         * [用继承来代替成员](#)
