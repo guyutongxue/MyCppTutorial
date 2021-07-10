@@ -22,9 +22,59 @@ enum Direction {
     West,
     North
 };
-
-// 使用例
-Direction d{West};
 ```
+
+这段代码的意思是，声明一个枚举类型 `Direction`，它的取值范围只能是 `East` `South` `West` 和 `North`。
+
+```cpp
+Direction d{East};
+d = North;
+// d = 3; // 编译错误：不能将 int 类型变量赋值给 Direction 类型
+```
+
+需要注意的是，这种声明不仅引入了类型名 `Direction`，还向全局命名空间引入了四个枚举项（`East` `South` `West` 和 `North`）的名字，从而你能在任何地方使用这些枚举项。如果不希望这种名字的污染，可以使用带作用域的枚举类型：
+
+<pre class="sdsc">
+enum <x-or>class<hr>struct</x-or> <i>枚举类型名</i> <opt-block>: <i>基</i></opt-block> {
+    <b>枚举项列表</b>
+};
+</pre>
+
+在 `enum` 关键字后加上 `class` 或者 `struct`，这个枚举便成为了带有作用域的枚举类型。当枚举类型带有作用域时，其枚举项需要带 `@*枚举类型名*::@` 前缀使用：
+```cpp
+enum class Direction {
+    East,
+    South,
+    West,
+    North
+};
+Direction d{Direction::East};
+d = Direction::North;
+// d = North; // 编译错误：North 未定义
+```
+
+我们推荐在 C++ 中使用带有作用域的枚举。
+
+## 枚举类型的底层实现
+
+关于枚举类型，我们还需要了解其底层是如何实现的。对于一个枚举类型来说，其实际上定义了若干个整数类型常量作为其枚举项。这些常量的值是从 `0` 开始的连续整数。比如在最初的 `Direction` 例子中，编译器定义了四个常量 `East` `South` `West` 和 `North`，它们的取值分别为 `0` `1` `2` `3`。也就是说，
+```cpp
+Direction d{East};
+d = North;
+```
+会被编译器翻译成
+```cpp
+int d{0};
+d = 3;
+```
+
+正因为枚举项底层实现是整数类型，所以 C++ 允许从枚举项到整数类型的转换。（但反过来不行，如果反过来就违背了枚举类型“有限个取值”的初衷。）
+```cpp
+int a = North; // 即 int a = 3;
+```
+
+你可以手动指定一个枚举项底层的值。
+```cpp
+D
 
 ?> [TODO]

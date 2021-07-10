@@ -18,3 +18,4 @@
 - [ ] `std::freopen`
 - [x] `new[]` 和 `delete[]`
 - [ ] `union` 和 `enum`
+- [ ] 多重继承
