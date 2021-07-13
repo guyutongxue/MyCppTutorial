@@ -24,11 +24,17 @@ enum Direction {
 };
 ```
 
-这段代码的意思是，声明一个枚举类型 `Direction`，它的取值范围只能是 `East` `South` `West` 和 `North`。
+这段代码的意思是，声明一个枚举类型 `Direction`，它的取值范围只能是 `East` `South` `West` 和 `North`。下面给出了枚举类型的使用例子：
 
 ```cpp
+// 声明并定义一个枚举
 Direction d{East};
+// 赋值
 d = North;
+// 判断
+if (d == West) {
+    cout << "He is going to west." << endl;
+}
 // d = 3; // 编译错误：不能将 int 类型变量赋值给 Direction 类型
 ```
 
@@ -53,7 +59,7 @@ d = Direction::North;
 // d = North; // 编译错误：North 未定义
 ```
 
-我们推荐在 C++ 中使用带有作用域的枚举。
+我们推荐在 C++ 中使用带有作用域的枚举，这样能有助于避免命名冲突。
 
 ## 枚举类型的底层实现
 

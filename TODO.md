@@ -17,5 +17,5 @@
 - [x] C 语言
 - [ ] `std::freopen`
 - [x] `new[]` 和 `delete[]`
-- [ ] `union` 和 `enum`
+- [x] `union` 和 `enum`
 - [ ] 多重继承
