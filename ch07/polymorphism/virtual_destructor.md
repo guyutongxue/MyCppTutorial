@@ -1,4 +1,4 @@
-# 虚析构函数（未完成）
+# 虚析构函数
 
 本节介绍一些需要将析构函数设置为虚函数的情形。
 
@@ -55,4 +55,70 @@ int main() {
 
 ## 资源安全性
 
-?> [TODO]
+考虑以下代码：
+```CPP
+#include <iostream>
+struct Base { };
+struct Derived : Base {
+private:
+    char* p;
+
+public:
+    Derived(unsigned size) {
+        p = new char[size];
+        std::cout << "ctor called" << std::endl;
+    }
+    ~Derived() {
+        delete[] p;
+        std::cout << "dtor called" << std::endl;
+    }
+};
+
+int main() {
+    Base* b{nullptr};
+    b = new Derived(16);
+    // [...]
+    delete b;
+}
+```
+
+这段代码中，`Derived` 继承了 `Base`，并拥有一个指针 `p` 可以指向一片 `new` 出来的内存。`p` 所指向的内存会在 `Derived` 构造时申请得到，在 `Derived` 析构时释放。然后，main 函数中用多态的风格使用了 `Derived`。一切看上去都很不错，但这段程序只会输出：
+```io
+ctor called
+```
+也就是说，`~Derived` 的析构函数根本没被执行。这是为什么呢？
+
+问题的根源在 `delete b` 这个表达式的执行上。执行 `delete` 会调用操作数所指向对象的析构函数，即 `delete b` 在释放其内存前掉用 `b->~Base()`。这里调用 `~Base` 而非 `~Derived` 的原因正是 `b` 是 `Base*` 类型而非 `Derived*` 类型的。因此，整个析构过程中，`~Derived` 根本无法得到调用。造成的后果就是 `Derived::p` 所指向的内存没被释放，一个内存泄漏出现了。
+
+这很不好。那有什么解决办法呢？注意到这里的情形和之前引入虚函数的例子很像——期望调用派生类函数的场景却调用了基类的函数。所以方法就是：将析构函数设置为虚函数。
+
+```CPP
+#include <iostream>
+struct Base {
+    // 写空函数体也行，和 =default 效果一样
+    virtual ~Base() = default;
+};
+struct Derived : Base {
+private:
+    char* p;
+
+public:
+    Derived(unsigned size) {
+        p = new char[size];
+        std::cout << "ctor called" << std::endl;
+    }
+    ~Derived() {
+        delete[] p;
+        std::cout << "dtor called" << std::endl;
+    }
+};
+
+int main() {
+    Base* b{nullptr};
+    b = new Derived(16);
+    // [...]
+    delete b;
+}
+```
+
+这段代码就能正确输出 `dtor called` 了，证明虚析构能够解决刚才所说的内存泄漏问题。具体讲，若 `b` 所指向对象的析构函数是虚的，`delete b` 会转而调用析构函数的最终覆盖函数——即 `Derived::~Derived` 这个虚函数；随后，析构过程会继续析构其基类和各成员。这就解释了为什么在许多场合虚析构函数是必须存在的。

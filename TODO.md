@@ -18,5 +18,6 @@
 - [ ] `std::freopen`
 - [x] `new[]` 和 `delete[]`
 - [x] `union` 和 `enum`
+- [ ] 虚析构函数
 - [ ] 多重继承
 - [ ] 默认实参
