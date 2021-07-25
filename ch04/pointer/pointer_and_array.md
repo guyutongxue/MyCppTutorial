@@ -45,7 +45,7 @@ cout << a << endl;
 0x62fe00
 ```
 
-你还可以直接用数组名作加法来遍历：
+你还可以直接用数组名做加法来遍历：
 ```CPP
 #include <iostream>
 using namespace std;
