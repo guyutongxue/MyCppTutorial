@@ -1,6 +1,6 @@
 # 第八章 模板基础
 
-C++ 最具特色的语言特性就是模板（Template）。模板分为函数模板（Function template）和类模板（Class template）。
+C++ 最具特色的语言特性就是模板（Template）。最常见的模板是函数模板（Function template）类模板（Class template）。
 
 为了引入，我们考虑之前在[重载](ch05/overload)一节所描述的代码（略作调整）：
 
