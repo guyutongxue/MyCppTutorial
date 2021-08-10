@@ -37,9 +37,9 @@ int main() {
 
 ### 使用 Visual Studio Code
 
-Visual Studio Code 是一款非常现代的文本编辑器，可以支持编译并运行 C++ 代码。现在你需要做的事情非常简单，前往[这里](https://guyutongxue.github.io/VSCodeConfigHelper)下载一个配置工具，然后双击运行它即可。你只需要按照工具的提示一步一步做下去就可以了。
+Visual Studio Code 是一款非常现代的文本编辑器，可以支持编译并运行 C++ 代码。现在你需要做的事情非常简单，前往[这里](https://vscch3.vercel.app)下载一个配置工具，然后双击运行它即可。你只需要按照工具的提示一步一步做下去就可以了。
 
-> 不会使用这个配置工具？欢迎观看 B 站视频教程 [BV1ZT4y1g7zt](https://b23.tv/BV1ZT4y1g7zt) 。
+> 配置工具演示： [BV1tf4y1V7F6](https://b23.tv/BV1tf4y1V7F6) 。
 
 当你完成配置的时候，工具会提示生成测试代码，这个代码与我之前给出的代码是相同的。因此你可以直接按照提示编译并运行（或调试），即可观察到下方（或弹窗）输出了 `Hello, world!` 。
 
