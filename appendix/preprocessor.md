@@ -1,6 +1,6 @@
-# 预编译指令
+# 预处理指令
 
-预编译指令又称预处理指令，是在 C++ 源文件编译前执行的指令。预编译指令可以定义或取消定义宏、条件编译、包含文件、引发错误、设置编译器等等。预编译指令永远以 `#` 开头，且以换行符为结尾。下面将分别介绍这些预编译指令。
+预处理指令又称预编译指令，是在 C++ 源文件编译前执行的指令。预处理指令可以定义或取消定义宏、条件编译、包含文件、引发错误、设置编译器等等。预处理指令永远以 `#` 开头，且以换行符为结尾。下面将分别介绍这些预处理指令。
 
 ## 宏（ `#define` `#undef` ）
 
@@ -46,15 +46,15 @@ int MAX_NUMBER;    // 不进行替换
 
 你可以在 `@*宏名*@` 后面附上 `@*形参列表*@` ，这样你可以像函数那样使用这个宏。替换的时候，会用你的实参去替换替换文本的形参。替换举几个例子的话：
 ```cpp
-#define print(sth) cout << sth << endl
-print("Hello");    // 替换为 cout << "Hello" << endl;
-print(42);         // 替换为 cout << 42 << endl;
+#define PRINT(sth) cout << sth << endl
+PRINT("Hello");    // 替换为 cout << "Hello" << endl;
+PRINT(42);         // 替换为 cout << 42 << endl;
 ```
 
 又如：
 ```cpp
-#define sum(a, b) ((a) + (b))
-int score = sum(23, 42); // 替换为 int score = ((23) + (42));
+#define SUM(a, b) ((a) + (b))
+int score = SUM(23, 42); // 替换为 int score = ((23) + (42));
 ```
 
 形参列表可以不限定长度，使用省略号即可：
@@ -65,14 +65,20 @@ int score = sum(23, 42); // 替换为 int score = ((23) + (42));
 
 你可以使用 `__VA_ARGS__` 这个标识符来指代省略号所省略的内容（可以为空）。比如：
 ```cpp
-#define intArray(name, len, ...) int name[len]{ __VA_ARGS__ }
-intArray(bar, 10, 3, 4, 5, 6); // 替换为 int bar[10]{ 3, 4, 5, 6 };
+#define INT_ARRAY(name, len, ...) int name[len]{ __VA_ARGS__ }
+INT_ARRAY(bar, 10, 3, 4, 5, 6); // 替换为 int bar[10]{ 3, 4, 5, 6 };
 ```
 
- 
-### 两个预编译运算符
+注意：仿函数宏的实参只识别 `(` `)`，而不识别 `<` `>`。这意味着将模板实参作为宏实参可能会被错误地替换。
+```cpp
+#define F(a, b) /* ... */
+F(std::pair<int, int>, int); // 错误：参数个数不匹配
+                             // a 替换为 std::pair<int
+                             // b 替换为 int>
+                             // 出现多余的实参 int
+```
 
-#### `#` 运算符
+### `#` 运算符
 
 ```sdsc
 #*宏形参*
@@ -81,14 +87,14 @@ intArray(bar, 10, 3, 4, 5, 6); // 替换为 int bar[10]{ 3, 4, 5, 6 };
 在宏替换中， `#` 运算符可以将这个形参的文本**用双引号引起**，使之成为一个字符串字面量。举例来说：
 
 ```cpp
-#define print1(a) cout << a << endl
-#define print2(a) cout << #a << endl
-print1(number);   // 替换为 cout << number << endl;
-print2(number);   // 替换为 cout << "number" << endl;
-print2("Hello");  // 替换为 cout << "\"Hello\"" << endl;
+#define PRINT1(a) cout << a << endl
+#define PRINT2(a) cout << #a << endl
+PRINT1(number);   // 替换为 cout << number << endl;
+PRINT2(number);   // 替换为 cout << "number" << endl;
+PRINT2("Hello");  // 替换为 cout << "\"Hello\"" << endl;
 ```
 
-#### `##` 运算符
+### `##` 运算符
 
 ```sdsc
 *左侧文本或形参*##*右侧文本或形参*
@@ -97,9 +103,24 @@ print2("Hello");  // 替换为 cout << "\"Hello\"" << endl;
 `##` 可以将文本和形参**紧密地、无空格地粘贴**在一起。这一运算符可以用于：形成更长的变量名、组成更多位数的算术类型字面量、组合为复合赋值运算符等。但不能用于创建注释。例如：
 
 ```cpp
-#define stick(a, b) (a##b)
-int x = stick(123, 456) // 替换为 int x = (123456);
+#define STICK(a, b) (a##b)
+int x = STICK(123, 456) // 替换为 int x = (123456);
 ```
+
+### `__VA_OPT__` 运算符
+
+```sdsc
+__VA_OPT__(*文本*)
+```
+
+当使用 `__VA_ARGS__` 时，允许在替换文本中出现 `__VA_OPT__` 运算符。该运算符的含义是，如果 `__VA_ARGS__` 为空字符串，则在最终替换结果中删去 `@*文本*@`，否则在最终替换结果中保留 `@*文本*@`。例如：
+```cpp
+#define G(...) f(0 __VA_OPT__(,) __VA_ARGS__)
+G(1, 2); // 替换为 f(0, 1, 2);
+G();     // 替换为 f(0); ，注意没有多余的逗号
+```
+
+除了 `__VA_OPT__` 运算符，还有一种扩展语法：当替换文本中出现 `,##__VA_ARGS__` 时，则在 `__VA_ARGS__` 为空字符串时删去开头的逗号。尽管大多数编译器都启用此扩展，但它并不标准。
  
 ### 一些编译器预定义的宏
 
@@ -181,7 +202,7 @@ freopen("1.out","w",stdout); // 则重定向到文件输出
 ```
 但凡编译到此指令编译器将停止编译，并将错误信息输出。
  
-## 设置编译器（ `#pragma` 、 `#line` ）
+## 设置编译器（ `#pragma` `#line` ）
 
 ```sdsc
 #pragma *某些参数*
@@ -205,7 +226,7 @@ freopen("1.out","w",stdout); // 则重定向到文件输出
 #pragma pack(*对齐*)
 #pragma pack()
 ```
-`#pragma pack` 可接受一个参数 `@*对齐*@`，它需要是 2 的整数次幂。当写下这条预编译指令后，之后的结构体对齐皆设置为 `@*对齐*@`。`#pragma pack()` 取消此设置，恢复默认对齐。比如：
+`#pragma pack` 可接受一个参数 `@*对齐*@`，它需要是 2 的整数次幂。当写下这条预处理指令后，之后的结构体对齐皆设置为 `@*对齐*@`。`#pragma pack()` 取消此设置，恢复默认对齐。比如：
 ```CPP
 #include <iostream>
 using namespace std;
@@ -221,7 +242,7 @@ int main() {
 }
 ```
 
-但是，如果你使用 GCC 或 Clang，我们更推荐用属性（Attribute）来实现：
+但是，如果你使用 GCC 或 Clang，我们更推荐用特性（Attribute）来实现：
 ```CPP
 #include <iostream>
 #include <tuple>

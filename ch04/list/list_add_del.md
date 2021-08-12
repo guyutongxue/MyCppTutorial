@@ -10,7 +10,7 @@ temp->next = prev->next;
 prev->next = temp;
 ```
 
-![图示](https://s3.ax1x.com/2021/01/26/sjlbjS.png)
+![图示](https://z3.ax1x.com/2021/01/26/sjlbjS.png)
 
 如果插入的位置是头部，则需要修改 `head` 指针指向的位置。
 
@@ -30,7 +30,7 @@ prev->next = temp->next;
 delete temp;
 ```
 
-![图示](https://s3.ax1x.com/2021/01/26/sj165n.png)
+![图示](https://z3.ax1x.com/2021/01/26/sj165n.png)
 
 删除 `head` 指向的头结点是同样的道理。
 
