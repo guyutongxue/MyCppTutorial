@@ -45,7 +45,7 @@ window.$docsify = {
                 }
                 // For IO block.
                 if (lang === 'io') {
-                    return `<div style="position:relative;"><pre class="io">${htmlToElement(marked(code)).innerHTML}</pre><div class="hint">输入输出</div></div>`;
+                    return `<div style="position:relative;"><pre class="io">${htmlToElement(marked(code, {smartypants: false})).innerHTML}</pre><div class="hint">输入输出</div></div>`;
                 }
                 let cc = document.createElement('code');
                 cc.textContent = code;
