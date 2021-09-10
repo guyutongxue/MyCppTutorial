@@ -113,6 +113,50 @@ int main() {
 4
 ```
 
+## C 风格字符串库
+
+既然函数可以处理转换为指针的数组，那么函数也可以处理转换为指针的字符串。比如之前“复制字符串”这个问题，就可以通过一个函数来解决：
+
+```cpp
+void copyString(char* dest, const char* src) {
+    for (int i{0}; src[i] != '\0'; i++) {
+        dest[i] = src[i];
+    }
+}
+```
+
+这个函数通过遍历 `src` 指针所指向的字符串，逐一将内容复制到 `dest` 所指向的字符串中。不过，`<cstring>` 头文件中已经提供了这些操作 C 风格字符串的函数。常用的有：
+
+| 函数                                        | 作用                                                        |
+| ------------------------------------------- | ----------------------------------------------------------- |
+| `unsigned strlen(const char*)`              | 求字符串长度（在[后续章节](ch05/easy_string)中使用）        |
+| `int strcmp(const char*, const char*)`      | 字典序比较字符串。相等时返回 0                              |
+| `char* strcpy(char* dest, const char* src)` | 将 `src` 指向的字符串复制到 `dest` 所指位置上               |
+| `char* strcat(char* dest, const char* src)` | 将 `src` 指向的字符串复制到 `dest` 所指字符串的末尾（拼接） |
+
+使用它们的例子：
+```CPP
+#include <cstring>
+#include <iostream>
+int main() {
+    char a[10]{"Hello"};
+    char b[10]{};
+
+    // a 隐式转换为指向 a[0] 的指针，作为 std::strlen 的实参
+    std::cout << std::strlen(a) << std::endl; // 输出 5
+
+    // 接下来尝试调用 std::strcpy 将 a 字符串复制到 b 数组内
+    std::strcpy(b, a);
+    std::cout << b << std::endl; // 输出 Hello
+
+    // 最后尝试调用 std::strcat 将 a 字符串拼接到 b 字符串后面
+    std::strcat(b, a);
+    std::cout << b << std::endl; // 输出 HelloHello
+}
+```
+
+可以看出，C 风格字符串的使用不是特别轻松地。因此，C++ 提供了 `std::string` 类来解决这些问题。但 `std::string` 的使用需要更多的知识，我把它的介绍放在了[第六章的结尾](ch06/summary)。
+
 ## 注意事项
 
 我们之前说到，如果 `cout <<` 后面接的是一个字符数组，那么可以做到输出一个字符串。然而这里应当发生数组到指针的隐式转换，所以 `cout <<` 实际上是**对 `char*` 类型的输出做了特殊的处理**。这也就是为什么我们不能直接通过 `cout` 输出指向 `char` 类型的指针：
