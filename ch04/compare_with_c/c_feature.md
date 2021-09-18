@@ -85,7 +85,7 @@ bool b = true;
 除了上述内容，C 和 C++ 的不同之处还有：
 - 结构体不引入作用域（C++ 中引入）
 - 关键字 `inline` 含义为优先内联（C++ 中为容许重复定义）
-- 全局作用域只读变量拥有外部链接（C++ 中拥有内部链接）
+- 全局作用域只读变量拥有外部连接（C++ 中拥有内部连接）
 - `_Noreturn`（C++ 中 `[[noreturn]]`）
 - 对齐相关关键字 `_Alignas` `_Alignof`（C++ 中 `alignas` `alignof`）
 - 静态断言 `_Static_assert`（C++ 中 `static_assert`）
