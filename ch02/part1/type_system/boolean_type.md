@@ -70,6 +70,7 @@ int main() {
         if (x >= 10) {
             isOK = false;
         }
+        i++;
     }
     if (isOK) {
         cout << "YES" << endl;
