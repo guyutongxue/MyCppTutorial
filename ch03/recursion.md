@@ -22,7 +22,7 @@ int main() {
         cout << "Not prime" << endl;
 }
 ```
-然后你会注意到在函数 `isPrime` 中，形参 `x` 可能的约数必然小于等于它的平方根。因此我们可以充分利用定义在头文件 `<cmath>` 里的 `std::sqrt` 函数计算平方根：
+然后你会注意到在函数 `isPrime` 中，如果形参 `x` 有约数，那么必有一个小于等于它平方根的约数。因此我们可以充分利用定义在头文件 `<cmath>` 里的 `std::sqrt` 函数计算平方根：
 ```CPP
 #include <iostream>
 #include <cmath>         // 这里增加一个头文件引入

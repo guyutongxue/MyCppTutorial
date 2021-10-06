@@ -162,7 +162,7 @@ int main() {
     char a, b, c;
     a = cin.get();  // 输入到 a
     b = cin.get();  // 输入到 b
-    b = cin.get();  // 输入到 c
+    c = cin.get();  // 输入到 c
     cout << a << endl;
     cout << b << endl;
     cout << c << endl;
