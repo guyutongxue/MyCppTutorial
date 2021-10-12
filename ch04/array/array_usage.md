@@ -67,7 +67,7 @@ int main() {
 }
 ```
 
-最后，输出质数。只有 `isComposite[i]` 为 `false` 的 `i` 才是合数，所以：
+最后，输出质数。只有 `isComposite[i]` 为 `false` 的 `i` 才是质数，所以：
 ```CPP
 #include <iostream>
 using namespace std;
