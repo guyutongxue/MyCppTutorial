@@ -78,7 +78,7 @@ for (int i{1}; i < n; i++) { // n 是节点个数
  */
 Node* getNode(Node* head, unsigned int x) {
     Node* current{head};
-    for (unsigned int{i}; i < x; i++) {
+    for (unsigned int i{0}; i < x; i++) {
         current = (*current).next;
     }
     return current;

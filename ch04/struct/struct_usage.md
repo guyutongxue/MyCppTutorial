@@ -40,7 +40,7 @@ int main() {
     Student classmates[3]{
         {10001, "Alice"}, // classmates[0]
         {10002, "Bob"},   // classmates[1]
-        {10086, "Carol"}, // classmates[3]
+        {10086, "Carol"}, // classmates[2]
     };
     for (int i{0}; i < 3; i++) {
         printStudentInfo(classmates[i]);
@@ -48,7 +48,7 @@ int main() {
     }
 }
 ```
-你可以自己运行一下，看看它的输出是否和你想的一致。
+你可以自己运行一下，看看它的输出是否和你想的一致。当我们把多种相互关联密切的数据以结构体的形式“绑定”在一起的时候，操作它们就会变得更轻松。比如在上面的例子中，如果想要对学生按学号高低进行排序，那么只需交换 classmates 数组元素的顺序就可以了。如果分成两个单独的数组来做，则代码量会稍微多一点。
 
 又比如指向结构体类型的指针：
 ```CPP

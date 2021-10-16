@@ -123,7 +123,7 @@ void change(int* pa,int* pb) {
 }
 int main() {
     int a{3}, b{5}
-    exchange(&a, &b);
+    change(&a, &b);
     cout << a << " " << b << endl;
 }
 ```
