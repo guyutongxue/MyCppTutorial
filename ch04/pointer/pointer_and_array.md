@@ -140,23 +140,25 @@ void copyString(char* dest, const char* src) {
 #include <cstring>
 #include <iostream>
 int main() {
-    char a[10]{"Hello"};
-    char b[10]{};
+    char a[15]{"Hello"};
+    char b[15]{};
 
     // a 隐式转换为指向 a[0] 的指针，作为 std::strlen 的实参
     std::cout << std::strlen(a) << std::endl; // 输出 5
 
     // 接下来尝试调用 std::strcpy 将 a 字符串复制到 b 数组内
+    // （这需要保证 b 数组足够大，能够完整放下 a 字符串）
     std::strcpy(b, a);
     std::cout << b << std::endl; // 输出 Hello
 
     // 最后尝试调用 std::strcat 将 a 字符串拼接到 b 字符串后面
+    // （这需要保证 b 数组足够大，能够放下拼接完的字符串）
     std::strcat(b, a);
     std::cout << b << std::endl; // 输出 HelloHello
 }
 ```
 
-可以看出，C 风格字符串的使用不是特别轻松地。因此，C++ 提供了 `std::string` 类来解决这些问题。但 `std::string` 的使用需要更多的知识，我把它的介绍放在了[第六章的结尾](ch06/summary)。
+可以看出，C 风格字符串的使用不是特别容易。因此，C++ 提供了 `std::string` 类来解决这些问题。但 `std::string` 的使用需要更多的知识，我把它的介绍放在了[第六章的结尾](ch06/summary)。
 
 ## 注意事项
 
