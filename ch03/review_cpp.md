@@ -83,7 +83,7 @@ constexpr float PI{3.14159f};
 但是问题出现了，`b.h` 里面也有一个叫 `PI` 的常量，但是它的定义不同……
 ```cpp
 // b.h
-constexpr double PI{3.14189265359};
+constexpr double PI{3.14159265359};
 ```
 现在问题是，我在自己的文件中写下 `PI` 这个名字的时候，就发生了重复定义的现象，即发生了命名冲突。
 ```cpp
@@ -104,7 +104,7 @@ namespace libA {
 
 // b.h
 namespace libB {
-    constexpr double PI{3.14189265359};
+    constexpr double PI{3.14159265359};
 }
 ```
 先不用管这是什么语法，你只需要这样一通操作下来，你在写代码的时候就可以有效避免命名冲突了：
