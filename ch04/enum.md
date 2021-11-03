@@ -100,7 +100,7 @@ enum class Direction: short {
     North
 };
 int main() {
-    Direction d{East};
+    Direction d{Direction::East};
     sizeof(d); // sizeof(d) 的值等于 sizeof(short)
 }
 ```

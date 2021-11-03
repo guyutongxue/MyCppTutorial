@@ -169,7 +169,8 @@ scanf("%d%d", &a, &b); /* 即 C++ 中的 cin>>a>>b; */
 | `%hu`               | `unsigned short*`         |
 | `%lu`               | `unsigned long*`          |
 | `%llu` <sup>※</sup> | `unsigned long long*`     |
-| `%f`                | `double*`                 |
+| `%f`                | `float*`                  |
+| `%lf`               | `double*`                 |
 | `%Lf`               | `long double*`            |
 | `%c`                | `char*`                   |
 | `%s`                | 字符串（`char*`，见下文） |
@@ -201,12 +202,16 @@ scanf("%d,%d", &a, &b);
 
 ## 输入失败（选读）
 
-若 `scanf` 未能按照占位符的规定读取到期望的值，亦或者没有匹配到期望的模式，抑或出现了 EOF，则导致输入失败：`scanf` 返回值 `EOF`。`EOF` 是一个定义于头文件 `stdio.h` 的[宏](/appendix/preprocessor.md#idx_宏)，你可以把它理解成一个 `int` 类型的值。
+若 `scanf` 未能按照占位符的规定读取到期望的值，亦或者没有匹配到期望的模式，抑或出现了 EOF，则导致输入失败。你可以通过 `scanf` 的返回值来判断输入失败：
+- `scanf` 在正常情况下返回成功写入的变量个数：比如 `scanf("%d%d", &a, &b)` 在正常情况下返回 `2`；
+- 若某个模式匹配发生失败（比如期望整数但读取到非数字的字符），则后续的匹配输入不再进行，只返回当前成功匹配并写入的变量个数。
+- 若发生了 EOF 错误，则返回 `EOF`。`EOF` 是一个定义于头文件 `stdio.h` 的[宏](/appendix/preprocessor.md#idx_宏)，你可以把它理解成一个 `int` 类型的值。
 
 所以你可以这样判断输入是否出现问题：
 ```c
 int a;
-if (scanf("%d", &a) != EOF) {
+// scanf("%d", &a) 在正常时返回 1，匹配失败时返回 0，EOF 时返回 EOF
+if (scanf("%d", &a) != 1) {
     printf("scanf failed");
 }
 /* 类似 C++ 中 if (cin >> a) ... */
@@ -215,7 +220,7 @@ if (scanf("%d", &a) != EOF) {
 解决的办法和 `cin` 类似，首先需清除失败状态，然后清空缓冲区。清除失败状态可通过调用 `clearerr`，而清空缓冲区的一般方法是调用 `getchar` 耗尽：
 ```c
 int a;
-if (scanf("%d", &a) != EOF) {
+if (scanf("%d", &a) != 1) {
     printf("scanf failed");
     clearerr(stdin); /* 清除失败状态（有时可省去） */
     /* 以下是清空一行缓冲区的代码 */
