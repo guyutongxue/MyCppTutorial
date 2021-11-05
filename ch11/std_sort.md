@@ -74,6 +74,7 @@ int main() {
 // 对 begin 指向的元素到 end 指向的元素这一区间排序
 void sort(int* begin, int* end) {
     int n{end - begin};
+    int* a{begin};
     for (int i{0}; i < n - 1; i++) {
         for (int j{0}; j < n - 1 - i; j++) {
             if (a[j + 1] < a[j]) {
@@ -153,6 +154,7 @@ int main() {
 ```cpp
 void sort(int* begin, int* end) {
     int n{end - begin};
+    int* a{begin};
     for (int i{0}; i < n - 1; i++) {
         for (int j{0}; j < n - 1 - i; j++) {
             // 注意下面一行的小于号。
@@ -174,6 +176,7 @@ void sort(int* begin, int* end) {
 // 冒泡的 sort，但从大到小
 void sort(int* begin, int* end) {
     int n{end - begin};
+    int* a{begin};
     for (int i{0}; i < n - 1; i++) {
         for (int j{0}; j < n - 1 - i; j++) {
             if (a[j + 1] > a[j]) {
@@ -195,9 +198,10 @@ bool cmp(int a, int b) {
 
 void sort(int* begin, int* end) {
     int n{end - begin};
+    int* a{begin};
     for (int i{0}; i < n - 1; i++) {
         for (int j{0}; j < n - 1 - i; j++) {
-            if (cmp(a, b)) {
+            if (cmp(a[j + 1], a[j])) {
                 int temp{a[j]};
                 a[j] = a[j + 1];
                 a[j + 1] = temp;
