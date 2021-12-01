@@ -96,9 +96,9 @@ namespace fs = std::filesystem;
 
 int main() {
     // 将 a.txt 重命名为 b.txt
-    fs::copy("a.txt"，"b.txt");
+    fs::rename("a.txt"，"b.txt");
     // 将 b.txt 移动（剪切并粘贴）到 foo/b.txt
-    fs::copy("b.txt"，"foo/b.txt");
+    fs::rename("b.txt"，"foo/b.txt");
 }
 ```
 
