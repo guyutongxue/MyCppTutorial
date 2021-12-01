@@ -144,7 +144,7 @@
     * [多文件编译实践](ch09/compile_multiple_files.md)
     * [C 中的链接(待续)](ch09/c_linking.md)
 * [第十章 文件操作(待续)](ch10/)
-    * [文件读写](ch10/file_io)
+    * [文件读写](ch10/file_io/)
         * [流式输入输出](ch10/file_io/stream.md)
         * [C 风格输入输出](ch10/file_io/c_io.md)
     * [文件系统](ch10/filesystem.md)
