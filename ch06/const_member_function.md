@@ -50,7 +50,7 @@ struct A {
     }
 };
 int main() {
-    A a;
+    const A a;
 //  a.change();  // 编译错误
 }
 ```
