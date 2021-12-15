@@ -88,8 +88,8 @@ Node* getNode(Node* head, unsigned int x) {
 ```cpp
 Node* current{head};
 while (current) { // 当 current 为 nullptr 时，得到 false
-    current = (*current).next;
     cout << (*current).data << endl;
+    current = (*current).next;
 }
 ```
 
@@ -105,8 +105,8 @@ while (current) { // 当 current 为 nullptr 时，得到 false
 ```cpp
 Node* current{head};
 while (current) {
-    current = current->next;
     cout << current->data << endl;
+    current = current->next;
 }
 ```
 有些老师喜欢管这个运算符称为“箭头运算符”。
