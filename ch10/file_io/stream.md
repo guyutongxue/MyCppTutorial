@@ -111,3 +111,7 @@ int n;
 std::ifstream a("a.bin", std::ios::binary);
 a.read(reinterpret_cast<char*>(&n), sizeof(n));
 ```
+
+## 注意事项
+
+几乎任何情形都**不需要**手动调用流对象的 `close` 成员函数。尽管部分教材可能会要求你这样做，但这是完全没有必要的：文件的关闭操作会在 `std::*fstream` 的析构函数中自动完成，无需任何手动处理。
