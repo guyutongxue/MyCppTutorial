@@ -15,7 +15,7 @@
 - [x] 结构体的用途
 - [x] 链表图示
 - [x] C 语言
-- [ ] `std::freopen`
+- [x] `std::freopen`
 - [x] `new[]` 和 `delete[]`
 - [x] `union` 和 `enum`
 - [x] 虚析构函数
@@ -23,4 +23,4 @@
 - [x] 默认实参
 - [ ] CLI 插图
 - [ ] CLion 多文件
-- [ ] 语言链接
+- [x] 语言链接
