@@ -143,7 +143,7 @@
     * [模板中的友元](ch09/friend_in_template.md)
     * [多文件编译实践](ch09/compile_multiple_files.md)
     * [C 中的链接](ch09/c_linking.md)
-* [第十章 文件操作](ch10/)
+* [第十章 常用库介绍](ch10/)
     * [文件读写](ch10/file_io/)
         * [流式输入输出](ch10/file_io/stream.md)
         * [C 风格输入输出](ch10/file_io/c_io.md)
