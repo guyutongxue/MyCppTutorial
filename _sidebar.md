@@ -149,6 +149,7 @@
         * [C 风格输入输出](ch10/file_io/c_io.md)
     * [文件系统](ch10/filesystem.md)
 * [第十一章 函数式编程(待续)](ch11/)
+    * [函数也即对象](ch11/function_as_object.md)
     * [Lambda 表达式](ch11/lambda.md)
     * [`std::sort`](ch11/std_sort.md)
 * [第十二章 模板](ch12/)
