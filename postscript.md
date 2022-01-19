@@ -7,6 +7,7 @@
 - Scott Meyers, *Effective C++* （第 3 版，侯捷 译）
 - Stephen Prata, *C++ Primer Plus* （第 6 版，张海龙 袁国忠 译）
 - Bjarne Stroustrup, *The C++ Programming Language* （第 4 版）
+- Harold Abelson 等《计算机程序的构造和解释》（第 2 版，裘宗燕 译）
 
 
 - [cppreference.com](https://zh.cppreference.com)
