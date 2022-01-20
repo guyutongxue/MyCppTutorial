@@ -109,8 +109,6 @@ int* p = (int*)malloc(sizeof(int));
 
 ### 从 `int` 到枚举类型的隐式转换
 
-?> [TODO] 枚举类型
-
 C++ 中允许从枚举类型到其基类型（一般是 `int`）的隐式转换，但反过来不行。C 则允许双向的转换：
 ```c
 enum Color {

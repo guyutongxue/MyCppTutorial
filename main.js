@@ -139,8 +139,8 @@ window.$docsify = {
                     fetch(url)
                         .then(r => r.json())
                         .then((/** @type {{[key: string]: string}} */ json) => {
-                            if ("updated_at" in json) {
-                                document.querySelector("#date").innerHTML = json.updated_at.substr(0, 10) + " 更新";
+                            if ("pushed_at" in json) {
+                                document.querySelector("#date").innerHTML = json.updated_at.substring(0, 10) + " 更新";
                             }
                         })
                 }
