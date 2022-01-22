@@ -152,7 +152,7 @@
 * [第十一章 函数式编程(待续)](ch11/)
     * [函数也即对象](ch11/function_as_object.md)
     * [Lambda 表达式](ch11/lambda.md)
-    * [闭包与可调用](ch11/callable.md)
+    * [闭包](ch11/closure.md)
     * [STL 算法](ch11/stl_algorithms.md)
     * [`std::sort`](ch11/std_sort.md)
 * [第十二章 模板](ch12/)
