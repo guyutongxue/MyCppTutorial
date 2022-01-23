@@ -19,7 +19,7 @@ Lambda 表达式可以理解为函数类型的字面量。我首先介绍最简�
 using namespace std;
 
 // 上一节中的 sum，需要传入一个函数（指针）
-double sum(int a, int b, double term(int)) {
+double sum(int a, int b, double (*term)(int)) {
     return a > b ? 0.0 : term(a) + sum(a + 1, b, term);
 }
 
