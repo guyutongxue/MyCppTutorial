@@ -76,9 +76,9 @@ int main() {
 
 > 但为了让重载生效，我需要将 `f` `g` `h` 改成 Lambda 表达式而非函数。因为运算符重载只在类类型之间生效（回忆[非成员的运算符](ch06/nonmember_operator#非成员的运算符重载形式)这一节，运算符重载总要求至少一个参数是类类型），故函数指针之间的运算不会考虑自定义的重载。而 Lambda 表达式作为匿名类类型，会考虑这些重载。
 
-还有一个常见的高阶函数是求导算子 $\mathrm d$。$\mathrm d$ 可作用在一个函数 $f$ 上，定义 $\displaystyle\mathrm df(x)=f'(x)=\lim_{\Delta x\to0}\frac{f(x+\Delta x) - f(x)}{\Delta x}$。大家都知道的，称 $\mathrm df$ 这个运算结果为 $f$ 的导函数。
+还有一个常见的高阶函数是微分算子 $\dfrac{\mathrm d}{\mathrm dx}$。$\dfrac{\mathrm d}{\mathrm dx}$ 可作用在一个函数 $f$ 上，定义 $\displaystyle\frac{\mathrm d}{\mathrm dx}f(x)=f'(x)=\lim_{\Delta x\to0}\frac{f(x+\Delta x) - f(x)}{\Delta x}$。大家都知道的，称 $\dfrac{\mathrm d}{\mathrm dx}f$ 这个运算结果为 $f$ 的导函数。
 
-在代码中很难模拟极限过程，但如果取这个 $\Delta x$ 为比较小的值，那或许能得到近似的 $\mathrm df$ 的结果。下面的函数 `d` 实现了近似的求导算子 $\mathrm d$。（其中，取 $\Delta x=10^{-6}$，即 `DX`。）
+在代码中很难模拟极限过程，但如果取这个 $\Delta x$ 为比较小的值，那或许能得到近似的 $\dfrac{\mathrm d}{\mathrm dx}f$ 的结果。下面的函数 `d` 实现了近似的微分算子 $\dfrac{\mathrm d}{\mathrm dx}$。（其中，取 $\Delta x=10^{-6}$，即 `DX`。）
 
 ```CPP
 #include <iostream>
@@ -99,7 +99,7 @@ int main() {
 }
 ```
 
-比如当 $f(x)=x^2$ 时，数学上即可知道 $\mathrm df(x)=2x$。上面的代码验证了这个结果。
+比如当 $f(x)=x^2$ 时，数学上即可知道 $\dfrac{\mathrm d}{\mathrm dx}f(x)=2x$。上面的代码验证了这个结果。
 
 可以见得，函数式编程和数学的关系非常紧密。因此数学家往往偏爱函数式编程；数学中的大量理论（比如抽象代数）也在函数式编程中得以应用。但我们这本书的目的仍然是 C++ 教学而非数学研究，所以从下一节开始我将回归到 STL 算法部分的讲解。这几节函数式编程的介绍中，我们学习了不少新的思想和语法；它们马上就将派上用场。
 
