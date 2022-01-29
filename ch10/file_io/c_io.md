@@ -1,4 +1,4 @@
-# C 风格输入输出（选读）
+# C 风格输入输出 <sub>选读</sub>
 
 为兼容 C 语言，C++ 仍然提供了 C 风格的输入输出库。但如无特殊情形，**总是建议使用 C++ 风格的流式输入输出**。
 
@@ -13,7 +13,7 @@
 FILE* fopen(const char* filename, const char* mode);
 ```
 
-> 在 C99 中，filename 和 mode 具有 restrict 限定。
+> 在 C99 中，`filename` 和 `mode` 具有 `restrict` 限定。
 
 其中，`filename` 是存储打开文件名的 C 风格字符串，`mode` 是 `"r"` 或 `"w"` 或 `"rb"` `"wb"` 等，指示打开文件的方式是“读”还是“写”，是否是二进制模式。比如：
 

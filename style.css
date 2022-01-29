@@ -19,7 +19,7 @@
     --table-row-odd-background: var(--table-row-even-background);
 
     /* Change quote's style */
-    --blockquote-color: #696969;
+    --blockquote-color        : #696969;
     --blockquote-em-font-style: italic;
 
     /* Change link's style */
@@ -86,13 +86,13 @@ pre.sdsc {
 }
 
 .hint {
-    content: 输入输出;
-    position: absolute;
-    top: 0.75em;
-    right: 0.75em;
-    opacity: 0.6;
-    color: inherit;
-    font-size: var(--font-size-s);
+    content    : 输入输出;
+    position   : absolute;
+    top        : 0.75em;
+    right      : 0.75em;
+    opacity    : 0.6;
+    color      : inherit;
+    font-size  : var(--font-size-s);
     line-height: 1;
 }
 
@@ -103,6 +103,11 @@ pre.sdsc {
 pre.table-code {
     max-width: 300px;
     padding  : .8em;
+}
+
+h1 sub,
+h1 sup {
+    font-size: var(--base-font-size);
 }
 
 /* Change Chinese font to sans-serif, because the default font 宋体 is hard to read. */
@@ -171,10 +176,10 @@ body[data-platform^="Win"] .sdsc {
 }
 
 .markdown-section pre[data-lang] {
-    /* 
+    /**
      * Fix line number in code block. 
      * Change this overflow attr to <pre> not the <code>.
-    */
+     */
     overflow: auto !important;
 }
 
@@ -210,7 +215,7 @@ body[data-platform^="Win"] .sdsc {
 
 div.table-wrapper+p.small {
     margin-top: -1em;
-    font-size: var(--small-font-size);
+    font-size : var(--small-font-size);
 }
 
 .runcode a {
