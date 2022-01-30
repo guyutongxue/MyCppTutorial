@@ -40,7 +40,7 @@ int main() {
     std::vector<int>::iterator i{};
     std::vector<int>::iterator begin{/* ? */};    
     std::vector<int>::iterator end{/* ? */};
-    for (i = begin; i < end; ++i) {
+    for (i = begin; i != end; ++i) {
         std::cout << *i << " ";
     }
 }

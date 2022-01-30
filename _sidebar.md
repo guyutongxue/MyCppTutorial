@@ -155,7 +155,7 @@
     * [闭包](ch11/closure.md)
     * [Lambda 表达式捕获](ch11/lambda_capture.md)
     * [高阶函数](ch11/higher_order_function.md)
-    * [STL 算法](ch11/stl_algorithms)
+    * [STL 算法](ch11/stl_algorithms/)
         * [改变序列的算法](ch11/stl_algorithms/mutable_seq.md)
         * [不改变序列的算法](ch11/stl_algorithms/immutable_seq.md)
         * [其它算法](ch11/stl_algorithms/others.md)
