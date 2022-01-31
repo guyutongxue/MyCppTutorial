@@ -36,7 +36,7 @@ public:
 class Student;
 class MyClass {
 private:
-    Student* students[30];
+    Student* students[30]{};
 
 public:
     Student& getStudent(int no) {
@@ -52,7 +52,7 @@ public:
 class Dog;
 class Host {
 private:
-    Dog* dogs[3];
+    Dog* dogs[3]{};
     int num;
 
 public:
@@ -84,12 +84,12 @@ private:
 class Armament;
 class Soldier {
 private:
-    Armament* arm;
+    Armament* arm{};
     void setArmament(Armament& a);
 };
 class Armament {
 private:
-    const Soldier* holder;
+    const Soldier* holder{};
 public:
     void setHolder(const Soldier& s) {
         holder = &s;
