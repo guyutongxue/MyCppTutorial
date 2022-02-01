@@ -51,7 +51,7 @@ int main() {
 }
 ```
 
-但请务必注意，在上面的代码中，我们**必须定义** `Animal::~Animal`。因为在释放 `Cat` 类型对象时，程序[会去调用](ch07/inheritance/misc#重申隐式函数)基类 `Animal` 的析构函数；若只声明却不定义 `Animal::~Animal` 会得到链接错误。
+但请务必注意，在上面的代码中，我们**必须定义** `Animal::~Animal`。因为在释放 `Cat` 类型对象时，程序[会去调用](ch07/inheritance/misc#再谈预置函数)基类 `Animal` 的析构函数；若只声明却不定义 `Animal::~Animal` 会得到链接错误。
 
 ## 资源安全性
 
