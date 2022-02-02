@@ -160,6 +160,7 @@
         * [排序](ch11/stl_algorithms/sort.md)
         * [不修改范围的算法](ch11/stl_algorithms/immutable_seq.md)
         * [其它算法](ch11/stl_algorithms/others.md)
+        * [预置比较](ch11/stl_algorithms/defaulted_compare.md)
         * [实参依赖查找 <sub>选读</sub>](ch11/stl_algorithms/adl.md)
 * [第十二章 模板](ch12/)
     * [约束与概念](ch12/concept.md)

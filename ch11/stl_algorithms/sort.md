@@ -136,3 +136,29 @@ int main() {
     }
 }
 ```
+
+> 对于传统版本的 `std::sort`，可以通过重载待排序结构体的 `operator<` 来使用默认排序依据。但约束算法 `std::ranges::sort` 的默认排序依据要求结构体必须定义全部六个比较运算符，这时我建议指定结构体的[预置比较](/ch11/stl_algorithms/defaulted_compare.md)。
+
+当为结构体排序时，可能出现排序**稳定性**的问题。稳定性是指，在特定排序依据下表现为“相等”的元素，应当如何处理。比如刚才的代码中，我将排序依据设为 `x` 成员的大小：即 `x` 较小的排在前面。但如果有两个结构体 `{1, 2}` 和 `{1, 3}`，它们的 `x` 成员相同，此时应当谁排在前面呢？事实上对于 `sort` 来说，谁在前面是不确定的，这种排序称为**不稳定排序**。不稳定排序算法中，相同的元素的相对顺序可能发生改变。与此对应的则是**稳定排序**，它保证相同元素的相对顺序不变。比如刚刚的 `{1, 2}` 和 `{1, 3}`，如果原序列里 `{1, 2}` 排在前面，那排序结果中也排在前面，反之同理。
+
+STL 算法 `stable_sort` 实现了稳定排序。
+
+```CPP
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std::ranges;
+
+struct S {
+    int x, y;
+};
+
+int main() {
+    std::vector<S> a{{2, 1}, {1, 3}, {1, 2}};
+    stable_sort(a, [](const S& a, const S& b) { return a.x < b.x; });
+
+    for (S& i : a) {
+        std::cout << i.x << ' ' << i.y << std::endl;
+    }
+}
+```

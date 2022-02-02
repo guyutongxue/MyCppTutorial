@@ -56,12 +56,10 @@ int main() {
 ```CPP
 #include <iostream>
 namespace ns {
-
 struct S { };
 void f(ns::S x) {
     std::cout << "Called ns::f" << std::endl;
 }
-
 }
 
 int main() {
@@ -169,16 +167,129 @@ int main() {
 
 事实上，在正式的生产环境中更常用的是 `g` 函数的写法。因为，许多第三方库中的类会定义自己的、更高效版本的 `swap`（而不是基于三次复制的 `std::swap`；在复制开销很大时不太可取），那么 `g` 这种写法就会因 ADL 而考虑它们。反之，`f` 函数的写法则很老实地用 `std::swap`，丧失了优化机会。
 
-## CPO
+## 定制点对象
 
-C++20 引入了约束版本的 STL 算法。为了让约束版本的算法更好地工作，C++ 提出了定制点对象（Customized point object，CPO）这一概念。
+第六章我提到过[函数对象](/ch06/special_operator_overload.md#idx_函数对象)，就是重载了 `operator()` 的类的对象。它在使用的时候和函数很像，都是出现在函数调用运算符的左侧；但它毕竟不是函数，所以**函数对象不会应用 ADL**。标准规定：如果当前作用域存在一个函数对象，其名字正是函数调用运算符左侧的名字，那么不进行 ADL。
 
-> 由于一部分定制点对象并不具备字面意义上“可定制”的效果，所以定制点对象不是一个好的术语。我们姑且把 CPO 当成一个莫名其妙的术语名来看待就好。
+```CPP
+#include <iostream>
 
-标准库中
+namespace ns {
+struct S { };
+void f(ns::S x) {
+    std::cout << "Called ns::f" << std::endl;
+}
+void g(ns::S x) {
+    std::cout << "Called ns::g" << std::endl;
+}
+}
 
-?> \[TODO\]
+template<typename T>
+void f(T x) {
+    std::cout << "Called ::f" << std::endl;
+}
+struct G {
+    template<typename T>
+    void operator()(T x) {
+        std::cout << "Called ::g" << std::endl;
+    }
+};
+G g;
+
+int main() {
+    ns::S x{};
+    f(x); // 找到 ns::f；重载解析时它比 ::f 更好
+    g(x); // 找到 ::g，因为它是函数对象，不进行 ADL，看不见 ns::g
+}
+```
+
+上面的例子中，`g(x)` 并没有 ADL 到 `ns::g`，而是采用了重载解析中更差的 `::g`。这就体现函数对象的一个功能：**禁用 ADL**。如之前提到的，ADL 违背直觉的表现比较麻烦。下面的例子引入了用函数对象实现的 `my_std::swap`，它在一致性上优于函数 `std::swap`。
+
+```CPP
+#include <iostream>
+
+namespace my_std {
+struct Swap {
+    template<typename T>
+    void operator()(T& a, T& b) {
+        std::cout << "Called my_std::swap" << std::endl;
+    }
+};
+Swap swap; // 函数对象 my_std::swap
+}
+
+struct S {
+    friend void swap(S& a, S& b) {
+        std::cout << "Called S::swap" << std::endl;
+    }
+};
+
+void f(S& a, S& b) {
+    my_std::swap(a, b);
+}
+
+void g(S& a, S& b) {
+    using my_std::swap; // 或者 using namespace my_std;
+    swap(a, b);         // ADL 禁用，不会查找到 S::swap
+}
+
+int main() {
+    S a, b;
+    f(a, b); // my_std::swap
+    g(a, b); // 也是 my_std::swap
+}
+```
+
+原本效果不同的两种写法，通过函数对象禁用 ADL 后，效果变得一致了。这减少了程序员的心智负担。但它带来了另一个问题：`S::swap` 这两种写法都无法调用；根本没有简单的办法使用为 `S` 定制的 `S::swap`。但实际上这可以通过一些复杂的模板代码，让 `my_std::swap` 在有更好的 `swap` （比如这个例子中的 `S::swap`）可用时，将 `my_std::swap` 的调用**分发**到 `S::swap` 上；其余的情形使用默认的行为。这样实现的 `my_std::swap` 就是 `std::ranges::swap`，即约束版本的算法了。此时，不论是 `f(a, b)` 还是 `g(a, b)`，调用的都是 `S::swap`。
+
+```CPP
+#include <iostream>
+#include <algorithm>
+
+struct S {
+    friend void swap(S& a, S& b) {
+        std::cout << "Called S::swap" << std::endl;
+    }
+};
+
+void f(S& a, S& b) {
+    std::ranges::swap(a, b);
+}
+
+void g(S& a, S& b) {
+    // 或者 using namespace std::ranges;
+    using std::ranges::swap;
+    swap(a, b);
+}
+
+int main() {
+    S a, b;
+    f(a, b); // 分发到 S::swap
+    g(a, b); // 也会分发到 S::swap
+}
+```
+
+像这样，约束版本的许多算法做了这些改进：
+1. 使用函数对象以禁用 ADL，增强代码一致性；
+2. 实现上，尽可能分发到定制版本代码（如 `S::swap`）。
+
+满足这样要求（以及一些额外规定）的“仿函数实体”就称为**定制点对象（Customized point object, CPO）**。约束版本的算法很多都是定制点对象；尽管它们比函数复杂得多，但在实际使用上会更方便。
 
 ## niebloid
 
-?> \[TODO\]
+**niebloid** 是和 CPO 很相似的概念。它的含义很简单，就是**禁用了 ADL 的“仿函数实体”**。它和 CPO 的区别在于，C++ 标准没有规定 niebloid 必须是函数对象（即也允许通过非标准的编译器扩展实现）。和 CPO 相同，niebloid 也是让约束版本算法更好工作，但出发点纯粹地就是禁用 ADL。考虑如下代码：
+
+```CPP
+#include <algorithm>
+#include <vector>
+using std::ranges;
+
+int main() {
+    std::vector<int> a(5), b(5);
+    copy(a.begin(), a.end(), b.begin());
+}
+```
+
+稀松平常，是吗？但问题出在这里的 `copy` 到底是约束版本的 `std::ranges::copy`，还是传统版本的 `std::copy`。有读者可能疑惑，这里用的是 `using namespace std::ranges`，`std` 命名空间里的东西应该看不见的，不可能调用 `std::copy`。但事实是，`a.begin()` 是 `std::vector<int>::iterator` 类型的。在某种实现下，它可能是类似 `std::__gnu_cxx_normal_iterator` 这种 `std` 命名空间下的类型。麻烦了，ADL 出现：`std` 命名空间下的所有函数都纳入查找，`std::copy` 意外地参与重载解析。
+
+更糟糕的是，重载解析时 `std::copy` 一般比 `std::ranges::copy` 更好。如果此时重载解析的结果是 `std::copy`，那就和我们的意图大相径庭了。因此在使用 `std::ranges::copy` 时，必须要禁用 ADL。标准规定：诸如 `std::ranges::copy` 的一系列算法，都应当实现为 niebloid，不允许 ADL。
