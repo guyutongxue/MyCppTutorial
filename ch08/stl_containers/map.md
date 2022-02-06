@@ -140,5 +140,5 @@ int main() {
 }
 ```
 
-和 `std::set` 类似，如果键-值对中键的类型是自定义的结构体，则需要定义它的比较函数。此外，`std::map` 的三个变种 `std::multimap` `std::unordered_map` 和 `std::unordered_multimap` 也是类似的：带 `multi` 的允许多个相同键的键-值对存在；带 `unordered` 的版本速度较快。
+和 `std::set` 类似，如果键-值对中键的类型是自定义的结构体，则需要定义它的比较运算符。此外，`std::map` 的三个变种 `std::multimap` `std::unordered_map` 和 `std::unordered_multimap` 也是类似的：带 `multi` 的允许多个相同键的键-值对存在；带 `unordered` 的版本速度较快。
 

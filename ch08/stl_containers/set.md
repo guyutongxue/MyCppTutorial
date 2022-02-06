@@ -142,4 +142,4 @@ int main() {
 }
 ```
 
-需要注意的是，`std::map` `std::set` 在插入自定义的结构体时，需要定义该类型的比较函数（如 `operator<`），我之后会在[预置比较](/ch11/stl_algorithms/defaulted_compare.md)一节中演示如何做。此外，还有两种关联容器 `std::unordered_set` `std::unordered_multiset`；它们的作用和 `std::set` `std::multiset` 几乎一样，不过插入、删除的性能相比要快。但 `unordered` 版本的容器默认只能插入内置类型（如 `int` 等）和标准库类型（如 `std::string` 等），对于自定义的类型则需要额外的工作（实现 `std::hash` 的特化），比较麻烦。
+需要注意的是，`std::map` `std::set` 在插入自定义的结构体时，需要定义该类型的比较运算符（如 `operator<`），我之后会在[预置比较](/ch11/stl_algorithms/defaulted_compare.md)一节中演示如何做。此外，还有两种关联容器 `std::unordered_set` `std::unordered_multiset`；它们的作用和 `std::set` `std::multiset` 几乎一样，不过插入、删除的性能相比要快。但 `unordered` 版本的容器默认只能插入内置类型（如 `int` 等）和标准库类型（如 `std::string` 等），对于自定义的类型则需要额外的工作（实现 `std::hash` 的特化），比较麻烦。
