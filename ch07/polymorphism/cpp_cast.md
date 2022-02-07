@@ -1,6 +1,6 @@
 # C++ 风格类型转换
 
-在进行之后的讲解之前，容我现在此处插入一些“题外的”内容。我们之前已经了解了 [C 风格类型转换](ch02/part2/other_operator#类型转换运算符)，而现在我们要讲的是 C++ 风格类型转换。
+在进行之后的讲解之前，容我现在此处插入一些“题外的”内容。我们之前已经了解了 [C 风格类型转换](/ch02/part2/other_operator#类型转换运算符)，而现在我们要讲的是 C++ 风格类型转换。
 
 所谓“C 风格”、“C++ 风格”，从字面意思上就能看出，这只是一种代码风格上的区别。它们除了写法之外，做的事情都是一样的：转换一个操作数的类型。那么，回顾一下之前 C 风格的类型转换，它长成这样：
 
@@ -34,11 +34,11 @@ static_cast<float>(5 / 3);
 ## `static_cast`
 
 `static_cast` 是比较安全的一种转换。所谓安全，就是指这个转换导致的行为都能保证合乎预期：比如整型和浮点类型间的转换保证了其值尽可能不变。刚才的三个例子都属于这个范畴，所以它们在改写成 C++ 风格转型后全都是 `static_cast`。具体而言，`static_cast` 容许如下转换：
-- 各种隐式转换（主要包括[算术类型间转换](ch02/part2/implicit_conversion)和[自定义类型转换](ch06/cast_overload)，还有添加指针只读性（即 `T*` 到 `const T*`）的转换、到 `void*` 的转换等）;
+- 各种隐式转换（主要包括[算术类型间转换](/ch02/part2/implicit_conversion)和[自定义类型转换](/ch06/cast_overload)，还有添加指针只读性（即 `T*` 到 `const T*`）的转换、到 `void*` 的转换等）;
 - 显式（`explicit`）的自定义类型转换；
 - 枚举类型和整数类型之间的转换；
-- 派生类指针到基类指针的转换（“[向上转型](ch07/inheritance/implicit_cast_in_inheritance#指针转换)”）；
-- 基类指针到派生类指针的转换（“[向下转型](ch07/inheritance/implicit_cast_in_inheritance#反之？)”）；
+- 派生类指针到基类指针的转换（“[向上转型](/ch07/inheritance/implicit_cast_in_inheritance#指针转换)”）；
+- 基类指针到派生类指针的转换（“[向下转型](/ch07/inheritance/implicit_cast_in_inheritance#反之？)”）；
 - 等等。
 
 然而我需要在这里埋下一个伏笔， 尽管称 `static_cast` 是“最安全”的转型，但它仍然不够安全。它的不安全性体现在“向下转型”上。下一节我将展开讲解其为何是不安全的。

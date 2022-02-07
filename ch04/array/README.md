@@ -54,7 +54,7 @@ int main() {
     // codes using a...
 }
 ```
-但更推荐使用在后续章节提及的[静态局部变量](ch04/list/storage_duration#静态局部变量（选读）)来解决：
+但更推荐使用在后续章节提及的[静态局部变量](/ch04/list/storage_duration#静态局部变量（选读）)来解决：
 ```cpp
 int main() {
     static int a[2000000]; // OK

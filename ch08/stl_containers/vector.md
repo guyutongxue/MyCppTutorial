@@ -54,7 +54,7 @@ int main() {
 
 对应地，`pop_back` 成员函数可以删除尾部的一个元素。
 
-添加或者删除 `std::vector` 非尾部（中间或头部）的元素将留到之后的[迭代器章节](ch08/stl_containers/iterator_usage.md#增删)中再讲。
+添加或者删除 `std::vector` 非尾部（中间或头部）的元素将留到之后的[迭代器章节](/ch08/stl_containers/iterator_usage.md#增删)中再讲。
 
 此外，聪明的你一定想到了，能通过 `a[0]` 这种方式使用 `std::vector`，说明它定义了 `operator[]` 的运算符重载。不过需要注意的是，`std::vector` 和数组一样，访问元素不检查是否越界；如果访问元素的下标超过了 `std::vector` 的长度，则导致未定义行为。
 

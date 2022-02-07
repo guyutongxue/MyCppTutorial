@@ -28,7 +28,7 @@ int main() {
     }
 }
 ```
-这一切看上去很不错。但是回想[函数执行](ch03/function_execution)的过程，我们在调用 `check` 函数的过程中发生的参数传递是“复制”的——也就是说，这段程序需要将一个很大的数据从 `main` 的内存复制到 `check` 的内存：
+这一切看上去很不错。但是回想[函数执行](/ch03/function_execution)的过程，我们在调用 `check` 函数的过程中发生的参数传递是“复制”的——也就是说，这段程序需要将一个很大的数据从 `main` 的内存复制到 `check` 的内存：
 ```sdsc
 HugeStruct a{*main 函数中的 hs*};
 ```
@@ -53,7 +53,7 @@ bool check(const HugeStruct& a) {
     return /* sth */;
 }
 ```
-这就是从直观层面上，`const T&` 这种形式声明的理解。不过实际上，`const T&` 是作为一种“[左](ch04/pointer/pointer_usage#idx_左值)右通吃”的引用而存在的。我们这里不做更多展开，如果感兴趣可以尝试理解下面的代码：
+这就是从直观层面上，`const T&` 这种形式声明的理解。不过实际上，`const T&` 是作为一种“[左](/ch04/pointer/pointer_usage#idx_左值)右通吃”的引用而存在的。我们这里不做更多展开，如果感兴趣可以尝试理解下面的代码：
 
 ```CPP
 void passByVal(int a) {}

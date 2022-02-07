@@ -60,7 +60,7 @@ int main() {
 
 ## `std::forward_list`
 
-我们在[第四章的一节](ch04/list/README.md)中罕见地介绍了一种数据结构，叫做链表。而 `std::forward_list` 就是 C++ 对链表的实现。
+我们在[第四章的一节](/ch04/list/README.md)中罕见地介绍了一种数据结构，叫做链表。而 `std::forward_list` 就是 C++ 对链表的实现。
 
 `std::forward_list` 作为类模板接受一个类型模板参数作为其每个节点存放的数据类型。
 

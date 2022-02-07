@@ -12,7 +12,7 @@
 
 ### 通过 `using` 声明继承构造函数（选读）
 
-尽管如此，在一些场合为了减少不必要的代码，C++ 也允许继承构造函数。它的思路则是通过 [`using` 声明](ch07/inheritance/about_member_name#类作用域下的-using-声明（选读）)，将基类的构造函数导出到派生类。其写法是：
+尽管如此，在一些场合为了减少不必要的代码，C++ 也允许继承构造函数。它的思路则是通过 [`using` 声明](/ch07/inheritance/about_member_name#类作用域下的-using-声明（选读）)，将基类的构造函数导出到派生类。其写法是：
 ```cpp
 struct Base {
     Base(int) { }

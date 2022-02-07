@@ -1,4 +1,4 @@
-![logo](assets/isocpplogo.svg ':size=150')
+![logo](/assets/isocpplogo.svg ':size=150')
 
 # 谷雨同学的 C++ 教程
 

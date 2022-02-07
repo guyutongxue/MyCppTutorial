@@ -66,7 +66,7 @@ int main() {
     std::cout << a << std::endl;
 }
 ```
-成功输出了 `abcdef`。但是这个其实还有一点小问题，就是对于“内置的”类型比如 `int`，它的赋值运算符是[有结果的](ch02/part2/assignment_operator.md)。比如：
+成功输出了 `abcdef`。但是这个其实还有一点小问题，就是对于“内置的”类型比如 `int`，它的赋值运算符是[有结果的](/ch02/part2/assignment_operator.md)。比如：
 ```CPP
 #include <iostream>
 int main() {
@@ -162,4 +162,4 @@ public:
 ```
 也就是 `*this`。接下来再试试之前的代码，相信你就能得出正确的结果了。
 
-> 在[只读成员函数](ch06/const_member_function.md)中，`this` 是 `const T*` 类型的。严格来讲，`this` 应当具有顶层只读限定（即不可以更改 `this` 的指向，其类型为 `T* const` 或 `const T* const`），但文中出于行文简便没有考虑它。
+> 在[只读成员函数](/ch06/const_member_function.md)中，`this` 是 `const T*` 类型的。严格来讲，`this` 应当具有顶层只读限定（即不可以更改 `this` 的指向，其类型为 `T* const` 或 `const T* const`），但文中出于行文简便没有考虑它。

@@ -112,7 +112,7 @@ void tryBark(const Animal* a) {
 
 然后，我们只需判断 `dog` 是否为 `nullptr` 即可。总得来看，`dynamic_cast` 在用法上和 `static_cast` 具有一定相似性：它可以用来做“向下转型”。但不同的是，`dynamic_cast` 会在转型之前做额外的检查：如果 `a` 不能安全地转换到目标类型，则返回 `nullptr`。所以 `dynamic_cast` 不可能得到危险的结果，这也是为什么称它比 `static_cast` 更安全的原因。
 
-值得一提的是，我在第二章 [switch 语句](ch02/part3/switch_statement.md)的一个注中给出了 if 语句的声明形式——即在条件处引入带初始化器的声明而非表达式来作为判断条件。在这里，我们可以运用这种形式的 if 语句来实现更简洁的写法：
+值得一提的是，我在第二章 [switch 语句](/ch02/part3/switch_statement.md)的一个注中给出了 if 语句的声明形式——即在条件处引入带初始化器的声明而非表达式来作为判断条件。在这里，我们可以运用这种形式的 if 语句来实现更简洁的写法：
 ```cpp
 void tryBark(const Animal* a) {
     if (const Dog* dog{dynamic_cast<const Dog*>(a)}) {

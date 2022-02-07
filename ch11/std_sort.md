@@ -4,15 +4,15 @@
 
 ## 前置知识
 
-- 必须熟练使用[数组](ch04/array/README)、[函数](ch03/function_definition)。
-- 必须熟悉[第四章的指针](ch04/pointer/pointer)，及其[和数组的关系](ch04/pointer/pointer_and_array)。
-- 建议了解[引用](ch05/reference)的基本使用。
-- 如果你想要在 STL 容器中使用 `std::sort`，建议了解[迭代器](ch08/stl_containers/iterator_glance)。如果你不知道什么是 STL 容器，则不用管。
-- 如果你想要更彻底地搞懂，你需要知道[指向函数的指针](ch04/pointer/pointer_def_2#指向函数的指针（选读）)、[重载](ch05/overload)以及[函数模板](ch08/function_template)。
+- 必须熟练使用[数组](/ch04/array/README)、[函数](/ch03/function_definition)。
+- 必须熟悉[第四章的指针](/ch04/pointer/pointer)，及其[和数组的关系](/ch04/pointer/pointer_and_array)。
+- 建议了解[引用](/ch05/reference)的基本使用。
+- 如果你想要在 STL 容器中使用 `std::sort`，建议了解[迭代器](/ch08/stl_containers/iterator_glance)。如果你不知道什么是 STL 容器，则不用管。
+- 如果你想要更彻底地搞懂，你需要知道[指向函数的指针](/ch04/pointer/pointer_def_2#指向函数的指针（选读）)、[重载](/ch05/overload)以及[函数模板](/ch08/function_template)。
 
 ## STL 算法
 
-正如在[第八章](ch08/stl_containers/)所提到的，标准库的一部分——STL 中，除了容器、迭代器，还包含了大量算法。STL 算法提供了一些常用的操作，而其中最常用的就是 `std::sort`：对一个区间排序。
+正如在[第八章](/ch08/stl_containers/)所提到的，标准库的一部分——STL 中，除了容器、迭代器，还包含了大量算法。STL 算法提供了一些常用的操作，而其中最常用的就是 `std::sort`：对一个区间排序。
 
 ## 从冒泡说起
 
@@ -380,7 +380,7 @@ int main() {
 }
 ```
 
-第二种解决思路是手动提供 `S` 的 `<` 运算符定义，然后让 `std::sort` 的默认第三参数选择它。如果你阅读过[第六章的运算符重载](ch06/)，那么你可以很轻松地写出下面的正确代码：
+第二种解决思路是手动提供 `S` 的 `<` 运算符定义，然后让 `std::sort` 的默认第三参数选择它。如果你阅读过[第六章的运算符重载](/ch06/)，那么你可以很轻松地写出下面的正确代码：
 
 ```cpp
 #include <algorithm>

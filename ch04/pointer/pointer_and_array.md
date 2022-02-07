@@ -130,7 +130,7 @@ void copyString(char* dest, const char* src) {
 
 | 函数                                        | 作用                                                        |
 | ------------------------------------------- | ----------------------------------------------------------- |
-| `unsigned strlen(const char*)`              | 求字符串长度（在[后续章节](ch05/easy_string)中使用）        |
+| `unsigned strlen(const char*)`              | 求字符串长度（在[后续章节](/ch05/easy_string)中使用）        |
 | `int strcmp(const char*, const char*)`      | 字典序比较字符串。相等时返回 0                              |
 | `char* strcpy(char* dest, const char* src)` | 将 `src` 指向的字符串复制到 `dest` 所指位置上               |
 | `char* strcat(char* dest, const char* src)` | 将 `src` 指向的字符串复制到 `dest` 所指字符串的末尾（拼接） |
@@ -158,7 +158,7 @@ int main() {
 }
 ```
 
-可以看出，C 风格字符串的使用不是特别容易。因此，C++ 提供了 `std::string` 类来解决这些问题。但 `std::string` 的使用需要更多的知识，我把它的介绍放在了[第六章的结尾](ch06/summary)。
+可以看出，C 风格字符串的使用不是特别容易。因此，C++ 提供了 `std::string` 类来解决这些问题。但 `std::string` 的使用需要更多的知识，我把它的介绍放在了[第六章的结尾](/ch06/summary)。
 
 ## 注意事项
 

@@ -164,7 +164,7 @@ int main() {
 
 ## 多文件编译
 
-这里，我将使用在[多文件编译](ch09/compile_multiple_files)中的三文件例子。现在，`/home/user` 路径下存在 `main.cpp` `hello.h` 和 `hello.cpp` 三个文件。
+这里，我将使用在[多文件编译](/ch09/compile_multiple_files)中的三文件例子。现在，`/home/user` 路径下存在 `main.cpp` `hello.h` 和 `hello.cpp` 三个文件。
 
 这里有两个编译单元 `main.cpp` 和 `hello.cpp`。将它们一起编译的方法非常简单，只需执行如下命令即可：
 ```io

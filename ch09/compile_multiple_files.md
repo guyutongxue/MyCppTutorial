@@ -45,7 +45,7 @@ void sayHello(const char* who) {
 #endif // XXX_H
 ```
 
-关于这三条预处理指令的具体含义，请参见[附录](appendix/preprocessor)。简单来讲，它们的含义是防止头文件被多次包含。加上这样三条预处理指令后，一旦发生多次包含，则第二次包含的内容会被处理为空文件，从而防止其中出现类型、模板的重复定义。这三条预处理指令有时被称为包含保护（Include Guard），也可以通过单条的 `#pragma once` 来实现（详见[附录](appendix/preprocessor)。
+关于这三条预处理指令的具体含义，请参见[附录](/appendix/preprocessor)。简单来讲，它们的含义是防止头文件被多次包含。加上这样三条预处理指令后，一旦发生多次包含，则第二次包含的内容会被处理为空文件，从而防止其中出现类型、模板的重复定义。这三条预处理指令有时被称为包含保护（Include Guard），也可以通过单条的 `#pragma once` 来实现（详见[附录](/appendix/preprocessor)。
 
 ## Visual Studio
 
