@@ -60,6 +60,16 @@ int main() {
 }
 ```
 
+> 引用仅仅是一个别名而已，它不是变量，**不占用任何存储空间**。所以不存在指向引用的指针，不存在引用构成的数组，不存在引用的引用。
+> 
+> ```cpp
+> int a{42};
+> int& r{a}; // r 是 a 的别名
+> int& s{r}; // s 也是 a 的别名
+> ```
+> 
+> 这里 `s` 并不是引用 `r` 的引用。`r` 已经是 `a` 的别名了，所以 `int& s{r};` 就等价于 `int& s{a};`。所以 `s` 不过是 `a` 的另外一个别名罢了。
+
 ## 绑定到只读类型的引用
 
 先看下面的代码：
@@ -80,17 +90,47 @@ a = 56; // OK
 
 > 非常神奇地，形如 `const T&` 的引用可以绑定到右值上，如 `const int& r{42};`。
 
-## 其它琐碎事情
+## 将引用作为返回值类型
 
-引用仅仅是一个别名而已，它不是变量（具体说它不是对象），**不占用任何存储空间**。所以不存在指向引用的指针，不存在引用构成的数组，不存在引用的引用。
+接下来，我们看这样一段代码：
 
-```cpp
-int a{42};
-int& r{a}; // r 是 a 的别名
-int& s{r}; // s 也是 a 的别名
+```CPP
+#include <iostream>
+
+int globalVar{42};
+int& getGlobalVar() {
+    return glbVar;
+}
+
+int main() {
+    getGlobalVar() += 2;
+    std::cout << globalVar << std::endl;
+}
 ```
 
-这里 `s` 并不是引用 `r` 的引用。`r` 已经是 `a` 的别名了，所以 `int& s{r};` 就等价于 `int& s{a};`。所以 `s` 不过是 `a` 的另外一个别名罢了。
+重点在 `getGlobalVar` 这个函数。这个函数的返回值类型是 `int&`，也就是说，它返回了一个别名……？这是什么意思呢？
+
+当函数返回值类型为引用时，表明整个**函数调用表达式的结果**相当于绑定到 `@return *表达式*;@` 中的 `@*表达式*@` 的引用。比如在这里，`getGlobalVar()` 这个表达式就相当于绑定到变量 `glbVar` 的引用；因为函数中的 return 语句返回了它。正因如此，`getGlobalVar()` 就是 `globalVar` 的一个别名，因此它可以被赋值或修改（即这里的 `+= 2`）。这段代码的输出是 `44`。
+
+类似的写法还有：
+
+```CPP
+#include <iostream>
+
+int a{0}, b{0};
+int& chooseVar(char x) {
+    if (x == 'a') return a;
+    else return b;
+}
+
+int main() {
+    std::cout << "You want to add which variable? ";
+    char x;
+    std::cin >> x;
+    chooseVar(x) += 1;
+    std::cout << a << ' ' << b << std::endl;
+}
+```
 
 ### 悬垂引用
 

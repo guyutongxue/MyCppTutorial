@@ -12,7 +12,7 @@ int sum(int a, int b) {
 }
 ```
 
-也可以按照之前说的函数式风格来实现它：
+也可以按照本章开头说的函数式风格来实现它：
 
 ```cpp
 int sum(int a, int b) {
