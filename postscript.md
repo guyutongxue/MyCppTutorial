@@ -8,6 +8,7 @@
 - Stephen Prata, *C++ Primer Plus* （第 6 版，张海龙 袁国忠 译）
 - Bjarne Stroustrup, *The C++ Programming Language* （第 4 版）
 - Harold Abelson 等《计算机程序的构造和解释》（第 2 版，裘宗燕 译）
+- Ivan Cukic《C++ 函数式编程》（程继洪等 译）
 
 
 - [cppreference.com](https://zh.cppreference.com)
@@ -35,11 +36,3 @@
 - 北京大学 2021 级信息科学技术学院本科生　　李兆彬
 - 北京大学 2020 级信息科学技术学院本科生　　王子昊
 - 北京大学 2019 级信息科学技术学院本科生　　郭　易
-
-<!-- 感谢捐助：
-```
-MavisGuan
-明睿
-Leslie Wong
-不忘初心
-``` -->
