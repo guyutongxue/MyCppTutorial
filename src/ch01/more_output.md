@@ -2,27 +2,27 @@
 
 ## 尝试四则运算
 
-上一章讲述了如何输出一句话和输出一个数（整数或小数）。但是这样未免太无聊了。尝试下面这段代码：
-```CPP codemo
+上一章讲述了如何输出一句话和输出一个数（整数或小数）。但是这样未免太无聊了。
+```cpp codemo(text=尝试这段代码。)
 #include <iostream>
 int main() {
     std::cout << 1 + 1 << std::endl;
 }
 ```
 你会发现它编译运行的结果是 `2` 。那么你应该能猜到它做了什么：它执行了“一加一”这条运算，也就是说计算机在我们的控制之下运算了 1 + 1 这个式子。那么你也应该能举一反三地想到如何进行减法、乘法和除法运算。
-```CPP codemo
+```cpp codemo(text=减法)
 #include <iostream>
 int main() {
     std::cout << 5 - 3 << std::endl;
 }
 ```
-```CPP codemo
+```cpp codemo(text=乘法)
 #include <iostream>
 int main() {
     std::cout << 6 * 7 << std::endl;
 }
 ```
-```CPP codemo
+```cpp codemo(text=除法)
 #include <iostream>
 int main() {
     std::cout << 9 / 3 << std::endl;
@@ -38,8 +38,8 @@ int main() {
 
 ## 初识变量
 
-我们来看看除了“一句话”、数和简单的式子之外，还能输出些什么。看看这段代码：
-```CPP codemo
+我们来看看除了“一句话”、数和简单的式子之外，还能输出些什么。
+```cpp codemo(text=看看这段代码。)
 #include <iostream>
 int main() {
     int a{42};
@@ -54,16 +54,15 @@ int main() {
 
 这一行理解之后，那么下面的输出那一行也不难。现在输出的是 `a` ，实际上就是输出变量 `a` 的值。所以最终编译运行的结果也是输出 `42` 。
 
-你还可以将变量和简单的式子结合：
-```CPP codemo
+```cpp codemo(text=你还可以将变量和简单的式子结合。)
 #include <iostream>
 int main() {
-    int a{12};
-    int b{24};
+    int a{42};
+    int b{15};
     std::cout << a + b << std::endl;
 }
 ```
-应该不需要太多解释。这里声明并定义了两个变量 `a` 和 `b` ，然后想要输出的是 `a` 和 `b` 的值加起来的和。最终编译运行的结果显然是输出 `36` 。总结一下，目前你知道了如何去输出一句话、一个数、一个变量，或者一个由变量和数构成的简单的式子。
+应该不需要太多解释。这里声明并定义了两个变量 `a` 和 `b` ，然后想要输出的是 `a` 和 `b` 的值加起来的和。最终编译运行的结果显然是输出 `57` 。总结一下，目前你知道了如何去输出一句话、一个数、一个变量，或者一个由变量和数构成的简单的式子。
 
 ## 练习
 

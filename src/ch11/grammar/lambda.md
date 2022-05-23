@@ -4,7 +4,7 @@
 
 Lambda 表达式可以理解为函数类型的字面量。我首先介绍最简单形式的 Lambda 表达式：
 ```sdsc
-[] <opt-block>(<i>参数列表</i>)</opt-block> <opt-block>-><i>返回值类型</i></opt-block> *函数体*
+[] <div class="opt-block">(<i>参数列表</i>)</div> <div class="opt-block">-><i>返回值类型</i></div> *函数体*
 ```
 
 比如：

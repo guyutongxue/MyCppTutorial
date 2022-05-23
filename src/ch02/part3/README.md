@@ -15,7 +15,7 @@ next: ./compound_statement.md
 
 ## 语句
 
-**语句（Statement）**是指定 C++ 程序执行什么样的任务的程序片段。你其实已经见过许多语句了，并完整地学过一种语句叫[声明语句](/ch02/part1/declaration_statement.md)。
+**语句**（Statement）是指定 C++ 程序执行什么样的任务的程序片段。你其实已经见过许多语句了，并完整地学过一种语句叫[声明语句](/ch02/part1/declaration_statement.md)。
 
 **分号结尾**的程序片段大多都是语句。接下来我们来看一下你已经见过的语句：
 
@@ -29,7 +29,7 @@ int a{42}, b{56};
 
 ### 表达式语句
 
-**表达式语句（Expression statement）**指定程序执行运算。比如：
+**表达式语句**（Expression statement）指定程序执行运算。比如：
 
 ```cpp
 a = b + 20;

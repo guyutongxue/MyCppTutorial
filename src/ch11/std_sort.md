@@ -102,7 +102,7 @@ int main() {
 
 特别强调，当这样改写完成后，`end` 指向的元素其实是不被排序的（正如同最初的例子中，`a[n]` 不会被排序：排序的范围是 `a[0]` 到 `a[n - 1]`）。
 
-<img src="assets/range-begin-end.svg" alt="begin and end iterator">
+<img src="/assets/range-begin-end.svg" alt="begin and end iterator">
 
 所以如果你的排序范围是从 `a[1]` 开始的，你应该知道如何用这种写法来达成目标。
 

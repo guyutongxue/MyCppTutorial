@@ -3,7 +3,7 @@
 这一节介绍 Lambda 表达式的捕获语法。首先，完整的 Lambda 表达式语法是：
 
 ```sdsc
-[ **捕获** ] <opt-block>(<i>参数列表</i>)</opt-block> <opt-block>-><i>返回值类型</i></opt-block> *函数体*
+[ **捕获** ] <div class="opt-block">(<i>参数列表</i>)</div> <div class="opt-block">-><i>返回值类型</i></div> *函数体*
 ```
 
 其中，`@*捕获*@` 是若干个由逗号分隔的 `@*捕获符*@`。所谓的捕获符，简单来说就是要捕获的变量名。比如上一节的例子

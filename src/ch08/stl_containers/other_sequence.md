@@ -85,7 +85,7 @@ struct Node {
 
 其中，`prev` 指向链表中的上一个节点，而 `next` 和原来一样指向链表中的下一个节点。头结点的 `prev` 和尾节点的 `next` 都为 `nullptr`。最终，这些节点互相链接形成了这样的结构：
 
-<img src="assets/Doubly-linked-list.svg" alt="Doubly Linked List">
+<img src="/assets/Doubly-linked-list.svg" alt="Doubly Linked List">
 
 `std::list` 的使用和 `std::forward_list` 基本一样，而且用起来更方便。但缺点就是，每个节点所需的容量变得更大了。
 

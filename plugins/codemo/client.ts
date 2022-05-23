@@ -7,5 +7,6 @@ export default defineClientConfig({
   enhance({ app }) {
     app.component('CodemoView', CodemoView);
     app.component('CodemoTrigger', CodemoTrigger);
+    const ice = app.config.compilerOptions.isCustomElement;
   },
 })

@@ -1,15 +1,32 @@
 <template>
-  <div>
-    <button title="点击以在左侧显示本节代码" @click="trigger">显示代码</button>
+  <div @click="trigger" class="codemo-trigger" title="点击以在右侧代码栏显示">
+    <slot></slot>
   </div>
 </template>
 
 <script setup lang="ts">
 import { emitter } from "./emitter";
 
-const props = defineProps<{ code: string }>();
+const props = defineProps<{
+  lang?: string,
+  code: string
+}>();
 
 function trigger() {
-  emitter.emit("change", props.code);
+  emitter.emit("show", { ...props });
 }
 </script>
+<style>
+.codemo-trigger {
+  background-color: var(--c-border);
+  cursor: pointer;
+  transition-property: transform background-color;
+  transition-duration: 200ms;
+}
+.codemo-trigger:hover {
+  background-color: var(--c-border-dark);
+}
+.codemo-trigger:hover:active {
+  transform: scale(0.95);
+}
+</style>

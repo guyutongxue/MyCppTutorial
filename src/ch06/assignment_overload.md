@@ -105,7 +105,7 @@ struct A {
 - `A operator=(T&);`
 - `A operator=(const T&);`
   
-（其中返回值类型 `A` 是任意的）这样的赋值运算符重载时，编译器会生成预置赋值运算符重载。这几种赋值运算符重载被称为**复制赋值重载（Copy assignment overload）**。如果不好记的话，就只记 `const T&` 一种最常用的就行。
+（其中返回值类型 `A` 是任意的）这样的赋值运算符重载时，编译器会生成预置赋值运算符重载。这几种赋值运算符重载被称为**复制赋值重载**（Copy assignment overload）。如果不好记的话，就只记 `const T&` 一种最常用的就行。
 
 > 和复制构造函数一样，`A operator=(T&);` 某种程度上是违反直觉的，我们并不提倡使用。除此之外，复制赋值重载还包括带 `volatile` 限定的两个版本：`A operator=(volatile T&)` 和 `A operator=(const volatile T&);`。
 >

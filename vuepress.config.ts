@@ -106,6 +106,247 @@ const SIDEBAR: SidebarConfig = [
       "/ch03/summary.md",
     ],
   },
+  {
+    text: "第四章 POD 类型与结构",
+    link: "/ch04/",
+    collapsible: true,
+    children: [
+      {
+        text: "数组",
+        link: "/ch04/array/",
+        children: [
+          "/ch04/array/array_init.md",
+          "/ch04/array/2d_array.md",
+          "/ch04/array/array_usage.md",
+          "/ch04/array/c_string.md",
+        ],
+      },
+      {
+        text: "输入输出成分",
+        link: "/ch04/io/",
+        children: [
+          "/ch04/io/input.md",
+          "/ch04/io/input_fail.md",
+          "/ch04/io/output.md",
+        ],
+      },
+      {
+        text: "指针",
+        link: "/ch04/pointer/",
+        children: [
+          "/ch04/pointer/pointer.md",
+          "/ch04/pointer/pointer_def.md",
+          "/ch04/pointer/pointer_usage.md",
+          "/ch04/pointer/pointer_and_array.md",
+          "/ch04/pointer/pointer_def_2.md",
+        ],
+      },
+      {
+        text: "结构体",
+        link: "/ch04/struct/",
+        children: [
+          "/ch04/struct/struct_def.md",
+          "/ch04/struct/struct_usage.md",
+        ],
+      },
+      {
+        text: "链表",
+        link: "/ch04/list/",
+        children: [
+          "/ch04/list/storage_duration.md",
+          "/ch04/list/list_construct.md",
+          "/ch04/list/list_add_del.md",
+          "/ch04/list/arr_new_del.md",
+          "/ch04/list/safety.md",
+        ],
+      },
+      "/ch04/enum.md",
+      "/ch04/union.md",
+      {
+        text: "迁移到 C 语言(选读)",
+        link: "/ch04/compare_with_c/",
+        children: [
+          "/ch04/compare_with_c/c_io.md",
+          "/ch04/compare_with_c/c_feature.md",
+        ],
+      },
+      "/ch04/summary.md",
+    ],
+  },
+  {
+    text: "第五章 初探面向对象",
+    link: "/ch05/",
+    collapsible: true,
+    children: [
+      "/ch05/reference.md",
+      "/ch05/easy_string.md",
+      "/ch05/constructor.md",
+      "/ch05/overload.md",
+      "/ch05/copy_constructor.md",
+      "/ch05/defaulted_constructor.md",
+      "/ch05/shallow_deep_copy.md",
+      "/ch05/misc.md",
+      "/ch05/summary.md",
+    ],
+  },
+  {
+    text: "第六章 运算符重载",
+    link: "/ch06/",
+    collapsible: true,
+    children: [
+      "/ch06/this.md",
+      "/ch06/assignment_overload.md",
+      "/ch06/assignment_vs_construct.md",
+      "/ch06/cast_overload.md",
+      "/ch06/noninline_member_function.md",
+      "/ch06/const_member_function.md",
+      "/ch06/static_member.md",
+      "/ch06/nonmember_operator.md",
+      "/ch06/friend.md",
+      "/ch06/special_operator_overload.md",
+      "/ch06/summary.md",
+    ],
+  },
+  {
+    text: "第七章 继承与多态",
+    link: "/ch07/",
+    collapsible: true,
+    children: [
+      "/ch07/object_relationships.md",
+      {
+        text: "继承关系",
+        link: "/ch07/inheritance/",
+        children: [
+          "/ch07/inheritance/derived_constructor.md",
+          "/ch07/inheritance/protected_member.md",
+          "/ch07/inheritance/about_member_name.md",
+          "/ch07/inheritance/implicit_cast_in_inheritance.md",
+          "/ch07/inheritance/misc.md",
+        ],
+      },
+      {
+        text: "多态",
+        link: "/ch07/polymorphism/",
+        children: [
+          "/ch07/polymorphism/virtual_function.md",
+          "/ch07/polymorphism/cpp_cast.md",
+          "/ch07/polymorphism/rtti.md",
+          "/ch07/polymorphism/abstract_class.md",
+          "/ch07/polymorphism/virtual_destructor.md",
+          "/ch07/polymorphism/override_and_final.md",
+        ],
+      },
+      "/ch07/mi.md",
+      "/ch07/summary.md",
+    ],
+  },
+  {
+    text: "第八章 模板基础",
+    link: "/ch08/",
+    collapsible: true,
+    children: [
+      "/ch08/function_template.md",
+      "/ch08/class_template.md",
+      "/ch08/nontype_template_param.md",
+      "/ch08/default_argument.md",
+      {
+        text: "STL 容器与迭代器",
+        link: "/ch08/stl_containers/",
+        children: [
+          "/ch08/stl_containers/vector.md",
+          "/ch08/stl_containers/other_sequence.md",
+          "/ch08/stl_containers/iterator_glance.md",
+          "/ch08/stl_containers/iterator_concept.md",
+          "/ch08/stl_containers/iterator_usage.md",
+          "/ch08/stl_containers/set.md",
+          "/ch08/stl_containers/map.md",
+          "/ch08/stl_containers/adaptors.md",
+        ],
+      },
+      "/ch08/summary.md",
+    ],
+  },
+  {
+    text: "第九章 链接(选读)",
+    link: "/ch09/",
+    collapsible: true,
+    children: [
+      "/ch09/symbol_and_linkage.md",
+      "/ch09/odr.md",
+      "/ch09/inline.md",
+      "/ch09/template_linking.md",
+      "/ch09/friend_in_template.md",
+      "/ch09/compile_multiple_files.md",
+      "/ch09/c_linking.md",
+    ],
+  },
+  {
+    text: "第十章 常用库介绍",
+    link: "/ch10/",
+    collapsible: true,
+    children: [
+      {
+        text: "文件读写",
+        link: "/ch10/file_io/",
+        children: ["/ch10/file_io/stream.md", "/ch10/file_io/c_io.md"],
+      },
+      "/ch10/filesystem.md",
+      "/ch10/random.md",
+    ],
+  },
+  {
+    text: "第十一章 函数式编程(待续)",
+    link: "/ch11/",
+    collapsible: true,
+    children: [
+      {
+        text: "语法基础",
+        link: "/ch11/grammar/",
+        children: [
+          "/ch11/grammar/function_as_object.md",
+          "/ch11/grammar/lambda.md",
+          "/ch11/grammar/closure.md",
+          "/ch11/grammar/lambda_capture.md",
+          "/ch11/grammar/higher_order_function.md",
+        ],
+      },
+      {
+        text: "STL 算法",
+        link: "/ch11/stl_algorithms/",
+        children: [
+          "/ch11/stl_algorithms/sort.md",
+          "/ch11/stl_algorithms/copy.md",
+          "/ch11/stl_algorithms/immutable_seq.md",
+          "/ch11/stl_algorithms/others.md",
+          "/ch11/stl_algorithms/defaulted_compare.md",
+          "/ch11/stl_algorithms/adl.md",
+        ],
+      },
+    ],
+  },
+  // {
+  //   text: "第十二章 模板",
+  //   link: "/ch12/",
+  //   collapsible: true,
+  //   children: ["/ch12/concept.md"],
+  // },
+  {
+    text: "附录",
+    link: "/appendix/",
+    collapsible: true,
+    children: [
+      "/appendix/operator.md",
+      "/appendix/keyword.md",
+      "/appendix/preprocessor.md",
+      "/appendix/coding_style.md",
+      "/appendix/cli.md",
+      {
+        text: "ASCII 码表",
+        link: "https://www.kdocs.cn/l/sLP90gSzs ':target=_blank'",
+      },
+    ],
+  },
+  "/postscript.md",
 ];
 
 export default defineUserConfig({
@@ -117,16 +358,16 @@ export default defineUserConfig({
     sidebar: SIDEBAR,
     sidebarDepth: 0,
     contributors: false,
-    lastUpdatedText: '最近更新',
+    lastUpdatedText: "最近更新",
     themePlugins: {
       // prismjs: false
-    }
+    },
   } as DefaultThemeLocaleOptions),
   plugins: [
     codemo(),
     mdEnhancePlugin({
       tex: true,
     }),
-    searchPlugin()
+    searchPlugin(),
   ],
 });

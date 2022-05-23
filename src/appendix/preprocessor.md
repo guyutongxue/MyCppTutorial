@@ -145,8 +145,8 @@ G();     // 替换为 f(0); ，注意没有多余的逗号
 ```sdsc
 #if *常量表达式*
 *代码1*
-<opt-block>#else
-*代码2*</opt-block>
+<div class="opt-block">#else
+*代码2*</div>
 #endif
 ```
 

@@ -117,7 +117,7 @@ int main() {
 最后总结一下类继承的写法：
 
 <pre class="sdsc">
-<x-or>class<hr>struct</x-or> <i>类名</i> : <b>访问说明符</b> <i>基类名</i> {
+<span class="x-or">class<hr>struct</span> <i>类名</i> : <b>访问说明符</b> <i>基类名</i> {
     <b>成员列表</b>
 };
 </pre>

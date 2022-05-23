@@ -1,15 +1,15 @@
 # if 语句
 
-**分支语句（Branch statement）**，又称选择语句（Selection statement）、条件语句（Conditional statement），是引入分支结构的语句。在 C++ 中有两种分支语句：**if 语句**和 **switch 语句**。接下来我们首先学习 if 语句。
+**分支语句**（Branch statement），又称选择语句（Selection statement）、条件语句（Conditional statement），是引入分支结构的语句。在 C++ 中有两种分支语句：**if 语句**和 **switch 语句**。接下来我们首先学习 if 语句。
 
 我们之前已经在第一章已经了解过 if 语句了。不过这里要更正式地描述它的写法：
 
 ```sdsc
 if (*条件表达式*)
     *真分支语句*
-<opt-block>else
+<div class="opt-block">else
     *假分支语句*
-</opt-block>
+</div>
 ```
 
 用文字描述的话，就是 `if` 关键字后面先写上括号括起的 `@*条件表达式*@` ，随后应该写上**一句** `@*真分支语句*@`。此外，还可以**可选地**写出 `else` 分支，同样也是**一句** `@*假分支语句*@`。
@@ -118,7 +118,8 @@ else
     </td>
 </tr>
 </table>
-<script>
+<!-- TODO -->
+<!-- <script>
 flowchart.parse('st=>start: 开始\n\
 e=>end: 结束\n\
 true=>operation: 真分支语句\n\
@@ -145,4 +146,4 @@ false->e').drawSVG('else',{
     'yes-text':'是',
     'no-text':'否'
 });
-</script>
+</script> -->

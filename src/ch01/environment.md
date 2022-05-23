@@ -4,9 +4,9 @@
 
 一般的教材都不会花特别多的笔墨介绍怎么配置环境，我认为那算是一种不太负责任的行为。因此我在这里多多少少写几笔吧，希望能够帮到各位读者。
 
-首先为了验证你的环境是否配置成功，我直接告诉你：以下这段代码
+首先为了验证你的环境是否配置成功，我直接告诉你
 
-```CPP
+```cpp codemo(open, text=以下这段代码：)
 #include <iostream>
 int main() {
     std::cout << "Hello, world!" << std::endl;
@@ -28,8 +28,17 @@ int main() {
 下面我将分操作系统来简要介绍配置方法。
 
 - [Windows](#windows)
+  - [使用 Visual Studio Code](#使用-visual-studio-code)
+  - [使用 Visual Studio](#使用-visual-studio)
+  - [使用 Dev-C++](#使用-dev-c)
+  - [使用 Code::Blocks](#使用-codeblocks)
 - [macOS](#macos)
+  - [使用 Visual Studio Code](#使用-visual-studio-code-1)
+  - [使用 CLion](#使用-clion)
+  - [使用 Xcode](#使用-xcode)
 - [GNU/Linux](#gnulinux)
+  - [使用 Visual Studio Code](#使用-visual-studio-code-2)
+  - [使用命令行](#使用命令行)
 
 ## Windows
 

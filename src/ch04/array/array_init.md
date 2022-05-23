@@ -78,7 +78,7 @@ int a[5]{1, 2, 3};
 
 <h6 id="idx_零初始化"></h6>
 
-这个时候，`a[0]` `a[1]` 和 `a[2]` 分别被初始化为 `1` `2` `3`，然后剩余的元素采用**零初始化（Zero initialization）**——也就是初始化为零值。因此
+这个时候，`a[0]` `a[1]` 和 `a[2]` 分别被初始化为 `1` `2` `3`，然后剩余的元素采用**零初始化**（Zero initialization）——也就是初始化为零值。因此
 ```CPP
 #include <iostream>
 using namespace std;

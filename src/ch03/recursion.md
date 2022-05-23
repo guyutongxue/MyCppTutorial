@@ -1,10 +1,10 @@
 # 递归
 
 <!-- TODO -->
-<style>
+<!-- <style>
 @import url(./fig.css)
 </style>
-<script type="module" src="./recursion.js"></script>
+<script type="module" src="./recursion.js"></script> -->
 
 ## 从普通调用说起
 
@@ -100,7 +100,7 @@ int main() {
 </div>
 
 
-我们称这种在函数体内调用函数自身的编程方法为**递归（Recursion）**。从刚才的图中也可看出，递归式的调用与普通的函数嵌套调用是一样的，都是“一层一层”地执行，然后从内到外“一层一层”地返回到调用方。
+我们称这种在函数体内调用函数自身的编程方法为**递归**（Recursion）。从刚才的图中也可看出，递归式的调用与普通的函数嵌套调用是一样的，都是“一层一层”地执行，然后从内到外“一层一层”地返回到调用方。
 
 递归唯一比较特殊的地方在于它需要有一个递归终止的条件。试想如果刚才的 `fact` 函数中缺少 `if (n == 1) return 1;` 这个判断的话，则调用将持续不断、永不停止地进行下去——直到计算机的内存放不下那么多函数的空间为止（这种现象俗称“爆栈”）。所以在进行递归调用前需要**谨慎地考虑它终止的条件**。
 
@@ -197,7 +197,7 @@ int main() {
 
 下面这张图片展示了这个递归的思想。每一个步骤都分为三个小部分，直到最简单的情形（点击可展开/收起下一层过程）：
 <div style="display:flex;height: 500px;justify-content:center;" >
-<iframe src="assets/hanoi_recursion.svg" height="500" style="left:0; right: 0; border: 0;"></iframe>
+<iframe src="/assets/hanoi_recursion.svg" height="500" style="left:0; right: 0; border: 0;"></iframe>
 </div>
 
 有人说，递归思想就是**将一个大规模的问题转移到较小规模的同类问题**。所以在解决递归问题时，只需考虑问题的转移方法和终止条件就够了。

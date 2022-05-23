@@ -50,8 +50,10 @@ for (*初始语句* **条件表达式**; **迭代表达式**)
 3. 在 `@*循环语句*@` 执行完毕后，如果存在 `@*迭代表达式*@` ，则计算 `@*迭代表达式*@` 所指定的运算。 `@*迭代表达式*@` 运算完成后，返回步骤 2 继续循环。
 
 文字描述看上去非常抽象，因此这张图有助于你理解这个过程：
+
+<!-- TODO -->
 <div id="for" style="overflow:auto;"></div>
-<script>
+<!-- <script>
 flowchart.parse('st=>start: 开始\n\
 e=>end: 结束\n\
 bd=>operation: 循环体\n\
@@ -68,7 +70,7 @@ cond(no)->e').drawSVG('for',{
     'yes-text':'true',
     'no-text':'false'
 });
-</script>
+</script> -->
 
 实际上，上述 for 语句完全等价于下面这段代码：
 ```sdsc

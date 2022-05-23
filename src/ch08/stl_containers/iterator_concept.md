@@ -60,7 +60,7 @@ $\longrightarrow$ 称满足以上条件的 `It` 为*连续迭代器（Contiguous
 
 所有的 STL 容器都定义了 `begin` 和 `end` 成员函数。`begin` 成员函数返回指向容器首个元素的迭代器，而 `end` 成员函数返回指向容器最后一个元素的**下一位置**的迭代器。（换而言之，对 `end` 成员函数返回值“解地址”导致未定义行为。）
 
-<img src="assets/range-begin-end.svg" alt="begin and end iterator">
+<img src="/assets/range-begin-end.svg" alt="begin and end iterator">
 
 所以，我们得到了访问 `std::forward_list` 元素的正确方法：
 ```CPP

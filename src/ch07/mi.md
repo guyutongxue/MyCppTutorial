@@ -1,6 +1,6 @@
 # 多重继承(待续) <sub>选读</sub>
 
-C++ 中提供了**多重继承（Multiple Inheritance, MI）**的特性，其含义是一个派生类可以从多个基类继承。
+C++ 中提供了**多重继承**（Multiple Inheritance, MI）的特性，其含义是一个派生类可以从多个基类继承。
 
 ?> [TODO]
 

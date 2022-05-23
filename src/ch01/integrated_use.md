@@ -20,7 +20,7 @@ Bingo! You got the answer!
 看上去还挺有意思的。那么这个程序该怎么写呢？
 
 不管怎么说，先把（咱到现在都不知道啥意思的）开头结尾写上；然后设定整数变量 `ans` 为答案：
-```cpp
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -29,7 +29,7 @@ int main() {
 }
 ```
 这个时候需要读取一个输入。所以需要用一个变量 `x` 来存储这个输入的整数。
-```cpp
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -40,7 +40,7 @@ int main() {
 }
 ```
 需要判断 x 是大了还是小了，因此需要写一些分支……
-```cpp
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -57,7 +57,7 @@ int main() {
 }
 ```
 这里的代码多了起来，请稍微回想一下我们在分支一节学的内容，应该不难理解。注意到这里应该做的事情是输出一个提示信息，于是：
-```cpp
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -74,7 +74,7 @@ int main() {
 }
 ```
 接下来问题来了。如果仅仅如此的话，那么输入一次就结束了，没法让用户多次尝试，不符合我们的预期。那么该如何做呢？聪明的你一定想到了：使用循环。那么在使用前仔细考虑一下循环的条件——没错，当输入的数和答案不相等的时候才会重复执行。另外，每次重复执行前需要再次请求用户输入。因此我们加上这个循环：
-```CPP
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -95,7 +95,7 @@ int main() {
 解释一下：当第 6 行输入 `x` 结束之后，检查 `x` 是否是正确答案。如果不是正确答案，那么就需要进入循环，根据不同大小输出错误提示；随后允许用户继续尝试不同 `x` 的输入。（也就是第 14 行的那个输入。）这个输入结束后，回过头来继续检查 `x` 是否正确，周而复始下去。
 
 几乎完成了，就差最后一点：加上得到正确答案的提示就 OK 了。注意到当用户输入正确答案的时候会退出循环，于是在循环结束的地方加上这个输出提示就好。
-```CPP
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -118,8 +118,8 @@ int main() {
 
 ## 注释和缩进
 
-随着我们代码量的增加，有时候理解代码会出现一定的困难。这个时候就需要**注释（Comment）**派上用场了。注释就是对代码的解释和说明，其目的是让人们能够更加轻松地了解代码。在 C++ 中，注释是这样写的：
-```CPP
+随着我们代码量的增加，有时候理解代码会出现一定的困难。这个时候就需要**注释**（Comment）派上用场了。注释就是对代码的解释和说明，其目的是让人们能够更加轻松地了解代码。在 C++ 中，注释是这样写的：
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -130,7 +130,7 @@ int main() {
 只要出现了两个斜杠 `//`  的地方，从此往后一直到本行结尾的地方都是注释了。注释可以随便写，写什么都行；但一般是对本行或者下一行代码的内容说明。为什么注释能随便写？因为编译器在编译程序时会忽视注释的部分，因此一般注释怎样写都不会对编译的结果产生影响。
 
 你会发现这种注释只能写一行。因而还有一种注释方式叫多行注释：
-```CPP
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -161,7 +161,7 @@ int main() {
 缩进就是指某一行文本相对上一行文本发生了水平的位移。在编程领域，缩进一般是向右平移 4 个字符的宽度。我们代码中采用了加上 4 个空格的方法——实际并不用按那么多次键盘，主流的编辑器只需按一下键盘上的 <kbd>Tab</kbd> 键（位于 <kbd>Q</kbd> 键的左侧）就可以自动加上 4 个空格（另外，按下 <kbd>Shift + Tab</kbd> 就可以快速删除 4 个空格）。当然有些较老的编辑器可能是插入 8 个空格或者插入了一个叫“制表符”的东西，这个时候就需要稍微调整一下编辑器设置了。
 
 其实缩进是没有必要的——C++ 程序对空格是不敏感的，也就是说写成这样稀奇古怪的形状：
-```CPP
+```cpp codemo(open)
 #include <iostream>
 int main() {
 int a{0};
@@ -182,7 +182,7 @@ a = a        +           1;
 
 ## 练习参考答案
 
-```CPP
+```cpp codemo(open)
 #include <iostream>
 using namespace std;
 int main() {
@@ -198,7 +198,7 @@ int main() {
     }
 }
 ```
-```CPP
+```cpp codemo(open)
 #include <iostream>
 using namespace std;
 int main() {
@@ -215,7 +215,7 @@ int main() {
     }
 }            
 ```
-```CPP
+```cpp codemo(open)
 #include <iostream>
 using namespace std;
 int main() {

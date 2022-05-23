@@ -6,10 +6,10 @@
 
 <h6 id="idx_枚举项"></h6>
 
-**枚举类型（Enumeration）**是规定了一个有限取值范围的数据类型。它的所有可能取值称为这个类型的**枚举项（Enumerator）**。声明枚举类型的语法是这样的：
+**枚举类型**（Enumeration）是规定了一个有限取值范围的数据类型。它的所有可能取值称为这个类型的**枚举项**（Enumerator）。声明枚举类型的语法是这样的：
 
 ```sdsc
-enum *枚举类型名* <opt-block>: <i>基</i></opt-block> {
+enum *枚举类型名* <div class="opt-block">: <i>基</i></div> {
     **枚举项列表**
 };
 ```
@@ -41,7 +41,7 @@ if (d == West) {
 需要注意的是，这种声明不仅引入了类型名 `Direction`，还向全局命名空间引入了四个枚举项（`East` `South` `West` 和 `North`）的名字，从而你能在任何地方使用这些枚举项。如果不希望这种名字的污染，可以使用带作用域的枚举类型：
 
 <pre class="sdsc">
-enum <x-or>class<hr>struct</x-or> <i>枚举类型名</i> <opt-block>: <i>基</i></opt-block> {
+enum <span class="x-or">class<hr>struct</span> <i>枚举类型名</i> <div class="opt-block">: <i>基</i></div> {
     <b>枚举项列表</b>
 };
 </pre>

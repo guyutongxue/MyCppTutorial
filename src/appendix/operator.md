@@ -178,7 +178,7 @@
     </tr>
     <tr>
         <td rowspan="2">7</td>
-        <td><code><<</code></td>
+        <td><code>&lt;&lt;</code></td>
         <td>左移运算符</td>
         <td><a href="#/ch02/part2/bit_operator?id=左移运算符和右移运算符" target="_blank">说明</a></td>
     </tr>
@@ -189,18 +189,18 @@
     </tr>
     <tr>
         <td>8</td>
-        <td><code><=></code></td>
+        <td><code>&lt;=></code></td>
         <td>三路比较运算符</td>
         <td>若左侧大于右侧，返回“正数”，反之返回“负数”；相等返回“零”。</td>
     </tr>
     <tr>
         <td rowspan="4">9</td>
-        <td><code><</code></td>
+        <td><code>&lt;</code></td>
         <td>小于运算符</td>
         <td><a href="#/ch02/part2/comparison_operator" target="_blank">说明</a></td>
     </tr>
     <tr>
-        <td><code><=</code></td>
+        <td><code>&lt;=</code></td>
         <td>小于等于运算符</td>
         <td><a href="#/ch02/part2/comparison_operator" target="_blank">说明</a></td>
     </tr>
@@ -303,7 +303,7 @@
         <td><a href="#/ch02/part2/assignment_operator?id=复合赋值运算符" target="_blank">说明</a></td>
     </tr>
     <tr>
-        <td><code><<=</code></td>
+        <td><code>&lt;&lt;=</code></td>
         <td>左移复合赋值运算符</td>
         <td><a href="#/ch02/part2/bit_operator?id=复合赋值运算符的扩充" target="_blank">说明</a></td>
     </tr>

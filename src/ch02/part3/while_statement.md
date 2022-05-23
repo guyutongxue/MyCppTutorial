@@ -130,7 +130,8 @@ while (<em>条件</em>);
     </td>
 </tr>
 </table>
-<script>
+<!-- TODO -->
+<!-- <script>
 flowchart.parse('st=>start: 开始\n\
 e=>end: 结束\n\
 bd=>operation: 循环体\n\
@@ -155,4 +156,4 @@ cond(no)->e').drawSVG('do',{
     'yes-text':'是',
     'no-text':'否'
 });
-</script>
+</script> -->

@@ -19,7 +19,7 @@ void deleteElement(int* arr, unsigned int size, int index) {
 
 链表和数组类似，也可以存储一系列元素。但是它插入元素和删除元素的速度都远高于数组。它的结构长成这样：
 
-<img src="assets/Singly-linked-list.svg" alt="Linked List">
+<img src="/assets/Singly-linked-list.svg" alt="Linked List">
 
 这个图并不是那么好懂。我这样来解释：首先我们把一系列数据以一系列结构体的形式存放：
 ```cpp

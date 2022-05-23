@@ -59,7 +59,7 @@ template void f<int>(int t);
 
 <pre class="sdsc">
 template <i>返回值类型</i> <i>函数模板名</i> <b>模板实参列表</b> (<b>函数形参列表</b>);
-<hr>template <x-or>class<hr>struct</x-or> <i>类模板名</i> <i>模板实参列表</i>;
+<hr>template <span class="x-or">class<hr>struct</span> <i>类模板名</i> <i>模板实参列表</i>;
 </pre>
 
 称为显式实例化定义：它既不是模板声明也不是函数或类声明，就单纯是一种不引入名字的、迫使编译器生成一份实例化结果的语法。当有了这样一个显式实例化定义后，刚才的代码也就能够链接通过了。

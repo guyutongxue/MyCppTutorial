@@ -1,5 +1,10 @@
 import Mitt from "mitt";
 
-const emitter = Mitt<{change: string}>();
+const emitter = Mitt<{
+  show: {
+    lang?: string;
+    code: string;
+  }
+}>();
 
 export { emitter };

@@ -17,7 +17,7 @@
       {
         "info": "用于面向对象：指定该类不可继承。",
         "sdsc": [
-          "<x-or>class<hr>struct</x-or> <b>类名</b> final {\n    <b>成员列表</b>\n};"
+          "<span class="x-or">class<hr>struct</span> <b>类名</b> final {\n    <b>成员列表</b>\n};"
         ],
         "example": "struct A final {};\n// can't write: struct B : A ;"
       }
@@ -42,7 +42,7 @@
       {
         "info": "用于模块：声明一个模块实现单元（Module Implementation Unit）或者模块接口单元(Module Interface Unit。",
         "sdsc": [
-          "<opt-block>export</opt-block> module <i>模块名</i>;"
+          "<div class="opt-block">export</div> module <i>模块名</i>;"
         ],
         "example": "// hello.cpp\nexport module my.app.hello\nexport auto sayHello();\n// hello_impl.cpp\nmodule my.app.hello\nauto sayHello() {\n    return \"hello!\";\n}"
       }

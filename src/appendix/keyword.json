@@ -5,8 +5,8 @@
       {
         "info": "用于声明：指示类型的对齐要求（只能更严格）。</p>",
         "sdsc": [
-          "<x-or>struct<hr>class</x-or> alignas(<i>表达式</i>) <b>类名</b> {\n    <b>成员列表</b>\n};",
-          "<x-or>struct<hr>class</x-or> alignas(<i>类型</i>) <b>类名</b> {\n    <b>成员列表</b>\n};"
+          "<span class="x-or">struct<hr>class</span> alignas(<i>表达式</i>) <b>类名</b> {\n    <b>成员列表</b>\n};",
+          "<span class="x-or">struct<hr>class</span> alignas(<i>类型</i>) <b>类名</b> {\n    <b>成员列表</b>\n};"
         ],
         "example": "struct alignas(8) S {\n    char m;\n};\nstruct alignas(int) S {\n    char m;\n};"
       }
@@ -110,7 +110,7 @@
       {
         "info": "2. 用于声明：声明结构化绑定。",
         "sdsc": [
-          "auto<opt-block><x-or>&amp;<hr>&amp;&amp;</x-or></opt-block> [<i>标识符列表</i>] <i>元组初始化器</i>;"
+          "auto<div class="opt-block"><span class="x-or">&amp;<hr>&amp;&amp;</span></div> [<i>标识符列表</i>] <i>元组初始化器</i>;"
         ],
         "example": "int a[2] = {1, 2};\nauto [x, y] = a; // copy\nauto& [x, y] = a; // ref"
       }
@@ -182,7 +182,7 @@
       {
         "info": "用于异常处理：捕获异常并处理。",
         "sdsc": [
-          "try <i>复合语句</i>\ncatch (<x-or><i>声明序列</i><hr>...</x-or>) <i>复合语句</i>"
+          "try <i>复合语句</i>\ncatch (<span class="x-or"><i>声明序列</i><hr>...</span>) <i>复合语句</i>"
         ],
         "example": "try {\n    str.substr(10);\n} catch (std::exception e) {\n    std::cerr << e.what();\n}\ntry {\n    f();\n} catch (...) {\n    // who cares?\n}"
       }
@@ -249,14 +249,14 @@
       {
         "info": "2. 用于声明：声明有作用域枚举类型。",
         "sdsc": [
-          "enum <x-or>class<hr>struct</x-or> <i>枚举名</i> {\n    <b>枚举项列表</b>\n};"
+          "enum <span class="x-or">class<hr>struct</span> <i>枚举名</i> {\n    <b>枚举项列表</b>\n};"
         ],
         "example": "enum class Color {\n    Red,\n    Blue,\n    Green\n};"
       },
       {
         "info": "3. 用于模板：用于引入类型模板形参，与 <code>typename</code> 等价。",
         "sdsc": [
-          "template &lt;<x-or>class<hr>typename</x-or> <b>类型形参</b>&gt;\n<i>声明</i>"
+          "template &lt;<span class="x-or">class<hr>typename</span> <b>类型形参</b>&gt;\n<i>声明</i>"
         ],
         "example": "template <class T>\nT& max(const T& a,const T& b) {\n    return a > b ? a : b;\n}"
       }
@@ -331,7 +331,7 @@
       {
         "info": "2. 用于控制成分：表明 if 语句含义为条件编译而非条件运行。",
         "sdsc": [
-          "if constexpr (<i>常量表达式</i>) <i>真分支语句</i>\n<opt-block>else <i>假分支语句</i></opt-block>"
+          "if constexpr (<i>常量表达式</i>) <i>真分支语句</i>\n<div class="opt-block">else <i>假分支语句</i></div>"
         ],
         "example": "void f() {\n    if constexpr (true) {\n        i++;\n    }\n}"
       }
@@ -522,7 +522,7 @@
       {
         "info": "用于声明：声明枚举类型。",
         "sdsc": [
-          "enum <opt-block><x-or>class<hr>struct</x-or></opt-block> <b>枚举名</b> <opt-block>: <i>基</i></opt-block> {\n    <b>枚举项列表</b>\n};"
+          "enum <div class="opt-block"><span class="x-or">class<hr>struct</span></div> <b>枚举名</b> <div class="opt-block">: <i>基</i></div> {\n    <b>枚举项列表</b>\n};"
         ],
         "example": "enum Color { Red, Black };\nenum class Status { Free, Busy };"
       }
@@ -567,14 +567,14 @@
       {
         "info": "2. 其它：用于连接其它语言编写的代码。一般只支持C语言。",
         "sdsc": [
-          "extern <i>字符串字面量</i> <x-or>{ <i>声明序列</i> }<hr><i>声明</i></x-or>"
+          "extern <i>字符串字面量</i> <span class="x-or">{ <i>声明序列</i> }<hr><i>声明</i></span>"
         ],
         "example": "extern \"C\" {\n    static void f();\n}\nextern \"C\" void g() {\n     printf(\"Hello\");\n}"
       },
       {
         "info": "3. 用于模板：显式实例化声明类模板，但跳过隐式实例化步骤；即在其它文件中寻找实例化定义。",
         "sdsc": [
-          "extern template <x-or>class<hr>struct</x-or> <i>模板名</i>&lt;<b>模板实参列表</b>&gt;;"
+          "extern template <span class="x-or">class<hr>struct</span> <i>模板名</i>&lt;<b>模板实参列表</b>&gt;;"
         ],
         "example": "template<typename T> struct Z { };\n// find instantiation in other place\nextern template struct Z<double>;"
       }
@@ -654,7 +654,7 @@
       {
         "info": "用于控制成分：if语句形成简单的分支流程。",
         "sdsc": [
-          "if <opt-block>constexpr</opt-block> ( <b>初始化语句</b> <i>条件表达式</i> )\n    <i>真分支语句</i>\n<opt-block>else\n    <i>假分支语句</i></opt-block>"
+          "if <div class="opt-block">constexpr</div> ( <b>初始化语句</b> <i>条件表达式</i> )\n    <i>真分支语句</i>\n<div class="opt-block">else\n    <i>假分支语句</i></div>"
         ],
         "example": "if (flag) {\n    std::cout << \"Yes\";\n}\nif (int x = getRes(); flag)\n    std::cout << x;\nelse std::cout << -x;"
       }
@@ -716,7 +716,7 @@
       {
         "info": "2. 用于 Lambda 表达式：允许 Lambda 表达式函数体修改复制捕获的实参。",
         "sdsc": [
-          "[<b>捕获</b>](<b>参数列表</b>) mutable <opt-block>-&gt; 返回类型</opt-block> <i>函数体</i>"
+          "[<b>捕获</b>](<b>参数列表</b>) mutable <div class="opt-block">-&gt; 返回类型</div> <i>函数体</i>"
         ],
         "example": "int a = 3;\nauto add = [a]() mutable -> void { a++; };"
       }
@@ -728,7 +728,7 @@
       {
         "info": "1. 用于命名空间：建立命名空间或引入命名空间，从而避免命名冲突。",
         "sdsc": [
-          "<opt-block>inline</opt-block> namespace <b>命名空间名</b> { <b>声明序列</b> }",
+          "<div class="opt-block">inline</div> namespace <b>命名空间名</b> { <b>声明序列</b> }",
           "using namespace <i>命名空间名</i>;"
         ],
         "example": "using namespace std;\nnamespace MyApp {\n    int x;\n}\nint main() {\n    MyApp::x;\n}"
@@ -854,7 +854,7 @@
         "info": "用于面向对象：指明其后的成员为私有成员，或者指明该类为私有继承。",
         "sdsc": [
           "private: ",
-          "<x-or>class<hr>struct</x-or> <b>类名</b> : private <i>父类名</i> {\n    <b>成员列表</b>\n};"
+          "<span class="x-or">class<hr>struct</span> <b>类名</b> : private <i>父类名</i> {\n    <b>成员列表</b>\n};"
         ],
         "example": "struct A {\nprivate:\n    int m;\n};\nstruct B : private A {};"
       }
@@ -867,7 +867,7 @@
         "info": "用于面向对象：指明其后的成员为受保护成员，或者指明该类为受保护继承。",
         "sdsc": [
           "protected: ",
-          "<x-or>class<hr>struct</x-or> <b>类名</b> : protected <i>父类名</i> {\n    <b>成员列表</b> \n};"
+          "<span class="x-or">class<hr>struct</span> <b>类名</b> : protected <i>父类名</i> {\n    <b>成员列表</b> \n};"
         ],
         "example": "struct A {\nprotected:\n    int m;\n};\nstruct B : protected A {};"
       }
@@ -880,7 +880,7 @@
         "info": "用于面向对象：指明其后的成员为公有成员，或者指明该类为受公开继承。",
         "sdsc": [
           "public: ",
-          "<x-or>class<hr>struct</x-or> <b>类名</b> : public <i>父类名</i> {\n    <b>成员列表</b> \n};"
+          "<span class="x-or">class<hr>struct</span> <b>类名</b> : public <i>父类名</i> {\n    <b>成员列表</b> \n};"
         ],
         "example": "class A {\npublic:\n    int m;\n};\nclass B : public A {};"
       }
@@ -934,7 +934,7 @@
       {
         "info": "2. 用于概念：requires表达式构造一个约束。",
         "sdsc": [
-          "requires <opt-block>(<i>形参列表</i>)</opt-block> {\n    <i>要求序列</i> \n}"
+          "requires <div class="opt-block">(<i>形参列表</i>)</div> {\n    <i>要求序列</i> \n}"
         ],
         "example": "template<typename T>\nconcept Addable = requires (T x) { x + x; }"
       }
@@ -1029,7 +1029,7 @@
       {
         "info": "其它：进行编译期断言检查。若常量表达式为真则不执行操作，否则编译错误并提示字符串字面量的内容（若有）。",
         "sdsc": [
-          "static_assert(<i>常量表达式</i><opt-block>, <i>字符串字面量</i></opt-block>);"
+          "static_assert(<i>常量表达式</i><div class="opt-block">, <i>字符串字面量</i></div>);"
         ],
         "example": "static_assert(false, \"Message\");\n// Compilation Error: Message"
       }
@@ -1060,7 +1060,7 @@
       {
         "info": "2. 用于声明：声明有作用域枚举类型。",
         "sdsc": [
-          "enum <x-or>class<hr>struct</x-or> <i>枚举名</i> {\n    <b>枚举项列表</b>\n};"
+          "enum <span class="x-or">class<hr>struct</span> <i>枚举名</i> {\n    <b>枚举项列表</b>\n};"
         ],
         "example": "enum struct Color {\n    Red,\n    Blue,\n    Green\n};"
       }
@@ -1159,7 +1159,7 @@
       {
         "info": "用于异常处理：关联一个复合语句使得其中的异常可以被处理。",
         "sdsc": [
-          "try <i>复合语句</i>\ncatch (<x-or><i>声明序列</i><hr>...</x-or>) <i>复合语句</i>"
+          "try <i>复合语句</i>\ncatch (<span class="x-or"><i>声明序列</i><hr>...</span>) <i>复合语句</i>"
         ],
         "example": "try {\n    str.substr(10);\n} catch (std::exception e) {\n    std::cerr << e.what();\n}"
       }
@@ -1196,7 +1196,7 @@
       {
         "info": "1. 用于模板：在模板声明中用以引入类型模板形参，与class等价。",
         "sdsc": [
-          "template &lt;<x-or>class<hr>typename</x-or> <b>类型形参</b>&gt;\n<i>声明</i>"
+          "template &lt;<span class="x-or">class<hr>typename</span> <b>类型形参</b>&gt;\n<i>声明</i>"
         ],
         "example": "template <typename T>\nT& max(const T& a,const T& b) {\n    return a > b ? a : b;\n}"
       },
@@ -1275,7 +1275,7 @@
       {
         "info": "2. 用于面向对象：声明继承方式为虚继承，即在多重继承中，最终派生对象只有一个基类成员。",
         "sdsc": [
-          "<x-or>class<hr>struct</x-or> <b>类名</b> : virtual <opt-block><x-or>private<hr>protected<hr>public</x-or></opt-block> <i>父类名</i> {\n    <b>成员列表</b> \n};"
+          "<span class="x-or">class<hr>struct</span> <b>类名</b> : virtual <div class="opt-block"><span class="x-or">private<hr>protected<hr>public</span></div> <i>父类名</i> {\n    <b>成员列表</b> \n};"
         ],
         "example": "struct A {\n    int n;\n};\nstruct B : virtual public A {};\nstruct C : virtual public A {};\nstruct D : B,C {\n    void f() {\n        n;\n        B::n;\n        C::n; // same\n    }\n};"
       }

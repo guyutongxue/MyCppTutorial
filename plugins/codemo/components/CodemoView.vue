@@ -13,6 +13,7 @@ import { diffLines } from "diff";
 import { emitter } from "./emitter";
 
 const code = ref("");
+const lang = ref("cpp");
 
 const lineIds = ref([] as number[]);
 let nextLineId = 0;
@@ -24,9 +25,8 @@ onMounted(() => {
   for (let i = 0; i < howManyLines; i++) {
     lineIds.value.push(nextLineId++);
   }
-  emitter.on("change", (newCode) => {
-    const changes = diffLines(code.value, newCode, { ignoreWhitespace: true });
-    console.log(changes);
+  emitter.on("show", (n) => {
+    const changes = diffLines(code.value, n.code, { ignoreWhitespace: true });
     let oldLineNo = 0;
     const newLines: number[] = [];
     focusedLines.value = [];
@@ -45,9 +45,9 @@ onMounted(() => {
         }
       }
     }
-    console.log(newLines);
     lineIds.value = newLines;
-    code.value = newCode;
+    code.value = n.code;
+    lang.value = n.lang ?? "cpp";
     nextTick().then(async () => {
       await new Promise((r) => setTimeout(r, 1000));
       document.querySelector(".focus-line")?.scrollIntoView();
@@ -58,7 +58,7 @@ onMounted(() => {
 
 // Tokenize code, return lines of tokens with id
 const tokens = computed(() => {
-  const tokens = tokenize(code.value, "cpp");
+  const tokens = tokenize(code.value, lang.value);
   const hasFocus = focusedLines.value.length > 0;
   return lineIds.value.map((id, i) => {
     return {

@@ -33,7 +33,9 @@ a * 3;
 
 除此之外，若同为整数类型或同为浮点类型但具体类型不相同的，按照以下层级**转换到两者之中较高层级的类型**：
 
-<center><img alt="QR code" src="https://s1.ax1x.com/2020/11/01/B0CJY9.png"></center>
+<div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
+  <img alt="QR code" src="https://s1.ax1x.com/2020/11/01/B0CJY9.png">
+</div>
 
 > `bool` `char` `short` 和 `unsigned short` 在运算之前将无例外转换为 `int` ，此过程称为*整型提升*。
 

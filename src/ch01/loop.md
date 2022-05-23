@@ -3,18 +3,34 @@
 ## `while` 循环
 
 现在来想这样一个问题，我想输出从 1 到 20 的所有自然数，我该怎么样通过 C++ 来实现呢？当然你可以——
-```cpp
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
     cout << 1 << endl;
     cout << 2 << endl;
-    // 此处省略十多行……
+    cout << 3 << endl;
+    cout << 4 << endl;
+    cout << 5 << endl;
+    cout << 6 << endl;
+    cout << 7 << endl;
+    cout << 8 << endl;
+    cout << 9 << endl;
+    cout << 10 << endl;
+    cout << 11 << endl;
+    cout << 12 << endl;
+    cout << 13 << endl;
+    cout << 14 << endl;
+    cout << 15 << endl;
+    cout << 16 << endl;
+    cout << 17 << endl;
+    cout << 18 << endl;
+    cout << 19 << endl;
     cout << 20 << endl;
 }
 ```
 但是这样真的很繁琐乏味，复制粘贴都得折腾半天。这个时候，循环就派上了用场。先来看看使用了循环的代码：
-```CPP
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -50,8 +66,8 @@ int main() {
 - 现在再来检查条件来决定是否继续不断地执行： `a <= 20` ……好像不成立了；21 比 20 要大。因此循环不再继续。
 - 现在我们刚好输出了从 1 到 20 的全部自然数。
 
-
-<style>
+<!-- TODO -->
+<!-- <style>
 @import url(ch03/fig.css)
 </style>
 <details>
@@ -59,7 +75,7 @@ int main() {
 <div class="fig" style="height: 650px; overflow: hidden">
 <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=%23include%20%3Ciostream%3E%0Ausing%20namespace%20std%3B%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20a%7B1%7D%3B%0A%20%20%20%20while%20%28a%20%3C%3D%2020%29%20%7B%0A%20%20%20%20%20%20%20%20cout%20%3C%3C%20a%20%3C%3C%20endl%3B%0A%20%20%20%20%20%20%20%20a%20%3D%20a%20%2B%201%3B%0A%20%20%20%20%7D%0A%7D%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=2&heapPrimitives=nevernest&origin=opt-frontend.js&py=cpp&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 </div>
-</details>
+</details> -->
 
 循环是一个非常强大的工具。有了循环，基本上许多问题都可以一定程度上得到解决。最后我用一张图来总结循环：
 
@@ -79,7 +95,8 @@ while (<em>条件</em>) {
     </td>
 </tr>
 </table>
-<script>
+<!-- TODO -->
+<!-- <script>
 flowchart.parse('st=>start: 开始\n\
 e=>end: 结束\n\
 bd=>operation: 不断要做的事情\n\
@@ -92,7 +109,7 @@ cond(no)->e').drawSVG('diagram',{
     'yes-text':'是',
     'no-text':'否'
 });
-</script>
+</script> -->
 
 > 除了 `while` 循环之外，还有许多种其它的循环；其中更常见的是 `for` 循环。但是任何其它的循环都可以简单地转换为 `while` 循环，因此现阶段只需理解 `while` 循环就足够了。
 
@@ -104,7 +121,7 @@ cond(no)->e').drawSVG('diagram',{
 
 ## 练习参考答案
 
-```CPP
+```cpp codemo(open)
 #include <iostream>
 using namespace std;
 int main() {
@@ -115,7 +132,7 @@ int main() {
     }
 }
 ```
-```CPP
+```cpp codemo(open)
 #include <iostream>
 using namespace std;
 int main() {
@@ -128,7 +145,7 @@ int main() {
     cout << s << endl;
 }
 ```
-```CPP
+```cpp codemo(open)
 #include <iostream>
 using namespace std;
 int main() {

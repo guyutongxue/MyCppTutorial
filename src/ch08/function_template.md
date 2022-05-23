@@ -24,7 +24,7 @@ void print(T x) { /* 定义略 */ }
 
 ## 函数模板的实例化
 
-从函数模板生成函数的过程称为这个函数模板的**实例化（Instantiation）**。比如
+从函数模板生成函数的过程称为这个函数模板的**实例化**（Instantiation）。比如
 
 ```cpp
 template<typename T>
@@ -42,7 +42,7 @@ int main() {
 模板实例化的基本原理是“替换”，而**模板形参**指示了模板声明中可被替换的部分。最常用的模板形参是类型模板形参（Type template parameter）。类型模板形参拥有这样的语法：
 
 <pre class="sdsc">
-<x-or>typename<hr>class</x-or> <i>形参名</i>
+<span class="x-or">typename<hr>class</span> <i>形参名</i>
 </pre>
 
 类型模板形参引入若干个 `@*形参名*@` 之后，后续的函数声明中就如同定义了 `@*形参名*@` 这个类型。比如模板 `print` 中就可以使用类型模板形参 `T`，并将它用在函数声明的参数中。

@@ -4,11 +4,9 @@
 
 在了解指针这个概念之前，我们需要先了解什么是地址。比如我现在手里有一张名叫 Lenna 的图片：
 
-<center>
-
-![Lenna](http://www.lenna.org/len_std.jpg)
-
-</center>
+<div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
+  <img src="http://www.lenna.org/len_std.jpg" alt="Lenna">
+</div>
 
 这张图片它可能拥有一个地址（称为统一资源定位地址（Uniform Resource Location, URL））：
 ```

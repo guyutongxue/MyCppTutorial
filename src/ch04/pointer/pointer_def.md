@@ -49,7 +49,7 @@ char* b; // 指向 char 的指针类型
 
 <h6 id="idx_空指针"></h6>
 
-为了解决这个问题，C++ 提供了一个称为**空指针（Null pointer）**的字面量：`nullptr`。它可以转换为指向任何类型的指针类型：
+为了解决这个问题，C++ 提供了一个称为**空指针**（Null pointer）的字面量：`nullptr`。它可以转换为指向任何类型的指针类型：
 ```cpp
 int* a{nullptr};
 char* b{nullptr};

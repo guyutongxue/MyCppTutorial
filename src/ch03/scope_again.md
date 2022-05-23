@@ -1,10 +1,10 @@
 # 再谈作用域
 
 <!-- TODO -->
-<style>
+<!-- <style>
 @import url(ch03/fig.css)
 </style>
-<script type="module" src="./scope_again.js"></script>
+<script type="module" src="./scope_again.js"></script> -->
 
 ## 函数作用域
 

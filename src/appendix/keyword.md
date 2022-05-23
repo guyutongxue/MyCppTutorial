@@ -25,4 +25,5 @@
     <tbody id="specialIdentifierTable">
     </tbody>
 </table>
-<script src="appendix/keyword.js"></script>
+<!-- TODO -->
+<!-- <script type="module" src="/keyword.js"></script> -->

@@ -129,8 +129,7 @@ C/C++非常不同于当时的其它语言（如 BASIC、Pascal 等），它频�
 <tbody>
 <tr>
 <td>
-<pre class="table-code">
-<code class="language-pascal">program division;
+<pre class="table-code"><code class="language-pascal">program division;
 var a,b,c,d,i:integer;
 begin
     for i:=1 to 5 do
@@ -144,16 +143,15 @@ begin
         end
         else writeln('div by 0');
     end;
-end.</code>
+end.</code></pre>
 ```
 </td>
 <td>
-<pre class="table-code">
-<code class="language-cpp">// division
-#include <stdio.h>
+<pre class="table-code"><code class="language-cpp">// division
+#include &lt;stdio.h>
 int main(){
     int a,b,c,d,i;
-    for(i=1;i<=5;i++){
+    for(i=1;i&lt;=5;i++){
         scanf("%d%d",&a,&b);
         if(!(b==0)){
             c=a/b;
@@ -162,15 +160,16 @@ int main(){
         }
         else printf("div by 0\n");
     }
-}</code>
+}</code></pre>
 ```
 </td>
 </tr>
 </tbody>
 </table>
-<script>
+<!-- TODO -->
+<!-- <script>
 Prism.highlightAll();
-</script>
+</script> -->
 
 可以看到 C/C++ 运用了更多的类似 `%` `&` `!` `#` `<>` `{}` 等符号，而同时代的 Pascal 语言却大多用 `not` `then` `begin` `end` `div` `mod` 等英文单词来实现这些功能。这就导致了相同的程序，用 C/C++ 写会更加紧凑，可读性也相对较差。这就体现出空格的重要性了：空格有助于将紧凑的符号语言拆散。比如：
 
