@@ -9,7 +9,7 @@ import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
 import { searchPlugin } from "@vuepress/plugin-search";
 
 const SIDEBAR: SidebarConfig = [
-  "/README.md",
+  "/preface.md",
   {
     text: "第〇章 基本概念",
     link: "/ch00/",

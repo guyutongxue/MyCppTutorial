@@ -40,29 +40,29 @@ int main() {
   <ParentLayout>
     <template #page>
       <Home v-if="frontmatter.home" />
-
-      <Transition
-        v-else
-        name="fade-slide-y"
-        mode="out-in"
-        @before-enter="onBeforeEnter"
-        @before-leave="onBeforeLeave"
-      >
-        <Page :key="page.path" class="page" :style="{ paddingRight: `calc(${codemoWidth / 100} * (100vw - var(--active-sidebar-width)))` }">
-          <template #top>
-            <slot name="page-top" />
-          </template>
-          <template #bottom>
-            <slot name="page-bottom" />
-          </template>
-        </Page>
-      </Transition>
-      <Splitpanes class="codemo-panes" @resize="codemoWidth = $event[1].size">
-        <Pane :min-size="20"> </Pane>
-        <Pane :size="codemoWidth">
-          <CodemoView class="codemo-view" :code="src" />
-        </Pane>
-      </Splitpanes>
+      <template v-else>
+        <Transition
+          name="fade-slide-y"
+          mode="out-in"
+          @before-enter="onBeforeEnter"
+          @before-leave="onBeforeLeave"
+        >
+          <Page :key="page.path" class="page" :style="{ paddingRight: `calc(${codemoWidth / 100} * (100vw - var(--active-sidebar-width)))` }">
+            <template #top>
+              <slot name="page-top" />
+            </template>
+            <template #bottom>
+              <slot name="page-bottom" />
+            </template>
+          </Page>
+        </Transition>
+        <Splitpanes class="codemo-panes" @resize="codemoWidth = $event[1].size">
+          <Pane :min-size="20"> </Pane>
+          <Pane :size="codemoWidth">
+            <CodemoView class="codemo-view" :code="src" />
+          </Pane>
+        </Splitpanes>
+      </template>
     </template>
   </ParentLayout>
 </template>
