@@ -4,9 +4,13 @@ import {
   defineUserConfig,
   SidebarConfig,
 } from "vuepress";
-import { codemo } from "./plugins/codemo";
+import { ioBlockPlugin } from "./plugins/io-block";
+import { codemoPlugin } from "./plugins/codemo";
 import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
 import { searchPlugin } from "@vuepress/plugin-search";
+import { copyCodePlugin } from "vuepress-plugin-copy-code2";
+import { containerPlugin } from "@vuepress/plugin-container";
+import { prismjsPlugin } from "@vuepress/plugin-prismjs";
 
 const SIDEBAR: SidebarConfig = [
   "/preface.md",
@@ -356,18 +360,49 @@ export default defineUserConfig({
   public: "./public",
   theme: defaultTheme({
     sidebar: SIDEBAR,
+    navbar: ["/contribution"],
     sidebarDepth: 0,
     contributors: false,
     lastUpdatedText: "最近更新",
     themePlugins: {
-      // prismjs: false
+      container: false, // 使用自定义版本
+      backToTop: false, // 会挡住 codemo
     },
   } as DefaultThemeLocaleOptions),
   plugins: [
-    codemo(),
+    containerPlugin({
+      type: 'tip',
+      locales: {
+        '/': {
+          defaultInfo: '提示',
+        }
+      }
+    }),
+    containerPlugin({
+      type: 'warning',
+      locales: {
+        '/': {
+          defaultInfo: '注意',
+        }
+      }
+    }),
+    containerPlugin({
+      type: 'danger',
+      locales: {
+        '/': {
+          defaultInfo: '危险',
+        }
+      }
+    }),
+    codemoPlugin(),
     mdEnhancePlugin({
       tex: true,
+      tasklist: true,
     }),
     searchPlugin(),
+    copyCodePlugin({
+      selector: '.theme-default-content div[class*="language-c"] pre'
+    }),
+    ioBlockPlugin(),
   ],
 });

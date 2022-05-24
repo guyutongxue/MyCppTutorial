@@ -10,12 +10,12 @@ import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 import {
   useScrollPromise,
-  useSidebarItems,
-  useThemeLocaleData,
 } from "@vuepress/theme-default/lib/client/composables";
 import { usePageData, usePageFrontmatter } from "@vuepress/client";
-import { onMounted, ref } from "vue";
+import { nextTick, onMounted, ref } from "vue";
 import CodemoView from "./CodemoView.vue";
+
+import { emitter } from "./emitter";
 
 const page = usePageData();
 const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>();
@@ -25,15 +25,16 @@ const scrollPromise = useScrollPromise();
 const onBeforeEnter = scrollPromise.resolve;
 const onBeforeLeave = scrollPromise.pending;
 
-const codemoWidth = ref(40);
+const codemoWidth = ref(0);
 
-const src = `#include <iostream>
+onMounted(() => {
+  emitter.on("show", () => {
+    if (codemoWidth.value < 10) {
+      codemoWidth.value = 40;
+    }
+  })
+})
 
-int main() {
-  if (true) {
-    std::cout << "Hello, World!" << std::endl;
-  }
-}`;
 </script>
 
 <template>
@@ -57,9 +58,9 @@ int main() {
           </Page>
         </Transition>
         <Splitpanes class="codemo-panes" @resize="codemoWidth = $event[1].size">
-          <Pane :min-size="20"> </Pane>
+          <Pane :min-size="20" :size="100 - codemoWidth"> </Pane>
           <Pane :size="codemoWidth">
-            <CodemoView class="codemo-view" :code="src" />
+            <CodemoView class="codemo-view" />
           </Pane>
         </Splitpanes>
       </template>
@@ -83,6 +84,9 @@ int main() {
   :root {
     --active-sidebar-width: var(--sidebar-width);
   }
+}
+body {
+  overflow-y: scroll;
 }
 
 .codemo-panes {

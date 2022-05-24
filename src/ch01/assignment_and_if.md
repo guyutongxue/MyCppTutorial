@@ -32,7 +32,7 @@ int main() {
 与上次不同的是，我多定义了一个整数变量，它的名字叫做 `c` 。然后输入完 `a` 和 `b` 以后，执行这样的赋值操作：将 `a + b` 这个简单的式子的值赋给 `c` 。也就是说，从此开始 `c` 的值不再是 `0` 了，而是 `a` 和 `b`  的和。然后输出 `c` ，就能得到我们想要的结果。
 
 **赋值尽管长得像一个等式，但它并不是等式的含义**。请看下面这个例子：
-```cpp codemo(open)
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -124,7 +124,7 @@ int main() {
 1. 在上一题的基础上，现在有这样的新评分标准：如果学生的缺勤次数超过 `3` 次，则学生在原成绩的基础上扣掉 `5` 分。现在编写一个程序，输入学生的原成绩和缺勤次数，输出这个学生是否及格。若及格，另起一行输出这个学生现在的成绩。
 
 ## 练习参考答案
-```cpp codemo(open)
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -138,7 +138,7 @@ int main() {
     }
 }
 ```
-```cpp codemo(open)
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -151,7 +151,7 @@ int main() {
     }
 }
 ```
-```cpp codemo(open)
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {

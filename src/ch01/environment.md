@@ -4,9 +4,9 @@
 
 一般的教材都不会花特别多的笔墨介绍怎么配置环境，我认为那算是一种不太负责任的行为。因此我在这里多多少少写几笔吧，希望能够帮到各位读者。
 
-首先为了验证你的环境是否配置成功，我直接告诉你
+首先为了验证你的环境是否配置成功，我直接告诉你以下这段代码：
 
-```cpp codemo(open, text=以下这段代码：)
+```cpp codemo(show)
 #include <iostream>
 int main() {
     std::cout << "Hello, world!" << std::endl;
@@ -21,24 +21,15 @@ int main() {
 - “终端窗口”中显示了这句话；
 - ……
 
-!> 上文代码框左侧的 “1,2,3,4” 是行号，仅为了行文方便而展示，不是代码的一部分。代码从 `#include` 开始直到结尾 `}`。
+::: warning
+上文代码框左侧的 “1,2,3,4” 是行号，仅为了行文方便而展示，不是代码的一部分。代码从 `#include` 开始直到结尾 `}`。
+:::
 
 总之有各种各样的形式，具体的表现依操作系统和配置方法的不同而不同。因此，一旦你看到了这句话被输出了，那么就证明你的 C++ 代码被成功编译并运行了，也就意味着环境配置完成，你成功迈过了这道门槛。
 
 下面我将分操作系统来简要介绍配置方法。
 
-- [Windows](#windows)
-  - [使用 Visual Studio Code](#使用-visual-studio-code)
-  - [使用 Visual Studio](#使用-visual-studio)
-  - [使用 Dev-C++](#使用-dev-c)
-  - [使用 Code::Blocks](#使用-codeblocks)
-- [macOS](#macos)
-  - [使用 Visual Studio Code](#使用-visual-studio-code-1)
-  - [使用 CLion](#使用-clion)
-  - [使用 Xcode](#使用-xcode)
-- [GNU/Linux](#gnulinux)
-  - [使用 Visual Studio Code](#使用-visual-studio-code-2)
-  - [使用命令行](#使用命令行)
+[[TOC]]
 
 ## Windows
 

@@ -20,12 +20,12 @@ int main() {
 ```
 （当然，这要求你输入的字符串不能超过 29 位，否则就放不下了。）比如下面的运行结果：
 ```io
-**Hello!↵**
+¶Hello!↵
 Hello!
 ```
 那么看看这个呢？
 ```io
-**Hello, world!↵**
+¶Hello, world!↵
 Hello,
 ```
 啊嘞，为什么只输出了一部分呢？你可以再检查一下 `a` 的各元素的值，发现确实只存储了 `"Hello,"` 而没有存储后面的 `" world!"`——也就是说后面根本就没输入进去。这是为什么呢？
@@ -45,7 +45,7 @@ int main() {
 ```
 这样的程序运行结果如下。
 ```io
-**Hello, world!↵**
+¶Hello, world!↵
 string a is: Hello,
 string b is: world!
 ```

@@ -12,7 +12,7 @@ int main() {
 }
 ```
 ```io
-**Hello!↵**
+¶Hello!↵
 ```
 
 类似地，期望读取一个浮点数，却没有输入浮点数也会进入失败状态。
@@ -28,7 +28,7 @@ int main() {
 }
 ```
 ```io
-**Hello! I am really really longer than the limit.↵**
+¶Hello! I am really really longer than the limit.↵
 ```
 
 当发生这种现象的时候，就会导致输入失败。输入失败会导致**接下来的任何输入语句都会跳过执行**，如：
@@ -44,7 +44,7 @@ int main() {
 }
 ```
 ```io
-**Hello! 66↵**
+¶Hello! 66↵
 42
 ```
 
@@ -64,11 +64,11 @@ int main() {
 }
 ```
 ```io
-**Hello!↵**
+¶Hello!↵
 cin failed.
 ```
 ```io
-**56↵**
+¶56↵
 OK.
 ```
 
@@ -103,9 +103,9 @@ int main() {
 ```
 这样 `m` 就能被输入了：
 ```io
-**Hello!↵**
+¶Hello!↵
 cin failed.
-**56↵**
+¶56↵
 56
 ```
 
@@ -165,11 +165,11 @@ int main() {
 ```
 就像这样，把输入的代码放在 if 语句的条件中。这个时候，程序会读取输入，如果输入成功则执行 if 语句的真分支语句，否则（进入了失败状态）执行 if 语句的假分支语句。比如上例中：
 ```io
-**42↵**
+¶42↵
 Input success: 42
 ```
 ```io
-**Hello↵**
+¶Hello↵
 Input fail.
 ```
 

@@ -86,7 +86,7 @@ int main() {
     cin >> r;
     s = r * r * pi;
     cout << s << endl;
-}    
+}
 ```
 ```CPP
 #include <iostream>

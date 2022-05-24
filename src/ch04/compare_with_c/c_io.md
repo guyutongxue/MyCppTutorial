@@ -105,14 +105,14 @@ int main(void) {
     printf("Strings:\n");
     const char* s = "Hello";
     printf(".%10s.\n.%-10s.\n.%*s.\n", s, s, 10, s);
- 
+
     printf("Characters:     %c %%\n", 65); /* 65: 'A' */
- 
+
     printf("Integers\n");
     printf("Decimal:        %i %d %.6i %i %.0i %+i %u\n", 1, 2, 3, 0, 0, 4, -1);
     printf("Hexadecimal:    %x %x %X %#x\n", 5, 10, 10, 6);
     printf("Octal:          %o %#o %#o\n", 10, 10, 4);
- 
+
     printf("Floating point\n");
     printf("Rounding:       %f %.0f %.32f\n", 1.5, 1.5, 1.3);
     printf("Padding:        %05.2f %.2f %5.2f\n", 1.5, 1.5, 1.5);

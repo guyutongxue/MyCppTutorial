@@ -86,8 +86,8 @@ int main() {
 这段代码的编译运行效果是这样的：
 
 ```io
-**10↵**
-**1 1 2 4 5 20 19 19 8 7↵**
+¶10↵
+¶1 1 2 4 5 20 19 19 8 7↵
 Number 1 was entered 2 time(s).
 Number 2 was entered 1 time(s).
 Number 4 was entered 1 time(s).

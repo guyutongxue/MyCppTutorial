@@ -34,7 +34,7 @@ int main() {
     String a("abc");
     String b("def");
     // 下面调用了刚刚定义的 operator+
-    String c(a + b); 
+    String c(a + b);
     std::cout << c.str << std::endl;
 }
 ```
@@ -156,7 +156,7 @@ public:
         String result(operator+(b)); //
         assign(result);
         // 这里，this 指向的就是调用 `operator+=` 的调用者 a ，而 *this 就是 a 本身了
-        return *this; 
+        return *this;
     }
 };
 ```

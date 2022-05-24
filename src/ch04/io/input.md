@@ -31,14 +31,14 @@ int main() {
 ```
 此时，你可以自由地输入任何大小不超过 30 的字符串。`cin.getline()` 将一直读到换行符才会停止：
 ```io
-**Reading input!↵**
+¶Reading input!↵
 Reading input!
 ```
 
 当输入的字符个数超过 *最大长度* 时会发生截断。比如上例中 `cin.getline()` 限制为 30 个，那么读取的时候只会将前 29 个字符和 `'\0'` 存入数组 `a`，剩下的字符仍然停留在缓冲区中而不被读取。同时，会导致 `cin` 进入失败状态。关于失败状态的详细讨论将会在后面的章节中展开。
 
 ```io
-**abcdefghijabcdefghijabcdefghijabcdefghij↵**
+¶abcdefghijabcdefghijabcdefghijabcdefghij↵
 abcdefghijabcdefghijabcdefghi
 ```
 
@@ -56,7 +56,7 @@ int main() {
 ```
 运行结果如：
 ```io
-**Hello, world!↵**
+¶Hello, world!↵
 Hello, wo
 ```
 
@@ -78,8 +78,8 @@ int main() {
 }
 ```
 ```io
-**Hi, C++!↵**
-**How are you?↵**
+¶Hi, C++!↵
+¶How are you?↵
 Hi, C++!<br>
 How a
 ```
@@ -124,7 +124,7 @@ int main() {
 ```
 输入的空格会被跳过：
 ```io
-**@ #$↵**
+¶@ #$↵
 @
 #
 $
@@ -149,7 +149,7 @@ int main() {
 ```
 这个时候空格就可以存入变量中：
 ```io
-**@ #$↵**
+¶@ #$↵
 @<br>&nbsp;
 #
 ```
@@ -174,16 +174,16 @@ int main() {
 
 我们也知道 `cin >>` 还可用于输入整数、浮点数等。这里面并没有太多新知识，唯需了解**空白字符是这类输入的终止字符**，即当 `cin >>` 读取数时遇到空格、Tab和换行就会终止此次读取。同样地，`cin >>` 读取数时遇到空白字符也会忽略，所以
 ```io
-**42&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;56↵**
+¶42     56↵
 ```
 和
 ```io
-**42↵**
-**↵**
-**↵**
-**↵**
-**↵**
-**&nbsp;&nbsp;56↵**
+¶42↵
+¶↵
+¶↵
+¶↵
+¶↵
+¶  56↵
 ```
 的效果是一致的：这些空白字符都会被忽略。
 
@@ -204,9 +204,9 @@ int main() {
 ```
 它会让 `b` “空手而归”：
 ```io
-**First string!Second string!↵**
+¶First string!Second string!↵
 a is: First string
-b is: 
+b is:
 ```
 因为第 6 行输入完成之后残留 `'!'` 在缓冲区中，当第 7 行再次 `cin.get()` 时，一上来就是终止字符，所以会直接向 `b` 中输入表示结束的空字符并停止读入。接下来再多的 `cin.get()`，只要它读取字符串的终止字符还是 `'!'`，它仍然无济于事，啥也读不到。
 
@@ -227,7 +227,7 @@ int main() {
 ```
 这样就能解决问题：
 ```io
-**First string!Second string!↵**
+¶First string!Second string!↵
 a is: First string
 b is: Second string
 ```
@@ -247,7 +247,7 @@ int main() {
 ```
 的结果是：
 ```io
-**Hello @↵**
+¶Hello @↵
 a is: Hello
 b is: &nbsp;
 ```

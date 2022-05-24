@@ -54,12 +54,12 @@ switch (a) {
     case 3: cout << "three" << endl;
     case 4: cout << "four" << endl;
     case 5: cout << "five" << endl;
-    default: cout << "wrong" << endl; 
+    default: cout << "wrong" << endl;
 }
 ```
 然后你可以尝试编译运行：
 ```io
-**3↵**
+¶3↵
 three
 four
 five
@@ -93,7 +93,7 @@ switch 语句中的 `@*表达式*@` 必须是整数类型或者可以隐式转�
 尽量避免在 switch 语句中使用声明语句。若使用，你需要用复合语句的形式将其括起，原因会在稍后的章节中讲解。
 
 > 正如字面意思，语句标号实际是语句的一个部分；也就是说任何一个标号必须依赖于一个语句。因此标号后面至少要有一个语句。这样的用法：`switch (1) { default: }` 是错误的，因为 `default` 标号后面没有语句。这里你可以使用[空语句](/ch02/part3/empty_statement.md)。
-> 
+>
 > 但一个语句可以拥有多个标号，比如判断元音的例子中输出语句拥有五个标号。
 
 > switch 语句的主体部分是一个复合语句，但也可以是任意的其它语句，尽管这样没有任何意义。

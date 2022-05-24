@@ -103,7 +103,7 @@ int main(int argc, char** argv) {
 
 图
 
-显然，`./echo` 就代表了 `/home/user/echo`；因为 `.` 就是工作路径 `/home/user` 嘛。当然如果不嫌麻烦的话，你也可以执行 `/home/user/echo Hello` 这样的命令。 
+显然，`./echo` 就代表了 `/home/user/echo`；因为 `.` 就是工作路径 `/home/user` 嘛。当然如果不嫌麻烦的话，你也可以执行 `/home/user/echo Hello` 这样的命令。
 
 操作系统提供一些常用的程序。GNU/Linux 中，它们大多位于 `/bin` 路径下，而 Windows 中，它们大多位于 `C:\Windows\system32` 下。这些程序很常用，以至于我不希望在调用它们的时候总是带着长长的路径名：
 
@@ -151,12 +151,12 @@ int main() {
 ```
 然后尝试用 g++ 编译器编译它。在壳层中执行如下命令：
 ```io
-**g++ ./helloworld.cpp -o ./helloworld.exe↵**
+¶g++ ./helloworld.cpp -o ./helloworld.exe↵
 ```
 
 如果没有语法错误的话，g++ 编译器将什么都不会输出，直接默默地成功执行了。你可以检查一下，`/home/user` 路径下应当多了一个名为 `helloworld.exe` 的文件，这就是 g++ 编译的结果。接下来，尝试通过刚才学到的方法来运行这个 `helloworld.exe` 程序。在壳层中执行：
 ```io
-**./helloworld.exe↵**
+¶./helloworld.exe↵
 ```
 应当能够看到输出 `Hello, world!`。这样，我们成功地做到了在 CLI 下编译并运行 C++ 程序。
 
@@ -168,7 +168,7 @@ int main() {
 
 这里有两个编译单元 `main.cpp` 和 `hello.cpp`。将它们一起编译的方法非常简单，只需执行如下命令即可：
 ```io
-**g++ ./main.cpp ./hello.cpp -o ./main.exe↵**
+¶g++ ./main.cpp ./hello.cpp -o ./main.exe↵
 ```
 
 在这条命令中，结尾的 `-o ./main.exe` 仍然用于指示可执行文件名；但不同于之前，这次使用 `./main.cpp` 和 `./hello.cpp` 两个参数来告诉编译器将哪些源文件作为翻译单元。当指定多个翻译单元时，编译器会分别*编译*这些翻译单元，并在*编译*完成后自动调用链接器来链接它们，最终将链接的结果转换为可执行文件保存到 `./main.exe` 中。
@@ -181,24 +181,24 @@ int main() {
 
 首先，`getopt` 将命令行参数分为“选项”和“非选项”两种类别。选项是指一系列由 `-` 减号开头的若干个参数。比如：
 ```io
-**g++ -V↵**
+¶g++ -V↵
 ```
 ```io
-**g++ --version↵**
+¶g++ --version↵
 ```
 
 中，`-V` 和 `--version` 这两个参数就是选项。这种简单的减号开头的选项称为“开关”或“布尔开关”。它仿佛给程序传入了一个布尔类型变量——好比说，如果参数中带有 `--version`，程序中的某个布尔变量 `showVersion` 就设置为 `true`；如果不带 `--version`，则设置为 `false`。
 
 使用 `getopt` 库的程序会规定一些可用的选项。如果你使用了这些规定之外的选项作为参数，那么你会得到一个 `getopt` 错误。
 ```io
-**g++ --abcde↵**
+¶g++ --abcde↵
 g++.exe: error: unrecognized command-line option '-abcde'
 ```
 这个例子中，我是用了未定义的选项 `--abcde`。（因为这个参数是减号开头的，所以它被识别为选项。）然而，`g++` 并不认识 `--abcde` 这个选项，所以它给出“未识别的命令行选项”错误。
 
 几乎所有的程序都会规定 `--help` 和 `--version` 两个布尔开关。当启用 `--help` 开关时，程序一般会输出帮助信息——关于如何使用此程序的帮助；当启用 `--version` 开关时，程序一般会输出版本信息。
 ```io
-**g++ --help↵**
+¶g++ --help↵
 Usage: g++.exe [options] file...
 Options:
   -pass-exit-codes         Exit with highest error code from a phase.
@@ -208,22 +208,22 @@ Options:
 
 布尔开关如同给程序传入了一个布尔变量，但如果要传入其它类型的变量就比较费力气了。所以，`getopt` 引入“带值的”选项的概念。比如：
 ```io
-**g++ -x=c++↵**
-**g++ -xc++↵**
-**g++ -x c++↵**
+¶g++ -x=c++↵
+¶g++ -xc++↵
+¶g++ -x c++↵
 ```
 
 上面这三行的意思都是，`-x` 选项带有一个额外的字符串值 `c++`。换而言之，这里如同将程序中的某个字符串类型变量设置为 `"c++"`。`getopt` 支持三种类型的“带值的”选项，即用 `=` 等号分隔名字和值、用 ` ` 空格分隔名字和值，以及不加任何分隔符。显然，最后一种要求选项只能是单个字母形式的（如 `-x` `-L`）而不能是多个字母（如 `--help` `-specs`）。在 `g++` 中，有些选项只支持 `=` 分隔的值（比如 `-std`），有些选项只支持后两者；具体情况需要查看帮助文档。
 
 除了布尔开关、带值的选项，剩余的所有参数都是“非选项”参数。在 `g++` 中，所有非选项参数都视为源文件——即翻译单元。
 ```io
-**g++ abcd↵**
+¶g++ abcd↵
 ```
 这里，`abcd` 因为不是减号开头的，所以不会被识别为布尔开关或者选项。所有它是非选项参数。所以 `g++` 会尝试在壳层的当前工作路径中寻找名为 `abcd` 的源文件，并将其作为翻译单元进行编译。如果找不到这个文件，则给出错误。
 
 最后回过头来看一看最初的这条命令：
 ```io
-**g++ ./main.cpp ./hello.cpp -o ./main.exe↵**
+¶g++ ./main.cpp ./hello.cpp -o ./main.exe↵
 ```
 这里，`-o ./main.exe` 就是带值的选项，而 `./main.cpp` 和 `./hello.cpp` 则是非选项参数。因此，`g++` 将后两者认定为翻译单元。在 `g++` 中，`-o` 选项可选地带有一个值，指定了编译的结果存放在哪里。所以 `-o ./main.exe` 就是将可执行文件存放在 `./main.exe` 这个文件中。
 
@@ -256,11 +256,11 @@ Options:
 
 比如
 ```io
-**g++ ./hello.cpp↵**
+¶g++ ./hello.cpp↵
 ```
 中，`g++` 将 `./hello.cpp` 视为源文件，从而执行预处理、编译、汇编、链接这四个流程，得到可执行文件。又比如
 ```io
-**g++ ./hello.s↵**
+¶g++ ./hello.s↵
 ```
 中，`g++` 将 `./hello.s` 视为汇编文件，故只会执行汇编、链接两个流程，得到可执行文件。
 
@@ -275,31 +275,31 @@ Options:
 
 比如
 ```io
-**g++ ./hello.cpp↵**
+¶g++ ./hello.cpp↵
 ```
 中，由于没有指定 `-E` `-S` 或 `-c` 选项，所以 `g++` 会走到最后一步生成可执行文件。又比如
 ```io
-**g++ ./hello.cpp -c↵**
+¶g++ ./hello.cpp -c↵
 ```
 中，由于指定了 `-c` 选项，所以 `g++` 只会执行预处理、编译、汇编三个流程，随后就终止了。最终只会生成名字类似 `hello.o` 的对象文件，而不是可执行文件。
 
 此时，`-o` 不仅指定可执行文件的名字，还执行每次流程结束后得到结果的名字。比如
 ```io
-**g++ ./hello.cpp -c -o abc.o↵**
+¶g++ ./hello.cpp -c -o abc.o↵
 ```
 就会生成名为 `abc.o` 的对象文件。当不指定 `-o` 时，`-E` 会将预处理后的文件输出到屏幕上；`-S` 会以 `.s` 后缀名保存结果，`-c` 会以 `.o` 后缀名保存结果；可执行文件名则为 `a.out` 或 `a.exe`。
 
 如果你想详细查看每一阶段 `g++` 都做了什么，你可以将这四个阶段分开执行。下面的命令分别执行了其中单个阶段，并在最后运行这个可执行文件。（注：在大多数壳层程序中，`#` 代表单行注释，其后内容仅用于注解，不会被壳层处理。）
 ```io
-**g++ ./hello.cpp -E >  ./hello.ii↵**   # 预处理
-**g++ ./hello.ii  -S -o ./hello.s↵**    # 编译
-**g++ ./hello.s   -c -o ./hello.o↵**    # 汇编
-**g++ ./hello.o      -o ./hello.exe↵**  # 链接
-**./hello.exe↵**                        # 运行
+¶g++ ./hello.cpp -E >  ./hello.ii↵   # 预处理
+¶g++ ./hello.ii  -S -o ./hello.s↵    # 编译
+¶g++ ./hello.s   -c -o ./hello.o↵    # 汇编
+¶g++ ./hello.o      -o ./hello.exe↵  # 链接
+¶./hello.exe↵                        # 运行
 ```
 
 > `-E` 并不通过 `-o` 选项来控制输出位置，它直接将预处理结果输出到屏幕（`stdout`）上。所以这里使用了壳层的重定向运算符 `>` 将其输出保存到我们想要的位置 `./hello.ii` 中。
-> 
+>
 > **注意**：如果你在 Windows 下使用 PowerShell 来执行上述命令，你可能需要改变重定向的默认编码，比如提前执行 `$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'` 命令。
 
 ## GNU Make
@@ -338,7 +338,7 @@ main.o: main.cpp
 
 Makefile 中保存了这样四个片段后，就可以开始构建了。在壳层中执行 `make main.exe` 命令：
 ```io
-**make main.exe↵**
+¶make main.exe↵
 ```
 
 > 在 MinGW 中，使用 `mingw32-make` 来代替 `make`。
@@ -361,7 +361,7 @@ add_executable(main main.cpp f.cpp g.cpp)
 
 安装 CMake 后，在源代码位置新建一个 build 文件夹，然后把壳层程序 `cd` 到这个 build 文件夹。接着，输入：
 ```io
-**cmake ..↵**
+¶cmake ..↵
 ```
 
 > MinGW 中，请在上述命令中添加 `-G "MinGW Makefiles"` 选项。
