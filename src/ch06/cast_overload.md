@@ -31,7 +31,7 @@ public:
 };
 ```
 这里出现的语法就是重载类型转换运算符的语法了：
-```sdsc
+```sdsc-legacy
 operator *类型名* () *函数体*
 ```
 这里，`@operator *类型名*@` 的写法和之前的什么 `operator+=` 啊 `operator[]` 啊是很像的；而且它不需要参数——因为类型转换是一元运算符，不再需要额外的右操作数了。但不一样的地方是它**没有返回值类型**。这是因为，转换到 `B` 类型的运算符重载必然返回 `B` 类型，所以不用再次强调。
@@ -137,7 +137,7 @@ struct C {};
 struct A {
     A() { }
     explicit A(const C&) { }              // 只允许显式的从 C 到 A 的转换
-    explicit operator B() { return B(); } // 只允许显式的从 A 到 B 的转换 
+    explicit operator B() { return B(); } // 只允许显式的从 A 到 B 的转换
 };
 int main() {
     A a; B b; C c;

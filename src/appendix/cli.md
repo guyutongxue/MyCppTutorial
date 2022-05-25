@@ -26,7 +26,7 @@
 ## 程序执行和命令行参数
 
 我现在来解释一下 `echo Hello` 这个命令对于壳层的意义。简单来说，每一个命令都是这样形式的：
-```sdsc
+```sdsc-legacy
 *程序名* **参数1 参数2 ...**
 ```
 每一个命令按空格分成若干段，最重要的是第一段，称作“程序名”。程序名指定了一个程序：壳层会在 CLI 中启动这个程序，然后将输入输出的控制权交给它。也就是说，系统中存在一个名为 `echo` 的程序，当执行 `echo Hello` 时，壳层会启动这个 `echo` 程序。
@@ -137,7 +137,7 @@ PATH 环境变量中的程序在执行时只需给出程序名，而不用给出
 > 常见的唯一例外是 Microsoft Visual C++（MSVC，即 Visual Studio），其编译器名叫 `cl.exe`，且安装 Visual Studio 时也一般不将它添加到 PATH 环境变量中。
 
 几乎所有的编译器都是以命令行界面来操作的。（换而言之 IDE 只是用漂亮的图形元素包装了这些命令行界面。）对于 g++ 来说，最常见的命令形式长成这样：
-```sdsc
+```sdsc-legacy
 g++ *源文件路径* -o *编译得到的可执行文件路径*
 ```
 
@@ -313,7 +313,7 @@ GNU Make（简称 Make）是一个经典的构建工具。所谓“构建”（B
 仍然是之前 `f` `g` `main` 这个情景。我们的目标是生成 `main.exe`。那么想一想如何生成 `main.exe`？它应该是由 `f.o` `g.o` `main.o` 三个对象文件链接得到的。而且，这三个文件一旦有一个发生更改，那么 `main.exe` 就应当重新编译。换而言之，`main.exe` 依赖于 `f.o` `g.o` `main.o` 三个文件。
 
 Make 使用一种称为 Makefile 的文件来指明这些构建方法。Makefile 就是文件名为 `Makefile` 的文件，不带后缀名。Makefile 使用这样的语法来表示 `main.exe` 如何得到：
-```sdsc
+```sdsc-legacy
 *目标文件*: **依赖文件1 依赖文件2 ...**
 &Tab;*生成命令*
 ```
@@ -321,13 +321,13 @@ Make 使用一种称为 Makefile 的文件来指明这些构建方法。Makefile
 注意 `@*生成命令*@` 前面的空白是一个 Tab 字符，而不是若干个空格。聪明的编辑器在编辑 Makefile 时会处理好这一点。
 
 带入刚才的 `main.exe` 的生成方法，则得到这样的 Makefile 片段：
-```sdsc
+```sdsc-legacy
 main.exe: f.o g.o main.o
 &Tab;g++ f.o g.o main.o -o main.exe
 ```
 
 这表示，要想生成 `main.exe`，需要在有 `f.o` `g.o` `main.o` 三个文件的情形下，执行 `g++ f.o g.o main.o -o main.exe` 命令来得到。有了这样的 Makefile，Make 就能知道如何生成 `main.exe` 目标。那么继续追问，既然得到 `main.exe` 需要 `f.o`，那么 `f.o` 如何得到？显然，它是由 `g++` 带 `-c` 参数，从 `f.cpp` 生成的。于是又有了下面三条 Makefile 片段：
-```sdsc
+```sdsc-legacy
 f.o: f.cpp
 &Tab;g++ f.cpp -c -o f.o<br>
 g.o: g.cpp

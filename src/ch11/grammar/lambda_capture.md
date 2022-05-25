@@ -2,7 +2,7 @@
 
 这一节介绍 Lambda 表达式的捕获语法。首先，完整的 Lambda 表达式语法是：
 
-```sdsc
+```sdsc-legacy
 [ **捕获** ] <div class="opt-block">(<i>参数列表</i>)</div> <div class="opt-block">-><i>返回值类型</i></div> *函数体*
 ```
 
@@ -31,7 +31,7 @@ int main() {
 ```cpp
 struct MyLambda {
     int& n{/* main 函数中的 n */};
-    
+
     auto operator()() const {
         n = 42;
     }

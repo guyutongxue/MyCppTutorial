@@ -8,7 +8,7 @@
 
 **枚举类型**（Enumeration）是规定了一个有限取值范围的数据类型。它的所有可能取值称为这个类型的**枚举项**（Enumerator）。声明枚举类型的语法是这样的：
 
-```sdsc
+```sdsc-legacy
 enum *枚举类型名* <div class="opt-block">: <i>基</i></div> {
     **枚举项列表**
 };

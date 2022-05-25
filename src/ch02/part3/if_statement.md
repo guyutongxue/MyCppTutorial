@@ -4,7 +4,7 @@
 
 我们之前已经在第一章已经了解过 if 语句了。不过这里要更正式地描述它的写法：
 
-```sdsc
+```sdsc-legacy
 if (*条件表达式*)
     *真分支语句*
 <div class="opt-block">else
@@ -69,7 +69,7 @@ else
 if (a > b)
     max = a;
     cout << "a is bigger" << endl;  // 这条语句不属于 if 的分支。它无论如何都会被执行
-``` 
+```
 因此我们建议在 if 语句的分支处尽可能地使用复合语句：
 ```cpp
 if (a > b) {

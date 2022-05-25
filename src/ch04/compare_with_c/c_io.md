@@ -74,7 +74,7 @@ C 语言没有判断参数类型的能力，所以你需要通过占位符来指
 <p class="small">※ C99 起</p>
 
 除此之外，在 `%` 后面可以可选地依次加上 *修饰*、*宽度* 和 *精度* 的限制，即。
-```sdsc
+```sdsc-legacy
 %**修饰**&hairsp;**宽度**&hairsp;**精度**&hairsp;**h/l/ll/L**&ZeroWidthSpace;*上述占位符*
 ```
 

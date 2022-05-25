@@ -97,20 +97,19 @@ while (<em>条件</em>) {
 </tr>
 </table>
 <!-- TODO -->
-<!-- <script>
-flowchart.parse('st=>start: 开始\n\
-e=>end: 结束\n\
-bd=>operation: 不断要做的事情\n\
-cond=>condition: 条件\n成立？\n\
-\n\
-st->cond\n\
-cond(yes)->bd\n\
-bd->cond\n\
-cond(no)->e').drawSVG('diagram',{
-    'yes-text':'是',
-    'no-text':'否'
-});
-</script> -->
+
+
+```flow
+st=>start: 开始
+e=>end: 结束
+bd=>operation: 不断要做的事情
+cond=>condition: 条成立？
+
+st->cond
+cond(yes)->bd
+bd->cond
+cond(no)->e
+```
 
 > 除了 `while` 循环之外，还有许多种其它的循环；其中更常见的是 `for` 循环。但是任何其它的循环都可以简单地转换为 `while` 循环，因此现阶段只需理解 `while` 循环就足够了。
 

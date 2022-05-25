@@ -10,7 +10,7 @@
 
 ### 定义可供替换的宏
 
-```sdsc
+```sdsc-legacy
 #define *宏名* *替换文本*
 ```
 
@@ -28,7 +28,7 @@ int MAX_NUMBER;    // 不进行替换
 
 ### 定义宏，但不进行替换
 
-```sdsc
+```sdsc-legacy
 #define *宏名*
 ```
 
@@ -40,7 +40,7 @@ int MAX_NUMBER;    // 不进行替换
 ### 定义可供替换的类函数宏
 
 你可以定义一个类似函数一样的宏。即：
-```sdsc
+```sdsc-legacy
 #define *宏名*(*形参列表*) *带形参的替换文本*
 ```
 
@@ -58,7 +58,7 @@ int score = SUM(23, 42); // 替换为 int score = ((23) + (42));
 ```
 
 形参列表可以不限定长度，使用省略号即可：
-```sdsc
+```sdsc-legacy
 #define *宏名*(*形参列表*, ...) *带形参的替换文本*
 #define *宏名*(...) *带形参的替换文本*
 ```
@@ -80,7 +80,7 @@ F(std::pair<int, int>, int); // 错误：参数个数不匹配
 
 ### `#` 运算符
 
-```sdsc
+```sdsc-legacy
 #*宏形参*
 ```
 
@@ -96,7 +96,7 @@ PRINT2("Hello");  // 替换为 cout << "\"Hello\"" << endl;
 
 ### `##` 运算符
 
-```sdsc
+```sdsc-legacy
 *左侧文本或形参*##*右侧文本或形参*
 ```
 
@@ -109,7 +109,7 @@ int x = STICK(123, 456) // 替换为 int x = (123456);
 
 ### `__VA_OPT__` 运算符
 
-```sdsc
+```sdsc-legacy
 __VA_OPT__(*文本*)
 ```
 
@@ -121,7 +121,7 @@ G();     // 替换为 f(0); ，注意没有多余的逗号
 ```
 
 除了 `__VA_OPT__` 运算符，还有一种扩展语法：当替换文本中出现 `,##__VA_ARGS__` 时，则在 `__VA_ARGS__` 为空字符串时删去开头的逗号。尽管大多数编译器都启用此扩展，但它并不标准。
- 
+
 ### 一些编译器预定义的宏
 
 | 宏名 | 含义 |
@@ -132,17 +132,17 @@ G();     // 替换为 f(0); ，注意没有多余的逗号
 | `__DATE__` | 定义为编译日期，形式为 "Mmm dd yyyy" 的字符串字面量。 |
 | `__TIME__` | 定义为时间，形式为 "hh:mm:ss" 的字符串字面量。 |
 
- 
+
 你可以随时通过 `#undef` 来取消某个宏定义。
 
-```sdsc
+```sdsc-legacy
 #undef *宏名*
 ```
- 
+
 ## 条件编译（ `#if` `#elif` `#else` `#endif` `#ifdef` `#ifndef` ）
 条件编译是指编译器选择性地编译某一部分而不编译其它部分。
 
-```sdsc
+```sdsc-legacy
 #if *常量表达式*
 *代码1*
 <div class="opt-block">#else
@@ -160,11 +160,11 @@ int* ptr = NULL;
 #endif
 ```
 如果连续多个 `#else #if` ，可以使用 `#elif` 来简化。
- 
+
 ### `defined` 运算符
 `defined` 运算符可以返回当前环境是否定义了某个宏。
 
-```sdsc
+```sdsc-legacy
 defined *宏名*
 defined (*宏名*)
 ```
@@ -178,33 +178,33 @@ freopen("1.out","w",stdout); // 则重定向到文件输出
 ```
 另外， `#ifdef` 等价于 `#if defined` ， `#ifndef` 等价于 `#if !defined` 。它们的用法是：
 
-```sdsc
+```sdsc-legacy
 #ifdef *宏名*
 #ifndef *宏名*
 ```
- 
+
 ## 包含文件（ `#include` ）
 `#include` 指令可以把某个源文件直接插入进指令所在的位置。当文件编译时，将不断递归地展开 `#include` 指令，直至不存在`#include` 指令。其语法如下：
 
-```sdsc
+```sdsc-legacy
 #include &lt;*头文件名*&gt;
 #include &quot;*文件名*&quot;
 ```
 
 其中，用尖括号（ `<>` ）包括的文件名将优先在系统库文件中查找，而用引号引起的文件名将优先在当前源文件所在的路径中查找。
 我们经常使用的  `<iostream>` `<cmath>` `<iomanip>` 等库，都是位于系统库路径的名为`iostream` `cmath` 和 `iomanip` 的文件，其中声明（或定义）了常用的变量、函数或者其他对象：比如 `cin` `cout`  `sqrt` 和 `setw` 等等。在一些文本编辑器中，你可以按下 <kbd>Ctrl</kbd> 键的同时点击 `#include` 指令，就可以查看这些头文件。
- 
+
 ## 引发错误（ `#error` ）
 
 你可以手动地引发一个编译错误，通过这样的语法：
-```sdsc
+```sdsc-legacy
 #error *错误信息*
 ```
 但凡编译到此指令编译器将停止编译，并将错误信息输出。
- 
+
 ## 设置编译器（ `#pragma` `#line` ）
 
-```sdsc
+```sdsc-legacy
 #pragma *某些参数*
 ```
 你可以通过某些参数去修改编译器的行为（比如静态链接等）。具体的参数语法和形式各有不同，可以参照编译器的说明文档。
@@ -222,7 +222,7 @@ freopen("1.out","w",stdout); // 则重定向到文件输出
 ```
 
 `#pragma pack` 指定接下来定义的结构体的对齐。
-```sdsc
+```sdsc-legacy
 #pragma pack(*对齐*)
 #pragma pack()
 ```
@@ -259,7 +259,7 @@ int main() {
 
 `#line` 用于覆盖设置当前的行号或者当前的文件名。此语法一般用于机器生成的代码。
 
-```sdsc
+```sdsc-legacy
 #line *行号*
 #line *行号*&quot;*文件名*&quot;
 ```

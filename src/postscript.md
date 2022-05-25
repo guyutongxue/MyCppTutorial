@@ -9,8 +9,6 @@
 - Bjarne Stroustrup, *The C++ Programming Language* （第 4 版）
 - Harold Abelson 等《计算机程序的构造和解释》（第 2 版，裘宗燕 译）
 - Ivan Cukic《C++ 函数式编程》（程继洪等 译）
-
-
 - [cppreference.com](https://zh.cppreference.com)
 - [Draft C++ Standard](http://eel.is/c++draft/)
 
@@ -19,8 +17,6 @@
 - 北京大学软件研究所副教授　　　　[李　戈](http://sei.pku.edu.cn/~lige/index_zh.html)
 - 北京大学基础实验教学研究所讲师　[郭　炜](http://eecs.pku.edu.cn/info/1330/5864.htm)
 - 北京大学王选计算机研究所副教授　[刘家瑛](http://39.96.165.147/people/liujiaying.html)
-
-
 - 北京大学 2019 级信息科学技术学院本科生　　张钰麟
 - 北京大学 2019 级元培学院本科生　　　　　　潘宏弢
 - 北京大学 2019 级信息科学技术学院本科生　　曲思睿

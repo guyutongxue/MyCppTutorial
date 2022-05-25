@@ -68,7 +68,7 @@ int main() {
 ```
 
 上面的程序中，`typeid(*b) == typeid(D1)` 检测 `*b` 在运行时是否是 `D1` 类型的。具体而言，typeid 运算符由 `typeid` 关键字开头，并拥有如下两种格式：
-```sdsc
+```sdsc-legacy
 typeid(*表达式*)
 typeid(*类型*)
 ```
@@ -89,7 +89,7 @@ void tryBark(const Animal* a) {
 从而我们不用手动维护之前的 `getName` 成员了。
 
 > typeid 运算符是一元的，它的结果值类型为 `std::typeinfo`，定义在 `<typeinfo>` 头文件中，这也就是为什么语言规定必须引入它。`std::typeinfo` 除了定义了 `operator==` 和 `operator!=`，还定义了成员函数 `name`，通过 `@typeid(*x*).name()@` 即可获取到有关 `@*x*@` 的类型名。这个类型名是实现定义的，比如可能为*重整名字*（更多资料可参阅[维基百科](https://zh.wikipedia.org/wiki/%E5%90%8D%E5%AD%97%E4%BF%AE%E9%A5%B0)）。
-> 
+>
 > typeid 运算符会忽略顶层只读限定，即 `typeid(const T) == typeid(T)`。
 
 ## `dynamic_cast`

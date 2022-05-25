@@ -396,8 +396,9 @@ export default defineUserConfig({
     }),
     codemoPlugin(),
     mdEnhancePlugin({
-      tex: true,
+      flowchart: true, // 有 bug？
       tasklist: true,
+      tex: true,
     }),
     searchPlugin(),
     copyCodePlugin({

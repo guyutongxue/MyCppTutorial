@@ -1,5 +1,3 @@
-import { resolve } from "path";
-import type { PluginObject } from "vuepress";
 import { path } from "@vuepress/utils";
 import { definePluginObject, addFenceRule } from "../utils";
 

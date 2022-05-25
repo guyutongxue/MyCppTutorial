@@ -29,7 +29,7 @@ int main() {
 }
 ```
 这一切看上去很不错。但是回想[函数执行](/ch03/function_execution)的过程，我们在调用 `check` 函数的过程中发生的参数传递是“复制”的——也就是说，这段程序需要将一个很大的数据从 `main` 的内存复制到 `check` 的内存：
-```sdsc
+```sdsc-legacy
 HugeStruct a{*main 函数中的 hs*};
 ```
 
@@ -41,7 +41,7 @@ bool check(HugeStruct& a) {
 }
 ```
 此时，参数传递发生的是：
-```sdsc
+```sdsc-legacy
 HugeStruct& a{*main 函数中的 hs*};
 ```
 也就是说 `a` 只是 `main` 函数中 `hs` 的一个别名，而起别名这个操作是不需要复制任何数据的。所以，**传递引用可以通过减少复制来提高性能**。
@@ -89,14 +89,14 @@ struct S {
         std::cout << "copy constructor called" << std::endl;
     }
 };
-void f(S a) { } 
+void f(S a) { }
 int main() {
     S sth(42); // 调用重载 #1
     f(sth);
 }
 ```
 你可能会很意外地发现程序输出了 `copy constructor called`。我们明明没有手动调用过这个重载，为什么会输出东西呢？原因就在 `f(sth);` 这个函数调用上。因为这个函数是按值传递的，所以正如之前所说，它会经过一次复制的操作，把数据从 `main` 的内存拷到 `f` 的内存。而这次复制就是通过调用重载 `#2` 来实现的。也就是说，参数传递如同：
-```sdsc
+```sdsc-legacy
 S a(*main函数中的 sth*);
 ```
 

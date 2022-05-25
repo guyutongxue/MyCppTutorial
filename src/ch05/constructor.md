@@ -56,18 +56,18 @@ int main() {
     std::cout << a.length() << std::endl;
     std::cout << b.length() << std::endl;
     b.assign(a); // 使用 assign 成员函数赋值，即 b = a
-    std::cout << b.str << std::endl; // "Hello" 
+    std::cout << b.str << std::endl; // "Hello"
 }
 ```
 
 注意：构造函数是一种**非常特殊**的成员函数。它的名字必须和结构体名完全一致，而且不能写出返回值类型（`void` 也不用写）。即：
-```sdsc
+```sdsc-legacy
 *结构体名* (**参数列表**) {
     **一些需要在初始化时执行的内容**
 }
 ```
 然后，你可以通过括号括起的 `@*参数列表*@` 作为初始化器进行初始化：
-```sdsc
+```sdsc-legacy
 *结构体名* *变量名*(*参数列表*);
 ```
 

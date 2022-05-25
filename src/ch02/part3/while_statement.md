@@ -7,7 +7,7 @@ while 语句可以用于引入循环。它有两种写法，分别称为 **while
 ## while 循环
 
 while 循环我们在第一章已经见过了。现在来正式地描述它的写法：
-```sdsc
+```sdsc-legacy
 while (*条件表达式*)
     *循环语句*
 ```
@@ -54,7 +54,7 @@ while (i < 5) {
 
 do-while 循环和 while 循环很相似。先来看一下它的写法：
 
-```sdsc
+```sdsc-legacy
 do
     *循环语句*
 while (*条件表达式*);

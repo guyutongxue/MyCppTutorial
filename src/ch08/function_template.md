@@ -5,7 +5,7 @@
 ## 函数模板语法
 
 函数模板拥有这样的语法：
-```sdsc
+```sdsc-legacy
 template&lt;*模板形参列表*&gt;
 *（允许出现模板形参的）函数声明（可为定义）*
 ```
@@ -90,7 +90,7 @@ void add(float a, int b) {
 int main() {
     // print<int> 和 print<char> 是两个不同的函数，尽管它们非常相似
     print<int>(42);
-    print<char>('H'); 
+    print<char>('H');
     print<int>(56); // 不会再实例化出另外一个 print<int>
 }
 ```
