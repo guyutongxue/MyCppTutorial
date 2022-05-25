@@ -80,34 +80,23 @@ int main() {
 
 循环是一个非常强大的工具。有了循环，基本上许多问题都可以一定程度上得到解决。最后我用一张图来总结循环：
 
-<table>
-<tr>
-    <td>
-    <pre class="table-code sdsc">
-<em>开始</em>
+<table style="float: left"><tr><td>
+    <pre><em>开始</em>
 while (<em>条件</em>) {
     <em>不断要做的事情</em>
 }
-<em>结束</em>
-</pre>
-    </td>
-    <td>
-        <div id="diagram"></div>
-    </td>
-</tr>
-</table>
-<!-- TODO -->
-
+<em>结束</em></pre>
+</td></tr></table>
 
 ```flow
 st=>start: 开始
 e=>end: 结束
 bd=>operation: 不断要做的事情
-cond=>condition: 条成立？
+cond=>condition: 条件成立？
 
 st->cond
 cond(yes)->bd
-bd->cond
+bd(left)->cond
 cond(no)->e
 ```
 

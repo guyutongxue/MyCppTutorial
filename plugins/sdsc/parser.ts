@@ -56,11 +56,11 @@ function tokenize(src: string) {
     },
     {
       type: TokenType.PLACEHOLDER,
-      regex: /^\S+/,
-    }
+      regex: /^[^"|()[\]{}"]+/,
+    },
   ];
   const tokens = [];
-  while (src !== '') {
+  while (src !== "") {
     let found = false;
     for (const token of possibleTokens) {
       const match = token.regex.exec(src);
@@ -78,9 +78,27 @@ function tokenize(src: string) {
       throw new Error(`Could not tokenize ${src}`);
     }
   }
+  return tokens;
 }
+
+type Node =
+  | {
+      type: "raw";
+      value: string;
+    }
+  | {
+      type: "placeholder";
+      value: string;
+    }
+  | {
+      type: "group";
+      opt: boolean;
+      children: Node[];
+    };
+
+function buildTree(tokens: Token[]) {}
 
 export function parse(src: string) {
   const tokens = tokenize(src);
-  console.log(tokens);
+  return tokens;
 }

@@ -101,59 +101,42 @@ do {
 
 我们用 while 语句的图示来结束本节的内容：
 
-<table id="whileTable">
-<tr>
-    <td>
-    <pre class="table-code sdsc">
-<em>开始</em>
+<table style="float: left"><tr><td>
+    <pre><em>开始</em>
 while (<em>条件</em>)
     <em>循环体</em>
-<em>结束</em>
-</pre>
-    </td>
-    <td>
-    <pre class="table-code sdsc">
-<em>开始</em>
+<em>结束</em></pre>
+</td></tr></table>
+
+```flow
+st=>start: 开始
+e=>end: 结束
+bd=>operation: 循环体
+cond=>condition: 条件成立？
+
+st->cond
+cond(yes)->bd
+bd->cond
+cond(no, left)->e
+```
+
+<table style="float: left"><tr><td>
+    <pre><em>开始</em>
 do
     <em>循环体</em>
 while (<em>条件</em>);
-<em>结束</em>
-</pre>
-    </td>
-</tr>
-<tr>
-    <td>
-        <div id="while"></div>
-    </td>
-    <td>
-        <div id="do"></div>
-    </td>
-</tr>
-</table>
-<!-- TODO -->
-<!-- <script>
-flowchart.parse('st=>start: 开始\n\
-e=>end: 结束\n\
-bd=>operation: 循环体\n\
-cond=>condition: 条件\n成立？\n\
-\n\
-st->cond\n\
-cond(yes)->bd\n\
-bd->cond\n\
-cond(no)->e').drawSVG('while',{
-    'yes-text':'是',
-    'no-text':'否'
-});
-flowchart.parse('st=>start: 开始\n\
-e=>end: 结束\n\
-bd=>operation: 循环体\n\
-cond=>condition: 条件\n成立？\n\
-\n\
-st->bd\n\
-cond(yes)->bd\n\
-bd->cond\n\
-cond(no)->e').drawSVG('do',{
-    'yes-text':'是',
-    'no-text':'否'
-});
-</script> -->
+<em>结束</em></pre>
+</td></tr></table>
+
+
+```flow
+st=>start: 开始
+e=>end: 结束
+bd=>operation: 循环体
+cond=>condition: 条件成立？
+
+st->bd
+cond(yes)->bd
+bd->cond
+cond(no, left)->e
+```

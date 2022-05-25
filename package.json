@@ -14,7 +14,6 @@
 		"@typescript-eslint/parser": "^5.26.0",
 		"@vue/tsconfig": "^0.1.3",
 		"@vuepress/client": "2.0.0-beta.45",
-		"@vuepress/core": "2.0.0-beta.45",
 		"@vuepress/plugin-container": "2.0.0-beta.45",
 		"@vuepress/plugin-prismjs": "2.0.0-beta.45",
 		"@vuepress/plugin-search": "2.0.0-beta.45",

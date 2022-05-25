@@ -40,11 +40,11 @@ if (d == West) {
 
 需要注意的是，这种声明不仅引入了类型名 `Direction`，还向全局命名空间引入了四个枚举项（`East` `South` `West` 和 `North`）的名字，从而你能在任何地方使用这些枚举项。如果不希望这种名字的污染，可以使用带作用域的枚举类型：
 
-<pre class="sdsc">
-enum <span class="x-or">class<hr>struct</span> <i>枚举类型名</i> <div class="opt-block">: <i>基</i></div> {
-    <b>枚举项列表</b>
-};
-</pre>
+```sdsc
+"enum" ("class"|"struct") 枚举类型名 [":" 基] "{"
+    [枚举项列表]
+"}"
+```
 
 在 `enum` 关键字后加上 `class` 或者 `struct`，这个枚举便成为了带有作用域的枚举类型。当枚举类型带有作用域时，其枚举项需要带 `@*枚举类型名*::@` 前缀使用：
 ```cpp

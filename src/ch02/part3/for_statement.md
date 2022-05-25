@@ -51,26 +51,23 @@ for (*初始语句* **条件表达式**; **迭代表达式**)
 
 文字描述看上去非常抽象，因此这张图有助于你理解这个过程：
 
-<!-- TODO -->
-<div id="for" style="overflow:auto;"></div>
-<!-- <script>
-flowchart.parse('st=>start: 开始\n\
-e=>end: 结束\n\
-bd=>operation: 循环体\n\
-init=>operation: 初始语句\n\
-cond=>condition: 条件\n表达式\n\
-iter=>operation: 运算\n迭代表达式\n\
-\n\
-st(right)->init\n\
-init(right)->cond\n\
-cond(yes,right)->bd\n\
-bd(right)->iter\n\
-iter(top)->cond\n\
-cond(no)->e').drawSVG('for',{
-    'yes-text':'true',
-    'no-text':'false'
-});
-</script> -->
+```flow
+st=>start: 开始
+e=>end: 结束
+bd=>operation: 循环体
+init=>operation: 初始语句
+cond=>condition: 条件
+表达式
+iter=>operation: 运算
+迭代表达式
+
+st(right)->init
+init(right)->cond
+cond(yes,right)->bd
+bd(right)->iter
+iter(top)->cond
+cond(no)->e
+```
 
 实际上，上述 for 语句完全等价于下面这段代码：
 ```sdsc-legacy

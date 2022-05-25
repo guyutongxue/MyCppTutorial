@@ -88,62 +88,46 @@ if (a > b) {
 ```
 
 我们用 if 语句的图示来结束本节的内容：
-<table id="ifTable">
-<tr>
-    <td>
-    <pre class="table-code sdsc">
-<em>开始</em>
+<table style="float: left"><tr><td>
+    <pre><em>开始</em>
 if (<em>条件</em>)
     <em>真分支语句</em>
-<em>结束</em>
-</pre>
-    </td>
-    <td>
-    <pre class="table-code sdsc">
+<em>结束</em></pre>
+</td></tr></table>
+
+```flow
+st=>start: 开始
+e=>end: 结束
+true=>operation: 真分支语句
+cond=>condition: 条件成立？
+
+st->cond
+cond(yes)->true
+true->e
+cond(no)->e
+```
+
+<table style="float: left"><tr><td>
+    <pre>
 <em>开始</em>
 if (<em>条件</em>)
     <em>真分支语句</em>
 else
     <em>假分支语句</em>
-<em>结束</em>
-</pre>
-    </td>
-</tr>
-<tr>
-    <td>
-        <div id="if"></div>
-    </td>
-    <td>
-        <div id="else"></div>
-    </td>
-</tr>
-</table>
-<!-- TODO -->
-<!-- <script>
-flowchart.parse('st=>start: 开始\n\
-e=>end: 结束\n\
-true=>operation: 真分支语句\n\
-cond=>condition: 条件\n成立？\n\
-\n\
-st->cond\n\
-cond(yes)->true\n\
-true->e\n\
-cond(no)->e').drawSVG('if',{
-    'yes-text':'是',
-    'no-text':'否'
-});
-flowchart.parse('st=>start: 开始\n\
-e=>end: 结束\n\
-true=>operation: 真分支语句\n\
-false=>operation: 假分支语句\n\
-cond=>condition: 条件\n成立？\n\
-\n\
-st->cond\n\
-cond(yes)->true\n\
-true->e\n\
-cond(no)->false\n\
-false->e').drawSVG('else',{
-    'yes-text':'是',
-    'no-text':'否'
-});
-</script> -->
+<em>结束</em></pre>
+</td></tr></table>
+
+
+```flow
+st=>start: 开始
+e=>end: 结束
+true=>operation: 真分支语句
+false=>operation: 假分支语句
+cond=>condition: 条件成立？
+
+st->cond
+cond(yes)->true
+true->e
+cond(no)->false
+false->e
+```

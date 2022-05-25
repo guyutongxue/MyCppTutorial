@@ -4,13 +4,14 @@ import {
   defineUserConfig,
   SidebarConfig,
 } from "vuepress";
-import { ioBlockPlugin } from "./plugins/io-block";
-import { codemoPlugin } from "./plugins/codemo";
 import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
 import { searchPlugin } from "@vuepress/plugin-search";
 import { copyCodePlugin } from "vuepress-plugin-copy-code2";
 import { containerPlugin } from "@vuepress/plugin-container";
-import { prismjsPlugin } from "@vuepress/plugin-prismjs";
+
+import { ioBlockPlugin } from "./plugins/io-block";
+import { codemoPlugin } from "./plugins/codemo";
+import { sdscPlugin } from "./plugins/sdsc";
 
 const SIDEBAR: SidebarConfig = [
   "/preface.md",
@@ -396,7 +397,9 @@ export default defineUserConfig({
     }),
     codemoPlugin(),
     mdEnhancePlugin({
-      flowchart: true, // 有 bug？
+      // pnpm 下有 bug，改用 npm 即可
+      // https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/1892
+      flowchart: true,
       tasklist: true,
       tex: true,
     }),
@@ -405,5 +408,6 @@ export default defineUserConfig({
       selector: '.theme-default-content div[class*="language-c"] pre'
     }),
     ioBlockPlugin(),
+    sdscPlugin(),
   ],
 });
