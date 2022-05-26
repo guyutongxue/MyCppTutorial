@@ -19,8 +19,8 @@
 | 第十章   |                                          |         | :heavy_minus_sign: | :heavy_minus_sign: |
 | 第十一章 |                                          |         | :heavy_minus_sign: | :heavy_minus_sign: |
 
-- [ ] 编辑器
-- [ ] Compile API
+- [x] 编辑器
+- [x] Compile API
 
 - [ ] `idx_` 去留
 

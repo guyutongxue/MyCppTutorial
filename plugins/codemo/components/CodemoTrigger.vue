@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { emitter } from "./emitter";
+import { source } from "./emitter";
 
 const props = defineProps<{
   lang?: string;
@@ -26,7 +26,7 @@ const props = defineProps<{
 }>();
 
 function trigger() {
-  emitter.emit("show", { ...props });
+  source.next({ ...props });
 }
 </script>
 <style>

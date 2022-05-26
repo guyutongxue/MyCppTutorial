@@ -1,42 +1,3 @@
-<script setup lang="ts">
-// @ts-ignore
-import Home from "@theme/Home.vue";
-// @ts-ignore
-import Page from "@theme/Page.vue";
-import ParentLayout from "@vuepress/theme-default/lib/client/layouts/Layout.vue";
-import type { DefaultThemePageFrontmatter } from "@vuepress/theme-default/lib/shared";
-// @ts-ignore
-import { Splitpanes, Pane } from "splitpanes";
-import "splitpanes/dist/splitpanes.css";
-import {
-  useScrollPromise,
-} from "@vuepress/theme-default/lib/client/composables";
-import { usePageData, usePageFrontmatter } from "@vuepress/client";
-import { nextTick, onMounted, ref } from "vue";
-import CodemoView from "./CodemoView.vue";
-
-import { emitter } from "./emitter";
-
-const page = usePageData();
-const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>();
-
-// handle scrollBehavior with transition
-const scrollPromise = useScrollPromise();
-const onBeforeEnter = scrollPromise.resolve;
-const onBeforeLeave = scrollPromise.pending;
-
-const codemoWidth = ref(0);
-
-onMounted(() => {
-  emitter.on("show", () => {
-    if (codemoWidth.value < 10) {
-      codemoWidth.value = 40;
-    }
-  })
-})
-
-</script>
-
 <template>
   <ParentLayout>
     <template #page>
@@ -48,7 +9,15 @@ onMounted(() => {
           @before-enter="onBeforeEnter"
           @before-leave="onBeforeLeave"
         >
-          <Page :key="page.path" class="page" :style="{ paddingRight: `calc(${codemoWidth / 100} * (100vw - var(--active-sidebar-width)))` }">
+          <Page
+            :key="page.path"
+            class="page"
+            :style="{
+              paddingRight: `calc(${
+                codemoWidth / 100
+              } * (100vw - var(--active-sidebar-width)))`,
+            }"
+          >
             <template #top>
               <slot name="page-top" />
             </template>
@@ -57,10 +26,14 @@ onMounted(() => {
             </template>
           </Page>
         </Transition>
-        <Splitpanes class="codemo-panes" @resize="codemoWidth = $event[1].size">
+        <Splitpanes
+          vertical
+          class="codemo-panes"
+          @resize="codemoWidth = $event[1].size"
+        >
           <Pane :min-size="20" :size="100 - codemoWidth"> </Pane>
           <Pane :size="codemoWidth">
-            <CodemoView class="codemo-view" />
+            <CodemoPanel class="codemo-panel" />
           </Pane>
         </Splitpanes>
       </template>
@@ -68,8 +41,50 @@ onMounted(() => {
   </ParentLayout>
 </template>
 
-<style lang="css">
+<script setup lang="ts">
+// @ts-ignore
+import Home from "@theme/Home.vue";
+// @ts-ignore
+import Page from "@theme/Page.vue";
+import ParentLayout from "@vuepress/theme-default/lib/client/layouts/Layout.vue";
+import type { DefaultThemePageFrontmatter } from "@vuepress/theme-default/lib/shared";
+// @ts-ignore
+import { Splitpanes, Pane } from "splitpanes";
+import "splitpanes/dist/splitpanes.css";
+import { useScrollPromise } from "@vuepress/theme-default/lib/client/composables";
+import { usePageData, usePageFrontmatter } from "@vuepress/client";
+import { nextTick, onMounted, onUnmounted, ref } from "vue";
+import CodemoPanel from "./CodemoPanel.vue";
 
+import { source } from "./emitter";
+import type { Subscription } from "rxjs";
+
+const page = usePageData();
+const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>();
+
+// handle scrollBehavior with transition
+const scrollPromise = useScrollPromise();
+const onBeforeEnter = scrollPromise.resolve;
+const onBeforeLeave = scrollPromise.pending;
+
+const codemoWidth = ref(0);
+
+let subscription: Subscription;
+
+onMounted(() => {
+  subscription = source.subscribe(() => {
+    if (codemoWidth.value < 10) {
+      codemoWidth.value = 40;
+    }
+  });
+});
+
+onUnmounted(() => {
+  subscription.unsubscribe();
+});
+</script>
+
+<style>
 @media (max-width: 719px) {
   :root {
     --active-sidebar-width: 0;
@@ -106,10 +121,8 @@ body {
   background: var(--c-border);
   pointer-events: auto;
 }
-.codemo-view {
-  width: 100%;
-  height: 100%;
+.codemo-panel {
+  height: calc(100vh - var(--navbar-height));
   pointer-events: auto;
-  border-radius: 0!important;
 }
 </style>
