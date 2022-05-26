@@ -23,10 +23,15 @@ import { source } from "./emitter";
 const props = defineProps<{
   lang?: string;
   code: string;
+  focus?: string;
 }>();
 
 function trigger() {
-  source.next({ ...props });
+  source.next({
+    code: props.code,
+    lang: props.lang,
+    focus: props.focus?.split(",").map((n) => parseInt(n)),
+  });
 }
 </script>
 <style>

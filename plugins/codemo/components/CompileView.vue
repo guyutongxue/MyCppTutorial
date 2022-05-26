@@ -38,17 +38,17 @@
     </div>
     <!-- Compile -->
     <div class="tab-content" v-else-if="compileTab">
-      <pre><span v-for="stdout of result.stdout">{{ stdout.text }}</span>
-<span v-for="stderr of result.stderr" v-html="replaceColorToHtml(stderr.text)"></span>
+      <pre><span v-for="stdout of result.stdout">{{ stdout.text }}
+</span><span v-for="stderr of result.stderr" v-html="replaceColorToHtml(stderr.text)"></span>
 </pre>
     </div>
     <!-- Execute Result -->
     <div class="tab-content" v-else>
       <pre
         v-if="result.execResult.didExecute"
-      ><span v-for="stdout of result.execResult.stdout">{{ stdout.text }}</span>
-<span v-for="stderr of result.execResult.stderr" class="stderr">{{ stderr.text }}</span>
-</pre>
+      ><span v-for="stdout of result.execResult.stdout">{{ stdout.text }}
+</span><span v-for="stderr of result.execResult.stderr" class="stderr">{{ stderr.text }}
+</span></pre>
       <div v-else class="hint-container">
         <div class="hint">代码未运行</div>
       </div>
@@ -144,7 +144,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  subscription.unsubscribe();
+  subscription?.unsubscribe();
 });
 
 function replaceColorToHtml(content: string): string {

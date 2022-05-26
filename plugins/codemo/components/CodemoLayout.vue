@@ -80,7 +80,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  subscription.unsubscribe();
+  subscription?.unsubscribe();
 });
 </script>
 

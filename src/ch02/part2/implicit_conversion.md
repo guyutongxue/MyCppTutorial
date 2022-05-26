@@ -30,7 +30,7 @@
 ## 例子
 
 ### 例1.1
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -48,7 +48,7 @@ int main() {
 ```
 
 ### 例1.2
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -65,7 +65,7 @@ int main() {
 ```
 
 ### 例2
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -83,7 +83,7 @@ abcd
 ```
 
 ### 例3
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {

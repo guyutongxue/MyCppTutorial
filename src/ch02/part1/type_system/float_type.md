@@ -13,7 +13,7 @@
 | `long double` | 扩展双精度浮点型 | 不少于 `double` | 不少于 `double` | ——                                                                 |
 
 上表中也说明了，这三种类型的区别主要在于“精度”，它们具体的体现就是所能表示的有效数字的多少。请看这个例子：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -30,11 +30,9 @@ int main() {
 
 我们令 `a` 、 `b` 和 `c` 三个变量初始化为小数点后 20 位的圆周率值，并输出它们。最终得到的可能结果却是：
 
-```io
-3.141592<u>741012573242</u>
+<pre class="language-plain"><code>3.141592<u>741012573242</u>
 3.141592653589793<u>116</u>
-3.14159265358979323<u>9</u>
-```
+3.14159265358979323<u>9</u></code></pre>
 
 注意下划线部分的数值已经与我们期望的数值不符。这就是浮点型精度的体现，**超过对应精度的部分将无法准确存储**。之所以会有这个结果，是由于浮点型的存储方式所造成的。
 
@@ -59,7 +57,7 @@ $$(-1)^S\times 2^E\times M$$
 ## 注意事项
 
 正因为浮点数特殊的存储方式，我们避免将较大的数与较小的数相加。因为这样得到的结果有效数字可能超过精度限制。例如：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -78,7 +76,7 @@ int main() {
 
 ## 练习参考答案
 
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -88,7 +86,7 @@ int main() {
     cout << s << endl;
 }
 ```
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {

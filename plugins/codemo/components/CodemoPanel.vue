@@ -1,6 +1,6 @@
 <template>
   <Splitpanes horizontal>
-    <Pane style="overflow: hidden">
+    <Pane>
       <CodemoView class="codemo-view"></CodemoView>
     </Pane>
     <Pane>
@@ -19,7 +19,7 @@ import CompileView from "./CompileView.vue";
 
 <style>
 .codemo-view {
-  height: 100%;
+  min-height: 100%;
   border-radius: 0 !important;
 }
 

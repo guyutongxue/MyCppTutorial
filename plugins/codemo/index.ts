@@ -23,6 +23,7 @@ const codemoPlugin = () => {
           let show = false;
           let clear = false;
           let text = "显示代码";
+          let focus: number[] = [];
           if (lParen > 0 && rParen > lParen) {
             attr
               .substring(lParen + 1, rParen)
@@ -35,21 +36,47 @@ const codemoPlugin = () => {
                   text = value;
                 } else if (key === "clear") {
                   clear = true;
+                } else if (key === "focus") {
+                  focus = value.split("/").flatMap((part) => {
+                    const dash = part.indexOf("-");
+                    const lines = [];
+                    if (dash > 0) {
+                      const start = parseInt(part.substring(0, dash));
+                      const end = parseInt(part.substring(dash + 1));
+                      if (start < 0 || end < start) {
+                        throw new Error(`invalid focus: ${part}`);
+                      }
+                      for (let i = start; i <= end; i++) {
+                        lines.push(i);
+                      }
+                    } else {
+                      const line = parseInt(part);
+                      if (line < 0) {
+                        throw new Error(`invalid focus: ${part}`);
+                      }
+                      lines.push(line);
+                    }
+                    return lines;
+                  });
                 }
               });
           }
+          focus;
           const escapedContent = escapeHtml(content);
+          const props = `title="${text}" lang="${lang}" code="${escapedContent}" ${
+            focus.length > 0 ? `focus="${focus.join(",")}"` : ""
+          }`;
           if (show)
             return `<div style="position: relative">
   ${defaultFn()}
-  <CodemoTrigger class="show" title="${text}" lang="${lang}" code="${escapedContent}">
+  <CodemoTrigger class="show" ${props}>
     ${text}
   </CodemoTrigger>
 </div>`;
           else
             return (
               (clear ? `<div style="clear: right"></div>` : "") +
-              `<CodemoTrigger title="${text}" lang="${lang}" code="${escapedContent}" />`
+              `<CodemoTrigger ${props} />`
             );
         }
       );

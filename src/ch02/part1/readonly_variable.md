@@ -28,7 +28,7 @@ const int b; // 编译错误：只读变量不能省去初始化器
 你可能已经注意到，只读变量和常量都有一个共同的特点，就是“无法在运行期间更改它的值”。那么能否说只读变量就是常量呢？
 
 答案是否定的。请看下面这个例子：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -41,7 +41,7 @@ int main() {
 第 6 行声明了一个只读变量 `b` ，因此不能在第 7 行通过赋值更改它的值。但是你也注意到，程序在编译期间是无法得知 `b` 的值是多少的。因为 `b` 是用 `a` 初始化的，但是 `a` 的值则是在第 5 行由输入提供的。所以 `b` 的值只能在运行期间确定，无法在编译期间得知； `b` 不满足常量的定义。
 
 上面这个例子表示，并非所有的只读变量都是常量。那么什么时候只读变量可以是常量呢？条件也很简单：**只有使用常量作为初始化值初始化的只读变量才是常量**。比如：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -55,7 +55,7 @@ int main() {
 你会发现这件事情并不是那么显然，尤其在更大的程序里，很难得知一个只读变量是否是常量。是不是常量这件事情有时候会显得很重要（比如将来会学的数组长度，以及模板泛型编程的时候常量与否也很关键）。因此 C++ 提供了一个关键字用于常量： `constexpr` 。
 
 当 `constexpr` 出现在声明语句的时候，指明这个声明引入的变量是一个常量。如果不是常量的话，会导致编译错误。例如：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -64,7 +64,7 @@ int main() {
     const int c{b};      // c 不是常量，但它是只读变量
  // constexpr int d{b};  // 编译错误，因为要求 d 是常量，但 d 未用常量初始化
     constexpr int e{a};  // OK, e 是常量，由常量初始化
-}    
+}
 ```
 对于变量来说，关键字 `constexpr` 蕴含了 `const` 。（因为常量必然是只读的：运行时值不会发生更改。）因此在需要常量的场合，建议用 `constexpr` 代替 `const` ，避免意料之外的错误。
 
@@ -77,7 +77,7 @@ int main() {
 1. 再次编写一个程序，输入圆的半径，输出该圆的面积。这一次，尝试使用 `constexpr` 关键字。
 
 ## 练习参考答案
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {

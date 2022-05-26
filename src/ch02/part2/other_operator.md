@@ -61,7 +61,7 @@ x = (a = 3, 42 + 1);
 逗号表达式在循环语句中有一些用处。比如：
 ```cpp
 char c;
-while(cin >> c, c != 'm') {
+while (cin >> c, c != 'm') {
     // some code
 }
 ```

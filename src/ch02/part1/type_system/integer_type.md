@@ -134,7 +134,7 @@ int i{-123};
 
 ## 练习参考答案
 
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {

@@ -8,7 +8,7 @@
 | -------- | ---------------------------------------- | ------- | ------------------ | ------------------ |
 | 第〇章   | :o:                                      | :o:     | :heavy_minus_sign: | :heavy_minus_sign: |
 | 第一章   | :o:                                      | :o:     | :o:                |                    |
-| 第二章   |                                          |         | :o:                | :heavy_minus_sign: |
+| 第二章   | :o:                                      | :o:     | :o:                | :heavy_minus_sign: |
 | 第三章   |                                          |         | :heavy_minus_sign: |                    |
 | 第四章   |                                          |         | :heavy_minus_sign: |                    |
 | 第五章   |                                          |         | :heavy_minus_sign: | :heavy_minus_sign: |
@@ -19,8 +19,8 @@
 | 第十章   |                                          |         | :heavy_minus_sign: | :heavy_minus_sign: |
 | 第十一章 |                                          |         | :heavy_minus_sign: | :heavy_minus_sign: |
 
-- [x] 编辑器
-- [x] Compile API
+- [ ] 编译输入
+- [ ] 行内sdsc
 
 - [ ] `idx_` 去留
 

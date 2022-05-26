@@ -1,7 +1,6 @@
 <template>
   <div
     class="language-plain line-numbers-mode"
-    style="display: flex; flex-direction: row"
   >
     <div class="line-numbers">
       <div v-for="() in tokens" class="line-number"></div>
@@ -16,7 +15,7 @@
         v-for="line of tokens"
         :key="line.id"
         class="code-line"
-        :class="!line.focus && 'opacity-70'"
+        :class="line.focus ? 'focus-line' : 'opacity-70'"
       >
         <span
           v-for="({ content, type }, index) of line.tokens"
@@ -92,17 +91,22 @@ onMounted(() => {
         }
       }
     }
+    if (n.focus) {
+      focusedLines.value = n.focus;
+      console.log(n.focus);
+    }
     lineIds.value = newLines;
     code.value = n.code;
     lang.value = n.lang ?? "cpp";
     nextTick().then(async () => {
-      await new Promise((r) => setTimeout(r, 1000));
-      document.querySelector(".focus-line")?.scrollIntoView();
+      document.querySelector(".focus-line")?.scrollIntoView({
+        behavior: "smooth",
+      });
     });
   });
 });
 onUnmounted(() => {
-  subscription.unsubscribe();
+  subscription?.unsubscribe();
 });
 
 // Tokenize code, return lines of tokens with id

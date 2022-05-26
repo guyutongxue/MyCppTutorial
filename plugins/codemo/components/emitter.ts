@@ -1,10 +1,19 @@
 import { debounceTime, merge, Subject } from "rxjs";
 
+export const focusLines = new Subject<number[]>();
+
+/**
+ * 来自正文的 Codemo 触发代码
+ */
 export const source = new Subject<{
   lang?: string;
   code: string;
+  focus?: number[];
 }>();
 
+/**
+ * 来自编辑器的代码
+ */
 export const editorSource = new Subject<{
   lang?: string;
   code: string;

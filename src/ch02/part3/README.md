@@ -53,7 +53,7 @@ a = b + 20;
 
 那么这一套下来，你会发现我们从第一章到现在其实就是在搞各种语句的排列。就拿第一章最后的那个例子来看：
 
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
