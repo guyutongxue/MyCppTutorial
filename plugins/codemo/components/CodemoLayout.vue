@@ -53,7 +53,7 @@ import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 import { useScrollPromise } from "@vuepress/theme-default/lib/client/composables";
 import { usePageData, usePageFrontmatter } from "@vuepress/client";
-import { nextTick, onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import CodemoPanel from "./CodemoPanel.vue";
 
 import { source } from "./emitter";

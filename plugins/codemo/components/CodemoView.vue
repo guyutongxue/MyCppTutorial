@@ -184,7 +184,7 @@ const editing = ref(false);
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 5px; /* Or strange overflow... */
   z-index: 10;
 }
 .editor-container .CodeMirror pre.CodeMirror-line,

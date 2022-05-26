@@ -36,7 +36,7 @@
 using namespace std;
 
 int main() {
-    cout << "Hello! I'm here. "<< endl;
+    cout << "Hello! I'm here." << endl;
 }
 ```
 当文中需要展示完整代码时，将显示一个**显示按钮**，如本段右侧所示。点击该按钮后，右侧的**代码视图**就会显示对应的代码，并提供实时编译运行和编辑功能。
