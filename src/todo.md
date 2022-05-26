@@ -6,9 +6,9 @@
 
 |          | Codemo 适配 <br> (顺序调换、文本润色...) | sdsc 块 | flowchart.js       | 动画与 \<iframe\>  |
 | -------- | ---------------------------------------- | ------- | ------------------ | ------------------ |
-| 第〇章   | :o:                                      |         | :heavy_minus_sign: | :heavy_minus_sign: |
-| 第一章   | :o:                                      |         |                    |                    |
-| 第二章   |                                          |         |                    | :heavy_minus_sign: |
+| 第〇章   | :o:                                      | :o:     | :heavy_minus_sign: | :heavy_minus_sign: |
+| 第一章   | :o:                                      | :o:     | :o:                |                    |
+| 第二章   |                                          |         | :o:                | :heavy_minus_sign: |
 | 第三章   |                                          |         | :heavy_minus_sign: |                    |
 | 第四章   |                                          |         | :heavy_minus_sign: |                    |
 | 第五章   |                                          |         | :heavy_minus_sign: | :heavy_minus_sign: |

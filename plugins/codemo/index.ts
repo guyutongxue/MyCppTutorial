@@ -1,4 +1,5 @@
 import { path } from "@vuepress/utils";
+import { escapeHtml } from "markdown-it/lib/common/utils";
 import { definePluginObject, addFenceRule } from "../utils";
 
 const codemoPlugin = () => {
@@ -37,9 +38,7 @@ const codemoPlugin = () => {
                 }
               });
           }
-          const escapedContent = content
-            .replace(/&/g, "&amp;")
-            .replace(/"/g, "&quot;");
+          const escapedContent = escapeHtml(content);
           if (show)
             return `<div style="position: relative">
   ${defaultFn()}

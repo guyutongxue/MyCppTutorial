@@ -43,7 +43,7 @@ export function addFenceRule(
     const [lang, ...others] = token.info.split(" ");
     const attr = others.join(" ");
     if (typeof info === "function" ? info(lang, attr) : info === lang) {
-      let result = rule({
+      const result = rule({
         content: token.content,
         lang,
         attr,

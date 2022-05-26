@@ -17,6 +17,12 @@
     "semi": [
       "warn",
       "always"
+    ],
+    "no-constant-condition": [
+      "warn",
+      {
+        "checkLoops": false
+      }
     ]
   }
 }
