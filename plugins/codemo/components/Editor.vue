@@ -19,7 +19,7 @@ const props = defineProps<{
 }>();
 
 const options: EditorConfiguration = {
-  mode: props.lang === 'c' ? "test/x-csrc" : "text/x-c++src",
+  mode: props.lang === "c" ? "test/x-csrc" : "text/x-c++src",
   theme: "blackboard",
   lineNumbers: true,
   smartIndent: true,
@@ -30,15 +30,13 @@ function onChange(code: string) {
   editorSource.next({ code, lang: props.lang });
 }
 
-const CodeMirrorComp = defineAsyncComponent(() => (
-  import("codemirror-editor-vue3")
-));
-
-onMounted(() => {
+// Dynamically import codemirror, or SSR bundler will complain
+const CodeMirrorComp = defineAsyncComponent(async () => {
+  const comp = import("codemirror-editor-vue3");
   // @ts-ignore
-  import("codemirror/mode/clike/clike.js");
-})
-
+  await import("codemirror/mode/clike/clike.js");
+  return comp;
+});
 </script>
 <style>
 .CodeMirror {
