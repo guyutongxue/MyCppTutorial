@@ -30,18 +30,23 @@ const props = defineProps<{
 </script>
 
 <style>
+
+:root {
+  --sdsc-color: 11, 135, 218;
+}
+
 .sdsc.opt {
   display: inline-block;
   padding: 2px;
-  background-color: #0b87da30;
+  background-color: rgba(var(--sdsc-color), 0.15);
   border-radius: 3px;
 }
 .sdsc.placeholder {
-  color: #0b87da;
+  color: rgb(var(--sdsc-color));
 }
 .sdsc.group {
   padding: 1px;
-  border: 1px solid #0b87da;
+  border: 1px solid rgb(var(--sdsc-color));
   border-radius: 3px;
   overflow: hidden;
 }

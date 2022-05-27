@@ -4,7 +4,6 @@ import {
   defineUserConfig,
   SidebarConfig,
 } from "vuepress";
-import { viteBundler } from "@vuepress/bundler-vite";
 import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
 import { searchPlugin } from "@vuepress/plugin-search";
 import { copyCodePlugin } from "vuepress-plugin-copy-code2";

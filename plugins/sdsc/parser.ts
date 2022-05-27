@@ -161,7 +161,8 @@ function buildTree(tokens: Token[], groupType?: "group" | "opt" | "repeat") {
         break;
       }
       case TokenType.STRING: {
-        pushRaw(token.value.substring(1, token.value.length - 1));
+        const content = token.value.substring(1, token.value.length - 1);
+        pushRaw(content.replace(/\\"/g, '"'));
         break;
       }
       case TokenType.WHITESPACE: {

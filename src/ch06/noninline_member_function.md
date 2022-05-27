@@ -51,7 +51,7 @@ public:
     String& operator+=(const String& b) {
         String result(operator+(b)); //
         operator=(result);
-        return *this; 
+        return *this;
     }
     String& operator=(const String& assignVal) {
         if (str == assignVal.str) return *this;
@@ -130,7 +130,7 @@ unsigned String::length() {
 
 道理很简单，就是把定义挪到了外面，函数名前面加上 `String::` 而已。这个 `String::` 的作用也很明显，它指明尽管这个定义看上去是在外面的，其实它是一个 `String` 的成员函数——所以它可以访问 `String` 类的各种成员（包括私有的）。
 
-所以类外定义成员函数很简单，就是把声明留下，定义搬走，然后加上 `@*类名*::@` 前缀。那么有人就说了，这不是画蛇添足吗，要写的代码量反而更多了。确实是这样，但这样的写法可以让我们把这些成员函数的定义和类的定义分成两个文件。比如用 `String` 举例，我们把成员函数定义统统放在 `my_string.cpp` 里，而把只包含成员函数生命的类的定义放在 `my_string.h` 里。
+所以类外定义成员函数很简单，就是把声明留下，定义搬走，然后加上 `@类名"::"@` 前缀。那么有人就说了，这不是画蛇添足吗，要写的代码量反而更多了。确实是这样，但这样的写法可以让我们把这些成员函数的定义和类的定义分成两个文件。比如用 `String` 举例，我们把成员函数定义统统放在 `my_string.cpp` 里，而把只包含成员函数生命的类的定义放在 `my_string.h` 里。
 
 ![](https://z3.ax1x.com/2021/01/31/yA7wVK.png)
 

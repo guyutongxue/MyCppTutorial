@@ -20,7 +20,7 @@
 | 第十一章 |                                          |         | :heavy_minus_sign: | :heavy_minus_sign: |
 
 - [ ] 编译输入
-- [ ] 行内sdsc
+- [x] 行内sdsc
 
 - [ ] `idx_` 去留
 

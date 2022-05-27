@@ -74,8 +74,8 @@ int main() {
 
 ```io
 This is the first line!
-&#92;
-&quot;&apos;&quot;
+\
+"'"
 ```
 
 > 响铃与否取决于你使用的终端。如果直接在终端运行的话，Windows 10 会发出“噔咚咚”的响铃；macOS 可能会发出“嘟”的一声。

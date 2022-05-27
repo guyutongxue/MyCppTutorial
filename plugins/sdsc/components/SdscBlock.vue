@@ -18,3 +18,12 @@ const nodes = computed(() => {
 const temp = computed(() => JSON.stringify(nodes.value, undefined, 2));
 
 </script>
+
+<style>
+.sdsc-inline {
+  color: rgb(var(--sdsc-color));
+}
+.sdsc-inline .string {
+  color: var(--c-text-lighter);
+}
+</style>

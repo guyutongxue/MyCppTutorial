@@ -73,7 +73,7 @@ typeid(*表达式*)
 typeid(*类型*)
 ```
 
-对于相同 `@*表达式*@` 的类型或相同 `@*类型*@`，typeid 运算符总是得到相同的值（即 `==` 为真）。特别需要注意的是：它可以得到具有子类型多态的派生类对象的**运行时“实际”类型**。在这个例子中，`typeid(*b)` 与 `typeid(B)` 不等，因为 `*b` 在运行期间并不是 `B` 类型的而是 `D1` 类型的。所以，`typeid(*b) == typeid(D1)`。
+对于相同 `@表达式@` 的类型或相同 `@类型@`，typeid 运算符总是得到相同的值（即 `==` 为真）。特别需要注意的是：它可以得到具有子类型多态的派生类对象的**运行时“实际”类型**。在这个例子中，`typeid(*b)` 与 `typeid(B)` 不等，因为 `*b` 在运行期间并不是 `B` 类型的而是 `D1` 类型的。所以，`typeid(*b) == typeid(D1)`。
 
 可以看到，typeid 运算符不得到编译器常量。如果 `b` 的指向随着用户输入的改变而改变，那么 typeid 运算符也会得到不同的值。基于此，我们可以这样设计刚才的 `tryBark`：
 
@@ -88,7 +88,7 @@ void tryBark(const Animal* a) {
 
 从而我们不用手动维护之前的 `getName` 成员了。
 
-> typeid 运算符是一元的，它的结果值类型为 `std::typeinfo`，定义在 `<typeinfo>` 头文件中，这也就是为什么语言规定必须引入它。`std::typeinfo` 除了定义了 `operator==` 和 `operator!=`，还定义了成员函数 `name`，通过 `@typeid(*x*).name()@` 即可获取到有关 `@*x*@` 的类型名。这个类型名是实现定义的，比如可能为*重整名字*（更多资料可参阅[维基百科](https://zh.wikipedia.org/wiki/%E5%90%8D%E5%AD%97%E4%BF%AE%E9%A5%B0)）。
+> typeid 运算符是一元的，它的结果值类型为 `std::typeinfo`，定义在 `<typeinfo>` 头文件中，这也就是为什么语言规定必须引入它。`std::typeinfo` 除了定义了 `operator==` 和 `operator!=`，还定义了成员函数 `name`，通过 `@typeid(*x*).name()@` 即可获取到有关 `@x@` 的类型名。这个类型名是实现定义的，比如可能为*重整名字*（更多资料可参阅[维基百科](https://zh.wikipedia.org/wiki/%E5%90%8D%E5%AD%97%E4%BF%AE%E9%A5%B0)）。
 >
 > typeid 运算符会忽略顶层只读限定，即 `typeid(const T) == typeid(T)`。
 

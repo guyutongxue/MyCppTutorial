@@ -24,6 +24,7 @@
 - vuepress-plugin-copy-code2
 - vuepress-plugin-codemo（自制）
 - vuepress-plugin-io-block（自制）
+- vuepress-plugin-sdsc（自制）
 
 ### Codemo
 
@@ -57,7 +58,39 @@
 ```
 ~~~
 
-的代码块会解释为输入输出（终端界面）。介于 `¶` 和 `↵` 之间的内容视为用户输入，显示不同的字体。`¶` 不会显示。
+的代码块会解释为输入输出（终端界面，如下）。介于 `¶` 和 `↵` 之间的内容视为用户输入，显示不同的字体。`¶` 不会显示。
+
+```io
+¶12 24↵
+36
+```
+
+### SDSC
+
+[SDSC](https://en.cppreference.com/mwiki/index.php?title=Template:sdsc) 是一个取自 [CppReference](https://zh.cppreference.com) 的概念，应该是 Syntax description 的缩写，指 C++ 标准文本中类 EBNF 格式的文法描述段落。自制的插件 `vuepress-plugin-sdsc` 可以通过下述语法的代码块生成对应的 SDSC 段落。
+
+SDSC 描述中包含以下要素：
+- 裸字符串 `"sth"`；
+- 占位符 `phd`；
+- 或 `|`；
+- 块 `(...)`；
+- 可选块 `[...]`。
+
+比如 SDSC 描述
+
+~~~md
+```sdsc
+"My name is" name"," ("male"|"female")[", and I love coding!"].
+```
+~~~
+
+会生成如下 SDSC 段落：
+
+```sdsc
+"My name is" name"," ("male"|"female")[", and I love coding!"].
+```
+
+同时，为了保证统一的阅读体验，支持简单的行内 SDSC，格式是 `` `@...@` ``。行内 SDSC 仅支持裸字符串和占位符。在行内 SDSC 的裸字符串内，`"` 用 `@` 代替。
 
 ## 注意
 
