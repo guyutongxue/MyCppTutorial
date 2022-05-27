@@ -8,8 +8,7 @@
 
 ## 从普通调用说起
 
-首先从一个简单的例子入手。编写这样一个程序：输入一个大于 1 的整数，判断它是否为质数。那么根据质数的定义，你可以这样写：
-```CPP
+```cpp codemo
 #include <iostream>
 using namespace std;
 bool isPrime(int x) {
@@ -22,14 +21,15 @@ bool isPrime(int x) {
 int main() {
     int a;
     cin >> a;
-    if (isPrime(a)) 
+    if (isPrime(a))
         cout << "Prime" << endl;
     else
         cout << "Not prime" << endl;
 }
 ```
-然后你会注意到在函数 `isPrime` 中，如果形参 `x` 有约数，那么必有一个小于等于它平方根的约数。因此我们可以充分利用定义在头文件 `<cmath>` 里的 `std::sqrt` 函数计算平方根：
-```CPP
+首先从一个简单的例子入手。编写这样一个程序：输入一个大于 1 的整数，判断它是否为质数。那么根据质数的定义，你可以写出右边这样的代码。
+
+```cpp codemo(clear)
 #include <iostream>
 #include <cmath>         // 这里增加一个头文件引入
 using namespace std;
@@ -37,20 +37,21 @@ bool isPrime(int x) {
     int r;
     r = sqrt(x);                  // 计算平方根
     for (int i{2}; i <= r; i++) { // r 为上界
-        if (x % i == 0)
-            return false;
+        if (x % i == 0)   // 只要存在一个能除尽的约数
+            return false; // 就不是质数
     }
-    return true;
+    return true;          // 所有比它小的都除不尽，就是质数
 }
 int main() {
     int a;
     cin >> a;
-    if (isPrime(a)) 
+    if (isPrime(a))
         cout << "Prime" << endl;
     else
         cout << "Not prime" << endl;
 }
 ```
+然后你会注意到在函数 `isPrime` 中，如果形参 `x` 有约数，那么必有一个小于等于它平方根的约数。因此我们可以充分利用定义在头文件 `<cmath>` 里的 `std::sqrt` 函数计算平方根。
 
 > 一般地，`sqrt` 函数的声明为 `double sqrt(double arg);`。因此在上述代码第六行调用过程中，发生了整型与浮点类型之间的隐式转换。（这里忽略了许多细节，实际上 `sqrt` 接收整型实参时可能是一个模板函数。）
 
@@ -69,7 +70,7 @@ int main() {
 可以这样考虑，将 $n!$ 定义为：
 $$1! = 1$$
 $$n! =(n-1)!\times n$$
-这样就可以 
+这样就可以
 $$\begin{aligned}
 2!&= 1!\times 2=&2\\
 3!&= 2!\times 3=&6\\
@@ -77,7 +78,7 @@ $$\begin{aligned}
 &\qquad\cdots&
 \end{aligned}$$
 如此一路推算下去。如果用函数 `int fact(int);` 来表示阶乘的话，则 `fact(n)` 的值与 `n * fact(n - 1)` 的值相等。可以把这一思想这样表示出来：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int fact(int n) {
@@ -176,7 +177,7 @@ moveDisk(n - 1, trans, dest, src);
 ```
 
 所以整段代码就是这样的：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 void moveDisk(int n, char src, char dest, char trans) {

@@ -31,8 +31,7 @@ int main() {
 
 首先你需要了解一件事情，就是目前计算机再执行一个程序的时候，是通过读取一系列的指令来实现的。实际上，计算机总是将一个函数作为一个整体进行读取；也就是说，计算机首先读取一个函数里面的所有指令，然后再依次执行这些指令。那么这些被读取的指令存放在哪里呢？它们实际上被存放在一个称为“内存”的存储空间里。
 
-举个例子。对于这段代码
-```CPP
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -42,15 +41,14 @@ int main() {
     cout << c << endl;
 }
 ```
-来说，计算机如何执行它编译得到的那段程序呢？请看下面这张图（点击开始按钮）：
+举个例子。对于这段代码来说，计算机如何执行它编译得到的那段程序呢？请看下面这张图（点击开始按钮）：
 
 <div class="fig">
 <div id="fig1" class="raphael"></div>
 <p id="fig1Text" class="info"></p>
 </div>
 
-现在来考虑如果加上一个函数 `int max(int, int)` 并调用它，会发生什么呢？代码如下：
-```CPP
+```cpp codemo
 #include <iostream>
 using namespace std;
 int max(int x, int y) {
@@ -68,7 +66,7 @@ int main() {
     cout << c << endl;
 }
 ```
-那么它编译出的程序将这样执行：
+现在来考虑如果加上一个函数 `int max(int, int)` 并调用它，会发生什么呢？其实它编译出的程序将这样执行：
 <div class="fig">
 <div id="fig2" class="raphael"></div>
 <p id="fig2Text" class="info"></p>
@@ -86,31 +84,12 @@ int main() {
 
 ## 参数传递
 
-现在来放大看一看在调用函数前，程序是如何传递参数的。还是刚才的例子：
-```CPP
-#include <iostream>
-using namespace std;
-int max(int x, int y) {
-    int z;
-    if (x > y)
-        z = x;
-    else
-        z = y;
-    return z;
-}
-int main() {
-    int a, b, c;
-    cin >> a >> b;
-    c = max(a, b);
-    cout << c << endl;
-}
-```
-其中 main 函数在第 14 行执行了调用，实际参数为 `a` 和 `b` 的**值**；max 函数在第 3 行给出定义，形式参数为 `x` 和 `y` 这两个**变量**。刚才说过，这个参数传递的过程是一个“用实参代入形参”的过程。具体来讲就是：**用实参去初始化形参**。
+现在来放大看一看在调用函数前，程序是如何传递参数的。还是刚才的例子，其中 main 函数在第 14 行执行了调用，实际参数为 `a` 和 `b` 的**值**；max 函数在第 3 行给出定义，形式参数为 `x` 和 `y` 这两个**变量**。刚才说过，这个参数传递的过程是一个“用实参代入形参”的过程。具体来讲就是：**用实参去初始化形参**。
 
 因为形参是一个变量，所以在初始化函数的时候形参也需要被初始化。然而这个初始化过程需要一个初始化值；恰好实参就是一个值，故**用实参作为形参的初始化值**。形象地讲，就是：
-```sdsc-legacy
-int x{*main 函数里 a 的值*};
-int y{*main 函数里 b 的值*};
+```sdsc
+"int x{"main 函数里 a 的值"};"
+"int y{"main 函数里 b 的值"};"
 ```
 
 > 这种写法并不严格等同。（因为函数传参是[复制初始化](https://zh.cppreference.com/w/cpp/language/copy_initialization)，而大括号初始化不是。）
@@ -118,7 +97,7 @@ int y{*main 函数里 b 的值*};
 所以人们常说，这是一个“复制”的过程。因为传递参数的过程相当于把原来 main 中的数据拷贝出来，初始化为 max 函数形参的值。这个时候，main 函数中的 x 和 y，与 max 函数中的 a 和 b 是没有任何关系的两组变量，只是它们的值相等罢了。
 
 下面来看这个例子：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 void change(int c, int d) {

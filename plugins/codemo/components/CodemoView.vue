@@ -128,7 +128,7 @@ const editing = ref(false);
 <style>
 .code-group {
   flex-grow: 1;
-  overflow-x: hidden;
+  overflow-x: clip;
   color: #fff; /* Need to be configurable */
   margin-left: var(--code-ln-wrapper-width);
   padding-top: 1.25rem;

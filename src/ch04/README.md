@@ -31,7 +31,7 @@ main() {
 20 世纪 70 年代中期，面向对象编程这一编程范式开始流行。教授本贾尼·斯特劳斯特卢普（Bjarne Stroustrup）于 1979 年进入贝尔实验室，将 C 语言进行了适用于“面向对象”的改良，称这种改良的语言为 C with Classes。
 
 后来这门改良的编程语言改名为 C++，并吸收了大量的新特性（如虚函数、重载、多继承、静态、命名空间、异常处理、模板等，以及各种库）。与此同时，C 语言和 C++ 语言先后步入标准化，美国的标准委员会 ANSI 和国际标准组织 ISO 分别为这两种语言制定了统一的语言标准。（后来 ANSI C语言标准也收入 ISO。）这个时候，*可以*称 C++ 语言是 C 语言的超集，C 语言是 C++ 语言的子集：因为 C++ 不过是在 C 的基础上增加了诸多特性而已。下面是经过标准化后的 C 和 C++ 语言示例：
-```c
+```c codemo(show)
 /* Hello World in C, Ansi-style */
 
 #include <stdio.h>
@@ -42,7 +42,7 @@ int main(void) {
     return EXIT_SUCCESS;
 }
 ```
-```CPP
+```cpp codemo(show)
 // Hello World in ISO C++
 
 #include <iostream>

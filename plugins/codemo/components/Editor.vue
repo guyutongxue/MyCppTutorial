@@ -19,7 +19,7 @@ const props = defineProps<{
 }>();
 
 const options: EditorConfiguration = {
-  mode: props.lang === "c" ? "test/x-csrc" : "text/x-c++src",
+  mode: props.lang === "c" ? "text/x-csrc" : "text/x-c++src",
   theme: "blackboard",
   lineNumbers: true,
   smartIndent: true,

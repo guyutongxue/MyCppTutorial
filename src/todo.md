@@ -9,7 +9,7 @@
 | 第〇章   | :o:                                      | :o:     | :heavy_minus_sign: | :heavy_minus_sign: |
 | 第一章   | :o:                                      | :o:     | :o:                |                    |
 | 第二章   | :o:                                      | :o:     | :o:                | :heavy_minus_sign: |
-| 第三章   |                                          |         | :heavy_minus_sign: |                    |
+| 第三章   | :o:                                      | :o:     | :heavy_minus_sign: |                    |
 | 第四章   |                                          |         | :heavy_minus_sign: |                    |
 | 第五章   |                                          |         | :heavy_minus_sign: | :heavy_minus_sign: |
 | 第六章   |                                          |         | :heavy_minus_sign: | :heavy_minus_sign: |
