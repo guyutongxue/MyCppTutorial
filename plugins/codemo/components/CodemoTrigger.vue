@@ -24,6 +24,7 @@ const props = defineProps<{
   lang?: string;
   code: string;
   focus?: string;
+  input?: string;
 }>();
 
 function trigger() {
@@ -31,6 +32,7 @@ function trigger() {
     code: props.code,
     lang: props.lang,
     focus: props.focus?.split(",").map((n) => parseInt(n)),
+    input: props.input,
   });
 }
 </script>

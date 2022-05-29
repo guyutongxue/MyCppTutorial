@@ -2,7 +2,7 @@
 
 ## 简单的输入
 
-```cpp codemo
+```cpp codemo(input=12_24)
 #include <iostream>
 int main() {
     int a{0};
@@ -25,7 +25,7 @@ int main() {
 
 ## 一块儿输入输出多个东西
 
-```cpp codemo
+```cpp codemo(input)
 #include <iostream>
 int main() {
     int a{0};
@@ -36,7 +36,7 @@ int main() {
 ```
 感觉刚才的代码有点繁琐啊。实际上，刚才的代码还可以简化一下：把两个输入合在一行！这是什么操作？事实上这一段代码和刚才的代码是完全一致的：第 5 行要求获取两个输入，分别输入到变量 `a` 和变量 `b` 。因此总结下来，就是 `std::cin >>` 后面可以**接上一些变量，表示让外界**（用户的键盘）**输入这些变量的值。这些变量之间用 `>>` 分隔。别忘了结尾还要一个分号 `;`** 。
 
-```cpp codemo
+```cpp codemo(input)
 #include <iostream>
 int main() {
     int a{0};
@@ -59,7 +59,7 @@ The sum is 36
 因此你观察到输出发生了变化。实际上这段代码中的第 6 行输出了两个东西：第一个是“一句话” `The sum is ` ，第二个是 `a + b` 这个简单的式子的值。于是最终你看到的输出就长成 `The sum is 36`  这个模样了。
 
 
-```cpp codemo
+```cpp codemo(input)
 #include <iostream>
 int main() {
     int a{0};
@@ -84,7 +84,7 @@ The sum is
 
 你会发现我们用于控制输入输出的时候，都在不停地敲 `std::` 。这是 C++ 引入的叫做**命名空间**（Namespace）的玩意儿，如果你觉得这样写很烦的话，也有办法将它们省去。
 
-```cpp codemo
+```cpp codemo(input)
 #include <iostream>
 using namespace std;
 int main() {

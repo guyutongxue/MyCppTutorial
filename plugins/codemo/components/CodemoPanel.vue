@@ -21,6 +21,7 @@ import CompileView from "./CompileView.vue";
 .codemo-view {
   min-height: 100%;
   border-radius: 0 !important;
+  overflow-x: clip;
 }
 
 .splitpanes--horizontal > .splitpanes__splitter {

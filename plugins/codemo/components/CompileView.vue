@@ -12,17 +12,26 @@
 <template>
   <div class="compile-view">
     <div class="tab-items">
+      <div>
+        <button
+          :class="compileTab && 'active'"
+          @click="() => (compileTab = true)"
+        >
+          编译
+        </button>
+        <button
+          :class="!compileTab && 'active'"
+          @click="() => (compileTab = false)"
+        >
+          运行
+        </button>
+      </div>
       <button
-        :class="compileTab && 'active'"
-        @click="() => (compileTab = true)"
+        v-if="!compileTab"
+        :class="editStdin && 'active'"
+        @click="() => (editStdin = !editStdin)"
       >
-        编译
-      </button>
-      <button
-        :class="!compileTab && 'active'"
-        @click="() => (compileTab = false)"
-      >
-        运行
+        编辑输入
       </button>
     </div>
     <!-- Running -->
@@ -44,24 +53,33 @@
     </div>
     <!-- Execute Result -->
     <div class="tab-content" v-else>
+      <div>
+        <textarea
+          v-if="editStdin"
+          v-model="stdin"
+          class="stdin-textarea"
+        ></textarea>
+        <pre v-else class="stdin">{{ stdin }}</pre>
+      </div>
       <pre
         v-if="result.execResult.didExecute"
       ><span v-for="stdout of result.execResult.stdout">{{ stdout.text }}
 </span><span v-for="stderr of result.execResult.stderr" class="stderr">{{ stderr.text }}
 </span></pre>
-      <div v-else class="hint-container">
-        <div class="hint">代码未运行</div>
-      </div>
+      <pre v-else>代码未运行</pre>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { switchMap, tap, type Subscription } from "rxjs";
+import { map, switchMap, tap, type Subscription } from "rxjs";
 import { onMounted, onUnmounted, ref } from "vue";
 import { mergedSource } from "./emitter";
 
 const compileTab = ref(false);
+const editStdin = ref(false);
+
+const stdin = ref("");
 
 type Stdio = {
   text: string;
@@ -105,24 +123,25 @@ let subscription: Subscription;
 onMounted(() => {
   subscription = mergedSource
     .pipe(
-      tap(() => {
+      tap((v) => {
         running.value = true;
         result.value.execResult.didExecute = false;
+        typeof v.input !== "undefined" && (stdin.value = v.input);
       }),
       switchMap(({ code, lang }) => {
         const compileRequest = {
           source: code,
           options: {
             // userArguments: "-O3",
-            // executeParameters: {
-            //     args: ["arg1", "arg2"],
-            //     stdin: "hello, world!"
-            // },
+            executeParameters: {
+              // args: [],
+              stdin: stdin.value,
+            },
             filters: {
               execute: true,
             },
           },
-          lang: lang ?? "c++",
+          lang: lang,
         };
         return fetch("https://godbolt.org/api/compiler/g121/compile", {
           method: "POST",
@@ -185,7 +204,10 @@ function replaceColorToHtml(content: string): string {
   flex-direction: column;
 }
 .compile-view .tab-items {
-  padding: 0 1em;
+  padding: 0 0.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
   button {
     border: none;
@@ -246,6 +268,10 @@ function replaceColorToHtml(content: string): string {
   .stderr {
     color: red;
   }
+  .stdin {
+    color: #7ec699;
+    padding-bottom: 0;
+  }
 
   .hint-container {
     height: 100%;
@@ -258,5 +284,10 @@ function replaceColorToHtml(content: string): string {
       color: var(--c-text-lighter);
     }
   }
+}
+.stdin-textarea {
+  width: 100%;
+  border: 0px;
+  padding: 0px;
 }
 </style>

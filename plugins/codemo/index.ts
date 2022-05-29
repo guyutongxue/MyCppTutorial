@@ -24,6 +24,7 @@ const codemoPlugin = () => {
           let clear = false;
           let text = "显示代码";
           let focus: number[] = [];
+          let input: string | undefined = "";
           if (lParen > 0 && rParen > lParen) {
             attr
               .substring(lParen + 1, rParen)
@@ -58,14 +59,26 @@ const codemoPlugin = () => {
                     }
                     return lines;
                   });
+                } else if (key === "input") {
+                  if (typeof value === "undefined") {
+                    input = value;
+                  } else {
+                    input = value
+                      .replace(/\\n/g, "\n")
+                      .replace(/\\_/g, "_")
+                      .replace(/\\\\/g, "\\")
+                      .replace(/_/g, " ");
+                  }
                 }
               });
           }
-          focus;
           const escapedContent = escapeHtml(content);
-          const props = `title="${text}" lang="${lang}" code="${escapedContent}" ${
-            focus.length > 0 ? `focus="${focus.join(",")}"` : ""
-          }`;
+          const props = `
+title="${text}" 
+lang="${lang}" 
+code="${escapedContent}" 
+${focus.length > 0 ? `focus="${focus.join(",")}"` : ""} 
+${typeof input !== "undefined" ? `input="${input}"` : ""}`;
           if (show)
             return `<div style="position: relative">
   ${defaultFn()}

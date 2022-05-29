@@ -19,7 +19,7 @@ Bingo! You got the answer!
 
 看上去还挺有意思的。那么这个程序该怎么写呢？
 
-```cpp codemo
+```cpp codemo(input=50\n25\n37\n43\n42)
 #include <iostream>
 using namespace std;
 int main() {
@@ -30,7 +30,7 @@ int main() {
 不管怎么说，先把（咱到现在都不知道啥意思的）开头结尾写上；然后设定整数变量 `ans` 为答案。
 
 
-```cpp codemo(clear)
+```cpp codemo(clear, input)
 #include <iostream>
 using namespace std;
 int main() {
@@ -42,7 +42,7 @@ int main() {
 ```
 这个时候需要读取一个输入。所以需要用一个变量 `x` 来存储这个输入的整数。
 
-```cpp codemo(clear)
+```cpp codemo(clear, input)
 #include <iostream>
 using namespace std;
 int main() {
@@ -60,7 +60,7 @@ int main() {
 ```
 需要判断 x 是大了还是小了，因此需要写一些分支……这里的代码多了起来，请稍微回想一下我们在分支一节学的内容，应该不难理解。
 
-```cpp codemo(clear)
+```cpp codemo(clear, input)
 #include <iostream>
 using namespace std;
 int main() {
@@ -78,7 +78,7 @@ int main() {
 ```
 注意到每次判断的时候，需要输出一个提示信息，于是我们这样写。
 
-```cpp codemo(clear)
+```cpp codemo(clear, input)
 #include <iostream>
 using namespace std;
 int main() {
@@ -98,7 +98,7 @@ int main() {
 ```
 接下来问题来了。如果仅仅如此的话，那么输入一次就结束了，没法让用户多次尝试，不符合我们的预期。那么该如何做呢？聪明的你一定想到了：使用循环。那么在使用前仔细考虑一下循环的条件——没错，当输入的数和答案不相等的时候才会重复执行。另外，每次重复执行前需要再次请求用户输入。因此我们加上这样一个循环。解释一下：当第 6 行输入 `x` 结束之后，检查 `x` 是否是正确答案。如果不是正确答案，那么就需要进入循环，根据不同大小输出错误提示；随后允许用户继续尝试不同 `x` 的输入。（也就是第 14 行的那个输入。）这个输入结束后，回过头来继续检查 `x` 是否正确，周而复始下去。
 
-```cpp codemo
+```cpp codemo(input)
 #include <iostream>
 using namespace std;
 int main() {
