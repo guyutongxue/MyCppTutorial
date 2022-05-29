@@ -1,4 +1,3 @@
-import Raphael from "raphael";
 import {
   Button,
   StatementSnippet,

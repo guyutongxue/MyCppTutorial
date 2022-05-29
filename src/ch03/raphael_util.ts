@@ -1,4 +1,3 @@
-import Raphael from "raphael";
 import type { RaphaelElement, RaphaelSet, RaphaelPaper } from "raphael";
 import "./fig.css";
 
@@ -61,15 +60,6 @@ class Snippet {
 export class VariableSnippet extends Snippet {
   name: string;
 
-  /**
-   *
-   * @param {import("raphael").RaphaelSet|import("raphael").RaphaelElement} func
-   * @param {number} dx
-   * @param {number} dy
-   * @param {number} w
-   * @param {number} h
-   * @param {string} name
-   */
   constructor(
     func: RaphaelElement | RaphaelSet,
     dx: number,
@@ -203,7 +193,7 @@ export class Arrow {
       "arrow-end": "open-midium-long",
     });
   }
-  
+
   show(isAnime = false) {
     if (isAnime === true) {
       this.element.stop();

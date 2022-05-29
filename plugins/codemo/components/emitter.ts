@@ -1,4 +1,4 @@
-import { debounceTime, merge, Observable, Subject } from "rxjs";
+import { debounceTime, merge, type Observable, Subject } from "rxjs";
 
 export const focusLines = new Subject<number[]>();
 

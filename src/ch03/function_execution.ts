@@ -1,4 +1,3 @@
-import Raphael from "raphael";
 import {
   Arrow,
   Button,
@@ -197,11 +196,11 @@ export function fig3(element: HTMLElement, textElement: HTMLElement) {
       d.setValue("5");
 
       // make arrow blink (really ugly implement)
-      const sh = window.setInterval(() => arrows.forEach((e) => e.show()), 400);
-      await new Promise((r) => window.setTimeout(r, 200));
-      const hi = window.setInterval(() => arrows.forEach((e) => e.hide()), 400);
-      await new Promise((r) => window.setTimeout(r, 1200));
-      window.clearInterval(sh), window.clearInterval(hi);
+      const sh = setInterval(() => arrows.forEach((e) => e.show()), 400);
+      await new Promise((r) => setTimeout(r, 200));
+      const hi = setInterval(() => arrows.forEach((e) => e.hide()), 400);
+      await new Promise((r) => setTimeout(r, 1200));
+      clearInterval(sh), clearInterval(hi);
       arrows.forEach((e) => e.hide());
     },
     () => {

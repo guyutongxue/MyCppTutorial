@@ -72,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import { map, switchMap, tap, type Subscription } from "rxjs";
+import { switchMap, tap, type Subscription } from "rxjs";
 import { onMounted, onUnmounted, ref } from "vue";
 import { mergedSource } from "./emitter";
 

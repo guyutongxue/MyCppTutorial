@@ -24,9 +24,5 @@
         "checkLoops": false
       }
     ]
-  },
-  "globals": {
-    "window": true,
-    "document": true
   }
 }
