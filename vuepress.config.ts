@@ -12,6 +12,7 @@ import { containerPlugin } from "@vuepress/plugin-container";
 import { ioBlockPlugin } from "./plugins/io-block";
 import { codemoPlugin } from "./plugins/codemo";
 import { sdscPlugin } from "./plugins/sdsc";
+import { path } from "@vuepress/utils";
 
 const SIDEBAR: SidebarConfig = [
   "/preface.md",
@@ -370,6 +371,9 @@ export default defineUserConfig({
       backToTop: false, // 会挡住 codemo
     },
   } as DefaultThemeLocaleOptions),
+  alias: {
+    '@src': path.resolve(__dirname, 'src'),
+  },
   plugins: [
     containerPlugin({
       type: 'tip',

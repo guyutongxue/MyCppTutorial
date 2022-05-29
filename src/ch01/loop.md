@@ -67,16 +67,16 @@ int main() {
 - 现在再来检查条件来决定是否继续不断地执行： `a <= 20` ……好像不成立了；21 比 20 要大。因此循环不再继续。
 - 现在我们刚好输出了从 1 到 20 的全部自然数。
 
-<!-- TODO -->
-<!-- <style>
-@import url(ch03/fig.css)
-</style>
+
+<script setup>
+import "@src/ch03/fig.css";
+</script>
 <details>
 <summary>显示动画</summary>
 <div class="fig" style="height: 650px; overflow: hidden">
 <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=%23include%20%3Ciostream%3E%0Ausing%20namespace%20std%3B%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20a%7B1%7D%3B%0A%20%20%20%20while%20%28a%20%3C%3D%2020%29%20%7B%0A%20%20%20%20%20%20%20%20cout%20%3C%3C%20a%20%3C%3C%20endl%3B%0A%20%20%20%20%20%20%20%20a%20%3D%20a%20%2B%201%3B%0A%20%20%20%20%7D%0A%7D%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=2&heapPrimitives=nevernest&origin=opt-frontend.js&py=cpp&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 </div>
-</details> -->
+</details>
 
 循环是一个非常强大的工具。有了循环，基本上许多问题都可以一定程度上得到解决。最后我用一张图来总结循环：
 

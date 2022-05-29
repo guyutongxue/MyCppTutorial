@@ -57,10 +57,9 @@ string b is: world!
 
 我们的输入是从键盘这个设备发起的，由我们编写的程序接受。但这个过程并不是直接的，从键盘发出的输入信号需要经过一个叫**缓冲区**（Data buffer）的东西，然后才能到达我们的程序。具体而言请看下面的动画吧：
 
-<!-- TODO -->
-<!-- <style>
-@import url(ch03/fig.css)
-</style> -->
+<script setup>
+import "@src/ch03/fig.css";
+</script>
 <div class="fig" style="height: 650px; overflow: hidden">
 <iframe src="https://guyutongxue.gitee.io/mycpptutorial-animations/buffer/" height="765" width="960" style="left:0; right: 0; border: 0px; transform:scale(0.75, 0.75) translate(-12.5%, -12.5%)"></iframe>
 </div>

@@ -1,9 +1,5 @@
 # 函数的执行
 
-<!-- TODO -->
-<!-- <link rel="stylesheet" href="/fig.css">
-<script type="module" src="/function_execution.js"></script> -->
-
 ## main 函数
 
 聪明的你可能已经发现，我们第一章、第二章写的代码一直都写在
@@ -120,3 +116,21 @@ int main() {
 </div>
 
 因此 change 函数并不会更改 main 中变量的值，输出仍然是 `3 5`。那么如何让 change 函数更改这两个变量的值呢？其实存在至少三种方法可以实现，下一节我们将介绍其中一种。
+
+<script setup>
+import { fig1, fig2, fig3 } from "@src/ch03/function_execution";
+import { onMounted } from "vue";
+onMounted(() => {
+    const [fig1e, fig2e, fig3e, fig1t, fig2t, fig3t] = [
+        "#fig1",
+        "#fig2",
+        "#fig3",
+        "#fig1Text",
+        "#fig2Text",
+        "#fig3Text"
+    ].map((s) => document.querySelector(s));
+    fig1(fig1e, fig1t);
+    fig2(fig2e, fig2t);
+    fig3(fig3e, fig3t);
+});
+</script>

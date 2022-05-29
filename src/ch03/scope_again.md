@@ -1,11 +1,5 @@
 # 再谈作用域
 
-<!-- TODO -->
-<!-- <style>
-@import url(ch03/fig.css)
-</style>
-<script type="module" src="./scope_again.js"></script> -->
-
 ## 函数作用域
 
 我们一直以来都将变量定义在函数的函数体里。要么是 main 函数，要么是其它自己定义的函数。因此这些变量的名字的作用域只停留在函数体内部；到了函数体结尾的 `}` 就无法再使用了。请看下例：
@@ -35,7 +29,7 @@ void change(int a, int b) {
 int main() {
     int a{3}, b{5};
     change(a, b);
-    cout << a << " " << b << endl; 
+    cout << a << " " << b << endl;
 }
 ```
 这个例子和上一节提到的 `change` 函数完全相同。唯一不一样的地方是 change 函数形参的名字换成了 `a` 和 `b`，但是这样并没有任何区别。尽管它现在和 `main` 函数里的 `a` 和 `b` 名字相同，但是由于它们在各自的函数作用域内，所以互不干扰。同时上一节的图示也表明，两个函数的变量分别存储在各自的空间内，没有交集。所以这段代码编译运行的结果仍然为 `3 5`。
@@ -88,7 +82,7 @@ int main() {
 
 最后用一个例子来总结我们学过的作用域：
 ```CPP
-#include <iostream>                //    作用域  
+#include <iostream>                //    作用域
 using namespace std;               // ==============
 int excelNumber{0};                // excelNumber  ┐
 void excelCount(double score) {    // score  ┐     │
@@ -147,3 +141,15 @@ int main() {
 > - 函数的返回值不能是数组。
 > - 函数的参数不能是函数。
 > - 函数的返回值不能是函数。
+
+<script setup>
+import { fig1 } from "@src/ch03/scope_again";
+import { onMounted } from "vue";
+onMounted(() => {
+    const [fig1e, fig1t] = [
+        "#fig1",
+        "#fig1Text",
+    ].map((s) => document.querySelector(s));
+    fig1(fig1e, fig1t);
+});
+</script>

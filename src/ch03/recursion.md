@@ -1,11 +1,5 @@
 # 递归
 
-<!-- TODO -->
-<!-- <style>
-@import url(./fig.css)
-</style>
-<script type="module" src="./recursion.js"></script> -->
-
 ## 从普通调用说起
 
 ```cpp codemo
@@ -210,3 +204,18 @@ int main() {
 ## 更多
 
 递归是一个非常重要的概念，它在各个领域都有诸多的用途。不过由于本书的侧重点不在算法，所以不会再展开讲。有一种极为有用的算法被称为“深度优先搜索”（DFS），它的核心就是递归思想；感兴趣的读者可以查阅相关资料，这里不再赘述。
+
+<script setup>
+import { onMounted } from "vue";
+import { fig1, fig2 } from "@src/ch03/recursion";
+
+onMounted(() => {
+    const [fig1e, fig2e, fig2t] = [
+        "#fig1",
+        "#fig2",
+        "#fig2Text"
+    ].map((s) => document.querySelector(s));
+    fig1(fig1e);
+    fig2(fig2e, fig2t);
+})
+</script>
