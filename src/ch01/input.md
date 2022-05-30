@@ -2,7 +2,7 @@
 
 ## 简单的输入
 
-```cpp codemo(input=12_24)
+```cpp codemo(input=12 24)
 #include <iostream>
 int main() {
     int a{0};

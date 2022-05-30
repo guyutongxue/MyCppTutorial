@@ -76,7 +76,7 @@ int main() {
 
 ## 练习参考答案
 
-```cpp codemo(show)
+```cpp codemo(show, input=5)
 #include <iostream>
 using namespace std;
 int main() {
@@ -86,7 +86,7 @@ int main() {
     cout << s << endl;
 }
 ```
-```cpp codemo(show)
+```cpp codemo(show, input=5\n1 2 3 4 5)
 #include <iostream>
 using namespace std;
 int main() {

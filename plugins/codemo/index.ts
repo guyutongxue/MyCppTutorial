@@ -66,6 +66,7 @@ const codemoPlugin = () => {
                     input = value
                       .replace(/\\n/g, "\n")
                       .replace(/\\_/g, "_")
+                      .replace(/\\,/g, ",")
                       .replace(/\\\\/g, "\\")
                       .replace(/_/g, " ");
                   }

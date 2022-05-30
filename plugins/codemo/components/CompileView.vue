@@ -236,6 +236,7 @@ function replaceColorToHtml(content: string): string {
     font-size: 0.85em;
     margin: 0;
     padding: 1em;
+    font-family: var(--font-family-code);
 
     .text-red,
     .text-danger {

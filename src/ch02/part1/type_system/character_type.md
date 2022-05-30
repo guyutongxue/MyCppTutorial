@@ -190,7 +190,7 @@ int main() {
 
 ## 练习参考答案
 
-```cpp codemo(show)
+```cpp codemo(show,input=C\nS\nH\nF\nG\n)
 #include <iostream>
 using namespace std;
 int main() {

@@ -28,7 +28,7 @@
 
 你如果足够细心的话，应该能注意到我们一直写代码的地方貌似也被一个花括号包起来了：
 
-```cpp
+```cpp codemo(show, input=1 2)
 #include <iostream>
 using namespace std;
 int main() { // <- 这里

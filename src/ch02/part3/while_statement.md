@@ -71,7 +71,7 @@ while (false);
 即便条件恒假，仍然会输出一次 `Hello, world!`。
 
 第一章结尾的“猜数游戏”可以使用 do-while 循环：
-```cpp codemo(show)
+```cpp codemo(show, input=50\n25\n37\n43\n42)
 #include <iostream>
 using namespace std;
 int main() {

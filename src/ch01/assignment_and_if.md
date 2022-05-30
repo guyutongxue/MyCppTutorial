@@ -17,7 +17,7 @@ int main() {
 这里第 7 行就是赋值操作了。它做的就是让 `b` 的值变成 `42` 。所以这段程序实际上就是把输入加上 42 之后再输出出来。
 
 你会发现赋值的写法并不复杂，只需要用一个等号 `=` ：等号左边可以放一个变量，右边可以放我们想要赋给这个变量的东西，最后再加上一个分号就可以了。实际上，等号右边可以是一个数、一个变量，甚至一个简单的式子。比如最初的加法计算程序可以写成这样：
-```cpp codemo(input=15_12)
+```cpp codemo(input=15 12)
 #include <iostream>
 using namespace std;
 int main() {
@@ -50,7 +50,7 @@ int main() {
 现在还是加法程序，我想再加点花样。我想让两个数的和不超过 100；如果超过 100 的话就输出 100 。这件事情该怎么完成呢？
 
 显然目前所学貌似很难实现这样的功能。因此我将介绍“分支”这个概念。废话不多说，上代码：
-```cpp codemo(input=60_70)
+```cpp codemo(input=60 70)
 #include <iostream>
 using namespace std;
 int main() {
@@ -86,7 +86,7 @@ int main() {
 !> 注意等于号 `==` 与赋值的符号 `=` 的区别！
 
 所谓 `@如果条件成立就做的一些事情@` 可以是任何我们学过的事情，比如输入输出、声明并定义变量，或者做赋值操作。所以看看这个例子——你能自己弄明白它想要表达的意思吗？试试看！
-```cpp codemo(input=30_50)
+```cpp codemo(input=30 50)
 #include <iostream>
 using namespace std;
 int main() {
@@ -127,7 +127,7 @@ int main() {
 1. 在上一题的基础上，现在有这样的新评分标准：如果学生的缺勤次数超过 `3` 次，则学生在原成绩的基础上扣掉 `5` 分。现在编写一个程序，输入学生的原成绩和缺勤次数，输出这个学生是否及格。若及格，另起一行输出这个学生现在的成绩。
 
 ## 练习参考答案
-```cpp codemo(show, input=42_56)
+```cpp codemo(show, input=42 56)
 #include <iostream>
 using namespace std;
 int main() {
@@ -141,7 +141,7 @@ int main() {
     }
 }
 ```
-```cpp codemo(show, input=42)
+```cpp codemo(show, input=64)
 #include <iostream>
 using namespace std;
 int main() {
@@ -154,7 +154,7 @@ int main() {
     }
 }
 ```
-```cpp codemo(show, input=64_4)
+```cpp codemo(show, input=64 4)
 #include <iostream>
 using namespace std;
 int main() {

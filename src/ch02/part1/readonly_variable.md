@@ -77,7 +77,7 @@ int main() {
 1. 再次编写一个程序，输入圆的半径，输出该圆的面积。这一次，尝试使用 `constexpr` 关键字。
 
 ## 练习参考答案
-```cpp codemo(show)
+```cpp codemo(show, input=5)
 #include <iostream>
 using namespace std;
 int main() {

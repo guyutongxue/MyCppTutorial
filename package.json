@@ -11,7 +11,6 @@
 		"@types/markdown-it": "^12.2.3",
 		"@types/prismjs": "^1.26.0",
 		"@types/raphael": "^2.3.3",
-		"@types/react": "^18.0.9",
 		"@typescript-eslint/eslint-plugin": "^5.26.0",
 		"@typescript-eslint/parser": "^5.26.0",
 		"@vue/tsconfig": "^0.1.3",

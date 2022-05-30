@@ -11,7 +11,7 @@
 除了之前你学过的用法外，break 语句还可以出现在 for 语句和 while 语句的循环体内。它的含义是**跳出循环**。也就是说，当程序执行到 break 语句的时候，会跳出**一层**循环，不再执行循环体内的代码，也不再进行下次循环，直接执行循环之后的语句（若有）。
 
 举个例子来说，需要编写这样一个程序：允许用户输入 10 个整数，一旦输入的数等于 42，就输出 `Yes` 后程序终止、不再接受输入；若这十个数都不等于 42，就直接终止程序。这个问题可以通过调整循环的条件来实现，但是写起来会很不方便：因为循环的停止取决于两者：一是已经输入的数的个数，二是输入的数是否为 42。在这种情况下，break 语句就能派上用场：
-```cpp codemo(show)
+```cpp codemo(show, input=7\n14\n21\n28\n35\n42\n)
 #include <iostream>
 using namespace std;
 int main() {
@@ -37,7 +37,7 @@ continue 语句与 break 语句相似，也只能用于循环体内。它的写�
 "continue;"
 ```
 
-```cpp codemo
+```cpp codemo(input=5\n1 -1 2 -2 3)
 #include <iostream>
 using namespace std;
 int main() {
@@ -55,7 +55,7 @@ int main() {
 ```
 为了解释它的含义，考虑这样一个问题：和我们之前经常看到的例题一样，仍然是输入 n 个数并求和输出；但这次要求只对正整数求和，如果输入负数就忽略它。那么你可以写出像右侧这样的程序：在 for 语句里嵌套一个 if 语句，使得只有当输入的数是正数的时候才加到 `sum` 里去。
 
-```cpp codemo
+```cpp codemo(input)
 #include <iostream>
 using namespace std;
 int main() {

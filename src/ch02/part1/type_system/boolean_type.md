@@ -59,7 +59,7 @@ C++ 标准没有规定布尔型变量的存储细节。但是一般地，布尔�
 
 ## 练习参考答案
 
-```cpp codemo(show)
+```cpp codemo(show,input=3 7 11 9 2)
 #include <iostream>
 using namespace std;
 int main() {
