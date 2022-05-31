@@ -1,10 +1,18 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["plugins/**/*", "plugins/**/*.vue"],
+  "include": [
+    "**/*.ts",
+    "**/*.vue"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-    }
+      "@/*": [
+        "./src/*"
+      ],
+    },
+    "types": [
+      "vite/client"
+    ],
   }
 }

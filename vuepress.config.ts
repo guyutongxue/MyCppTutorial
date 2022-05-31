@@ -1,9 +1,9 @@
 import {
   defaultTheme,
-  DefaultThemeLocaleOptions,
   defineUserConfig,
-  SidebarConfig,
+  type SidebarConfig,
 } from "vuepress";
+
 import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
 import { searchPlugin } from "@vuepress/plugin-search";
 import { copyCodePlugin } from "vuepress-plugin-copy-code2";
@@ -367,37 +367,41 @@ export default defineUserConfig({
     contributors: false,
     lastUpdatedText: "最近更新",
     themePlugins: {
-      container: false, // 使用自定义版本
+      container: { // 使用自定义版本
+        tip: false,
+        warning: false,
+        danger: false
+      },
       backToTop: false, // 会挡住 codemo
     },
-  } as DefaultThemeLocaleOptions),
+  }),
   alias: {
-    '@src': path.resolve(__dirname, 'src'),
+    "@src": path.resolve(__dirname, "src"),
   },
   plugins: [
     containerPlugin({
-      type: 'tip',
+      type: "tip",
       locales: {
-        '/': {
-          defaultInfo: '提示',
-        }
-      }
+        "/": {
+          defaultInfo: "提示",
+        },
+      },
     }),
     containerPlugin({
-      type: 'warning',
+      type: "warning",
       locales: {
-        '/': {
-          defaultInfo: '注意',
-        }
-      }
+        "/": {
+          defaultInfo: "注意",
+        },
+      },
     }),
     containerPlugin({
-      type: 'danger',
+      type: "danger",
       locales: {
-        '/': {
-          defaultInfo: '危险',
-        }
-      }
+        "/": {
+          defaultInfo: "危险",
+        },
+      },
     }),
     codemoPlugin(),
     mdEnhancePlugin({
@@ -409,7 +413,7 @@ export default defineUserConfig({
     }),
     searchPlugin(),
     copyCodePlugin({
-      selector: '.theme-default-content div[class*="language-c"] pre'
+      selector: '.theme-default-content div[class*="language-c"] pre',
     }),
     ioBlockPlugin(),
     sdscPlugin(),

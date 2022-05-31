@@ -29,7 +29,7 @@
       <button
         v-if="!compileTab"
         :class="editStdin && 'active'"
-        @click="() => (editStdin = !editStdin)"
+        @click="() => (editStdin = !editStdin) || stdinSaved.next()"
       >
         编辑输入
       </button>
@@ -48,7 +48,7 @@
     <!-- Compile -->
     <div class="tab-content" v-else-if="compileTab">
       <pre><span v-for="stdout of result.stdout">{{ stdout.text }}
-</span><span v-for="stderr of result.stderr" v-html="replaceColorToHtml(stderr.text)"></span>
+</span><span v-html="processedStderr"></span>
 </pre>
     </div>
     <!-- Execute Result -->
@@ -72,14 +72,26 @@
 </template>
 
 <script setup lang="ts">
-import { switchMap, tap, type Subscription } from "rxjs";
+import {
+  map,
+  mergeWith,
+  Subject,
+  switchMap,
+  tap,
+  type Subscription,
+} from "rxjs";
 import { onMounted, onUnmounted, ref } from "vue";
 import { mergedSource } from "./emitter";
+import { replaceGccDiagnostics } from "@gytx/gcc-translation";
 
 const compileTab = ref(false);
 const editStdin = ref(false);
+const stdinSaved = new Subject<void>();
 
 const stdin = ref("");
+const source = ref("");
+const lang = ref<string | undefined>("");
+const processedStderr = ref("");
 
 type Stdio = {
   text: string;
@@ -123,16 +135,21 @@ let subscription: Subscription;
 onMounted(() => {
   subscription = mergedSource
     .pipe(
-      tap((v) => {
+      map((v) => {
+        typeof v.input !== "undefined" && (stdin.value = v.input);
+        source.value = v.code;
+        lang.value = v.lang;
+      }),
+      mergeWith(stdinSaved),
+      tap(() => {
         running.value = true;
         result.value.execResult.didExecute = false;
-        typeof v.input !== "undefined" && (stdin.value = v.input);
       }),
-      switchMap(({ code, lang }) => {
+      switchMap(() => {
         const compileRequest = {
-          source: code,
+          source: source.value,
           options: {
-            // userArguments: "-O3",
+            userArguments: "-std=c++2b -Wall -Wextra -pedantic-errors",
             executeParameters: {
               // args: [],
               stdin: stdin.value,
@@ -141,7 +158,7 @@ onMounted(() => {
               execute: true,
             },
           },
-          lang: lang,
+          lang: lang.value,
         };
         return fetch("https://godbolt.org/api/compiler/g121/compile", {
           method: "POST",
@@ -159,6 +176,7 @@ onMounted(() => {
       result.value = response;
       compileTab.value = result.value.code !== 0;
       running.value = false;
+      replaceColorToHtml();
     });
 });
 
@@ -166,33 +184,39 @@ onUnmounted(() => {
   subscription?.unsubscribe();
 });
 
-function replaceColorToHtml(content: string): string {
+async function replaceColorToHtml() {
+  let content = await replaceGccDiagnostics(
+    result.value.stderr.map((v) => v.text).join("\n"),
+    {
+      color: true,
+      version: "12.1.0",
+    }
+  );
   content = content
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
-  // reset color
-  return (
-    content
-      .replace(/\x1b\[K/g, "")
-      .replace(/\x1b\[0?m/g, `</span>`)
-      // diag text
-      .replace(/\x1b\[0?1m/g, `<span class="fw-bold">`)
-      // error
-      .replace(/\x1b\[0;?1;31m/g, `<span class="fw-bold text-danger">`)
-      // warning
-      .replace(/\x1b\[0;?1;35m/g, `<span class="fw-bold text-warning">`)
-      // note, path
-      .replace(/\x1b\[0;?1;36m/g, `<span class="fw-bold text-note">`)
-      // range1 (green)
-      .replace(/\x1b\[0;?1;32m/g, `<span class="fw-bold text-range1">`)
-      // range2 (blue)
-      .replace(/\x1b\[0;?1;34m/g, `<span class="fw-bold text-range2">`)
-      // fixit-insert
-      .replace(/\x1b\[32m/g, `<span class="text-green">`)
-      // fixit-delete
-      .replace(/\x1b\[31m/g, `<span class="text-red">`) + "\n"
-  );
+  processedStderr.value = content
+    // reset color
+    .replace(/\x1b\[m\x1b\[K/g, `</span>`)
+    // error
+    .replace(/\x1b\[01;31m\x1b\[K/g, `<span class="fw-bold text-danger">`)
+    // warning
+    .replace(/\x1b\[01;35m\x1b\[K/g, `<span class="fw-bold text-warning">`)
+    // note, path
+    .replace(/\x1b\[01;36m\x1b\[K/g, `<span class="fw-bold text-note">`)
+    // range1 (green)
+    .replace(/\x1b\[32m\x1b\[K/g, `<span class="text-range1">`)
+    // range2 (blue)
+    .replace(/\x1b\[34m\x1b\[K/g, `<span class="text-range2">`)
+    // locus, quote
+    .replace(/\x1b\[01m\x1b\[K/g, `<span class="fw-bold">`)
+    // fixit-insert
+    .replace(/\x1b\[32m\x1b\[K/g, `<span class="text-green">`)
+    // fixit-delete
+    .replace(/\x1b\[31m\x1b\[K/g, `<span class="text-red">`)
+    // type-diff
+    .replace(/\x1b\[01;32m\x1b\[K/g, `<span class="fw-bold text-range1">`);
 }
 </script>
 

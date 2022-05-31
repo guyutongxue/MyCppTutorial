@@ -6,6 +6,7 @@
 		"build": "vuepress build src"
 	},
 	"devDependencies": {
+		"@gytx/gcc-translation": "^0.1.1",
 		"@types/codemirror": "^5.60.5",
 		"@types/diff": "^5.0.2",
 		"@types/markdown-it": "^12.2.3",
