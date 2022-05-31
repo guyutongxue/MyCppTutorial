@@ -1,6 +1,7 @@
 import {
   defaultTheme,
   defineUserConfig,
+  viteBundler,
   type SidebarConfig,
 } from "vuepress";
 
@@ -378,6 +379,17 @@ export default defineUserConfig({
   alias: {
     "@src": path.resolve(__dirname, "src"),
   },
+  bundler: viteBundler({
+    viteOptions: {
+      // @ts-expect-error No typing for 'ssr' now
+      ssr: {
+        // @gytx/gcc-translation is an ESM only package.
+        // Vite doesn't support externalize it, see
+        // https://vitejs.dev/guide/ssr.html#ssr-externals
+        noExternal: ['@gytx/gcc-translation']
+      }
+    }
+  }),
   plugins: [
     containerPlugin({
       type: "tip",
