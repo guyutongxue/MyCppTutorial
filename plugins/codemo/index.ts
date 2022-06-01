@@ -64,21 +64,23 @@ const codemoPlugin = () => {
                     input = value;
                   } else {
                     input = value
+                      .replace(/_/g, " ")
+                      .replace(/;/g, ",")
+                      .replace(/\\,/g, ";")
                       .replace(/\\n/g, "\n")
-                      .replace(/\\_/g, "_")
+                      .replace(/\\ /g, "_")
                       .replace(/\\,/g, ",")
-                      .replace(/\\\\/g, "\\")
-                      .replace(/_/g, " ");
+                      .replace(/\\\\/g, "\\");
                   }
                 }
               });
           }
           const escapedContent = escapeHtml(content);
           const props = `
-title="${text}" 
-lang="${lang}" 
-code="${escapedContent}" 
-${focus.length > 0 ? `focus="${focus.join(",")}"` : ""} 
+title="${text}"
+lang="${lang}"
+code="${escapedContent}"
+${focus.length > 0 ? `focus="${focus.join(",")}"` : ""}
 ${typeof input !== "undefined" ? `input="${input}"` : ""}`;
           if (show)
             return `<div style="position: relative">

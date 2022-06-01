@@ -2,22 +2,20 @@
 
 ## 数组的大小
 
-首先来看一段代码：
-```CPP
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
     int n{5};
     int a[n]{};
     for (int i{0}; i < 5; i++) {
-        cout << a[i] << endl;
+        cout << a[i] << " ";
     }
 }
 ```
-请问这段代码有问题吗？
+首先来看右边这段代码。请问它有问题吗？
 
-答案是有的。因为 `n` 是一个变量但不是常量，所以它不能用作数组 `a` 的长度。（如果读者对此感到困惑：明明 `n` 初始化为 5 了啊，它的值应该能确定啊？事实上不是这样的，变量的初始化在运行时才会执行，而数组的大小要求在编译期间就能得到。编译器没办法“提前感知”这个大小。）所以如果编译器足够严格的话，会报类似 `ISO C++ forbids variable length array` 的错误。那么这样呢？
-```CPP
+```cpp codemo(clear)
 #include <iostream>
 using namespace std;
 int main() {
@@ -25,13 +23,13 @@ int main() {
     const int m{n};
     int a[m]{};
     for (int i{0}; i < 5; i++) {
-        cout << a[i] << endl;
+        cout << a[i] << " ";
     }
 }
 ```
-这样也是不行的。因为变量 `m` 仅仅是[只读变量](/ch02/part1/readonly_variable.md)，但它不是常量（非常量初始化）。所以我们也不能这样写。
+答案是有的。因为 `n` 是一个变量但不是常量，所以它不能用作数组 `a` 的长度。（如果读者对此感到困惑：明明 `n` 初始化为 5 了啊，它的值应该能确定啊？事实上不是这样的，变量的初始化在运行时才会执行，而数组的大小要求在编译期间就能得到。编译器没办法“提前感知”这个大小。）所以如果编译器足够严格的话，会报类似 `ISO C++ forbids variable length array` 的错误。那么这样呢？
 
-正确的做法是使用常量作为数组大小。最简单的做法是只用字面量（如 `int a[5]{};`），但是这样的话会有一些小麻烦。在某些场合中，我们可能声明并定义了一堆相同长度的数组：
+这样也是不行的。因为变量 `m` 仅仅是[只读变量](/ch02/part1/readonly_variable.md)，但它不是常量（非常量初始化）。所以我们也不能这样写。正确的做法是使用常量作为数组大小。最简单的做法是只用字面量（如 `int a[5]{};`），但是这样的话会有一些小麻烦。在某些场合中，我们可能声明并定义了一堆相同长度的数组：
 ```cpp
 int a[5]{};
 int b[5]{};
@@ -46,18 +44,19 @@ int b[N]{};
 int c[N]{};
 // [...]
 ```
-则只需修改一次 `N` 的值就能实现批量修改数组大小。回到最初的代码，下面是我推荐的写法：
-```CPP
+
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
     constexpr int N{5};
     int a[N]{};
     for (int i{0}; i < 5; i++) {
-        cout << a[i] << endl;
+        cout << a[i] << " ";
     }
 }
 ```
+则只需修改一次 `N` 的值就能实现批量修改数组大小。回到最初的代码，这是我更推荐的写法。
 
 > C++ 对数组大小是常量有着严格的限制，但是 C 语言没有这样的要求。因此许多编译器也允许那些不标准的用法。如果你使用 GCC 编译器的话，我建议将 `-pedantic` 或 `-pedantic-errors` （可理解为严格模式）开关启用以防止这种错误的用法。
 
@@ -78,8 +77,7 @@ int a[5]{1, 2, 3};
 
 <h6 id="idx_零初始化"></h6>
 
-这个时候，`a[0]` `a[1]` 和 `a[2]` 分别被初始化为 `1` `2` `3`，然后剩余的元素采用**零初始化**（Zero initialization）——也就是初始化为零值。因此
-```CPP
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -89,12 +87,9 @@ int main() {
     }
 }
 ```
-的输出结果为
-```io
-1 2 3 0 0
-```
-如果初始化器内留空，那么所有元素都会采用零初始化：
-```CPP
+这个时候，`a[0]` `a[1]` 和 `a[2]` 分别被初始化为 `1` `2` `3`，然后剩余的元素采用**零初始化**（Zero initialization）——也就是初始化为零值。因此这段代码的输出结果为 `1 2 3 0 0`。
+
+```cpp codemo(clear)
 #include <iostream>
 using namespace std;
 int main() {
@@ -104,10 +99,8 @@ int main() {
     }
 }
 ```
-上述代码的输出为
-```io
-0 0 0 0 0
-```
+
+如果初始化器内留空，那么所有元素都会采用零初始化。这段代码的输出为 `0 0 0 0 0`。
 
 > 严格说，剩余的元素采用的是“值初始化”（Value initialization）。非类类型的值初始化就是零初始化（因此正文使用了“零初始化”来更形象地描述）；而类类型的值初始化则是[默认初始化](/ch05/defaulted_constructor#idx_默认初始化)。
 
@@ -164,7 +157,7 @@ int f(int, bool);
 第一个声明语句中，把 `result` 拿走剩下的 `long long` 就是 `result` 的类型标识（这和类型说明符一致）；把 `a` 拿走得到的 `char[42]` 就是 `a` 的类型标识；把 `f` 拿走剩下的 `int(int, bool)` 就是 `f` 的类型标识。
 
 类型标识可以用在[类型转换运算符](/ch02/part2/other_operator.md#类型转换运算符)和 [sizeof 运算符](/ch02/part2/other_operator.md#sizeof-运算符)中。比如下面的例子：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {

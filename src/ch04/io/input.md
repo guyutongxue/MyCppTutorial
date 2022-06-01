@@ -20,7 +20,7 @@ cin >> a;
 ### 2. `cin.getline()`
 
 第二种用法是 `cin.getline()`。你可以把 `cin.getline` 当成一个函数。这个函数可以接收两个参数：*字符数组* 和 *最大长度*。如：
-```CPP
+```cpp codemo(show, input=Reading input!)
 #include <iostream>
 using namespace std;
 int main() {
@@ -45,7 +45,7 @@ abcdefghijabcdefghijabcdefghi
 （相比 `cin >>`，使用 `cin.getline()` 不会导致数组越界这种危险的事情发生。）
 
 默认情况下，`cin.getline()` 遇到换行符才会终止。如果你愿意的话，你可以设置为别的字符，只需给它多提供一个参数就可以。比如我想让它读到字符 `'r'` 停止，那么就：
-```CPP
+```cpp codemo(show, input=Hello; world!)
 #include <iostream>
 using namespace std;
 int main() {
@@ -65,7 +65,7 @@ Hello, wo
 ### 3. `cin.get()`
 
 `cin.get()` 也可以当做一个函数，它的用法和 `cin.getline()` 几乎完全一致。比如：
-```CPP
+```cpp codemo(show, input=Hi; C++!\nHow are you?)
 #include <iostream>
 using namespace std;
 int main() {
@@ -80,7 +80,7 @@ int main() {
 ```io
 ¶Hi, C++!↵
 ¶How are you?↵
-Hi, C++!<br>
+Hi, C++!
 How a
 ```
 是的，非常相似——不过为什么输出多了一个换行？这就是 `cin.get()` 和 `cin.getline()` 唯一不同的地方了：`cin.get()` 遇到终止字符后，**并不会从缓冲区中拿走它**。因此，在输入完第一行后，缓冲区内是这些字符：
@@ -111,7 +111,7 @@ char a;
 cin >> a;
 ```
 但是问题仍然存在，就是 `cin >>` 会忽略空格、Tab 和换行符（它们称为空白字符）。因此想把空格输入到一个 `char` 型变量是不能这样做的：
-```CPP
+```cpp codemo(show, input=@ #$)
 #include <iostream>
 using namespace std;
 int main() {
@@ -134,7 +134,7 @@ $
 ### 2. `cin.get()`
 
 你可以用 `cin.get()` 来替换 `cin >>`，从而允许输入空格、Tab 和换行到 `char` 型变量中。它的用法是这样的：
-```CPP
+```cpp codemo(show, input=@ #$)
 #include <iostream>
 using namespace std;
 int main() {
@@ -150,12 +150,13 @@ int main() {
 这个时候空格就可以存入变量中：
 ```io
 ¶@ #$↵
-@<br>&nbsp;
+@
+ 
 #
 ```
 
 除此之外，`cin.get()` 还有另一种形式，它的效果是完全相同的：
-```CPP
+```cpp codemo(show, input=@ #$)
 #include <iostream>
 using namespace std;
 int main() {
@@ -189,8 +190,7 @@ int main() {
 
 ## 注意事项
 
-`cin.get()` 在输入字符串的时候会残留终止字符，这件事情上文已经细致地说明了。因此这样的代码
-```CPP
+```cpp codemo(input=First string!Second string!)
 #include <iostream>
 using namespace std;
 int main() {
@@ -202,7 +202,7 @@ int main() {
     cout << "b is: " << b << endl;
 }
 ```
-它会让 `b` “空手而归”：
+`cin.get()` 在输入字符串的时候会残留终止字符，这件事情上文已经细致地说明了。因此这样的代码会让 `b` “空手而归”：
 ```io
 ¶First string!Second string!↵
 a is: First string
@@ -210,8 +210,7 @@ b is:
 ```
 因为第 6 行输入完成之后残留 `'!'` 在缓冲区中，当第 7 行再次 `cin.get()` 时，一上来就是终止字符，所以会直接向 `b` 中输入表示结束的空字符并停止读入。接下来再多的 `cin.get()`，只要它读取字符串的终止字符还是 `'!'`，它仍然无济于事，啥也读不到。
 
-这个时候，你可以通过读入字符的 `cin.get()` 打破这一僵局。
-```CPP
+```cpp codemo(input=First string!Second string!)
 #include <iostream>
 using namespace std;
 int main() {
@@ -225,15 +224,9 @@ int main() {
     cout << "b is: " << b << endl;
 }
 ```
-这样就能解决问题：
-```io
-¶First string!Second string!↵
-a is: First string
-b is: Second string
-```
+这个时候，你可以通过读入字符的 `cin.get()` ，将残留的 `!` “吃掉”，打破这一僵局。
 
-对于 `cin >>`，也有同样的问题。比如
-```CPP
+```cpp codemo(clear, input=Hello @)
 #include <iostream>
 using namespace std;
 int main() {
@@ -245,12 +238,6 @@ int main() {
     cout << "b is: " << b << endl;
 }
 ```
-的结果是：
-```io
-¶Hello @↵
-a is: Hello
-b is: &nbsp;
-```
-`b` 并没有读入 `'@'`，而是读入了之前那个空格，因为 `cin >>` 也不会处理残留的空格、Tab 和换行符，所以这个时候你可能需要再加入一个临时的 `cin.get()` 来消除影响。
+对于 `cin >>`，也有同样的问题。比如这段代码输入 `Hello @` 后，`b` 并没有读入 `'@'`，而是读入了之前那个空格。因为 `cin >>` 也不会处理残留的空格、Tab 和换行符，所以这个时候你可能需要再加入一个临时的 `cin.get()` 来消除影响。
 
 > 在处理残留字符时，也可以用 `cin.ignore()` 来代替 `cin.get()`。它的作用是抛弃缓冲区的下一个字符，和 `cin.get()` 的区别是返回值不同。

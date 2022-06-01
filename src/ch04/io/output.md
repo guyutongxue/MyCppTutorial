@@ -39,7 +39,7 @@ cout << a << endl;
 ### 设置进制
 
 我们默认输出整数时，用的是十进制。但是你还可以用八进制或十六进制，比如：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -63,8 +63,7 @@ int main() {
 
 ### 设置精度
 
-默认输出浮点数时，采取保留 6 位有效数字的策略。即：
-```CPP
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -72,12 +71,9 @@ int main() {
     cout << a << endl;
 }
 ```
-输出的是
-```io
-3.14159
-```
-我们可以通过 `cout.precision()` 这个函数来设置它输出的有效数字个数。比如我们改成 12 位有效数字试试看：
-```CPP
+默认输出浮点数时，采取保留 6 位有效数字的策略。即这段代码输出的是 `3.14159`。
+
+```cpp codemo(clear)
 #include <iostream>
 using namespace std;
 int main() {
@@ -86,51 +82,40 @@ int main() {
     cout << a << endl;
 }
 ```
-结果很理想：
-```io
-3.14159265359
-```
+我们可以通过 `cout.precision()` 这个函数来设置它输出的有效数字个数。比如我们改成 12 位有效数字试试看：这时输出的就是 `3.14159265359`，刚好 12 个数字。
 
-有时候，设置有效数字个数的意义不大，此时我们还改为设置小数点后多少位：只需加上一句 `cout << fixed;` 即可。
-```CPP
+```cpp codemo(clear)
 #include <iostream>
 using namespace std;
 int main() {
-    double a{12.3456789};
+    double a{3.14159265359};
     cout << fixed;     // 设置精度方式调整为小数点后 n 位
     cout.precision(2); // 精度调到小数点后 2 位
     cout << a << endl;
 }
 ```
-此时的输出：
-```io
-12.35
-```
+有时候，设置有效数字个数的意义不大，此时我们还改为设置小数点后多少位：只需加上一句 `cout << fixed;` 即可。这个例子将输出小数点后两位，也就是 `3.14`。
 
 如果想调回原先按有效数字的精度设置方式，则只需加上 `cout << defaultfloat;` 即可。
 
 ### 科学记数法
 
-对于浮点数，你可以用科学记数法的方式输出，使用语句 `cout << scientific;` 即可。比如：
-```CPP
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
-    double a{12.3456789};
+    double a{3.14159265359};
     cout << scientific;  // 设置为科学记数法输出
     cout << a << endl;
 }
 ```
-```io
-1.234568e+01
-```
+对于浮点数，你可以用科学记数法的方式输出，使用语句 `cout << scientific;` 即可。比如这段代码的输出是 `3.141593e+00`，意思就是 $3.141593\times 10^0$。
 
 同样地，用 `cout << defaultfloat;` 恢复默认输出格式。
 
 ## 布尔类型
 
-默认输出布尔类型的时候输出的是 `0` 和 `1`：
-```CPP
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -138,12 +123,8 @@ int main() {
     cout << false << endl;
 }
 ```
-```io
-1
-0
-```
-所以如果你想要更易读的输出，请使用 `cout << boolalpha;` 语句：
-```CPP
+默认输出布尔类型的时候输出的是 `0` 和 `1`。
+```cpp codemo(clear)
 #include <iostream>
 using namespace std;
 int main() {
@@ -152,18 +133,13 @@ int main() {
     cout << false << endl;
 }
 ```
-这时，就会以文本形式输出：
-```io
-true
-false
-```
+所以如果你想要更易读的输出，请使用 `cout << boolalpha;` 语句。这会以文本形式输出 `true` 或者 `false`。
 
 你可以用 `cout << noboolalpha;` 来取消这个设置。
 
 ## 设置宽度
 
-考虑输出一个表格或者矩阵：
-```CPP
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -180,14 +156,14 @@ int main() {
     }
 }
 ```
-它的结果为：
+考虑输出一个表格或者矩阵。仔细看它的输出，你会发现最后一行“凸出来了”，很不美观。
 ```io
 1 2 3 4
 5 6 7 8
 9 10 11 12
 ```
-你会发现最后一行“凸出来了”，很不美观。这个时候，我们可以指定每一次输出的宽度为一个固定值，方法是 `@"cout.width("宽度");"@`。比如我们加上 `cout.width(2);`：
-```CPP
+
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -205,13 +181,33 @@ int main() {
     }
 }
 ```
-你会发现，输出“对齐”了，因为每一个数都占了两个字符宽：
+这个时候，我们可以指定每一次输出的宽度为一个固定值，方法是 `@"cout.width("宽度");"@`。比如我们加上 `cout.width(2);`，然后你会发现输出“对齐”了，因为每一个数都占了两个字符宽：
 ```io
  1  2  3  4
  5  6  7  8
  9 10 11 12
 ```
-数会默认靠右对齐，左边补充空格。你可以用 `@"cout.fill("字符");"@` 来设置补充的字符，比如设置为 `cout.fill('0');` 就会出现下面的输出：
+
+```cpp codemo
+#include <iostream>
+using namespace std;
+int main() {
+    int a[3][4]{
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {9, 10, 11, 12}
+    };
+    for (int i{0}; i < 3; i++) {
+        for (int j{0}; j < 4; j++) {
+            cout.width(2);
+            cout.fill('0');
+            cout << a[i][j] << ' ';
+        }
+        cout << endl;
+    }
+}
+```
+数会默认靠右对齐，左边补充空格。你可以用 `@"cout.fill("字符");"@` 来设置补充的字符，比如设置为 `cout.fill('0');` 就会得到下面的输出：
 ```io
 01 02 03 04
 05 06 07 08

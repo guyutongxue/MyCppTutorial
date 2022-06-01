@@ -1,3 +1,6 @@
+---
+next: ./array/README.md
+---
 # 第四章 POD 类型与结构
 
 ## C++ 与 C

@@ -1,3 +1,6 @@
+---
+next: ./input.md
+---
 # 输入输出成分
 
 
@@ -8,8 +11,7 @@
 char a[]{"Hello"};
 cout << a << endl;
 ```
-事实上，你可以直接向字符数组输入字符串：
-```CPP
+```cpp codemo(input=Hello!)
 #include <iostream>
 using namespace std;
 int main() {
@@ -18,20 +20,21 @@ int main() {
     cout << a << endl; // 输出 a 中存储的字符串
 }
 ```
-（当然，这要求你输入的字符串不能超过 29 位，否则就放不下了。）比如下面的运行结果：
-```io
-¶Hello!↵
-Hello!
+事实上，你可以像这段代码一样直接向字符数组输入字符串（当然，这要求你输入的字符串不能超过 29 位，否则就放不下了），它在输入 `Hello!` 后会原封不动地输出 `Hello!`。
+
+```cpp codemo(input=Hello; world!, clear)
+#include <iostream>
+using namespace std;
+int main() {
+    char a[30]{};
+    cin >> a;          // 直接输入字符串到字符数组 a
+    cout << a << endl; // 输出 a 中存储的字符串
+}
 ```
-那么看看这个呢？
-```io
-¶Hello, world!↵
-Hello,
-```
-啊嘞，为什么只输出了一部分呢？你可以再检查一下 `a` 的各元素的值，发现确实只存储了 `"Hello,"` 而没有存储后面的 `" world!"`——也就是说后面根本就没输入进去。这是为什么呢？
+那么看看这个吧。啊嘞，为什么只输出了一部分呢？你可以再检查一下 `a` 的各元素的值，发现确实只存储了 `"Hello,"` 而没有存储后面的 `" world!"`——也就是说后面根本就没输入进去。这是为什么呢？
 
 原因是因为 `cin >>` 在读入字符串的时候，遇到空格、Tab 和回车就会自动停止读取。停止读取后，程序将输入的字符们串起来，追加 `'\0'`，随后存入要输入的字符数组中。那空格及后面的字符呢？它们会留给下一次输入：
-```CPP
+```cpp codemo(show, input=Hello; world!)
 #include <iostream>
 using namespace std;
 int main() {

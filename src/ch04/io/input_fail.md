@@ -32,7 +32,7 @@ int main() {
 ```
 
 当发生这种现象的时候，就会导致输入失败。输入失败会导致**接下来的任何输入语句都会跳过执行**，如：
-```CPP
+```cpp codemo(show, input=Hello! 66)
 #include <iostream>
 using namespace std;
 int main() {
@@ -51,7 +51,7 @@ int main() {
 ## 判断是否失败
 
 那如何判断 `cin` 是否处于失败状态呢？你可以使用 `cin.fail()` 这个函数来得知。它是一个接收无参数、返回布尔类型的函数，指明 `cin` 是否失败。比如：
-```CPP
+```cpp codemo(show, input=Hello!)
 #include <iostream>
 using namespace std;
 int main() {
@@ -78,15 +78,16 @@ OK.
 
 但是仅仅清除失败状态时不够的，因为缓冲区中那些不符合期望的错误输入并不会清除掉（比如上例中输入的 `"Hello!"` ）。因此同时还需要写一个很复杂的语句来做这件事情：
 ```cpp
-// 可能需要 #include <limits>
+// 需要 #include <limits>
 // 清除缓冲区到第一个换行符为止
 cin.ignore(numeric_limits<streamsize>::max(), '\n');
 ```
 
 下面的例子演示了完整的用法：
 
-```CPP
+```cpp codemo(show, input=Hello!\n56\n)
 #include <iostream>
+#include <limits>
 using namespace std;
 int main() {
     int n{42};
@@ -115,15 +116,11 @@ cin failed.
 
 上文中提及了两种可能导致输入失败的情形：输入格式错误和输入长度超限。除此之外，还有一种常见的错误，称为达到**文件末尾**（End of file, EOF）错误。
 
-为了解释这个错误，首先要了解一些背景知识。在目前的学习阶段，我们经常接触的输入输出方式可能是在控制台中，通过键盘向程序输入信息，通过显示屏输出信息。然而在现实的应用中，更常使用的是文件输入输出。也就是说，C++ 程序将从一个文件读取输入，并将信息输出到另外一个文件中去。
-
-> 本教程所提供的[在线编译运行](https://guyutongxue.gitee.io/cppocui)功能实际上就是基于文件输入输出的。
-
-然而在文件输入中可能出现一个问题。比如本来期望输入两个数，但是文件中只有一个数：也就是输入第二个数的时候意外地抵达了文件的末尾。这就是 EOF 错误了，也就是没有更多的数据可供继续读取的意思。
+为了解释这个错误，首先要了解一些背景知识。在目前的学习阶段，我们经常接触的输入输出方式可能是在控制台中，通过键盘向程序输入信息，通过显示屏输出信息。然而在现实的应用中，更常使用的是文件输入输出。也就是说，C++ 程序将从一个文件读取输入，并将信息输出到另外一个文件中去。然而在文件输入中可能出现一个问题。比如本来期望输入两个数，但是文件中只有一个数：也就是输入第二个数的时候意外地抵达了文件的末尾。这就是 EOF 错误了，也就是没有更多的数据可供继续读取的意思。
 
 下面的例子演示了 EOF 错误：
 
-```CPP
+```cpp codemo(show, input=42)
 #include <iostream>
 using namespace std;
 int main() {
@@ -135,7 +132,7 @@ int main() {
 ```
 本来要求输入两个数，但如果输入文件中只有一个数
 ```io
-**42**
+¶42↵
 ```
 那么就会导致 `cin` 进入失败状态：
 ```io
@@ -144,14 +141,14 @@ cin failed.
 
 其实，如果没有使用文件输入输出，也可以模拟文件结束（可能有少数环境不支持）。你只需要在键盘上按下这些按键即可：
 
-| Windows                                                               | macOS                                               | GNU/Linux           |
-| --------------------------------------------------------------------- | --------------------------------------------------- | ------------------- |
-| 依次按下：<br><kbd>Enter</kbd>，<kbd>Ctrl + Z</kbd>，<kbd>Enter</kbd> | 依次按下：<br><kbd>Return</kbd><kbd>Control+D</kbd> | <kbd>Ctrl + D</kbd> |
+| Windows                                                               | macOS                                                 | GNU/Linux           |
+| --------------------------------------------------------------------- | ----------------------------------------------------- | ------------------- |
+| 依次按下：<br><kbd>Enter</kbd>，<kbd>Ctrl + Z</kbd>，<kbd>Enter</kbd> | 依次按下：<br><kbd>Return</kbd>，<kbd>Control+D</kbd> | <kbd>Ctrl + D</kbd> |
 
 ## 另一种判断方法
 
 如果我们每写一个输入，就需要判断 `cin.fail()`，这样未免有些麻烦。事实上，C++ 提供了一种更方便的方法：
-```CPP
+```cpp codemo(show, input=Hello)
 #include <iostream>
 using namespace std;
 int main() {
