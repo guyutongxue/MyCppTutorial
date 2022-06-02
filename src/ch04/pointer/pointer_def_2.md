@@ -18,8 +18,8 @@ int* p[5]; // 这是由 5 个 int* 类型构成的数组
 ```cpp
 int (*p)[5]{nullptr};
 ```
-是不是看上去特别诡异。后面的 `{nullptr}` 是初始化器，如果不带初始化器就声明成 `int (*p)[5];`。你问为什么这么古怪？别问，问就是历史遗留。所以当你把二维数组作为函数形参的时候，它实际上是把指向数组的指针作为了形参：
-```CPP
+
+```cpp codemo
 #include <iostream>
 using namespace std;
 void f(int(*)[5]);
@@ -31,13 +31,13 @@ void f(int (*p)[5]) {
     cout << sizeof(*p) << endl;
 }
 ```
-其中 `int(*)[5]` 就是这个该死的指针的类型标识。这个括号是不能省的，一旦省略就变成由 5 个 `int*` 构成的数组了，而非一个指针。
+是不是看上去特别诡异。后面的 `{nullptr}` 是初始化器，如果不带初始化器就声明成 `int (*p)[5];`。你问为什么这么古怪？别问，问就是历史遗留。所以当你把二维数组作为函数形参的时候，它实际上是把指向数组的指针作为了形参。右边的代码就使用了这样的语法，其中 `int(*)[5]` 就是这个该死的指针的类型标识。这个括号是不能省的，一旦省略就变成由 5 个 `int*` 构成的数组了，而非一个指针。
 
 <h6 id="idx_类型别名"></h6>
 
 我很不喜欢这种声明语句，所以这里介绍一个方法：使用**类型别名**（Type alias）。声明类型别名的语法是这样的：
-```sdsc-legacy
-using *别名* = *类型标识*;
+```sdsc
+"using" 别名 "=" 类型标识";"
 ```
 比如
 ```cpp
@@ -51,8 +51,8 @@ ArrayOf5Int b{};
 ```cpp
 ArrayOf5Int* p{nullptr};
 ```
-看上去就正常不少。使用类型别名后，刚刚的代码可以改写成：
-```CPP
+
+```cpp codemo
 #include <iostream>
 using namespace std;
 using ArrayOf5Int = int[5];
@@ -65,6 +65,7 @@ void f(ArrayOf5Int* p) {
     cout << sizeof(*p) << endl;
 }
 ```
+看上去就正常不少。使用类型别名后，刚刚的代码可以改写成这个样子。
 
 ## 指针的只读性
 
@@ -74,7 +75,7 @@ int* p{nullptr};       // p 拥有指向 int 的指针类型
 const int* q{nullptr}; // q 拥有指向 const int 的指针类型
 ```
 但是请注意，指针 `q` 本身不是只读的。它只是指向只读变量而已：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -91,7 +92,7 @@ int a;
 int* const p{&a}; // p 是指向 int 的只读指针
 ```
 这时，`*p` 是 `int` 类型可以更改，但是 `p` 只读不能更改——也就是说，`p` 自始至终只能指向一个确定的变量。
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -136,8 +137,8 @@ printPtr(p);
 <h6 id="idx_函数指针"></h6>
 
 之前讨论的一直是指向变量的指针。实际上，C/C++ 还提供了指向函数的指针，俗称为**函数指针**。它的声明如下：
-```sdsc-legacy
-*返回值类型* (&#42;*指针名*)(**参数列表**)**初始化器**;
+```sdsc
+返回值类型 "(*"指针名")("[参数列表]")"[初始化器]";"
 ```
 比如：
 ```cpp
@@ -162,7 +163,7 @@ int (*ptr)(int, int){&max};
 2. 函数指针可以不经过解地址运算符，直接调用其所指向的函数。
 
 具体说就是：
-```CPP
+```cpp codemo(show)
 int (*ptr)(int, int){nullptr};
 int max(int a, int b) {
     return a > b ? a : b;

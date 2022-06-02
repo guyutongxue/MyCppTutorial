@@ -1,3 +1,6 @@
+---
+next: ./duration.md
+---
 # 链表
 
 先来考虑这个问题：怎样从数组中删除一个元素？
@@ -21,28 +24,31 @@ void deleteElement(int* arr, unsigned int size, int index) {
 
 <img src="/assets/Singly-linked-list.svg" alt="Linked List">
 
-这个图并不是那么好懂。我这样来解释：首先我们把一系列数据以一系列结构体的形式存放：
-```cpp
+```cpp codemo
 struct Node {
     int data;
 };
-Node a{12};
-Node b{99};
-Node c{37};
+int main() {
+    Node a{12};
+    Node b{99};
+    Node c{37};
+}
 ```
-这些结构体称为链表的节点（Node）。然后，用指针把它们连起来：
-```cpp
+这个图并不是那么好懂。我这样来解释：首先我们把一系列数据以一系列结构体的形式存放，像右边代码展示的这样。一般称这些结构体称为链表的节点（Node）。
+```cpp codemo(clear)
 struct Node {
     int data;
     Node* next; // 指向下一节点的指针
 };
-Node a{12};
-Node b{99};
-Node c{37};
-a.next = &b;
-b.next = &c;
-c.next = nullptr;
+int main() {
+    Node a{12};
+    Node b{99};
+    Node c{37};
+    a.next = &b;
+    b.next = &c;
+    c.next = nullptr;
+}
 ```
-在每一个结构体中增加一个 `Node*` 指针，指向“下一个”节点，这样就形成了一个简单的链表结构。用一句话概括就是，**链表是由指针连接的结构体**。所以我们可以通过控制指针在节点中的连接方式，来增加或删除链表中的数据。
+然后，用指针把它们连起来：在每一个结构体中增加一个 `Node*` 指针，指向“下一个”节点，这样就形成了一个简单的链表结构。用一句话概括就是，**链表是由指针连接的结构体**。所以我们可以通过控制指针在节点中的连接方式，来增加或删除链表中的数据。
 
 但是在正式讲解如何构建链表之前，我们还需要一些预备知识。

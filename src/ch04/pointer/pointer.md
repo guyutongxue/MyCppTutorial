@@ -34,7 +34,7 @@ int main() {
 | `&a`   | 取地址运算符 | 取得 `a` 在存储空间中的地址 |
 
 比如：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -59,8 +59,8 @@ int main() {
 int* address{&c};
 ```
 
-<h6 id="idx_指针"></h6>
-<h6 id="idx_指针类型"></h6>
+<!-- <h6 id="idx_指针"></h6>
+<h6 id="idx_指针类型"></h6> -->
 
 像 `int*` 这种，用于保存地址的变量称为**指针**（Pointer），而用于保存地址的类型称为**指针类型**（Pointer type）。
 
@@ -72,7 +72,7 @@ int* address{&c};
 
 比如：
 
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -84,7 +84,7 @@ int main() {
 这里就会输出 `address` 这个地址中存放的内容。`address` 是变量 `c` 的地址，因此 `*address` 相当于获得了 `c` 这个变量，最后输出它。
 
 通过解地址运算符，你还可以做更多的事情：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {

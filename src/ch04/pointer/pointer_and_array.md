@@ -46,7 +46,7 @@ cout << a << endl;
 ```
 
 你还可以直接用数组名做加法来遍历：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -59,7 +59,7 @@ int main() {
 这是因为，数组不能做加法，但指针却能。所以这时发生数组到指针的转换，`a + i` 理解为 `&a[0] + i`。接下来的过程就和上文中的内容一样了，这里不再赘述。
 
 类似的情形还出现在函数调用上。我们之前提及过，函数的参数**不能是数组**。但是函数的参数**可以是一个指针**！所以当你把数组作为函数参数时——
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 void f(int x[5]) {
@@ -80,7 +80,7 @@ int main() {
 最后来考虑这样一个事情。如果有 `int a[5]{};`，那么 `&a` 是什么意思呢？
 
 字面上，`&a` 就是取数组 `a` 的地址。没错，就是这样。那么请看下面的代码：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -99,7 +99,7 @@ int main() {
 首先我来解释为什么 `&a` 和 `a` 输出的是一个值。首先，`a` 会转换为 `&a[0]` 这个地址，此时你要注意到它是数组首元素的首字节地址——而 `&a` 是整个数组首字节的地址——所以它们两个地址的值是相同的。
 
 不同点在于，这两个地址的基类型不一样。`a` 被转换为指向 `int` 的指针类型；而 `&a` 则是指向 `int[5]` 的指针类型。所以有了下面的结果：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -136,7 +136,7 @@ void copyString(char* dest, const char* src) {
 | `char* strcat(char* dest, const char* src)` | 将 `src` 指向的字符串复制到 `dest` 所指字符串的末尾（拼接） |
 
 使用它们的例子：
-```CPP
+```cpp codemo(show)
 #include <cstring>
 #include <iostream>
 int main() {

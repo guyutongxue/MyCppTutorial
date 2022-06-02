@@ -1,10 +1,10 @@
 # 结构体的定义
 
 结构体是由若干个数据“合起来”组成的一种新类型。这些数据被称为结构体的**成员**（Member）。若想定义一个新的结构体类型，你需要这样写：
-```sdsc-legacy
-struct *结构体类型名* {
-    **成员列表**
-};
+```sdsc
+"struct" 结构体类型名 "{"
+    [成员列表]
+"};"
 ```
 其中，`@结构体类型名@` 是一个引入的类型名，它遵循和变量名相同的命名规则。`@成员列表@` 是一系列可选的带初始化器的声明，比如：
 ```cpp
@@ -47,7 +47,7 @@ struct Student;
 ## 注意事项
 
 我在这里建议读者，将结构体的定义写在全局作用域内。即：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 struct Student {
@@ -61,7 +61,7 @@ int main() {
 ```
 
 这样做的原因是，我们可以在所有的函数中使用这个结构体类型：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 struct Student {
@@ -76,3 +76,5 @@ int main() {
     printName(bob);
 }
 ```
+
+> 定义在函数内的结构体称为“局部类”（Local class），有一定的语法限制且并不常用。

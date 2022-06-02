@@ -23,7 +23,7 @@ a.b;
 结构体的用途是多样的。我们最常见到的用法则是用结构体来创建一种新的类型 —— 比如之前的 `Student` 类型，这种类型可以用于存储一个学生的数据。
 
 结构体变量的使用方法和普通变量是一致的。比如，结构体数组、用结构体作为函数参数：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 struct Student {
@@ -51,7 +51,7 @@ int main() {
 你可以自己运行一下，看看它的输出是否和你想的一致。当我们把多种相互关联密切的数据以结构体的形式“绑定”在一起的时候，操作它们就会变得更轻松。比如在上面的例子中，如果想要对学生按学号高低进行排序，那么只需交换 classmates 数组元素的顺序就可以了。如果分成两个单独的数组来做，则代码量会稍微多一点。
 
 又比如指向结构体类型的指针：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 struct Student {
