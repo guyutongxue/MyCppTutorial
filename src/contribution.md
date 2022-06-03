@@ -25,6 +25,7 @@
 - vuepress-plugin-codemo（自制）
 - vuepress-plugin-io-block（自制）
 - vuepress-plugin-sdsc（自制）
+- vuepress-plugin-sidebar（自制）
 
 ### Codemo
 
@@ -96,21 +97,9 @@ SDSC 描述中包含以下要素：
 
 同时，为了保证统一的阅读体验，支持简单的行内 SDSC，格式是 `` `@...@` ``。行内 SDSC 仅支持裸字符串和占位符。在行内 SDSC 的裸字符串内，`"` 用 `@` 代替。
 
-## 注意
-
-### frontmatter
-
-> frontmatter 即 Markdown 头的 YAML 字段。
-
-不同于 Docsify，VuePress 在解析下一页使用的算法是下一个同级页面，而非次级页面。所以，所有的 `README.md` 必须加上
-```md
----
-next: # some_page.md
----
-```
-这样的头。
-
 ### 侧边栏
 
-侧边栏定义在 `vuepress.config.ts` 里的 `SIDEBAR`。大部分页面只需给出路径即可；但对于有子节点的页面，必须给出标题（我不知道为什么，但就这样规定的）。
+VuePress 的侧边栏设计思路和 Doxygen 等常见文档完全不同。它们的世界里，树形文档结构只存在于标题之间，文档之间的树形结构支持得很差。（官方维护人员称“not recommended”。）总之，这给我带来了不少的麻烦。
+
+然而 VuePress default theme 功能又很全，我可不愿意重头造轮子。所以，我的做法是在运行 VuePress 前通过一个自定义的配置文件 `sidebar.yml` 提前生成一个树形的侧边栏结构，然后由这个结构覆盖到对应的 VuePress default theme 字段上。这个思路不是什么好办法，不仅会拖慢构建速度，而且要求用户必须将 sourceDir 写死在 `vuepress.config.ts`。但不管怎样，至少它能工作。
 

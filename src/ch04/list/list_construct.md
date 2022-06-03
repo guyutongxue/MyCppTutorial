@@ -118,8 +118,15 @@ int main() {
 
 ## 链表的访问
 
-链表可以很快地进行插入和删除操作，但相对地，若想访问其中一个节点就会比数组麻烦不少。如果想访问第 x 个节点，那我们不得不从 `head` 开始，一个一个 `next` 地去找，直到第 x 个为止。
-```cpp
+```cpp codemo(focus=8-17)
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
 /**
  * 获取第 x 个节点（从 0 开始）
  */
@@ -130,8 +137,21 @@ Node* getNode(Node* head, unsigned int x) {
     }
     return current;
 }
+
+int main() {
+    Node* head{new Node{0}};
+    Node* current{head};
+    int n{5}; // 节点个数
+    for (int i{1}; i < n; i++) {
+        (*current).next = new Node{i};
+        current = (*current).next;
+    }
+    (*current).next = nullptr;
+    Node* thirdNode{getNode(head, 3)};
+    cout << (*thirdNode).data << endl;
+}
 ```
-同样地，你可以按照这种方式一直遍历到结尾 `nullptr`：
+链表可以很快地进行插入和删除操作，但相对地，若想访问其中一个节点就会比数组麻烦不少。如果想访问第 x 个节点，那我们不得不从 `head` 开始，一个一个 `next` 地去找，直到第 x 个为止。同样地，你可以按照这种方式一直遍历到结尾 `nullptr`：
 ```cpp
 Node* current{head};
 while (current) { // 当 current 为 nullptr 时，得到 false
@@ -148,6 +168,39 @@ while (current) { // 当 current 为 nullptr 时，得到 false
 | ------ | -------------- | --------------- |
 | `a->b` | 指针成员运算符 | 等价于 `(*a).b` |
 
+```cpp codemo
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+/**
+ * 获取第 x 个节点（从 0 开始）
+ */
+Node* getNode(Node* head, unsigned int x) {
+    Node* current{head};
+    for (unsigned int i{0}; i < x; i++) {
+        current = current->next;
+    }
+    return current;
+}
+
+int main() {
+    Node* head{new Node{0}};
+    Node* current{head};
+    int n{5}; // 节点个数
+    for (int i{1}; i < n; i++) {
+        current->next = new Node{i};
+        current = current->next;
+    }
+    current->next = nullptr;
+    Node* thirdNode{getNode(head, 3)};
+    cout << thirdNode->data << endl;
+}
+```
 其实 `->` 这个运算符只是提供了一个“快捷方式”，它实际上仍然是先解地址，然后取得其成员。有了它，我们可以把刚才的遍历代码改成这样：
 ```cpp
 Node* current{head};

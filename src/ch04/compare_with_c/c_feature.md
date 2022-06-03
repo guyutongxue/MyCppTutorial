@@ -173,7 +173,7 @@ int max(int a, int b) {
 ```
 
 旧式函数声明则是不带任何参数类型的声明：
-```C
+```c codemo(show)
 int max();     /* 旧式函数声明无需指明参数 */
 int main(void) {
     max(1, 2); /* 即可直接调用 */
@@ -360,7 +360,7 @@ _Generic(*参数*, *关联列表*)
 `_Generic` 相当于一个表达式，当传入 `@参数@` 类型和 `@关联列表@` 中的某一 `@类型名@` 匹配时，则运算这个 `@类型名@` 对应的 `@表达式@`；若没有匹配的 `@类型名@`，就执行 `default` 对应的 `@表达式@`（若有，否则编译错误）。
 
 比如：
-```C
+```c codemo(show)
 // 函数声明（于 <stdlib.h> 中）
 int         abs(int       n);
 long       labs(long      n);
@@ -406,7 +406,7 @@ int main(void) {
 ### 隐式函数声明
 
 在 C99 前，返回 `int` 类型的函数无需声明只可使用：
-```C
+```c codemo(show)
 int main(void) {
     /* printf 未声明，但是可以使用：因为其返回 int */
     printf("Hello, world!");

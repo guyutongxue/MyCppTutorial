@@ -1,0 +1,43 @@
+{
+  "type": "array",
+  "description": "子节点列表",
+  "items": {
+    "anyOf": [
+      {
+        "type": "string",
+        "pattern": "^(/|https?://)",
+        "description": "Markdown 文件的路径"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "link": {
+            "type": "string",
+            "pattern": "^(/|https?://)",
+            "description": "Markdown 文件的路径"
+          },
+          "text": {
+            "type": "string",
+            "description": "侧边栏标签。不提供时使用 Markdown 一级标题"
+          },
+          "children": {
+            "$ref": "#"
+          }
+        },
+        "required": [
+          "link"
+        ]
+      },
+      {
+        "type": "object",
+        "patternProperties": {
+          "^(/|https?://)": {
+            "$ref": "#"
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      }
+    ]
+  }
+}

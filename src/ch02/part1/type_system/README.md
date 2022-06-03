@@ -1,6 +1,3 @@
----
-next: ./integer_type.md
----
 
 # 类型系统
 

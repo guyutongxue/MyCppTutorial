@@ -1,4 +1,4 @@
-# 迁移到 C 语言 <sub>选读</sub>
+# 迁移到 C 语言 <Badge type="tip" text="选读" />
 
 事实上，我们目前所学的内容仍不超出 C 语言的范畴。所以，我们只需通过适当的改写，就能够将 C++ 程序改写为 C 程序。这一节我们先列出一些必要的不同：
 
@@ -49,7 +49,7 @@ C 中没有带作用域的枚举，也不可以指定枚举的基。
 ## 例子
 
 这样的 C++ 程序：
-```CPP
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 int main() {
@@ -59,7 +59,7 @@ int main() {
 }
 ```
 你需要改写成这样：
-```C
+```c codemo(show)
 #include <stdio.h>
 int main(void) {
     int a = 0, b = 0;

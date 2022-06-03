@@ -1,6 +1,3 @@
----
-next: ./declaration_statement.md
----
 
 # 第 1 部分 数据成分
 

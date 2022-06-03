@@ -34,6 +34,7 @@
 		"vue": "^3.2.35",
 		"vuepress": "2.0.0-beta.45",
 		"vuepress-plugin-copy-code2": "2.0.0-beta.71",
-		"vuepress-plugin-md-enhance": "2.0.0-beta.71"
+		"vuepress-plugin-md-enhance": "2.0.0-beta.71",
+		"yaml": "^2.1.1"
 	}
 }

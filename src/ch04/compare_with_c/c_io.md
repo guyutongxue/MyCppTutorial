@@ -99,7 +99,7 @@ C 语言没有判断参数类型的能力，所以你需要通过占位符来指
     - `.*`：*精度* 由该占位符对应参数前的一个额外 `int` 参数提供
 
 例：
-```C
+```c codemo(show)
 #include <stdio.h>
 int main(void) {
     printf("Strings:\n");
