@@ -67,7 +67,7 @@ export class Sidebar {
     }
     const file = fs.readFileSync(filepath, "utf8");
     const match = file.match(/^# (.*)$/m);
-    return match?.[1] ?? link;
+    return match?.[1].replace(/<Badge [^/]*?text="(.*?)" \/>/g, (_, a) => `(${a})`) ?? link;
   }
 
   #transformSidebar(raw: SidebarRaw) {

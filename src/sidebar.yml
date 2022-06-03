@@ -151,7 +151,6 @@
     - /ch10/filesystem.md
     - /ch10/random.md
 - link: /ch11/
-  collapsible: true
   children:
     - /ch11/grammar/:
         - /ch11/grammar/function_as_object.md

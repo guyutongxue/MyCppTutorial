@@ -26,7 +26,8 @@
         },
         "required": [
           "link"
-        ]
+        ],
+        "additionalProperties": false
       },
       {
         "type": "object",
@@ -35,6 +36,7 @@
             "$ref": "#"
           }
         },
+        "additionalProperties": false,
         "minProperties": 1,
         "maxProperties": 1
       }
