@@ -66,7 +66,9 @@ Windows 下的同学，很幸运你能使用 Visual Studio 这样一个被称作
 
 CLion 内置了 CMake 工具，从而使得多文件编译的操作变得较为简便。
 
-?> [TODO]
+::: tip
+\[TODO\]
+:::
 
 ## Visual Studio Code + CMake
 

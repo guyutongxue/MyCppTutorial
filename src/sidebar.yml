@@ -150,6 +150,8 @@
         - /ch10/file_io/c_io.md
     - /ch10/filesystem.md
     - /ch10/random.md
+    - /ch10/smart_pointer/:
+        - /ch10/smart_pointer/rvalue_reference.md
 - link: /ch11/
   children:
     - /ch11/grammar/:

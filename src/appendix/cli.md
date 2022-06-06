@@ -372,4 +372,6 @@ add_executable(main main.cpp f.cpp g.cpp)
 
 > 在 CMake 诞生之前，大多数程序使用 GNU Autotools 来生成 Makefile。但目前 CMake 已是主流的、成熟的构建生成器，仅有一些 GNU 项目仍在使用 Autotools。虽然话这么说，CMake 仍然出于历史包袱原因饱受批评，也有部分新生项目使用 Xmake、SCons 等构建生成器。
 
-?> [TODO] 缺插图
+::: tip
+\[TODO\]
+:::
