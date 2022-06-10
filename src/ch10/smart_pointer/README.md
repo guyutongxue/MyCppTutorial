@@ -86,6 +86,8 @@ int main() {
 
 ![值类别](https://docs.microsoft.com/en-us/windows/uwp/cpp-and-winrt-apis/images/value-categories.png)
 
+亡值和左值又有什么区别呢？本质上来说，它们没有区别。之后马上就会讲到，你甚至可以手动指定一个泛左值到底作为左值来使用还是亡值来使用。
+
 ## 复制消除 <Badge type="tip" text="选读" />
 
 此外，纯右值和亡值分离的设计可以避免冗余的复制操作。

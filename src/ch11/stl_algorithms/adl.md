@@ -198,12 +198,12 @@ G g;
 
 int main() {
     ns::S x{};
-    f(x); // 找到 ns::f；重载解析时它比 ::f 更好
+    f(x); // 找到 ns::f；重载决议时它比 ::f 更好
     g(x); // 找到 ::g，因为它是函数对象，不进行 ADL，看不见 ns::g
 }
 ```
 
-上面的例子中，`g(x)` 并没有 ADL 到 `ns::g`，而是采用了重载解析中更差的 `::g`。这就体现函数对象的一个功能：**禁用 ADL**。如之前提到的，ADL 违背直觉的表现比较麻烦。下面的例子引入了用函数对象实现的 `my_std::swap`，它在一致性上优于函数 `std::swap`。
+上面的例子中，`g(x)` 并没有 ADL 到 `ns::g`，而是采用了重载决议中更差的 `::g`。这就体现函数对象的一个功能：**禁用 ADL**。如之前提到的，ADL 违背直觉的表现比较麻烦。下面的例子引入了用函数对象实现的 `my_std::swap`，它在一致性上优于函数 `std::swap`。
 
 ```CPP
 #include <iostream>
@@ -290,6 +290,6 @@ int main() {
 }
 ```
 
-稀松平常，是吗？但问题出在这里的 `copy` 到底是约束版本的 `std::ranges::copy`，还是传统版本的 `std::copy`。有读者可能疑惑，这里用的是 `using namespace std::ranges`，`std` 命名空间里的东西应该看不见的，不可能调用 `std::copy`。但事实是，`a.begin()` 是 `std::vector<int>::iterator` 类型的。在某种实现下，它可能是类似 `std::__gnu_cxx_normal_iterator` 这种 `std` 命名空间下的类型。麻烦了，ADL 出现：`std` 命名空间下的所有函数都纳入查找，`std::copy` 意外地参与重载解析。
+稀松平常，是吗？但问题出在这里的 `copy` 到底是约束版本的 `std::ranges::copy`，还是传统版本的 `std::copy`。有读者可能疑惑，这里用的是 `using namespace std::ranges`，`std` 命名空间里的东西应该看不见的，不可能调用 `std::copy`。但事实是，`a.begin()` 是 `std::vector<int>::iterator` 类型的。在某种实现下，它可能是类似 `std::__gnu_cxx_normal_iterator` 这种 `std` 命名空间下的类型。麻烦了，ADL 出现：`std` 命名空间下的所有函数都纳入查找，`std::copy` 意外地参与重载决议。
 
-更糟糕的是，重载解析时 `std::copy` 一般比 `std::ranges::copy` 更好。如果此时重载解析的结果是 `std::copy`，那就和我们的意图大相径庭了。因此在使用 `std::ranges::copy` 时，必须要禁用 ADL。标准规定：诸如 `std::ranges::copy` 的一系列算法，都应当实现为 niebloid，不允许 ADL。
+更糟糕的是，重载决议时 `std::copy` 一般比 `std::ranges::copy` 更好。如果此时重载决议的结果是 `std::copy`，那就和我们的意图大相径庭了。因此在使用 `std::ranges::copy` 时，必须要禁用 ADL。标准规定：诸如 `std::ranges::copy` 的一系列算法，都应当实现为 niebloid，不允许 ADL。

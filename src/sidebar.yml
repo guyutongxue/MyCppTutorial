@@ -152,6 +152,8 @@
     - /ch10/random.md
     - /ch10/smart_pointer/:
         - /ch10/smart_pointer/rvalue_reference.md
+        - /ch10/smart_pointer/move_and_forward.md
+        - /ch10/smart_pointer/ownership.md
 - link: /ch11/
   children:
     - /ch11/grammar/:
