@@ -227,7 +227,7 @@ freopen("1.out","w",stdout); // 则重定向到文件输出
 #pragma pack()
 ```
 `#pragma pack` 可接受一个参数 `@对齐@`，它需要是 2 的整数次幂。当写下这条预处理指令后，之后的结构体对齐皆设置为 `@对齐@`。`#pragma pack()` 取消此设置，恢复默认对齐。比如：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 using namespace std;
 #pragma pack(2)
@@ -243,7 +243,7 @@ int main() {
 ```
 
 但是，如果你使用 GCC 或 Clang，我们更推荐用特性（Attribute）来实现：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <tuple>
 using namespace std;

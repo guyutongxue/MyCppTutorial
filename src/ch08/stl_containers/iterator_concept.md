@@ -63,7 +63,7 @@ $\longrightarrow$ 称满足以上条件的 `It` 为*连续迭代器（Contiguous
 <img src="/assets/range-begin-end.svg" alt="begin and end iterator">
 
 所以，我们得到了访问 `std::forward_list` 元素的正确方法：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <forward_list>
 int main() {
@@ -93,7 +93,7 @@ auto a{42};   // 等同于 int a{42};
 auto b{3.14}; // 等同于 double b{3.14};
 ```
 那么，在之前的例子中，`std::forward_list<int> a;` 即表明 `a.begin()` 具有 `std::forward_list<int>::iterator` 类型。因此，如果使用 `a.begin()` 初始化变量，则直接用 `auto` 占位类型说明符即可避免书写如此之长的玩意儿了。之前的代码可以简化为：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <forward_list>
 int main() {

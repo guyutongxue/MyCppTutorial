@@ -27,7 +27,7 @@ C++ 语言本质上定义了一套如何从若干个 C++ 源文件转化为一�
 ## 代码结构
 
 现在回头看看我们写的一个典型代码：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 using namespace std;
 void printSum(int x, int y) {
@@ -120,8 +120,8 @@ int main() {
 }
 ```
 你可以用
-```sdsc-legacy
-**命名空间名**::*名字*
+```sdsc
+[命名空间名]"::"名字
 ```
 
 <h6 id="idx_作用域解析运算符"></h6>
@@ -138,12 +138,12 @@ int main() {
 std::priority_queue<std::string, std::vector<std::string>, std::greater<std::string>> a;
 ```
 这个时候，就可以用 using 声明来简化。using 声明的语法有两种：
-```sdsc-legacy
-using namespace *命名空间名*;
-using **命名空间名**::*名字*;
+```sdsc
+"using namespace" 命名空间名";"
+"using" [命名空间名]"::"名字";"
 ```
 当写下第一种形式的 using 声明时，在这个声明所在作用域内，`@命名空间名@` 中所有名字的“命名空间前缀”都可以省略掉。这就是 `using namespace std;` 的由来了：有了它，就可以省去全部的 `std::`（因为这个声明写在全局作用域，因此任何声明点之后地方都可以省去）。第二种可以引入 `@命名空间名@` 中的部分名字，比如：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 using std::cin;
 using std::cout;

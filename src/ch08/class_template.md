@@ -3,16 +3,16 @@
 类似地，类模板是能够生成类的语法。换而言之，一个类模板可以提供一簇类。
 
 类模板拥有这样的语法：
-```sdsc-legacy
-template&lt;*模板形参列表*&gt;
-*（允许出现模板形参的）类定义*
+```sdsc
+"template<"模板形参列表">"
+（允许出现模板形参的）类定义
 ```
 
 > 上语法中 `@类定义@` 可以为类声明（前置声明），但使用前需要显式实例化，否则在使用处编译错误。这里为了简便，使用类定义作为语法说明。（函数模板可为声明的原因是，函数定义的寻找是在链接时（编译后）发生的，而类定义的寻找是在编译期间发生的。）
 
 比如：
 
-```CPP
+````cpp codemo(show)
 template<typename T>
 class Vla {
     unsigned size;
@@ -64,7 +64,7 @@ public:
 
 在某些情形下，类的实例化可以略去模板实参，利用类模板实参推导（Class Template Argument Deduction, CTAD）机制来完成实例化。
 
-```CPP
+````cpp codemo(show)
 template<typename T>
 class C {
     T mem;

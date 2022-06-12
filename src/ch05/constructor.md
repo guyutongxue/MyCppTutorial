@@ -19,7 +19,7 @@ str.init("Hello");
 String str("hello");
 ```
 只需要一条语句就够了。那么怎么写构造函数呢？方法很简单，只需要把 `init` 成员函数的名字改成结构体名 `String` 就可以了：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <cstring>
 struct String {
@@ -61,18 +61,18 @@ int main() {
 ```
 
 注意：构造函数是一种**非常特殊**的成员函数。它的名字必须和结构体名完全一致，而且不能写出返回值类型（`void` 也不用写）。即：
-```sdsc-legacy
-*结构体名* (**参数列表**) {
-    **一些需要在初始化时执行的内容**
-}
+```sdsc
+结构体名 "("参数列表") {"
+    [一些需要在初始化时执行的内容]
+"}"
 ```
 然后，你可以通过括号括起的 `@参数列表@` 作为初始化器进行初始化：
-```sdsc-legacy
-*结构体名* *变量名*(*参数列表*);
+```sdsc
+结构体名 变量名"("参数列表");"
 ```
 
 不过有一个例外：当构造函数的参数列表为空时，你不能这样初始化：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 struct S {
     int data;

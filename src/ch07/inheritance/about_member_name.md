@@ -5,7 +5,7 @@
 ## 一般的成员名
 
 假设我现在类 `A` 下面有一个成员 `mem`。然后我会在 `main` 函数里创建一个 `A` 类型对象，然后访问它的 `mem` 成员：
-```CPP
+````cpp codemo(show)
 struct A {
     int mem;
 };
@@ -15,7 +15,7 @@ int main() {
 }
 ```
 这看上去非常普通。但你其实还可以这样写：
-```CPP
+````cpp codemo(show)
 struct A {
     int mem;
 };
@@ -25,7 +25,7 @@ int main() {
 }
 ```
 这是因为 `mem` 这个名字其实是带“命名空间的”，它归类 `A` 这个“命名空间”所管（正式地说，它是类作用域 `A` 下的名字）。而我们在一般情况下想要访问某个命名空间的名字需要带上它所归属的命名空间名和作用域解析运算符 `::`：
-```CPP
+````cpp codemo(show)
 namespace Ns {
     int a;
 }
@@ -34,7 +34,7 @@ int main() {
 }
 ```
 这里面，`A::mem` 的道理是一样的。但在语义层面上，这个名字的存储期不是静态的——也就是说，它并不是像全局变量一样的存在，而是一个 `A` 类型对象的一部分。所以，直接使用这个名字在语义上是过不去的（不求值语境除外），需要通过一个成员访问运算符来指明是哪个对象的 `A::mem`：
-```CPP
+````cpp codemo(show)
 struct A {
     int mem;
 };
@@ -62,7 +62,7 @@ int main() {
 ## 继承中的成员名
 
 现在来看出现继承之后，成员访问表达式省略了什么、
-```CPP
+````cpp codemo(show)
 struct Base {
     int b;
 };
@@ -77,7 +77,7 @@ int main() {
 ```
 
 当然，正如刚才说的：既然 `a` 是 `Derived` 类型，省去的正是 `Derived::`：
-```CPP
+````cpp codemo(show)
 struct Base { int b; };
 struct Derived : Base { int d; };
 int main() {
@@ -87,7 +87,7 @@ int main() {
 }
 ```
 不过除此之外，`a.b` 也可以写成 `a.Base::b`，但 `a.d` 不行：
-```CPP
+````cpp codemo(show)
 struct Base { int b; };
 struct Derived : Base { int d; };
 int main() {
@@ -97,7 +97,7 @@ int main() {
 }
 ```
 道理就是：`b` 也是 `Base` “命名空间”下的名字，而 `Base` 被 `Derived` 继承了，所以访问成员 `a` 也可以通过命名空间 `Base`。那么说这个的意义是什么呢？当基类和派生类出现了相同名字的成员时，这个“命名空间名”就体现出作用了：
-```CPP
+````cpp codemo(show)
 struct Base {
     int x;
 };
@@ -121,7 +121,7 @@ int main() {
 ## 类作用域下的 using 声明（选读）
 
 之前我介绍过这样一种用法：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 using std::cout;
 int main() {
@@ -141,7 +141,7 @@ struct Derived : Base {
 ```
 然而这样做看上去并没有什么意义，只是说“手动”实现了成员的继承。它带来的最明显效果是 `Derived::` 作用域下的 `mem` 被这个 using 声明“占用”了，不能重复定义 `int mem;` 了。但这种写法更有意义的点在于，它允许派生类使用基类的同名成员函数重载。
 
-```CPP
+````cpp codemo(show)
 struct Base {
     void f() { }
 };
@@ -157,7 +157,7 @@ int main() {
 在没有 using 声明的情况下，`d.f` 会单纯被解析为 `d.Derived::f`，即查找 `Derived` 作用域下都有哪些 `f` 的重载。然而，如果没有 using 声明，`Derived` 下只存在 `void f(int);` 一个重载，所有 `Base` 作用域的声明都被“隐藏”，那么 `d.f();` 就找不到合适的函数来调用，编译出错。但使用了 using 声明后，`Derived` 作用域下就存在了 `void f();` 这个声明，即让基类的重载集合注入到了派生类作用域下。
 
 此外，这种 using 声明可将基类的保护成员导出：
-```CPP
+````cpp codemo(show)
 struct Base {
 protected:
     int mem;

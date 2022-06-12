@@ -47,7 +47,7 @@ C++ 提供了一种称为**运行时类型识别**（RunTime Type Identification
 ## typeid 运算符
 
 typeid 运算符可以用于检查一个指针（或引用）所指向（或绑定到）的对象的“实际”类型。直观来看，它的用法是这样的：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <typeinfo>  // 语法规定使用 typeid 运算符必须引入的头文件
 struct B {
@@ -68,9 +68,9 @@ int main() {
 ```
 
 上面的程序中，`typeid(*b) == typeid(D1)` 检测 `*b` 在运行时是否是 `D1` 类型的。具体而言，typeid 运算符由 `typeid` 关键字开头，并拥有如下两种格式：
-```sdsc-legacy
-typeid(*表达式*)
-typeid(*类型*)
+```sdsc
+"typeid("表达式")"
+"typeid("类型")"
 ```
 
 对于相同 `@表达式@` 的类型或相同 `@类型@`，typeid 运算符总是得到相同的值（即 `==` 为真）。特别需要注意的是：它可以得到具有子类型多态的派生类对象的**运行时“实际”类型**。在这个例子中，`typeid(*b)` 与 `typeid(B)` 不等，因为 `*b` 在运行期间并不是 `B` 类型的而是 `D1` 类型的。所以，`typeid(*b) == typeid(D1)`。

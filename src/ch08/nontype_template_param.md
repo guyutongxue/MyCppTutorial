@@ -1,7 +1,7 @@
 # 非类型模板参数
 
 在之前的模板例子中，我们总是在用类型模板参数。比如：
-```CPP
+````cpp codemo(show)
 // 函数模板：类型模板形参 T
 template<typename T>
 T max(const T& a, const T& b) {
@@ -42,7 +42,7 @@ int /* multiply<4> */(int m) {
 ```
 
 类似地，类模板也可以使用非类型模板参数：
-```CPP
+````cpp codemo(show)
 template<typename T, int N>
 class Array {
 private:
@@ -67,7 +67,7 @@ int main() {
 
 非类型模板参数在少数情形下也可以参与模板实参推导。
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 // 当类型形参作为数组大小出现时可以推导
 // 这里 int(&)[N] 是到 int[N] 的引用类型
@@ -86,7 +86,7 @@ int main() {
 
 CTAD 也是可以的：
 
-```CPP
+````cpp codemo(show)
 template<int N>
 struct S {
     S(int(&)[N]) { }
@@ -128,7 +128,7 @@ int main() {
 读者可以先自己想一想。这两者的区别仍然在于模板这个概念的定义上。
 
 对于模板 `add`，它是有能力生成大量的函数的语法。当你用不同的模板实参去实例化它时，会得到不同的函数。但函数 `add` 永远只是那一个函数。从编译器角度来看，`add<1, 2>` 和 `add<3, 4>` 是两个函数，而 `add(1, 2)` 和 `add(3, 4)` 调用的是同一个函数。如果你阅读了[静态局部变量](/ch04/list/storage_duration#静态局部变量（选读）)这一节，你可以这样验证：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 template<int N>
 void f() {
@@ -154,7 +154,7 @@ int main() {
 ```
 
 除此之外，由于模板的实例化是在编译期间完成的，所以**模板实参必须是常量**。
-```CPP
+````cpp codemo(show)
 template<int N, int M>
 int add() { return N + M; }
 int main() {

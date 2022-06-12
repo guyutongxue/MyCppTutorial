@@ -127,7 +127,7 @@ struct S {
 换句话说，`=default` 强制编译器生成预置构造函数，忽略之前所说的生成时机。
 
 `=delete` 表示，不要预置这个构造函数。用例：
-```CPP
+````cpp codemo(show)
 struct S {
     // 不许生成默认构造函数
     S() = delete;
@@ -136,7 +136,7 @@ int main() {
     S sth; // 错误：找不到对应的构造函数
 }
 ```
-```CPP
+````cpp codemo(show)
 struct S {
     S() { }
     // 不许生成复制构造函数

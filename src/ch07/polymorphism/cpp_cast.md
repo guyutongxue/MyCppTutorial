@@ -4,15 +4,15 @@
 
 所谓“C 风格”、“C++ 风格”，从字面意思上就能看出，这只是一种代码风格上的区别。它们除了写法之外，做的事情都是一样的：转换一个操作数的类型。那么，回顾一下之前 C 风格的类型转换，它长成这样：
 
-```sdsc-legacy
-(*类型标识*)*操作数*
-*类型标识*(*操作数*)
+```sdsc
+"("类型标识")"操作数
+类型标识"("操作数")"
 ```
 
 而 C++ 风格不太一样，它长成这样：
 
-```sdsc-legacy
-*xxx*_cast&lt;*类型标识*&gt;(*操作数*)
+```sdsc
+xxx"_cast<"类型标识">("操作数")"
 ```
 
 （其中 `@xxx@` 的意思后面会展开。）举一些例子：
@@ -46,7 +46,7 @@ static_cast<float>(5 / 3);
 ## `const_cast`
 
 `const_cast` 用于一些不那么安全的转换——移除只读性的转换。首先来看下面带 C 风格转换的代码：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 int main() {
     const int a{42};
@@ -60,7 +60,7 @@ int main() {
 
 但是，在一些情形下（通常是面向底层的编程）这种不安全转换又是必需的，那么这时就只能用 `const_cast` 了。改写后的版本如下：
 
-```CPP
+````cpp codemo(show)
 int main() {
     const int a{42};
     int* q{const_cast<int*>(&a)};
@@ -74,7 +74,7 @@ int main() {
 ## `reinterpret_cast`
 
 所谓 `reinterpret_cast`，按字面意思就是“重新解释的转换”。它可以完全不考虑安全性地得到一个“不合法”的指针值。比如：
-```CPP
+````cpp codemo(show)
 int main() {
     int a{42};
     float* f{nullptr};
@@ -83,7 +83,7 @@ int main() {
 ```
 
 这里直接让一个 `float*` 类型的指针指向一个 `int` 类型的数据。这已经超乎正常编程的范围了。又比如：
-```CPP
+````cpp codemo(show)
 int main() {
     long long a{0x601234ll};
     void* p{nullptr};

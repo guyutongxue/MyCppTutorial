@@ -5,7 +5,7 @@
 ## 函数默认实参
 
 假设我现在有一个函数
-```CPP
+````cpp codemo(show)
 #include <iostream>
 void greeting(const char* who) {
     std::cout << "Hello, " << who << std::endl;
@@ -60,7 +60,7 @@ int main() {
 ```
 
 默认实参的值可以是表达式，但它有一些限制（如不能（在求值语境下）使用局部变量、`this` 等）。表达式的求值是在函数调用期间完成的，求得的值会用来初始化函数形参。
-```CPP
+````cpp codemo(show)
 #include <iostream>
 int x{0};
 void f(int a = 2 * (++x)) { // 默认实参为 2 * (++x)，每次调用求值
@@ -92,7 +92,7 @@ void f(int a, int = 42); // 略去第二个形参的名字，但提供默认实�
 类似地，模板参数也可以提供默认实参。
 
 非类型模板默认实参的写法和函数默认实参非常像：
-```CPP
+````cpp codemo(show)
 template<int N = 42, int M = 56>
 int add() {
     return N + M;
@@ -111,7 +111,7 @@ int main() {
 但默认模板实参由于其编译期实例化的特点，要求非类型**默认模板实参值必须是常量**。这是它与函数默认实参最显著的不同点。
 
 类型模板实参拥有类似的语法：
-```CPP
+````cpp codemo(show)
 // int 是类型模板形参 U 的默认模板实参
 template<typename T, typename U = int>
 struct S {
@@ -140,7 +140,7 @@ T f() {
 ```
 
 当可以进行模板实参推导时，若某个模板形参没有推导出其值但提供了默认模板实参，则推导成功并采用默认模板实参。这个过程对于类模板、函数模板、非类型模板参数或类型模板参数都适用。
-```CPP
+````cpp codemo(show)
 template<typename T, typename U = int>
 U cast(T a) {
     return static_cast<U>(a);

@@ -5,13 +5,13 @@
 我们介绍了迭代器之后，便不停地在用迭代器来逐个访问容器中的元素。这种遍历的代码非常常见，以至于 C++ 提供了一种新语法来做这件事情：基于范围的 for 循环，简称范围 for。
 
 范围 for 拥有这样的语法：
-```sdsc-legacy
-for (*变量声明* : *容器*)
-    *语句*
+```sdsc
+"for ("变量声明 ":" 容器")"
+    语句
 ```
 
 例如：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <vector>
 int main() {
@@ -23,18 +23,18 @@ int main() {
 ```
 
 我觉得这段代码不用做太多说明也应该能明白。在循环中引入了变量 `i`，每一次执行循环体时，`i` 都等于 `a` 中一个元素的值，像这样最终把 `a` 中所有的元素依次输出出来。这段代码看上去和我们的主题——迭代器——没有关系啊？其实不然，每一个范围 for 循环都会按照类似下面的模式展开为普通的 for 语句：
-```sdsc-legacy
-{
-auto begin{*容器*.begin()};
-auto end{*容器*.end()};
-for (; begin != end; ++begin) {
-    *变量声明* {*begin};
-    *语句*
-}
-}
+```sdsc
+"{"
+    "auto begin{"容器".begin()};"
+    "auto end{"容器".end()};"
+    "for (; begin != end; ++begin) {"
+        变量声明 "{*begin};"
+        语句
+    "}"
+"}"
 ```
 看上去有点抽象，我们把刚才遍历 `std::vector` 的代码按照这个模式展开一下：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <vector>
 int main() {
@@ -51,7 +51,7 @@ int main() {
 
 在更多的情况下，我们可能需要更改容器 `a` 的元素。这时，你需要将 `@变量声明@` 改为声明引用的形式。想一想，为什么？
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <vector>
 int main() {
@@ -92,7 +92,7 @@ int main() {
 ```
 
 删除元素则相对简单一点，提供的参数 `pos` 是指向要被删除的元素的迭代器。它的返回值是指向被删除元素的下一元素的迭代器，也没啥用。
-```CPP
+````cpp codemo(show)
 #include <vector>
 int main() {
     std::vector a{1, 2, 3};

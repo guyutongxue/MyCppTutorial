@@ -36,7 +36,7 @@ std::ostream& operator<<(std::ostream& os, const String& b) { /* 定义略 */ }
 现在就没有编译错误了。需要注意的是，成员列表里 `friend` 开头的声明（称为友元声明）**不是**这个类的成员，所以访问说明符 `public:` 还是 `private:` 对其没有影响。
 
 可以声明另一个类为友元：
-```CPP
+````cpp codemo(show)
 class A {
 private:
     int privateMem;
@@ -53,7 +53,7 @@ int main() { }
 在这个例子中，类 `B` 被声明为类 `A` 的友元：方法很简单，把声明 `class B` 抄下然后加上 `friend`。
 
 也可以声明另一个类的某个成员函数为友元：
-```CPP
+````cpp codemo(show)
 struct B {
     void f(); // 定义见下
 };

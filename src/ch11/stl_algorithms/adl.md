@@ -4,7 +4,7 @@
 
 实参依赖查找，顾名思义是一种“查找”。所谓的查找，就是“名字查找”（Name lookup）：程序中出现了一个名字，编译器需要确定这个名字指的是哪个声明引入的。最简单的例子是有限定查找（Qualified lookup）：
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 
 namespace ns {
@@ -34,7 +34,7 @@ int main() {
 
 而无限定查找（Unqualified lookup）则略显麻烦。
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 namespace ns {
 void f() {
@@ -53,7 +53,7 @@ int main() {
 
 上面的代码是比较简单的情形。名字 `f` 不带限定符，所以这是一个无限定查找。但和直觉不符的是，无限定查找并非一味地查找全局作用域（若局部作用域无那样的声明时）。比如下面的代码：
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 namespace ns {
 struct S { };
@@ -76,7 +76,7 @@ int main() {
 
 引入 ADL 出于以下两点考量。第一是运算符重载，如果没有 ADL 的话，标准库下的运算符重载将全部不可见。比如 `std::ostream operator<<(std::ostream, int)` 这个非成员的运算符重载，它是定义于 `std` 命名空间的。换而言之，理论上应当这样使用：
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 
 int main() {
@@ -86,7 +86,7 @@ int main() {
 
 显然，我们期望运算符形式的写法，也就是 `std::cout << 42`。但如果没有 ADL，那 `std::operator<<` 这个运算符就看不见，在 `std::cout << 42` 里就找不到合适的 `<<` 了；而且我们也不喜欢 `std::cout std::<< 42` 这种莫名其妙的写法。所以，必须要有 ADL。这里，由于 `std::cout` 是 `std::ostream` 类型的，而 `std::ostream` 定义于 `std` 命名空间，从而查找运算符 `<<` 时需要考虑 `std::operator<<`。
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 
 int main() {
@@ -97,7 +97,7 @@ int main() {
 
 第二个考量则是友元函数。在[第九章中的一节](/ch09/friend_in_template)，提到了类模板的友元的最佳声明方式是将完整定义放入类的作用域内。如果采用这种声明方式，则该友元函数在全局命名空间其实是完全不可见的：
 
-```CPP
+````cpp codemo(show)
 struct S {
     template<typename T>
     friend void f(T t) {
@@ -171,7 +171,7 @@ int main() {
 
 第六章我提到过[函数对象](/ch06/special_operator_overload.md#idx_函数对象)，就是重载了 `operator()` 的类的对象。它在使用的时候和函数很像，都是出现在函数调用运算符的左侧；但它毕竟不是函数，所以**函数对象不会应用 ADL**。标准规定：如果当前作用域存在一个函数对象，其名字正是函数调用运算符左侧的名字，那么不进行 ADL。
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 
 namespace ns {
@@ -205,7 +205,7 @@ int main() {
 
 上面的例子中，`g(x)` 并没有 ADL 到 `ns::g`，而是采用了重载决议中更差的 `::g`。这就体现函数对象的一个功能：**禁用 ADL**。如之前提到的，ADL 违背直觉的表现比较麻烦。下面的例子引入了用函数对象实现的 `my_std::swap`，它在一致性上优于函数 `std::swap`。
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 
 namespace my_std {
@@ -242,7 +242,7 @@ int main() {
 
 原本效果不同的两种写法，通过函数对象禁用 ADL 后，效果变得一致了。这减少了程序员的心智负担。但它带来了另一个问题：`S::swap` 这两种写法都无法调用；根本没有简单的办法使用为 `S` 定制的 `S::swap`。但实际上这可以通过一些复杂的模板代码，让 `my_std::swap` 在有更好的 `swap` （比如这个例子中的 `S::swap`）可用时，将 `my_std::swap` 的调用**分发**到 `S::swap` 上；其余的情形使用默认的行为。这样实现的 `my_std::swap` 就是 `std::ranges::swap`，即约束版本的算法了。此时，不论是 `f(a, b)` 还是 `g(a, b)`，调用的都是 `S::swap`。
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <algorithm>
 
@@ -279,7 +279,7 @@ int main() {
 
 **niebloid** 是和 CPO 很相似的概念。它的含义很简单，就是**禁用了 ADL 的“仿函数实体”**。它和 CPO 的区别在于，C++ 标准没有规定 niebloid 必须是函数对象（即也允许通过非标准的编译器扩展实现）。和 CPO 相同，niebloid 也是让约束版本算法更好工作，但出发点纯粹地就是禁用 ADL。考虑如下代码：
 
-```CPP
+````cpp codemo(show)
 #include <algorithm>
 #include <vector>
 using std::ranges;

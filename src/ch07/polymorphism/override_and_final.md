@@ -3,7 +3,7 @@
 在本部分的最后，我们介绍两个为多态而设计的有特殊含义的标识符 `override` 和 `final`。
 
 如果某个派生类的函数覆盖了基类的一个虚函数，那么可以为这个函数加上 `override` 标识来确认。比如：
-```CPP
+````cpp codemo(show)
 struct Base {
     virtual void f() { }
 };
@@ -33,7 +33,7 @@ struct Derived : Base {
 ```
 
 如果确定某个虚函数应当是最终覆盖函数，即不能允许一个派生类覆盖它，那么可以将其用 `final` 标识符标识。
-```CPP
+````cpp codemo(show)
 struct A {
     virtual void f() { }
 };
@@ -47,7 +47,7 @@ int main() { }
 ```
 
 `final` 标识符还可用在类的声明中。此时，它的作用是标识不能存在此类的派生类。
-```CPP
+````cpp codemo(show)
 struct A final { };
 // struct B : A { }; // 编译错误，A 不可被继承
 int main() { }

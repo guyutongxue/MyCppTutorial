@@ -2,7 +2,7 @@
 
 首先介绍刚刚提到的排序算法，`sort`。它是最常用的 STL 算法之一，使用起来也很方便：
 
-```CPP
+````cpp codemo(show)
 #include <algorithm>
 #include <vector>
 using namespace std::ranges;
@@ -29,7 +29,7 @@ int main() {
 
 因此，如果将 `rbegin()` `rend()` 传入 `sort` 算法，得到的恰好是逆序排序的结果：
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -48,7 +48,7 @@ int main() {
 但如果待排序范围来自数组，那就没有 `rbegin()` `rend()` 这么方便的东西了。
 
 > 当然你也可以按照我刚刚所说的，从 `std::reverse_iterator` 构造数组的逆向迭代器：
-> ```CPP
+> ````cpp codemo(show)
 > #include <iostream>
 > #include <algorithm>
 > #include <iterator> // std::reverse_iterator 定义于此
@@ -72,7 +72,7 @@ bool should_a_in_front_of_b(int a, int b) {
 
 当指定 `sort` 的排序规则时，就需要额外地传入一个这样的函数。比如下面的代码可以从大到小排：
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -97,7 +97,7 @@ int main() {
 
 事实上，只要传入一个可以调用的对象就可以，不一定是函数（指针）。所以更优雅的写法是传入 Lambda 表达式：
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -117,7 +117,7 @@ int main() {
 
 所以，在目前阶段若对结构体排序，总是需要传入排序依据。此外，我们还建议在排序依据中使用引用传参，避免不必要的开销；尤其是类中持有 `new` 指向的指针时。
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -143,7 +143,7 @@ int main() {
 
 STL 算法 `stable_sort` 实现了稳定排序。例子如下：
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <algorithm>
 #include <vector>

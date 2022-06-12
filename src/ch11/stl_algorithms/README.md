@@ -35,7 +35,7 @@ for (; i != s; ++i) {
 
 STL 算法大多是在范围上作用的算法。比如最常见的，给一个范围内的元素排序：
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <vector>
 #include <algorithm>

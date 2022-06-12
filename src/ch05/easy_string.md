@@ -17,7 +17,7 @@ unsigned strlen(char* str) { // 传入 char* 类型和 char[] 类型是一样的
 }
 ```
 然后，就可以：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -58,7 +58,7 @@ int main() {
 关于结构体的初始化在 [结构体的定义](/ch03/struct/struct_def) 提到，这里恰好让 `"Hello"` 初始化值初始化第一个成员 `str`。结构体中的函数不用初始化，会被忽略。
 
 所以，整个代码变成了这个样子：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 using namespace std;
 struct String {

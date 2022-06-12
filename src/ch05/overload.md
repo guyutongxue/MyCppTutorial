@@ -33,7 +33,7 @@ int main() {
 }
 ```
 而 C++ 的重载机制就是说，像这样功能类似，但**参数不同**的函数们可以共用一个名字。比如：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 // 以下四个函数名字都是 print，但接受的形参类型不同
 void print(int i) {
@@ -60,7 +60,7 @@ int main() {
 这就是重载机制的体现了。我们有时会这样说，上面代码中 `print` 函数有 4 个重载；某一行函数调用语句调用了第几个重载。
 
 再举一个更实际的例子。我们有如下求最大值的函数：
-```CPP
+````cpp codemo(show)
 int max(int a, int b) {          // 第一个重载
     return a > b ? a : b;
 }

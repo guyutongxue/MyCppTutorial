@@ -29,8 +29,8 @@ int main() {
 }
 ```
 这一切看上去很不错。但是回想[函数执行](/ch03/function_execution)的过程，我们在调用 `check` 函数的过程中发生的参数传递是“复制”的——也就是说，这段程序需要将一个很大的数据从 `main` 的内存复制到 `check` 的内存：
-```sdsc-legacy
-HugeStruct a{*main 函数中的 hs*};
+```sdsc
+"HugeStruct a{"main 函数中的 hs"};"
 ```
 
 然而，如此巨大开销的复制仅仅是为了做一些检查。那么我们为什么不直接检查 `main` 函数中的 `hs` 呢？于是我们可以将 `check` 函数的参数类型改为引用：
@@ -41,8 +41,8 @@ bool check(HugeStruct& a) {
 }
 ```
 此时，参数传递发生的是：
-```sdsc-legacy
-HugeStruct& a{*main 函数中的 hs*};
+```sdsc
+"HugeStruct& a{"main 函数中的 hs"};"
 ```
 也就是说 `a` 只是 `main` 函数中 `hs` 的一个别名，而起别名这个操作是不需要复制任何数据的。所以，**传递引用可以通过减少复制来提高性能**。
 
@@ -55,7 +55,7 @@ bool check(const HugeStruct& a) {
 ```
 这就是从直观层面上，`const T&` 这种形式声明的理解。不过实际上，`const T&` 是作为一种“[左](/ch04/pointer/pointer_usage#idx_左值)右通吃”的引用而存在的。我们这里不做更多展开，如果感兴趣可以尝试理解下面的代码：
 
-```CPP
+````cpp codemo(show)
 void passByVal(int a) {}
 void passByRef(int& a) {}
 void passByConstRef(const int& a) {}
@@ -78,7 +78,7 @@ T(const T&);
 ```
 
 也就是接受 `const T&` 类型的参数，其中 `T` 恰好是自己。它的特殊之处是，在需要做“复制”的操作时会调用这个构造函数。这样说起来很抽象，请看下面的例子：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 struct S {
     int data;
@@ -96,8 +96,8 @@ int main() {
 }
 ```
 你可能会很意外地发现程序输出了 `copy constructor called`。我们明明没有手动调用过这个重载，为什么会输出东西呢？原因就在 `f(sth);` 这个函数调用上。因为这个函数是按值传递的，所以正如之前所说，它会经过一次复制的操作，把数据从 `main` 的内存拷到 `f` 的内存。而这次复制就是通过调用重载 `#2` 来实现的。也就是说，参数传递如同：
-```sdsc-legacy
-S a(*main函数中的 sth*);
+```sdsc
+"S a("main函数中的 sth");"
 ```
 
 类似地，在函数返回时也*可能*会发生值的复制。假设下面的场景：

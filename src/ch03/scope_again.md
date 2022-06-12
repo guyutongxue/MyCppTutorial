@@ -19,7 +19,7 @@ int main() {
 ```
 
 所以我们做不到只通过这种形式让一个变量贯穿多个函数。比如：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 using namespace std;
 void change(int a, int b) {
@@ -41,7 +41,7 @@ int main() {
 整个 C++ 代码最顶层的作用域被称为全局命名空间作用域（Global namespace scope），简称**全局作用域**。对于目前说，那些不声明于任何一个函数内的名字——即外层没有任何包裹它的名字，都是全局作用域的。比如 main 函数就定义在全局作用域内。如果一个名字拥有全局作用域，则它的作用域起始于声明点，结束于整个代码**文件的结尾**。
 
 变量名也可以拥有全局作用域。比如：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 using namespace std;
 int a{42}, b{56};
@@ -50,7 +50,7 @@ int main() {
 }
 ```
 其中，变量 `a` 和 `b` 的名字就拥有全局作用域。全局作用域和函数作用域最大的不同就在于，任何函数都可以使用全局作用域的名字。比如：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 using namespace std;
 int a, b;
@@ -81,7 +81,7 @@ int main() {
 
 
 最后用一个例子来总结我们学过的作用域：
-```CPP
+````cpp codemo(show)
 #include <iostream>                //    作用域
 using namespace std;               // ==============
 int excelNumber{0};                // excelNumber  ┐
@@ -122,7 +122,7 @@ int f() {
 ```
 
 第二，**C++ 规定函数的形参不能是数组**。为什么？这是一个历史遗留问题，这里也给不出什么具体的解释。不过你如果强行把数组放在形参的位置上也不是不行——
-```CPP
+````cpp codemo(show)
 #include <iostream>
 using namespace std;
 void change(int a[2]) {

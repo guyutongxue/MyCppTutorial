@@ -241,14 +241,14 @@ using Pointer<T> = T*;
 `using namespace std;` 并不是良好的编程习惯。因为 `std` 命名空间中存在太多的声明，很容易与我们自定义的变量发生命名冲突。如果不使用 `using namespace std;` 的话，可以有以下两种写法：
 
 一是对标准库的对象使用 `std::` 前缀：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 int main() {
 	std::cout << "Hello, world!" << std::endl;
 }
 ```
 二是对经常需要的标准库对象，用 `using` 引入：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 using std::cout;
 int main() {

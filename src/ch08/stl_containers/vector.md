@@ -1,7 +1,7 @@
 # `std::vector`
 
 首先介绍最容易理解的 `std::vector` 容器。简单说，`std::vector` 代表一个**长度可变化的数组**。首先，它是一个类模板，接受一个类型参数做为其元素类型。你可以像数组一样初始化 `std::vector`，可选地给出类型模板实参：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <vector> // std::vector 定义于 <vector> 头文件
 
@@ -17,7 +17,7 @@ int main() {
 
 数组的元素个数是恒定的常量，但 `std::vector` 的“长度可变”，所以无需再声明中指明其大小。相对应的，使用 `size` 成员函数来获取当前 `std::vector` 内元素的个数：
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <vector>
 
@@ -34,7 +34,7 @@ int main() {
 ```
 
 `push_back` 成员函数可以在尾部添加一个元素：
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <vector>
 // 遍历输出一个 std::vector 的所有元素

@@ -3,8 +3,8 @@
 之前的代码中，我为了用不同方式使用 `sum`，定义了额外的若干个函数 `identity` `square` 和 `square_inv`。然而，定义额外的函数显得啰嗦和麻烦，而且“污染”了全局的命名空间。如果这些函数仅仅使用一次的话，我们可以使用更方便灵活的 **Lambda 表达式**来代替。
 
 Lambda 表达式可以理解为函数类型的字面量。我首先介绍最简单形式的 Lambda 表达式：
-```sdsc-legacy
-[] <div class="opt-block">(<i>参数列表</i>)</div> <div class="opt-block">-><i>返回值类型</i></div> *函数体*
+```sdsc
+"[]" ["("参数列表")"] ["->"返回值类型] 函数体
 ```
 
 比如：
@@ -14,7 +14,7 @@ Lambda 表达式可以理解为函数类型的字面量。我首先介绍最简�
 
 就是一个简单的 Lambda 表达式。它的含义就是一个**匿名的、临时的函数**。在需要函数的场合，可以直接使用 Lambda 表达式代替：
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 using namespace std;
 
@@ -113,7 +113,7 @@ void (*print)(const std::string& s) = [](const std::string& s) {
 ```
 
 但这样很麻烦；此时可以直接用 `auto` 占位类型说明符:
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <string>
 void printSomeMsg() {

@@ -78,7 +78,7 @@ double sum(int a, int b, F term) {
 
 将 `sum` 改成这个样子之后，就无关乎 `term` 的具体类型是什么了：如果传入的实参是 `double(*)(int)`，那 `term` 就是函数指针；如果传入的实参是刚刚的 `x`，那 `term` 就是 `MyLambda` 类型。随后，只要 `term(a)` 是合法表达式，那编译就没有问题了。以下是完整代码：
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <cmath>
 
@@ -113,7 +113,7 @@ int main() {
 
 事实上，Lambda 表达式的完整版其实就是我们刚刚实现的闭包。刚刚的代码和下面的写法是一致的：
 
-```CPP
+````cpp codemo(show)
 #include <iostream>
 #include <cmath>
 
