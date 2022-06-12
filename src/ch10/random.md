@@ -36,7 +36,7 @@ C++ 将一些原子的伪随机算法包装为对象，称其为伪随机数**�
 
 那么，我们就可以尝试生成一个随机种子：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <random> // 所有现代伪随机数生成器皆定义于此头文件
 
@@ -51,7 +51,7 @@ int main() {
 
 有了种子之后，就可以带入伪随机数生成器了。
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <random>
 
@@ -80,7 +80,7 @@ C++ 将每个分布都抽象为一个类。这个类会提供如下成员：
 
 `std::uniform_int_distribution` 的构造函数带两个参数 `a` 和 `b`，代表生成随机数的上界（含）和下界（含）。比如，如果想要生成 $1$ 到 $6$ 的随机数，则应使用
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <random>
 
 int main() {
@@ -92,7 +92,7 @@ int main() {
 
 生成的时候，向 `d` 的 `operator()` 传入一个引擎：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <random>
 
@@ -126,7 +126,7 @@ int main() {
 
 但我们并未设置任何种子。`std::srand` 设置 `std::rand` 接下来产出随机数的种子。
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <cstdlib>
 int main() {
@@ -141,7 +141,7 @@ int main() {
 
 由于种子和算法固定，故有可能该程序每次运行的结果是相同的。为了生成随机化的种子，习惯上将表示当前时间的值 `std::time(nullptr)` 作为种子：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <cstdlib>
 #include <ctime> // std::time 定义于此

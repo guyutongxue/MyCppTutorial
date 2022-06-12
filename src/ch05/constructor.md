@@ -19,7 +19,7 @@ str.init("Hello");
 String str("hello");
 ```
 只需要一条语句就够了。那么怎么写构造函数呢？方法很简单，只需要把 `init` 成员函数的名字改成结构体名 `String` 就可以了：
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <cstring>
 struct String {
@@ -72,7 +72,7 @@ int main() {
 ```
 
 不过有一个例外：当构造函数的参数列表为空时，你不能这样初始化：
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 struct S {
     int data;

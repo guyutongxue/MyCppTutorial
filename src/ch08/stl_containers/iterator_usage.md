@@ -11,7 +11,7 @@
 ```
 
 例如：
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <vector>
 int main() {
@@ -34,7 +34,7 @@ int main() {
 "}"
 ```
 看上去有点抽象，我们把刚才遍历 `std::vector` 的代码按照这个模式展开一下：
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <vector>
 int main() {
@@ -51,7 +51,7 @@ int main() {
 
 在更多的情况下，我们可能需要更改容器 `a` 的元素。这时，你需要将 `@变量声明@` 改为声明引用的形式。想一想，为什么？
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <vector>
 int main() {
@@ -92,7 +92,7 @@ int main() {
 ```
 
 删除元素则相对简单一点，提供的参数 `pos` 是指向要被删除的元素的迭代器。它的返回值是指向被删除元素的下一元素的迭代器，也没啥用。
-````cpp codemo(show)
+```cpp codemo(show)
 #include <vector>
 int main() {
     std::vector a{1, 2, 3};

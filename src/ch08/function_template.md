@@ -64,7 +64,7 @@ int main() {
 当代码中出现了带模板实参的函数模板调用，那么就开始进行一次模板实例化。具体而言，模板实例化会取出模板的声明，然后用模板实参列表中的实参**替换**声明中出现的模板形参。替换完成后，整个声明就成为了模板的一份实例化函数。最终被调用的函数也正是这个实例化出来的函数。
 
 举一个更复杂的模板实例化的例子。如下模板和调用表达式
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 template<typename T, typename U>
 void add(T a, U b) {

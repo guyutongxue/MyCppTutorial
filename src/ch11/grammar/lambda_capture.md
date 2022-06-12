@@ -17,7 +17,7 @@ int main() {
 
 中，`n` 就是一个简单的捕获符。如果要捕获多个变量，那么就是 `[a, b, c]` 这样。这种形式的捕获符称为**复制捕获**：它将局部变量复制一份，存放到 Lambda 表达式生成的匿名类的成员。此外，捕获符还可以是**引用捕获**。比如：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 int main() {
     int n;
@@ -49,7 +49,7 @@ MyLambda f;
 
 `[=]` 是默认复制捕获符。它将当前作用域内的所有变量复制一份到匿名类的成员：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 int main() {
     int a{1}, b{2}, c{3};
@@ -61,7 +61,7 @@ int main() {
 
 `[&]` 是默认引用捕获符。Lambda 表达式内可以访问和修改当前作用于内的所有变量。
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 int main() {
     int a{42}, b{56};

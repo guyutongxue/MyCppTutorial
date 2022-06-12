@@ -12,7 +12,7 @@
 
 比如：
 
-````cpp codemo(show)
+```cpp codemo(show)
 template<typename T>
 class Vla {
     unsigned size;
@@ -64,7 +64,7 @@ public:
 
 在某些情形下，类的实例化可以略去模板实参，利用类模板实参推导（Class Template Argument Deduction, CTAD）机制来完成实例化。
 
-````cpp codemo(show)
+```cpp codemo(show)
 template<typename T>
 class C {
     T mem;

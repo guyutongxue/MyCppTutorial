@@ -1,7 +1,7 @@
 # 虚函数
 
 按照上一节引入的子类型多态，首先来尝试一个现实的例子：
-````cpp codemo(show)
+```cpp codemo(show)
 #include <string>
 #include <iostream>
 struct Animal {
@@ -84,7 +84,7 @@ rb.f();  // 通过 Base& 调用虚函数
 ## 注意事项
 
 在成员函数中也可调用虚函数。
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 struct Base {
     void callF() {
@@ -108,7 +108,7 @@ int main() {
 这是因为成员函数中的成员使用相当于隐含了前缀 `this->`，而在这里的 `this->f()` 和刚刚的情形是一致的，会调用虚函数的实际覆盖函数而非 `this` 本身的类型。所以，`callF` 在刚才的例子中调用了 `Derived::f` 而非 `Base::f`。但是，构造函数和析构函数中无法调用到派生类的虚函数覆盖：因为在运行构造函数和析构函数的时期派生类尚未形成或已经消失。
 
 此外，虚函数拥有这样的特点：任何用于覆盖虚函数的子类同名函数，也是虚函数。即：
-````cpp codemo(show)
+```cpp codemo(show)
 struct A {
     virtual void f() { }
 };

@@ -8,7 +8,7 @@
 
 之前第一次出现虚析构函数就是希望让某个类是多态类型，从而可以应用 RTTI 于其上。当没有其余合适的成为虚函数的成员时，可以选择将析构函数设置为虚的。
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <typeinfo>
 struct Base {
@@ -26,7 +26,7 @@ int main() {
 
 此外，如果希望某各类成为抽象类，但没有其余合适的成为纯虚函数的成员时，可以选择将析构函数设置为纯虚的。
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 struct Animal {
     virtual ~Animal() = 0; // 令 Animal 为抽象类
@@ -56,7 +56,7 @@ int main() {
 ## 资源安全性
 
 考虑以下代码：
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 struct Base { };
 struct Derived : Base {
@@ -92,7 +92,7 @@ ctor called
 
 这很不好。那有什么解决办法呢？注意到这里的情形和之前引入虚函数的例子很像——期望调用派生类函数的场景却调用了基类的函数。所以方法就是：将析构函数设置为虚函数。
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 struct Base {
     // 写空函数体也行，和 =default 效果一样

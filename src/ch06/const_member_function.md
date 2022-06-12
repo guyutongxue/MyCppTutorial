@@ -42,7 +42,7 @@ int main() {
 感觉没问题，但真有问题。你会发现编译过不了了。为什么呢？问题就出在 `isOk` 的参数 `x` 是带 `const` 限定的。
 
 假如我有一个类 `A`，它有一个成员数据 `data` 和一个成员函数 `change`：
-````cpp codemo(show)
+```cpp codemo(show)
 struct A {
     int data;
     void change() {

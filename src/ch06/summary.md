@@ -109,7 +109,7 @@ std::ostream& operator<<(std::ostream& os, const String& b) {
 
 比如：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <string>
 #include <iostream>
 int main() {

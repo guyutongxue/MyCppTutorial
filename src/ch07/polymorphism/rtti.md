@@ -47,7 +47,7 @@ C++ 提供了一种称为**运行时类型识别**（RunTime Type Identification
 ## typeid 运算符
 
 typeid 运算符可以用于检查一个指针（或引用）所指向（或绑定到）的对象的“实际”类型。直观来看，它的用法是这样的：
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <typeinfo>  // 语法规定使用 typeid 运算符必须引入的头文件
 struct B {

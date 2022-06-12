@@ -46,7 +46,7 @@ Student(const std::string& name, int age, int number)
 
 可以注意到，派生类构造的方法比没有继承关系的类多了“构造基类”这一步。构造基类这件事情发生在最开始，然后才会执行成员的初始化和构造函数的执行。下面的代码演示了这三步构造的顺序：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 class Base {
 public:

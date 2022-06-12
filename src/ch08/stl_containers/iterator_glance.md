@@ -47,7 +47,7 @@ int main() {
 ```
 作为模仿指针的迭代器，`std::vector<T>::iterator` 重载了 `++` `*` 等运算符，并完全模仿了指针在数组中的含义。不过上面两个代码还有两个问号，就是如何获取指向 `std::vector` 头部和尾部的迭代器。很简单，`std::vector` 提供了成员函数 `begin` 和 `end` ，它们分别返回指向首尾的迭代器。最终的代码是这样的：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <vector>
 int main() {

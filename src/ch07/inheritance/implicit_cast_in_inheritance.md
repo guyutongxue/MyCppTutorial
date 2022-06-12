@@ -13,7 +13,7 @@
 > （感谢知乎网友 @d41d8c 对此部分内容的补充。）
 
 应用这个“隐式转换”的场合如下：
-````cpp codemo(show)
+```cpp codemo(show)
 class Base { };
 class Derived : public Base { };
 void f(Base b) { }
@@ -28,7 +28,7 @@ int main() {
 ## 基类引用绑定到派生类上
 
 类似地，若派生类公开继承自基类，则基类引用可绑定到派生类对象上：
-````cpp codemo(show)
+```cpp codemo(show)
 class Base { };
 class Derived : public Base { };
 void f(Base& b) { }
@@ -39,7 +39,7 @@ int main() {
 }
 ```
 当然，即便这个引用绑定到了派生类，但它仍然只能访问基类的成员数据和成员函数。
-````cpp codemo(show)
+```cpp codemo(show)
 struct Base {
     int baseMem;
 };
@@ -83,7 +83,7 @@ int main() {
 - 允许显式地将指向基类的指针转换到指向派生类的指针。
 
 其中后两种情况表明，在显式指出转换的情形下，允许进行从基类到派生类指针或引用的转换：
-````cpp codemo(show)
+```cpp codemo(show)
 struct Base { };
 struct Derived : public Base {
     int derivedMem;

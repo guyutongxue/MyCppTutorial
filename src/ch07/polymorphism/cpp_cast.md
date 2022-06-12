@@ -46,7 +46,7 @@ static_cast<float>(5 / 3);
 ## `const_cast`
 
 `const_cast` 用于一些不那么安全的转换——移除只读性的转换。首先来看下面带 C 风格转换的代码：
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 int main() {
     const int a{42};
@@ -60,7 +60,7 @@ int main() {
 
 但是，在一些情形下（通常是面向底层的编程）这种不安全转换又是必需的，那么这时就只能用 `const_cast` 了。改写后的版本如下：
 
-````cpp codemo(show)
+```cpp codemo(show)
 int main() {
     const int a{42};
     int* q{const_cast<int*>(&a)};
@@ -74,7 +74,7 @@ int main() {
 ## `reinterpret_cast`
 
 所谓 `reinterpret_cast`，按字面意思就是“重新解释的转换”。它可以完全不考虑安全性地得到一个“不合法”的指针值。比如：
-````cpp codemo(show)
+```cpp codemo(show)
 int main() {
     int a{42};
     float* f{nullptr};
@@ -83,7 +83,7 @@ int main() {
 ```
 
 这里直接让一个 `float*` 类型的指针指向一个 `int` 类型的数据。这已经超乎正常编程的范围了。又比如：
-````cpp codemo(show)
+```cpp codemo(show)
 int main() {
     long long a{0x601234ll};
     void* p{nullptr};

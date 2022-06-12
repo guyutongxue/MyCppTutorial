@@ -14,7 +14,7 @@ Lambda 表达式可以理解为函数类型的字面量。我首先介绍最简�
 
 就是一个简单的 Lambda 表达式。它的含义就是一个**匿名的、临时的函数**。在需要函数的场合，可以直接使用 Lambda 表达式代替：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 using namespace std;
 
@@ -113,7 +113,7 @@ void (*print)(const std::string& s) = [](const std::string& s) {
 ```
 
 但这样很麻烦；此时可以直接用 `auto` 占位类型说明符:
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <string>
 void printSomeMsg() {

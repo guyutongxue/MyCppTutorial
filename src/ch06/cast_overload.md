@@ -131,7 +131,7 @@ int main() {
 显然 `val` 不能是 `42`。`val` 的值是从 `bool` 类型转换过来的，而 `String` 值 `"42"` 转换到 `bool` 是 `true`，`true` 转换到 `int` 是 `1`，所以答案是 `1`。这个神奇的过程在某种程度上会加大编程者的心智负担，所以我们并不希望如此自由的转换。
 
 于是 `explicit` 关键字就呼之欲出了。它表明：这个转换**只能用于显式转换**，不能用于隐式转换。
-````cpp codemo(show)
+```cpp codemo(show)
 struct B {};
 struct C {};
 struct A {

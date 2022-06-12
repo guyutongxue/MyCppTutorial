@@ -2,7 +2,7 @@
 
 在面向对象编程中，有时将类在功能上分为两种，一种叫“具体类”，另一种叫“抽象类”。所谓“具体类”是指在程序运行当中会使用这种类的若干个实例，即在某个地方、某些时刻会创建这些类型的对象。反之，“抽象类”就是不会创建任何一个实例的类。为了演示这种分类，我们将之前的例子完善一下：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 struct Animal {
     virtual ~Animal() { } // 令 Animal 为多态类型
@@ -59,7 +59,7 @@ C++ 提供了在语法层面的**抽象类**（Abstract class）。所谓“语�
 
 下面我们将上文例子中的 `Animal` 定义为抽象类。我只需要将添加一个纯虚函数 `act` 即可。
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 struct Animal {
     virtual void act() const = 0; // 纯虚函数，使得 Animal 为抽象类
@@ -102,7 +102,7 @@ int main() {
 这也就是抽象类和纯虚函数的实际用途的体现。一般地，抽象类经常作为一个一般性概念而存在；它会包含若干个具体的派生类作为这个一般性感念的具体解释。而抽象类的纯虚函数则作为一个约束，要求其派生类必须实现这些函数的定义。
 
 纯虚函数不能有类内定义，不过如果一个纯虚函数始终不会被调用，那么就无需给出它的定义。在刚才的例子中就从来没有调用过 `Animal::act`，故不用给出定义。但这不意味着纯虚函数不能有定义。纯虚函数可以在类外定义：下面给出了定义并调用 `Animal::act` 的版本：
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 struct Animal {
     virtual void act() const = 0; // 纯虚函数，不能类内定义，但……

@@ -35,7 +35,7 @@
 
 除命令的第一段外，剩下的部分称为命令的“参数”。这些参数将在程序启动时通过一种特别的方式传入程序，而程序可以通过一些方法获得这些参数。比如，`echo` 程序需要输出这个“参数”，从而让 `echo Hello` 启动 `echo` 程序后可以输出 `Hello`。为了说明如何做到这一点，我将写一个超级简化版的 `echo` 程序的源码：
 
-````cpp codemo(show)
+```cpp codemo(show)
 // echo.cpp 超级简化版 echo 源码
 #include <iostream>
 using namespace std;
@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
 
 图中也可看到，`arg` 数组的长度称作 `argc`，指向数组首元素的指针称作 `argv`。`argc` 和 `argv` 同时也是 main 函数可选的两个参数。最终借助 `argc` 和 `argv`，程序得到了命令行的“参数”。下面的 `echo` 源码详细地解释了其工作原理：
 
-````cpp codemo(show)
+```cpp codemo(show)
 // echo.cpp 超级简化版 echo 源码
 #include <iostream>
 using namespace std;

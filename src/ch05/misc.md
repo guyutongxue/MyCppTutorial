@@ -45,7 +45,7 @@ class String {
 };
 ```
 当然 `class` 和 `struct` 肯定还是有区别的。其中一个区别就是，`struct` 的成员默认是公开的，而 `class` 的成员默认是私有的。举个例子：
-````cpp codemo(show)
+```cpp codemo(show)
 struct A {
     int data; // 这是公开成员
 };

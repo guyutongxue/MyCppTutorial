@@ -11,7 +11,7 @@
 向栈中增加元素称为栈的推入（Push）操作，从栈中移除元素称为站的弹出（Pop）操作。一般，栈中可以被弹出的那个元素——就是最顶上的盘子——是栈中唯一可以读取的元素，它被称为栈的顶（Top）元素。
 
 `std::stack` 类模板通过给 `std::vector` 换了一套接口模拟了这些操作。
-````cpp codemo(show)
+```cpp codemo(show)
 #include <stack> // 定义于此
 int main() {
     std::stack<int> a;
@@ -36,7 +36,7 @@ int main() {
 向队列中添加元素也叫推入（Push），从队列中移除元素也叫弹出（Pop）。一般，队列中可以读取两个元素：可以弹出的队首（Front）元素和最后一个队尾（Back）元素。
 
 `std::queue` 类模板通过给 `std::deque` 换了一套接口模拟了这些操作。
-````cpp codemo(show)
+```cpp codemo(show)
 #include <queue> // 定义于此
 int main() {
     std::stack<int> a;
@@ -64,7 +64,7 @@ int main() {
 
 由于优先队列往往是通过维护堆（Heap）的结构来实现的，所以有时直接称优先队列为堆。不论如何，`std::priority_queue` 类模板通过给 `std::vector` 换了一套接口实现了优先队列。
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <queue> // 定义于此
 int main() {
     std::priority_queue<int> a;

@@ -67,7 +67,7 @@ int main() {
 }
 ```
 成功输出了 `abcdef`。但是这个其实还有一点小问题，就是对于“内置的”类型比如 `int`，它的赋值运算符是[有结果的](/ch02/part2/assignment_operator.md)。比如：
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 int main() {
     int a{12};
@@ -122,7 +122,7 @@ public:
 
 最后一个问题：怎么返回绑定到 `a` 的引用？这里就需要引入 `this` 关键字了。`this` 是在成员函数中可以用到的一个特殊变量名，在这里它是 `T*` 类型的，其中 `T` 是这个成员函数所归属的类型；作为一个指针，`this` 总是**指向调用这个函数的那个对象**。说来抽象，请看例子：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 struct A {
     int data;

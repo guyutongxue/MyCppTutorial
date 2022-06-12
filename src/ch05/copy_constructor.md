@@ -55,7 +55,7 @@ bool check(const HugeStruct& a) {
 ```
 这就是从直观层面上，`const T&` 这种形式声明的理解。不过实际上，`const T&` 是作为一种“[左](/ch04/pointer/pointer_usage#idx_左值)右通吃”的引用而存在的。我们这里不做更多展开，如果感兴趣可以尝试理解下面的代码：
 
-````cpp codemo(show)
+```cpp codemo(show)
 void passByVal(int a) {}
 void passByRef(int& a) {}
 void passByConstRef(const int& a) {}
@@ -78,7 +78,7 @@ T(const T&);
 ```
 
 也就是接受 `const T&` 类型的参数，其中 `T` 恰好是自己。它的特殊之处是，在需要做“复制”的操作时会调用这个构造函数。这样说起来很抽象，请看下面的例子：
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 struct S {
     int data;

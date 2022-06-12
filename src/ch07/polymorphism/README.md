@@ -24,7 +24,7 @@ int main() {
 ```
 
 而子类型多态并不一定能在编译期间就能确定类型：
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 struct B {};
 // D1 和 D2 都继承自 B

@@ -103,7 +103,7 @@ struct A {
 ### 默认成员初始化器
 
 如果成员初始化列表中没有提供某个成员的初始化方法，则编译器会看看有没有**默认成员初始化器**。说来复杂其实很简单，就是这个：
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 struct A {
     int a{42}; // {42} 是默认成员初始化器

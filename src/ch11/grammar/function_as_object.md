@@ -50,7 +50,7 @@ double sum(int a, int b, double term(int)) {
 
 这里，我就使用了 `term` 参数。根据刚才的分析，它是一个关于 `a` 的“函数”（传入一个 `int`，返回 `double` 类型）。使用的时候，需要这样做：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 
 // f1(a) = a

@@ -4,7 +4,7 @@
 
 考虑之前计算 $\displaystyle\sum_{i=a}^b i^n$ 的例子。当时，我使用了 Lambda 表达式 `[n](int a) { return std::pow(a, n); }` 作为 `sum` 的参数，很轻松地实现了功能。但其实还可以写出更“复杂”的代码：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <cmath>
 
@@ -35,7 +35,7 @@ int main() {
 
 可以在 C++ 中实现简单的复合运算。下面的函数 `comb` 就是这样的：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 
 template<typename F, typename G>
@@ -55,7 +55,7 @@ int main() {
 
 但 $\circ$ 是满足结合律的；下面的代码尝试去验证这个事实：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 
 template<typename F, typename G>
@@ -80,7 +80,7 @@ int main() {
 
 在代码中很难模拟极限过程，但如果取这个 $\Delta x$ 为比较小的值，那或许能得到近似的 $\dfrac{\mathrm d}{\mathrm dx}f$ 的结果。下面的函数 `d` 实现了近似的微分算子 $\dfrac{\mathrm d}{\mathrm dx}$。（其中，取 $\Delta x=10^{-6}$，即 `DX`。）
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 
 constexpr double DX{1e-6};

@@ -2,7 +2,7 @@
 
 接下来介绍 STL 算法 `copy`。它可以用来复制一个范围到别的地方，比如：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -84,7 +84,7 @@ struct Inserter {
 
 此时，`copy` 实现中的 `*dest = *begin` 就相当于 `b.push_back(*begin)` 了。我们刚刚实现的 `Inserter` 在标准库中已有提供，即为 `std::back_inserter`：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -103,7 +103,7 @@ int main() {
 
 此外，输出迭代器还有更多有意思的用法。比如，重载其复制运算符使得其通过 `cout` 输出该元素。这样的输出迭代器就是 `std::ostream_iterator`，它的使用方法如下：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -119,7 +119,7 @@ int main() {
 
 `std::ostream_iterator` 接受一个模板类型参数，表明待输出元素的类型。构造时，需要传入 `std::cout` 以输出到屏幕。（你也可以传入一个 `std::ofstream` 类型对象以输出到文件。）此外，构造时还可提供额外的第二实参，表示输出元素后的分隔字符串：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -143,7 +143,7 @@ int main() {
 
 参考答案：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <algorithm>
 #include <vector>

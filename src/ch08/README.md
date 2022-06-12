@@ -4,7 +4,7 @@ C++ 最具特色的语言特性就是模板（Template）。最常见的模板�
 
 为了引入，我们考虑之前在[重载](/ch05/overload)一节所描述的代码（略作调整）：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 // 以下四个函数名字都是 print，但接受的形参类型不同
 void print(int x) {
@@ -40,7 +40,7 @@ void print(T x) {
 
 看上去并不复杂，唯独在前面多了一行 `template` 云云。模板的声明总是由 `template` 关键字开头的，然后后面接着模板的定义。我们并不在这里展开这个定义的具体写法，我们目前只关注定义了这个模板带来的效果：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 // 刚才定义的模板
 template<typename T>

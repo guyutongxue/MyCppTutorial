@@ -8,7 +8,7 @@
 
 `std::deque` 和 `std::vector` 非常像，也是一个长度可变的数组。但它比 `std::vector` 多提供了两个成员函数——`push_front` 和 `pop_front`，也就是从头部插入或删除元素。举例如下：
 
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <deque> // std::deque 定义于 <deque> 头文件
 
@@ -39,7 +39,7 @@ STL 拥有这样的特性：成员函数所需的开销都不会太大。这也�
 - 可通过 `operator[]` 访问其元素，且不检查越界；
 
 `std::array` 是一个类模板，接受两个模板参数：第一个是元素类型，第二个是非类型参数——元素个数。请看下例：
-````cpp codemo(show)
+```cpp codemo(show)
 #include <iostream>
 #include <array> // std::array 定义于 <array> 头文件
 int main() {
