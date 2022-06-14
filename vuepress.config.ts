@@ -1,7 +1,7 @@
 import { defaultTheme, defineUserConfig, viteBundler } from "vuepress";
 
 import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
-import { searchPlugin } from "@vuepress/plugin-search";
+import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 import { copyCodePlugin } from "vuepress-plugin-copy-code2";
 import { containerPlugin } from "@vuepress/plugin-container";
 
@@ -83,7 +83,17 @@ export default defineUserConfig({
       tasklist: true,
       tex: true,
     }),
-    searchPlugin(),
+    docsearchPlugin({
+      appId: "LX33TRMJGI",
+      apiKey: "2bd18aae3d30f5c2ea161ee554dba6c7",
+      indexName: "cpp-tutorial",
+      placeholder: "搜索文档",
+      translations: {
+        button: {
+          buttonText: "搜索",
+        },
+      },
+    }),
     copyCodePlugin({
       selector: '.theme-default-content div[class*="language-c"] pre',
     }),
