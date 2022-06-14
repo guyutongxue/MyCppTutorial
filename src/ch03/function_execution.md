@@ -27,6 +27,7 @@ int main() {
 
 首先你需要了解一件事情，就是目前计算机再执行一个程序的时候，是通过读取一系列的指令来实现的。实际上，计算机总是将一个函数作为一个整体进行读取；也就是说，计算机首先读取一个函数里面的所有指令，然后再依次执行这些指令。那么这些被读取的指令存放在哪里呢？它们实际上被存放在一个称为“内存”的存储空间里。
 
+举个例子。对于这段代码来说：
 ```cpp codemo
 #include <iostream>
 using namespace std;
@@ -37,13 +38,14 @@ int main() {
     cout << c << endl;
 }
 ```
-举个例子。对于这段代码来说，计算机如何执行它编译得到的那段程序呢？请看下面这张图（点击开始按钮）：
+计算机如何执行它编译得到的那段程序呢？请看下面这张图（点击开始按钮）：
 
 <div class="fig">
 <div id="fig1" class="raphael"></div>
 <p id="fig1Text" class="info"></p>
 </div>
 
+现在来考虑如果加上一个函数 `int max(int, int)` 并调用它，会发生什么呢？
 ```cpp codemo
 #include <iostream>
 using namespace std;
@@ -62,7 +64,8 @@ int main() {
     cout << c << endl;
 }
 ```
-现在来考虑如果加上一个函数 `int max(int, int)` 并调用它，会发生什么呢？其实它编译出的程序将这样执行：
+
+其实它编译出的程序将这样执行：
 <div class="fig">
 <div id="fig2" class="raphael"></div>
 <p id="fig2Text" class="info"></p>

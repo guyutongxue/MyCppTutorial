@@ -7,11 +7,7 @@ export function definePluginObject(pluginObject: PluginObject) {
   return pluginObject;
 }
 
-/**
- * Transform original code content to HTML.
- * @returns 若返回 `string`，则代表渲染结果；若返回 `null`，则以 `defaultFn` 渲染
- */
-export type PartialRule = (ctx: {
+export type RuleContext = {
   /** 代码内容 */
   content: string;
   /** 代码语言 (c,cpp...) */
@@ -21,8 +17,14 @@ export type PartialRule = (ctx: {
   /** MDI Token AST，可与 `defaultFn` 配合使用 */
   token: Token;
   /** 调用内置渲染函数。对 token 的更改会被应用 */
-  defaultFn: () => string; 
-}) => string | null;
+  defaultFn: () => string;
+};
+
+/**
+ * Transform original code content to HTML.
+ * @returns 若返回 `string`，则代表渲染结果；若返回 `null`，则以 `defaultFn` 渲染
+ */
+export type PartialRule = (ctx: RuleContext) => string | null;
 
 /**
  *

@@ -2,6 +2,8 @@
 
 ## 从普通调用说起
 
+
+首先从一个简单的例子入手。编写这样一个程序：输入一个大于 1 的整数，判断它是否为质数。那么根据质数的定义，你可以写出这样的代码。
 ```cpp codemo
 #include <iostream>
 using namespace std;
@@ -21,9 +23,9 @@ int main() {
         cout << "Not prime" << endl;
 }
 ```
-首先从一个简单的例子入手。编写这样一个程序：输入一个大于 1 的整数，判断它是否为质数。那么根据质数的定义，你可以写出右边这样的代码。
 
-```cpp codemo(clear)
+然后你会注意到在函数 `isPrime` 中，如果形参 `x` 有约数，那么必有一个小于等于它平方根的约数。因此我们可以充分利用定义在头文件 `<cmath>` 里的 `std::sqrt` 函数计算平方根。
+```cpp codemo
 #include <iostream>
 #include <cmath>         // 这里增加一个头文件引入
 using namespace std;
@@ -45,7 +47,6 @@ int main() {
         cout << "Not prime" << endl;
 }
 ```
-然后你会注意到在函数 `isPrime` 中，如果形参 `x` 有约数，那么必有一个小于等于它平方根的约数。因此我们可以充分利用定义在头文件 `<cmath>` 里的 `std::sqrt` 函数计算平方根。
 
 > 一般地，`sqrt` 函数的声明为 `double sqrt(double arg);`。因此在上述代码第六行调用过程中，发生了整型与浮点类型之间的隐式转换。（这里忽略了许多细节，实际上 `sqrt` 接收整型实参时可能是一个模板函数。）
 

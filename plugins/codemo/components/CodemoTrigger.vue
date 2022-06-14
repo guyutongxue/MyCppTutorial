@@ -49,15 +49,6 @@ function trigger() {
   justify-content: center;
   align-items: center;
 
-  position: relative;
-  float: right;
-  width: 60px;
-  height: 60px;
-  margin: 1em;
-  margin-right: 0;
-  z-index: 5;
-}
-.codemo-trigger.show {
   position: absolute;
   width: 32px;
   height: 32px;
