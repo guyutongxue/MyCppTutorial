@@ -38,7 +38,7 @@ a = b + 20;
 
 ![Expressen statement](https://s1.ax1x.com/2020/07/08/UZ7AA0.png ':size=300px')
 
-> 表达式语句中的表达式是可选的。没有表达式的表达式语句称为[空语句](/ch02/part3/empty_statement.md)。
+> 表达式语句中的表达式是可选的。没有表达式的表达式语句称为[空语句](/ch02/part3/null_statement.md)。
 
 ### 输入输出语句……？
 

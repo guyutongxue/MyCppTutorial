@@ -91,7 +91,44 @@ export default defineUserConfig({
       translations: {
         button: {
           buttonText: "搜索",
+          buttonAriaLabel: "搜索",
         },
+        modal: {
+          searchBox: {
+            resetButtonTitle: "清除",
+            resetButtonAriaLabel: "清除",
+            cancelButtonText: "取消",
+            cancelButtonAriaLabel: "取消",
+          },
+          startScreen: {
+            recentSearchesTitle: "最近搜索",
+            noRecentSearchesText: "没有最近搜索",
+            saveRecentSearchButtonTitle: "保存此搜索",
+            removeRecentSearchButtonTitle: "从历史中移除此搜索",
+            favoriteSearchesTitle: "收藏",
+            removeFavoriteSearchButtonTitle: "从收藏中移除此搜索",
+          },
+          errorScreen: {
+            titleText: "无法获取结果",
+            helpText: "你可能需要检查你的网络连接情况",
+          },
+          footer: {
+            selectText: "选择",
+            selectKeyAriaLabel: "回车键",
+            navigateText: "导航",
+            navigateUpKeyAriaLabel: "方向上键",
+            navigateDownKeyAriaLabel: "方向下键",
+            closeText: "关闭",
+            closeKeyAriaLabel: "Esc 键",
+            searchByText: "技术支持",
+          },
+          noResultsScreen: {
+            noResultsText: "找不到",
+            suggestedQueryText: "尝试搜索",
+            reportMissingResultsLinkText: "如果你认为此搜索应当返回结果，请",
+            reportMissingResultsText: "告诉我们。"
+          }
+        }
       },
     }),
     copyCodePlugin({
