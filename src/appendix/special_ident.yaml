@@ -1,0 +1,81 @@
+---
+- keyword: override
+  usage:
+  - info: 用于面向对象：指定某子类函数必将覆盖基类中的虚函数。
+    sdsc:
+    - |
+      [返回类型] 成员函数名"("形参列表") override;"
+    example: |-
+      struct A {
+          virtual void f() = 0;
+      };
+      struct B : A {
+          void f() override {}
+      };
+- keyword: final
+  usage:
+  - info: 用于面向对象：指定该类不可继承。
+    sdsc:
+    - |
+      ("class"|"struct") 类名 "final {"
+          [成员列表]
+      "};"
+    example: |-
+      struct A final {};
+      // error: struct B : A ;
+- keyword: import
+  usage:
+  - info: 用于模块：导入一个模块。也兼容将一个头文件作为模块导入。
+    sdsc:
+    - |
+      "import" 模块名";"
+    - |
+      "import <"头文件">;"
+    example: |-
+      // main.cpp
+      import my.app.hello;
+      import <iostream>
+      int main() {
+          std::cout << sayHello();
+      }
+- keyword: module
+  usage:
+  - info: 用于模块：声明一个模块实现单元（Module Implementation Unit）或者模块接口单元（Module Interface Unit）。
+    sdsc:
+    - |
+      ["export"] "module" 模块名";"
+    example: |-
+      // hello.cpp
+      export module my.app.hello
+      export auto sayHello();
+      // hello_impl.cpp
+      module my.app.hello
+      auto sayHello() {
+          return "hello!";
+      }
+  - info: 用于模块：开始全局模块片段。
+    sdsc:
+    - |
+      "module" [": private"]";"
+    example: |-
+      module;
+      #include <cassert>
+      export module A;
+      // [...]
+- keyword: transaction_safe
+  usage:
+  - info: （实验性功能）用于事务：声明某函数为事务安全的。
+    sdsc:
+    - |
+      返回类型 函数名"("[形参列表]") transaction_safe;"
+    example: int f() transaction_safe {}
+- keyword: transaction_safe_dynamic
+  usage:
+  - info: （实验性功能）用于事务：声明某虚函数为事务安全的，即它的最终覆盖函数也是事务安全的。
+    sdsc:
+    - |
+      "virtual" 返回类型 函数名"("[形参列表]") transaction_safe_dynamic;"
+    example: |-
+      struct S {
+          virtual int f() transaction_safe_dynamic {}
+      };

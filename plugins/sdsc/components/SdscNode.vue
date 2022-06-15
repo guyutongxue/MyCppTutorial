@@ -34,7 +34,9 @@ const props = defineProps<{
 :root {
   --sdsc-color: 11, 135, 218;
 }
-
+.sdsc.raw {
+  font-family: var(--font-family-code);
+}
 .sdsc.opt {
   display: inline-block;
   padding: 2px;

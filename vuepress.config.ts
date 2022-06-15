@@ -39,6 +39,7 @@ export default defineUserConfig({
   }),
   alias: {
     "@src": path.resolve(__dirname, "src"),
+    "@plugins": path.resolve(__dirname, "plugins"),
   },
   bundler: viteBundler({
     viteOptions: {
