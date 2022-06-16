@@ -20,7 +20,7 @@ export default defineUserConfig({
   lang: "zh-CN",
   title: "谷雨同学的 C++ 教程",
   description: "Learn C++ in a modern way",
-  public: "./public",
+  dest: "./dist",
   theme: defaultTheme({
     sidebar: sidebar.forVueDefaultTheme(),
     navbar: ["/contribution"],

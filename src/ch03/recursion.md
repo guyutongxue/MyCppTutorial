@@ -38,6 +38,7 @@ bool isPrime(int x) {
     }
     return true;          // 所有比它小的都除不尽，就是质数
 }
+// codemo hide
 int main() {
     int a;
     cin >> a;

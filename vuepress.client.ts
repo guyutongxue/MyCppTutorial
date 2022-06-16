@@ -5,14 +5,29 @@ import { defineClientConfig } from "@vuepress/client";
 // 这里直接向 <head> 添加一个 <script> 标签。
 import raphaelSrc from "raphael/raphael.min.js?raw";
 
+const adobeFontSansSerif = `
+(function(d) {
+  var config = {
+    kitId: 'mdf0gsb',
+    scriptTimeout: 3000,
+    async: true
+  },
+  h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+})(document);
+`;
+
+function loadScript(src: string) {
+  return new Promise((resolve, reject) => {
+    const scriptEle = document.createElement("script");
+    scriptEle.innerHTML = src;
+    scriptEle.onload = resolve;
+    scriptEle.onerror = reject;
+    document.head.appendChild(scriptEle);
+  });
+}
+
 export default defineClientConfig({
   setup: async () => {
-    await new Promise((resolve, reject) => {
-      const scriptEle = document.createElement("script");
-      scriptEle.innerHTML = raphaelSrc;
-      scriptEle.onload = resolve;
-      scriptEle.onerror = reject;
-      document.head.appendChild(scriptEle);
-    });
+    await Promise.all([loadScript(raphaelSrc), loadScript(adobeFontSansSerif)]);
   },
 });
