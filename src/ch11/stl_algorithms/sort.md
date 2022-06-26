@@ -1,5 +1,198 @@
 # 排序
 
+我们在刚刚已经见过了排序算法的基本使用。看上去很简单，就是将一个容器/数组传到 `rg::sort` 里面，然后这个容器/数组就从小到大排好序了。
+
+但仍然有一些细节问题。比如：如何从小到大排？
+
+其实仅就这个问题而言，它是比较容易解决的：`rg::sort` 还有一个额外的默认实参 `rg::less{}`：
+
+```cpp codemo
+#include <iostream>
+#include <algorithm>
+namespace rg = std::ranges;
+
+int main() {
+    int a[]{4, 1, 6, 2};
+    // codemo show
+    rg::sort(a, rg::less{}); // 等价于 rg::sort(a)
+    // codemo hide
+    for (auto i : a) {
+        std::cout << i << ' ';
+    }
+}
+```
+
+而将这个参数改为 `rg::greater{}` 即可从大到小排了！
+
+```cpp codemo
+#include <iostream>
+#include <algorithm>
+namespace rg = std::ranges;
+
+int main() {
+    int a[]{4, 1, 6, 2};
+    rg::sort(a, rg::greater{});
+    for (auto i : a) {
+        std::cout << i << ' ';
+    }
+}
+```
+
+## 这个“第二实参”到底是什么？
+
+其实，`rg::less` 和 `rg::greater` 是两个类，而它们的对象都重载了 `operator()`。大约就是类似下面这种：
+
+```cpp
+struct less {
+    bool operator()(auto a, auto b) const {
+        return a < b;
+    }
+};
+struct greater {
+    bool operator()(auto a, auto b) const {
+        return a > b;
+    }
+}
+```
+
+也就是说，`rg::less{}` 和 `rg::greater{}` 是两个“函数对象”——我们之前提到的相关语法在这里出现了：你可以直接在这里使用一个 Lambda 表达式，效果相同：
+
+```cpp codemo
+#include <iostream>
+#include <algorithm>
+namespace rg = std::ranges;
+
+int main() {
+    int a[]{4, 1, 6, 2};
+    // codemo show
+    rg::sort(a, [](int a, int b) {
+        return a > b;
+    }); // 从大到小排
+    // codemo hide
+    for (auto i : a) {
+        std::cout << i << ' ';
+    }
+}
+```
+
+但为什么传入一个 `return a < b` 的函数对象就让 `rg::sort` 从小到大排；反之传入 `a > b` 就是从大到小呢？这里，需要稍微解释 `rg::sort` 的工作流程：
+
+`rg::sort` 基于元素的交换来排序。默认情况下（也就是传入 `rg::less{}` 时），如果“元素 `a` 小于元素 `b`”则将 `a` 排到 `b` 前面。当不停地交换到任意两个元素都符合该先后顺序时，整个序列就从小到大排好了。
+
+为了让排序算法更通用，刚才引号引起的部分被更广泛的解释为：设传入的第二参数为 `comp`，若 `comp(a, b)`，则将 `a` 排到 `b` 前面。比如传入默认实参 `rg::less{}`，`rg::less{}(a, b)` 返回 `true` 就等价于 `a < b`。于是，`a < b` 时就会将 `a` 排在 `b` 前面。类似地，`rg::greater{}(a, b)` 等价于 `a > b`，即 `a > b` 时将 `a` 排在前面：总的下来就是从大到小的顺序了。
+
+## 结构体的比较
+
+一般来说，如果这个容器/数组里的对象定义了比较运算符，那么它就可以传入到 `rg::sort` 里排序，并用可选的“第二实参”控制升序或者降序。但如果这个对象没有定义比较运算符怎么办？
+
+```cpp codemo
+#include <iostream>
+#include <algorithm>
+namespace rg = std::ranges;
+
+struct Coord {
+    int x, y;
+};
+int main() {
+    Coord a[]{{3, 1}, {2, 4}, {0, 5}};
+    rg::sort(a); // 报错：未定义比较运算符
+}
+```
+
+有两种解决方法，一是给出比较运算符的定义，参考[之后的章节](./defaulted_compare.md)；二就是用自定义的函数对象担当“第二参数”来比较：
+
+```cpp codemo
+#include <iostream>
+#include <algorithm>
+namespace rg = std::ranges;
+
+struct Coord {
+    int x, y;
+};
+int main() {
+    Coord a[]{{3, 1}, {2, 4}, {0, 5}};
+    // codemo show
+    rg::sort(a, [](const Coord& a, const Coord& b) {
+        return a.x < b.x;
+    }); // x 成员比较小的排在前面
+    // codemo hide
+    for (const auto& i : a) {
+        std::cout << "(" << i.x << ", " << i.y << ") ";
+    }
+}
+```
+
+### 稳定排序与不稳定排序
+
+`rg::sort` 是不稳定排序。所谓的不稳定是指，如果两个元素在比较时被认为是相等的，则它们出现的顺序是任意的。而稳定排序中，两个相等元素的相对顺序总保持和最初一致。
+
+这在结构体排序中需要注意。比如下面的代码：
+
+```cpp codemo
+#include <iostream>
+#include <algorithm>
+namespace rg = std::ranges;
+
+struct Coord {
+    int x, y;
+};
+int main() {
+    // codemo show
+    Coord a[]{{1, 5}, {0, 3}, {0, 1}};
+    rg::sort(a, [](const Coord& a, const Coord& b) {
+        return a.x < b.x;
+    }); // x 成员升序排列
+    // codemo hide
+    for (const auto& i : a) {
+        std::cout << "(" << i.x << ", " << i.y << ") ";
+    }
+}
+```
+
+`rg::sort` 之后，我们不知道 `{0, 3}` 和 `{0, 1}` 哪个在前面：因为它们被判定为相等元素。判定为相等是因为，我们传入的“第二实参”只规定 `x` 小的排前面；而这两个对象的 `x` 是相同的，在排序时就无法确定哪个更小。最终的结果就是这两个元素的先后顺序不确定。
+
+而稳定排序 `rg::stable_sort` 则保证排完序后 `{0, 3}` 出现在 `{0, 1}` 之前。尽管它们“相等”，但最初 `{0, 3}` 就在前面，故排完之后也在前面。理论上，稳定排序比不稳定排序会慢一点。
+
+```cpp codemo
+#include <iostream>
+#include <algorithm>
+namespace rg = std::ranges;
+
+struct Coord {
+    int x, y;
+};
+int main() {
+    // codemo show
+    Coord a[]{{1, 5}, {0, 3}, {0, 1}};
+    rg::stable_sort(a, [](const Coord& a, const Coord& b) {
+        return a.x < b.x;
+    }); // x 成员升序排列
+    // codemo hide
+    for (const auto& i : a) {
+        std::cout << "(" << i.x << ", " << i.y << ") ";
+    }
+}
+```
+
+> 据称，常见的标准库实现 `libstdc++` 和 `libc++` 的 `rg::sort` 对 $\leqslant 16$ 个元素的序列是稳定的；故这里的示例代码看不出 `rg::sort` 和 `rg::stable_sort` 的区别。我[在这里](https://godbolt.org/z/q76nobT87)添加了一个 `rg::sort` 不稳定的例子。
+
+此外，我们还有一些问题：在使用数组时，数组大小超过有意义元素个数是很常见的。怎么对这些元素排序？
+
+```cpp
+#include <iostream>
+#include <algorithm>
+namespace rg = std::ranges;
+
+int main() {
+    int a[10]{1, 2, 3};
+    // 只对 a[0] ~ a[2] 排序
+    rg::sort(a); // 做不到
+}
+```
+
+我将会在下一节解答这个问题。下一节，将用到迭代器相关的内容
+
+<!-- 
 首先介绍刚刚提到的排序算法，`sort`。它是最常用的 STL 算法之一，使用起来也很方便：
 
 ```cpp codemo(show)
@@ -161,4 +354,4 @@ int main() {
         std::cout << i.x << ' ' << i.y << std::endl;
     }
 }
-```
+``` -->
