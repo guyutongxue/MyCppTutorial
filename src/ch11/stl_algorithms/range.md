@@ -81,3 +81,88 @@ int main() {
 
 ## 初识视图
 
+在这一节结尾，我略微介绍一下视图（View）。视图是一种特殊的范围，我这里先举几个例子；具体的概念会在之后的章节展开。
+
+这里首先介绍的是 `rg::reverse_view`。`reverse_view` 可以将一个范围“反转”，即让 `begin` 指向末尾元素，`end` 指向首元素的上一空位，如同 `rbegin` `rend` 那样。
+
+```cpp
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <ranges> // 视图定义于此
+namespace rg = std::ranges;
+
+int main() {
+    std::vector a{4, 1, 6, 2};
+    rg::sort(rg::reverse_view{a});
+    for (auto i : a) {
+        std::cout << i << ' ';
+    }
+}
+```
+
+像这样，`rg::reverse_view{a}` 就将 `a` 这个范围概念反转；它的效果和刚才是一致的。
+
+> 此处使用大括号初始化以避免烦人的分析，尽管目前还不会有。
+
+有趣的是，标准库定义了一系列重载了 `operator|` 的对象；它们定义于 `std::views` 内并且可以生成这样的视图。比如 `std::views::reverse` 就可以生成 `rg::reverse_view`。标准上称这些对象为范围适配器对象。不管怎样，这些对象在 `operator|` 的加成下可以这样用：
+
+```cpp
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <ranges> // 视图定义于此
+namespace rg = std::ranges;
+
+int main() {
+    std::vector a{4, 1, 6, 2};
+    rg::sort(a | std::views::reverse);
+    for (auto i : a) {
+        std::cout << i << ' ';
+    }
+}
+```
+
+事实上，有了范围适配器之后，很少会在算法中用到裸的迭代器了。刚刚说的数组部分排序问题，也可以通过 `rg::take_view` 来做。这个适配器只会保留范围中的前 `n` 个元素，其余元素抛弃。它是这样使用的：
+
+```cpp
+#include <iostream>
+#include <algorithm>
+#include <ranges>
+namespace rg = std::ranges;
+
+int main() {
+    int a[10]{4, 1, 6, 2};
+
+    // 只对 a[0] ~ a[3] 排序
+    rg::sort(rg::take_view{a, 4});
+    // 或者...
+    rg::sort(a | std::views::take(4));
+
+    for (auto i : a) {
+        std::cout << i << ' ';
+    }
+}
+```
+
+注意“范围适配器对象”的版本。`operator|` 的语法允许你将范围适配器串联起来用：
+
+```cpp
+#include <iostream>
+#include <algorithm>
+#include <ranges>
+namespace rg = std::ranges;
+
+int main() {
+    int a[10]{4, 1, 6, 2};
+
+    // 对 a[0] ~ a[3] 倒序排序
+    rg::sort(a | std::views::take(4) | std::views::reverse);
+
+    for (auto i : a) {
+        std::cout << i << ' ';
+    }
+}
+```
+
+虽然这些库设施的定义很复杂，但使用起来非常的优雅；甚至性能上也会更好。这也是 STLv2 相比传统版本的改进之处。
