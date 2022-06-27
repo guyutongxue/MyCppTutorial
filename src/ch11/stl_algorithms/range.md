@@ -103,9 +103,9 @@ int main() {
 
 像这样，`rg::reverse_view{a}` 就将 `a` 这个范围概念反转；它的效果和刚才是一致的。
 
-> 此处使用大括号初始化以避免烦人的分析，尽管目前还不会有。
+> 此处使用大括号初始化以避免烦人的分析，尽管目前还不会有。大括号初始化器和小括号初始化器大多情形下可以任意使用（带有 `std::initializer_list` 构造重载的除外，如 `std::vector`）。
 
-有趣的是，标准库定义了一系列重载了 `operator|` 的对象；它们定义于 `std::views` 内并且可以生成这样的视图。比如 `std::views::reverse` 就可以生成 `rg::reverse_view`。标准上称这些对象为范围适配器对象。不管怎样，这些对象在 `operator|` 的加成下可以这样用：
+有趣的是，标准库定义了一系列重载了 `operator|` 的对象；它们定义于 `std::views` 内并且可以生成这样的视图，比如 `std::views::reverse` 就可以生成 `rg::reverse_view`。标准上称这些对象为范围适配器对象。不管怎样，这些对象在 `operator|` 的加成下可以这样用：
 
 ```cpp
 #include <vector>
@@ -145,7 +145,7 @@ int main() {
 }
 ```
 
-注意“范围适配器对象”的版本。`operator|` 的语法允许你将范围适配器串联起来用：
+注意范围适配器对象的版本，`operator|` 的语法允许你将范围适配器串联起来用：
 
 ```cpp
 #include <iostream>
