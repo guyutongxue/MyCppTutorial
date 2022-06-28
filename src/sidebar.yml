@@ -166,7 +166,8 @@
         - /ch11/stl_algorithms/sort.md
         - /ch11/stl_algorithms/range.md
         - /ch11/stl_algorithms/copy.md
-        - /ch11/stl_algorithms/immutable_seq.md
+        - /ch11/stl_algorithms/filter.md
+        - /ch11/stl_algorithms/transform.md
         - /ch11/stl_algorithms/others.md
         - /ch11/stl_algorithms/defaulted_compare.md
         - /ch11/stl_algorithms/adl.md

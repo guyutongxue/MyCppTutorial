@@ -125,7 +125,7 @@ int main() {
 
 事实上，有了范围适配器之后，很少会在算法中用到裸的迭代器了。刚刚说的数组部分排序问题，也可以通过 `rg::take_view` 来做。这个适配器只会保留范围中的前 `n` 个元素，其余元素抛弃。它是这样使用的：
 
-```cpp
+```cpp codemo
 #include <iostream>
 #include <algorithm>
 #include <ranges>
@@ -147,7 +147,7 @@ int main() {
 
 注意范围适配器对象的版本，`operator|` 的语法允许你将范围适配器串联起来用：
 
-```cpp
+```cpp codemo
 #include <iostream>
 #include <algorithm>
 #include <ranges>
