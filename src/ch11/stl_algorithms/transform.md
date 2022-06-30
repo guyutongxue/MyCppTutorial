@@ -25,7 +25,7 @@ int main() {
 }
 ```
 
-这里，`rg::transform` 典型地接受三个参数：第一个是要作用的范围；第二个是目的地，最后一个是变换函数。这里的变换函数是平方 $y=x^2$，要作用的范围是向量 `a`，里面存放的是 5 个整数。整个 `rg::transform` 会将变换函数一一地作用在范围内的每个值上，然后将返回的结果存放到目的地内。可以形象地写成这个样子：
+这里，`rg::transform` 典型地接受三个参数：第一个是要作用的范围；第二个是目的地，最后一个是变换函数。这里的变换函数是平方 $y=x^2$，要作用的范围是向量 `a`，里面存放的是 5 个整数。整个 `rg::transform` 会将变换函数一一地作用在范围内的每个值上，然后将返回的结果存放到目的地内。
 
 $$\bm a=\{x\}\xrightarrow{\operatorname{transform}(f)}\{f(x)\}=\bm b$$
 
@@ -43,7 +43,7 @@ namespace rg = std::ranges;
 int main() {
     std::vector<int> a{1, 2, 3, 4, 5};
     for (auto i : a
-                | std::views::transform([](int x) { return x * x; })) {
+        | std::views::transform([](int x) { return x * x; })) {
         std::cout << i << ' ';
     }
 }
@@ -68,7 +68,7 @@ int main() {
     }
     // 筛选出正数
     std::vector<int> b;
-    rg::copy_if(a, std::back_inserter(b), [] (int x) {
+    rg::copy_if(a, std::back_inserter(b), [](int x) {
         return x > 0;
     });
     // 取前 5 个
@@ -77,7 +77,7 @@ int main() {
     }
     // 取平方根
     std::vector<double> c;
-    rg::transform(b, std::back_inserter(c), [] (int x) {
+    rg::transform(b, std::back_inserter(c), [](int x) {
         return std::sqrt(x);
     });
     // 输出
@@ -105,9 +105,9 @@ int main() {
         a.push_back(x);
     }
     for (auto i : a
-        | std::views::filter([] (int x) { return x > 0; })
+        | std::views::filter([](int x) { return x > 0; })
         | std::views::take(5)
-        | std::views::transform([] (int x) { return std::sqrt(x); })) {
+        | std::views::transform([](int x) { return std::sqrt(x); })) {
         std::cout << i << ' ';
     }
 }
@@ -125,9 +125,9 @@ namespace rg = std::ranges;
 
 int main() {
     rg::copy(std::views::istream<int>(std::cin)
-            | std::views::filter([] (int x) { return x > 0; })
+            | std::views::filter([](int x) { return x > 0; })
             | std::views::take(5)
-            | std::views::transform([] (int x) { return std::sqrt(x); }),
+            | std::views::transform([](int x) { return std::sqrt(x); }),
         std::ostream_iterator<double>{std::cout, " "});
 }
 ```
