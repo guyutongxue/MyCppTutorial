@@ -36,7 +36,7 @@ a = b + 20;
 
 下面这张图解释了表达式和表达式语句的关系：
 
-![Expressen statement](https://s1.ax1x.com/2020/07/08/UZ7AA0.png ':size=300px')
+![Expression statement](https://s1.ax1x.com/2020/07/08/UZ7AA0.png)
 
 > 表达式语句中的表达式是可选的。没有表达式的表达式语句称为[空语句](/ch02/part3/null_statement.md)。
 

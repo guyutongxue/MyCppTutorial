@@ -1,6 +1,10 @@
 # C 风格输入输出 <Badge type="tip" text="选读" />
 
-为兼容 C 语言，C++ 仍然提供了 C 风格的输入输出库。但如无特殊情形，**总是建议使用 C++ 风格的流式输入输出**。
+为兼容 C 语言，C++ 仍然提供了 C 风格的输入输出库。
+
+:::warning
+如无特殊情形，**建议总是使用 C++ 风格的流式输入输出**。
+:::
 
 ## `std::FILE`
 
@@ -22,7 +26,7 @@ FILE* fopen(const char* filename, const char* mode);
                   // C 中为 <stdio.h>
 int main() {
     // 以读取模式打开文件 "a.txt"
-    FILE* fp = std::fopen("a.txt", "r");
+    std::FILE* fp = std::fopen("a.txt", "r");
     // 随后，操作 fp 以读取其内容...
 }
 ```
@@ -37,7 +41,7 @@ int main() {
 #include <cstdio>
 int main() {
     // 以读取模式打开文件 "a.txt"
-    FILE* fp = std::fopen("a.txt", "r");
+    std::FILE* fp = std::fopen("a.txt", "r");
     
     int a, b, c;
     // 从 a.txt 中读取三个空白字符分隔的整数
@@ -54,7 +58,7 @@ int main() {
 #include <cstdio>
 int main() {
     // 以写入模式打开文件 "b.txt"
-    FILE* fp = std::fopen("b.txt", "w");
+    std::FILE* fp = std::fopen("b.txt", "w");
     
     int a = 42, b = 56, c = 71;
     // 写入 a b c 三个整数到 b.txt
@@ -79,7 +83,7 @@ char* fwrite(const void* buffer, unsigned size, unsigned count, std::FILE* strea
 ```cpp
 #include <cstdio>
 int main() {
-    FILE* fp = std::fopen("a.bin", "r");
+    std::FILE* fp = std::fopen("a.bin", "r");
     
     // 从 fp 读取 sizeof(int) 个字节，
     // 将内容读到 a 的存储空间
@@ -99,7 +103,7 @@ int main() {
 ```cpp
 #include <cstdio>
 int main() {
-    FILE* fp = std::fopen("b.bin", "w");
+    std::FILE* fp = std::fopen("b.bin", "w");
 
     // 将 a 的二进制存储写入到 "b.bin"
     int a = 42;
@@ -126,7 +130,7 @@ int fclose(std::FILE* stream);
 ```cpp
 #include <cstdio>
 int main() {
-    FILE* fp = std::fopen("b.txt", "w");
+    std::FILE* fp = std::fopen("b.txt", "w");
     int a = 42, b = 56, c = 71;
     std::fscanf(fp, "%d %d %d\n", a, b, c);
     
@@ -151,7 +155,7 @@ std::FILE* freopen(const char* filename, const char* mode, std::FILE* stream);
 ```cpp
 #include <cstdio>
 int main() {
-    FILE* fp = std::fopen("a.txt", "w");
+    std::FILE* fp = std::fopen("a.txt", "w");
     // 本应对 fp 写入是写入到 a.txt...
 
     // 但 freopen 抢夺了 fp 原先的“指向”

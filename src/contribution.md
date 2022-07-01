@@ -27,6 +27,8 @@
 - vuepress-plugin-sdsc（自制）
 - vuepress-plugin-sidebar（自制）
 
+- markdown-it-multimd-table（MarkdownIt 插件）
+
 ### Codemo
 
 加载 Codemo 后，页面右侧会常驻代码视图。对于标记为
@@ -100,3 +102,6 @@ VuePress 的侧边栏设计思路和 Doxygen 等常见文档完全不同。它�
 
 然而 VuePress default theme 功能又很全，我可不愿意重头造轮子。所以，我的做法是在运行 VuePress 前通过一个自定义的配置文件 `sidebar.yml` 提前生成一个树形的侧边栏结构，然后由这个结构覆盖到对应的 VuePress default theme 字段上。这个思路不是什么好办法，不仅会拖慢构建速度，而且要求用户必须将 sourceDir 写死在 `vuepress.config.ts`。但不管怎样，至少它能工作。目前需要更新侧边栏时，请**重新加载整个项目**（而不是 HMR），比如 touch 一下 `vuepress.config.ts`。
 
+### MultiMarkdown Table
+
+由于书中多次使用带有合并单元格的表格，故启用了该插件。该插件支持 Markdown 方言 MultiMarkdown 的表格语法。

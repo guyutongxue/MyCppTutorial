@@ -60,7 +60,9 @@ int main() {
 
 `std::vector` 还提供了一些构造函数、其它成员函数如 `clear` `empty` `front` `back` 等，以及比较运算符重载。我们并不在这里展开介绍，如有需要请查阅 [CppReference](https://zh.cppreference.com/w/cpp/container/vector)。
 
-!> 出于历史原因，尽可能不使用 `std::vector<bool>`。`std::vector<bool>` 相比其它 `std::vector` 做了空间上的优化，但其性能可能有所下降。如有需求，可用 `std::vector<char>` 代替。
+::: warning
+出于历史原因，尽可能不使用 `std::vector<bool>`。`std::vector<bool>` 相比其它 `std::vector` 做了空间上的优化，但其性能可能有所下降。如有需求，可用 `std::vector<char>` 代替。
+:::
 
 `std::vector` 保证其元素在内存中的存储是连续的。这使得它在不进行元素增删的前提下和数组拥有相同的性能。进一步可以分析得到，`std::vector` 在尾部插入和删除元素的平均代价是比较小的，但在非尾部的位置增删则更费力气一点。
 
