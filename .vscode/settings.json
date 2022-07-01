@@ -1,5 +1,6 @@
 {
   "yaml.schemas": {
     ".vscode/sidebar.schema.json": "sidebar.yml"
-  }
+  },
+  // "markdown.extension.tableFormatter.enabled": false
 }

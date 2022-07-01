@@ -47,7 +47,7 @@ long long result{0};
 | `long`      | 4 字节          | 4 字节                 | 8 字节                 |
 | `long long` | 8 字节          | 8 字节                 | 8 字节                 |
 
-<p class="small">※ UNIX 指 UNIX 系统（含 macOS, FreeBSD）和类 UNIX 系统（GNU/Linux 等）</p>
+<small>※ UNIX 指 UNIX 系统（含 macOS, FreeBSD）和类 UNIX 系统（GNU/Linux 等）</small>
 
 除了数据长度的分类，正如之前所说，整型也分为**无符号整数类型**和**有符号整数类型**。也就是：
 
@@ -124,7 +124,7 @@ int i{-123};
 | `long`      | 长整型     | 4<sup>※</sup> | $-2^{31}$ ~ $2^{31}-1$ | $0$ ~ $2^{32}-1$    |
 | `long long` | 扩展长整型 | 8             | $-2^{63}$ ~ $2^{63}-1$ | $0$ ~ $2^{64}-1$    |
 
-<p class="small">※ 在 64 位的 UNIX 或类 UNIX 系统下， <code>long</code> 占用 8 字节，表示范围与 <code>long long</code> 相同。</p>
+<small>※ 在 64 位的 UNIX 或类 UNIX 系统下， `long` 占用 8 字节，表示范围与 `long long` 相同。</small>
 
 尽管如此复杂，但在一般情况下 `int` 足以应付大部分场景。
 

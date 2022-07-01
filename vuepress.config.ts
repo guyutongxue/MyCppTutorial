@@ -5,6 +5,7 @@ import { containerPlugin } from "@vuepress/plugin-container";
 import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
 import { copyCodePlugin } from "vuepress-plugin-copy-code2";
 import { sitemapPlugin } from "vuepress-plugin-sitemap2";
+import multimdTable from "markdown-it-multimd-table";
 
 import { ioBlockPlugin } from "./plugins/io-block";
 import { codemoPlugin } from "./plugins/codemo";
@@ -143,4 +144,9 @@ export default defineUserConfig({
     sdscPlugin(),
     sidebar.forPlugin(),
   ],
+  extendsMarkdown: (mdi) => {
+    mdi.use(multimdTable, {
+      rowspan: true
+    });
+  }
 });

@@ -106,83 +106,20 @@ int main() {
 
 至此我们已经将 C++ 的最基础的类型——算术类型讲解完毕了。下面这张表大致地总结了它们：
 
-<div class="table-wrapper">
-<table>
-<thead>
-    <tr>
-        <th style="text-align:center" rowspan="2">类型说明符</th>
-        <th style="text-align:center" rowspan="2">含义</th>
-        <th style="text-align:center" rowspan="2">一般的字节数</th>
-        <th style="text-align:center" colspan="2">一般的取值范围</th>
-    </tr>
-    <tr>
-        <th style="text-align:center"><code>signed</code>（可省略）</th>
-        <th style="text-align:center"><code>unsigned</code></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td><code>bool</code></td>
-        <td>布尔类型</td>
-        <td>1</td>
-        <td style="text-align:center" colspan="2"><code>true</code>或 <code>false</code></td>
-    </tr>
-    <tr>
-        <td><code>char</code></td>
-        <td>字符类型</td>
-        <td>1</td>
-        <td style="text-align:center" colspan="2">ASCII 字符</td>
-    </tr>
-    <tr>
-        <td><code>short</code></td>
-        <td>短整型</td>
-        <td>2</td>
-        <td>$-2^{15}$ ~ $2^{15}-1$</td>
-        <td>$0$ ~ $2^{16}$</td>
-    </tr>
-    <tr>
-        <td><code>int</code></td>
-        <td>整型</td>
-        <td>4</td>
-        <td>$-2^{31}$ ~ $2^{31}-1$</td>
-        <td>$0$ ~ $2^{32}$</td>
-    </tr>
-    <tr>
-        <td><code>long</code><sup>※</sup></td>
-        <td>长整型</td>
-        <td>4</td>
-        <td>$-2^{31}$ ~ $2^{31}-1$</td>
-        <td>$0$ ~ $2^{32}$</td>
-    </tr>
-    <tr>
-        <td><code>long long</code></td>
-        <td>扩展长整型</td>
-        <td>8</td>
-        <td>$-2^{63}$ ~ $2^{63}-1$</td>
-        <td>$0$ ~ $2^{64}$</td>
-    </tr>
-    <tr>
-        <td><code>float</code></td>
-        <td>单精度浮点型</td>
-        <td>4</td>
-        <td style="text-align:center" colspan="2">6~7 位有效数字</td>
-    </tr>
-    <tr>
-        <td><code>double</code></td>
-        <td>双精度浮点型</td>
-        <td>8</td>
-        <td style="text-align:center" colspan="2">15~16 位有效数字</td>
-    </tr>
-    <tr>
-        <td><code>long double</code></td>
-        <td>扩展精度浮点型</td>
-        <td>不少于 8</td>
-        <td style="text-align:center" colspan="2">不少于 15 位有效数字</td>
-    </tr>
-    </tbody>
-</table>
-</div>
-<p class="small">※ 在 64 位的 UNIX 或类 UNIX 系统下， <code>long</code> 占用 8 字节，表示范围与 <code>long long</code> 相同。</p>
+| 类型说明符          | 含义           | 一般的字节数 | 一般的取值范围                  ||
+| ^^                  | ^^             | ^^  | `signed`               | `unsigned`       |
+| ------------------- | -------------- | --- | ---------------------- | ---------------- |
+| `bool`              | 布尔类型       | 1   | `true` 或 `false`                        ||
+| `char`              | 字符类型       | 1   | ASCII 字符                               ||
+| `short`             | 短整型         | 2   | $-2^{15}$ ~ $2^{15}-1$ | $0$ ~ $2^{16}-1$ |
+| `int`               | 整型           | 4   | $-2^{15}$ ~ $2^{15}-1$ | $0$ ~ $2^{16}-1$ |
+| `long` <sup>※</sup> | 长整型         | 4   | $-2^{31}$ ~ $2^{31}-1$ | $0$ ~ $2^{32}-1$ |
+| `long long`         | 扩展长整型     | 8   | $-2^{63}$ ~ $2^{63}-1$ | $0$ ~ $2^{64}-1$ |
+| `float`             | 单精度浮点型   | 4   | 6~7 位有效数字                           ||
+| `double`            | 双精度浮点型   | 8   | 15~16 位有效数字                         ||
+| `long double`       | 扩展精度浮点型 | $\geqslant$ 8 | 不少于 15 位有效数字           ||
+
+<small>※ 在 64 位的 UNIX 或类 UNIX 系统下， `long` 占用 8 字节，表示范围与 `long long` 相同。</small>
 
 ## 练习
 
