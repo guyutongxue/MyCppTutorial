@@ -27,7 +27,7 @@ int main() {
 
 这里，`rg::transform` 典型地接受三个参数：第一个是要作用的范围；第二个是目的地，最后一个是变换函数。这里的变换函数是平方 $y=x^2$，要作用的范围是向量 `a`，里面存放的是 5 个整数。整个 `rg::transform` 会将变换函数一一地作用在范围内的每个值上，然后将返回的结果存放到目的地内。
 
-$$\bm a=\{x\}\xrightarrow{\operatorname{transform}(f)}\{f(x)\}=\bm b$$
+$$\bm a=\{x\}\xrightarrow{\operatorname{transform}(f)}\{f(x)\}\eqqcolon\bm b$$
 
 整段代码运行后，结果就是 `1 4 9 16 25 `，即原先 `a` 里的每个元素的平方。
 

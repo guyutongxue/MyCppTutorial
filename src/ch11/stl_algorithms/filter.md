@@ -25,7 +25,7 @@ int main() {
 
 `rg::copy_if` 顾名思义，就是选择性地复制部分元素，可以算是复制算法 `rg::copy` 的加强版。对于 `rg::copy` 来说，它会将原始范围内的全部元素复制到目的地；而 `rg::copy_if` 在复制之前会检查当前被复制的元素是否满足“第三参数”，只有满足时才会复制。其中，“第三参数” 是一个可调用对象，期望一个元素类型的参数并返回 `bool`。如果该函数作用在当前元素上返回 `true` ，那么该元素就会被复制。
 
-$$\bm a=\{x\}\xrightarrow{\operatorname{filter}(f)}\{x\mid f(x)\}=\bm b$$
+$$\bm a=\{x\}\xrightarrow{\operatorname{filter}(f)}\{x\mid f(x)\}\eqqcolon\bm b$$
 
 刚才示例代码中的“第三参数”，是返回 `x < 5` 的 Lambda 表达式，意思就是只有小于 5 的元素才会被复制。当然，你也可以传递一个普通的函数。
 
