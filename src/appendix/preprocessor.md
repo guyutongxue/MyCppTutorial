@@ -221,7 +221,7 @@ freopen("1.out","w",stdout); // 则重定向到文件输出
 #endif // LIBRARY_FILENAME_H
 ```
 
-`#pragma pack` 指定接下来定义的结构体的对齐。
+`#pragma pack` 指定接下来定义的结构体的[对齐](https://zh.cppreference.com/w/cpp/language/object#.E5.AF.B9.E9.BD.90)。
 ```sdsc
 "#pragma pack("对齐")"
 "#pragma pack()"
