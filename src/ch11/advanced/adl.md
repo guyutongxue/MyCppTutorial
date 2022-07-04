@@ -1,4 +1,4 @@
-# 实参依赖查找 <Badge type="tip" text="选读" />
+# 实参依赖查找
 
 **实参依赖查找**（Argument-Dependent Lookup, ADL）是 C++ 中很恶心的一个语法细节。说实话，它在平常使用中几乎看不见、摸不着；但一旦深入某个标准库函数的实现，或者构建某些库的时候，ADL 就是绕不开的点。所以我在这一节稍稍展开一点，以此抛砖引玉。
 
@@ -242,7 +242,7 @@ int main() {
 
 原本效果不同的两种写法，通过函数对象禁用 ADL 后，效果变得一致了。这减少了程序员的心智负担。但它带来了另一个问题：`S::swap` 这两种写法都无法调用；根本没有简单的办法使用为 `S` 定制的 `S::swap`。但实际上这可以通过一些复杂的模板代码，让 `my_std::swap` 在有更好的 `swap` （比如这个例子中的 `S::swap`）可用时，将 `my_std::swap` 的调用**分发**到 `S::swap` 上；其余的情形使用默认的行为。这样实现的 `my_std::swap` 就是 `std::ranges::swap`，即约束版本的算法了。此时，不论是 `f(a, b)` 还是 `g(a, b)`，调用的都是 `S::swap`。
 
-```cpp codemo(show)
+```cpp codemo
 #include <iostream>
 #include <algorithm>
 
@@ -282,7 +282,7 @@ int main() {
 ```cpp codemo(show)
 #include <algorithm>
 #include <vector>
-using std::ranges;
+using namespace std::ranges;
 
 int main() {
     std::vector<int> a(5), b(5);

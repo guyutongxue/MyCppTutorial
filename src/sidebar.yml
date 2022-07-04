@@ -170,8 +170,9 @@
         - /ch11/stl_algorithms/transform.md
         - /ch11/stl_algorithms/reduce.md
         - /ch11/stl_algorithms/others.md
-        - /ch11/stl_algorithms/defaulted_compare.md
-        - /ch11/stl_algorithms/adl.md
+    - /ch11/advanced/:
+        - /ch11/advanced/defaulted_compare.md
+        - /ch11/advanced/adl.md
 # - /ch12/:
 #     - /ch12/concept.md
 - /appendix/:
