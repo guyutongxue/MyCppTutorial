@@ -20,7 +20,7 @@ $$\{1, 2, 3, 4, 5, 6\}\xrightarrow{\sum}21$$
 
 $$\bm a =\{x_1,x_2,\cdots,x_n\}\xrightarrow{\operatorname{fold_L}(f,x_0)}f\bigg(f\Big(f\big(f(x_0, x_1), x_2\big), x_3\Big)\cdots, x_n\bigg)\eqqcolon b$$
 
-可能略微有些抽象。这里举一个例子，取初始值 $x_0=0$，二元函数 $f(a, b) = a + b$。此时，将 $fold_L(f, x_0)$ 作用在范围 $\bm a=\{1, 2, 3, 4, 5, 6\}$ 的效果就是：
+可能略微有些抽象。这里举一个例子，取初始值 $x_0=0$，二元函数 $f(a, b) = a + b$。此时，将 $\operatorname{fold_L}(f, x_0)$ 作用在范围 $\bm a=\{1, 2, 3, 4, 5, 6\}$ 的效果就是：
 
 $$f(f(f(f(f(f(0, 1),2),3),4),5),6)=(((((0+1)+2)+3)+4)+5)+6=21\eqqcolon b$$
 
@@ -58,7 +58,7 @@ int main() {
 
 $$\{x_1,\cdots,x_n\}\xrightarrow{\operatorname{reduce}(f,\cdot)}\begin{cases}
 x_1,&n=1\\
-f\big(\operatorname{reduce}(f,\{x_{i_1},\cdots x_{i_k}\}),\operatorname{reduce}(f,\{x_{i_{k+1}},\cdots,x_{i_n}\})\big),&n>1
+f\big(\operatorname{reduce}(f,\{x_{i_1},\cdots,x_{i_k}\}),\operatorname{reduce}(f,\{x_{i_{k+1}},\cdots,x_{i_n}\})\big),&n>1
 \end{cases}$$
 
 其中 $\{i\}$ 是 $\{1,\cdots,n\}$ 的任意排列，$1\leqslant k\leqslant n$ 是任意正整数。
