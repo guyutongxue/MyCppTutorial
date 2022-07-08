@@ -128,3 +128,36 @@ int main() {
     pb = std::move(pa);
 }
 ```
+
+`std::unique_ptr` 支持 `new[]` 类似的变长数组分配。在这种形式下，你需要将“未知长度数组”作为 `std::unique_ptr` 或 `std::make_unique` 的模板实参。此外，动态的“数组长度”作为 `std::make_unique` 的函数实参传入：
+
+```cpp codemo
+#include <memory> // 智能指针定义于此
+
+int main() {
+    int n;
+    std::cin >> n;
+    // 分配 n 个 int；pa 持有它们的所有权
+    std::unique_ptr pa = std::make_unique<int[]>(n);
+
+    // 数组元素被值初始化（零初始化）
+    pa[0]; // 0
+}
+```
+
+这里可以正常使用 `pa[0]`，表明 `std::unique_ptr` 在拥有“数组”类型对象时重载了 `operator[]`。此外，`std::unique_ptr` 重载了 `operator->`，意味着如果它持有一个类类型对象（结构体），则可以直接通过 `->` 访问其成员：
+
+```cpp codemo
+#include <memory> // 智能指针定义于此
+
+struct Coord {
+    int x, y;
+}
+
+int main() {
+    std::unique_ptr pa = std::make_unique<Coord>(1, 2);
+
+    pa->x; // 1
+    pa->y; // 2
+}
+```
