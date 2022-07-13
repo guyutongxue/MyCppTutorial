@@ -11,6 +11,7 @@
 - Ivan Cukic《C++ 函数式编程》（程继洪等 译）
 - [cppreference.com](https://zh.cppreference.com)
 - [Draft C++ Standard](http://eel.is/c++draft/)
+- 若干知乎回答与文章；作者 @d41d8c，@Mick23571（C++ 标准委员会成员）
 
 ## 特别鸣谢
 
