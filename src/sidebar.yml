@@ -154,6 +154,10 @@
         - /ch10/smart_pointer/rvalue_reference.md
         - /ch10/smart_pointer/move_and_forward.md
         - /ch10/smart_pointer/ownership.md
+        - /ch10/smart_pointer/shared_ptr.md
+        - /ch10/smart_pointer/special_member_function.md
+    - /ch10/adt/:
+        - /ch10/adt/tuple.md
 - link: /ch11/
   children:
     - /ch11/grammar/:
@@ -170,9 +174,10 @@
         - /ch11/stl_algorithms/transform.md
         - /ch11/stl_algorithms/reduce.md
         - /ch11/stl_algorithms/others.md
+        - /ch11/stl_algorithms/compare_with_legacy.md
     - /ch11/advanced/:
         - /ch11/advanced/defaulted_compare.md
-        - /ch11/advanced/adl.md
+        # - /ch11/advanced/adl.md
 # - /ch12/:
 #     - /ch12/concept.md
 - /appendix/:
