@@ -7,5 +7,11 @@ declare module "markdown-it-multimd-table" {
     headerless: boolean;
     multibody: boolean;
   }
-  declare export default function multimd_table_plugin(md: MarkdownIt, options?: Partial<Options>): void;
+  export default function multimd_table_plugin(md: MarkdownIt, options?: Partial<Options>): void;
+}
+
+declare module "@gytx/cppreference-index/dist/generated.json" {
+  import type { Index } from "@gytx/cppreference-index";
+  const json: Index<true>[];
+  export default json;
 }

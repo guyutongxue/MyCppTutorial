@@ -2,6 +2,10 @@
   --font-family: source-han-sans-simplified-c, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
-code {
-  font-size: 0.85em !important;
+pre code {
+  font-size: 0.85rem !important;
+}
+
+li p {
+  margin: 0;
 }

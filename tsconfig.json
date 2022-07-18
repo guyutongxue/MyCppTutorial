@@ -1,7 +1,9 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": [
-    "**/*.ts",
+    "src/**/*.ts",
+    "plugins/**/client.ts",
+    "vuepress.client.ts",
     "**/*.vue"
   ],
   "compilerOptions": {
@@ -17,5 +19,8 @@
     "types": [
       "vite/client"
     ],
-  }
+  },
+  "references": [
+    { "path": "./tsconfig.node.json" }
+  ]
 }

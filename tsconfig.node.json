@@ -1,0 +1,15 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.node.json",
+  "include": [
+    "plugins/**/*.ts",
+    "vuepress.config.ts",
+    "external.d.ts",
+  ],
+  "exclude": [
+    "plugins/**/client.ts",
+  ],
+  "compilerOptions": {
+    "lib": ["DOM.Iterable"],
+    "composite": true
+  }
+}

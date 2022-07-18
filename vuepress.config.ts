@@ -12,6 +12,7 @@ import { codemoPlugin } from "./plugins/codemo";
 import { sdscPlugin } from "./plugins/sdsc";
 import { path } from "@vuepress/utils";
 import { Sidebar } from "./plugins/sidebar";
+import { autolinkerPlugin } from "./plugins/autolinker";
 
 const sidebar = new Sidebar({
   sourceDir: path.resolve(__dirname, "src"),
@@ -78,6 +79,9 @@ export default defineUserConfig({
         },
       },
     }),
+    // autolinker 会使用 JSDOM，它不识别 Vue 组件。
+    // 所以不能把它放在会产生 Vue 组件的 codemo 后面
+    autolinkerPlugin(),
     codemoPlugin(),
     mdEnhancePlugin({
       // pnpm 下有 bug，改用 npm 即可

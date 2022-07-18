@@ -11,9 +11,16 @@ function parseCodemoArgs(args: string) {
     args
       .substring(lParen + 1, rParen)
       .split(",")
-      .map((s) => s.split("=").map((s) => s.trim()))
+      .map(
+        (s) => s.split("=").map((s) => s.trim()) as [string, string | undefined]
+      )
       .forEach(([key, value]) => {
         if (key === "focus") {
+          if (typeof value === "undefined") {
+            throw new Error(
+              `Expect argument for "focus" param but nothing found`
+            );
+          }
           focus = value.split("/").flatMap((part) => {
             const dash = part.indexOf("-");
             const lines = [];
@@ -55,6 +62,14 @@ function parseCodemoArgs(args: string) {
   return { focus, input };
 }
 
+function toPropString(props: [string, string | undefined][]) {
+  return props
+    .map(([name, value]) =>
+      value ? `${escapeHtml(name)}="${escapeHtml(value)}"` : ""
+    )
+    .join(" ");
+}
+
 function codemoRule({ content, lang, attr, token, defaultFn }: RuleContext) {
   const { input } = parseCodemoArgs(attr);
   const lines = content.trim().split("\n");
@@ -84,8 +99,12 @@ function codemoRule({ content, lang, attr, token, defaultFn }: RuleContext) {
   for (const i of parsed) {
     if (i.type === "directive") {
       switch (i.value) {
-        case "hide": hide = true; break;
-        case "show": hide = false; break;
+        case "hide":
+          hide = true;
+          break;
+        case "show":
+          hide = false;
+          break;
         case "focus-next-line": {
           shownFocus.push(shownContent.length + 1);
           fullFocus.push(fullContent.length);
@@ -100,15 +119,16 @@ function codemoRule({ content, lang, attr, token, defaultFn }: RuleContext) {
     }
   }
   token.content = shownContent.join("\n") + "\n";
-  token.info = `${lang}{${shownFocus.join(',')}}`;
-  const escapedContent = escapeHtml(fullContent.join("\n"));
-  const props = `lang="${lang}" code="${escapedContent}"
-${fullFocus.length > 0 ? `focus="${fullFocus.join(",")}"` : ""}
-${typeof input !== "undefined" ? `input="${input}"` : ""}`;
-  return `<div style="position: relative">
-${defaultFn()}
-<CodemoTrigger title="显示代码" ${props} />
-</div>`;
+  token.info = `${lang} {${shownFocus.join(",")}}`;
+  const rendered = defaultFn();
+
+  const props = toPropString([
+    ["lang", lang],
+    ["code", fullContent.join("\n")],
+    ["focus", fullFocus.length > 0 ? fullFocus.join(",") : void 0],
+    ["input", input],
+  ]);
+  return `<div style="position: relative">${rendered}<CodemoTrigger title="显示代码" ${props} /></div>`;
 }
 
 export const codemoPlugin = () => {
@@ -131,4 +151,3 @@ export const codemoPlugin = () => {
     },
   });
 };
-

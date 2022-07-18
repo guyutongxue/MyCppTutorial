@@ -4,7 +4,7 @@ import type { RenderRule } from "markdown-it/lib/renderer";
 import { addFenceRule, definePluginObject } from "../utils";
 import { parse } from "./parser";
 
-const sdscPlugin = () =>
+export const sdscPlugin = () =>
   definePluginObject({
     name: "vuepress-plugin-sdsc",
     clientConfigFile: path.resolve(__dirname, "./client.ts"),
@@ -35,5 +35,3 @@ const sdscPlugin = () =>
       }
     },
   });
-
-export { sdscPlugin };

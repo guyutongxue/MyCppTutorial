@@ -26,7 +26,7 @@
 - vuepress-plugin-io-block（自制）
 - vuepress-plugin-sdsc（自制）
 - vuepress-plugin-sidebar（自制）
-
+- vuepress-plugin-autolinker（自制）
 - markdown-it-multimd-table（MarkdownIt 插件）
 
 ### Codemo
@@ -101,6 +101,12 @@ SDSC 描述中包含以下要素：
 VuePress 的侧边栏设计思路和 Doxygen 等常见文档完全不同。它们的世界里，树形文档结构只存在于标题之间，文档之间的树形结构支持得很差。（官方维护人员称“not recommended”。）总之，这给我带来了不少的麻烦。
 
 然而 VuePress default theme 功能又很全，我可不愿意重头造轮子。所以，我的做法是在运行 VuePress 前通过一个自定义的配置文件 `sidebar.yml` 提前生成一个树形的侧边栏结构，然后由这个结构覆盖到对应的 VuePress default theme 字段上。这个思路不是什么好办法，不仅会拖慢构建速度，而且要求用户必须将 sourceDir 写死在 `vuepress.config.ts`。但不管怎样，至少它能工作。目前需要更新侧边栏时，请**重新加载整个项目**（而不是 HMR），比如 touch 一下 `vuepress.config.ts`。
+
+### Autolinker
+
+为 C++ 代码块自动添加指向 cppreference.com 的链接。该插件使用 [cppreference-index](https://github.com/Guyutongxue/cppreference-index) 爬取的单词索引，在代码块中寻找对应匹配，并生成指向对应页面的超链接。
+
+该插件可识别全局的 `using namespace xxx;` 和 `namespace xxx = yyy;`。
 
 ### MultiMarkdown Table
 

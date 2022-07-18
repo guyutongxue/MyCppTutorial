@@ -7,8 +7,10 @@
 	},
 	"devDependencies": {
 		"@gytx/gcc-translation": "^0.1.1",
+		"@gytx/cppreference-index": "^0.1.1",
 		"@types/codemirror": "^5.60.5",
 		"@types/diff": "^5.0.2",
+		"@types/jsdom": "^16.2.14",
 		"@types/markdown-it": "^12.2.3",
 		"@types/prismjs": "^1.26.0",
 		"@types/raphael": "^2.3.3",
@@ -26,6 +28,7 @@
 		"diff": "^5.0.0",
 		"eslint": "^8.16.0",
 		"eslint-plugin-only-warn": "^1.0.3",
+		"jsdom": "^20.0.0",
 		"markdown-it-multimd-table": "^4.1.3",
 		"prismjs": "^1.28.0",
 		"raphael": "^2.3.0",
