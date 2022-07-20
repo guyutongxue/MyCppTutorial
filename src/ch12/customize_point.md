@@ -139,10 +139,12 @@ void f(S& a, S& b) {
 }
 
 void g(S& a, S& b) {
-    using std::swap; // 或者 using namespace std;
+    using std::swap;
     swap(a, b);
 }
 ```
+
+> `using namespace std;` 是不对的
 
 这个例子中，`f` 函数和 `g` 函数是等价的吗？仔细想一想。
 

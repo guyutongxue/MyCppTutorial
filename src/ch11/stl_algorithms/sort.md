@@ -99,7 +99,7 @@ int main() {
 }
 ```
 
-有两种解决方法，一是给出比较运算符的定义，参考[之后的章节](./defaulted_compare.md)；二就是用自定义的函数对象担当“第二参数”来比较：
+有两种解决方法，一是给出比较运算符的定义，参考[之后的章节](../advanced/defaulted_compare.md)；二就是用自定义的函数对象担当“第二参数”来比较：
 
 ```cpp codemo
 #include <iostream>
