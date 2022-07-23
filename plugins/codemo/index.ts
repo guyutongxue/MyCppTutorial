@@ -1,4 +1,5 @@
 import { path } from "@vuepress/utils";
+import { JSDOM } from "jsdom";
 import { escapeHtml } from "markdown-it/lib/common/utils";
 import { definePluginObject, addFenceRule, type RuleContext } from "../utils";
 
@@ -75,9 +76,11 @@ function codemoRule({ content, lang, attr, token, defaultFn }: RuleContext) {
   const lines = content.trim().split("\n");
   const codemoDirective = /^\s*\/\/\s+(codemo\b.*)$/;
   let hide: boolean | null = null;
+  let pure = true; // 无 codemo 指令
   const parsed = lines.map((line) => {
     const result = line.match(codemoDirective);
     if (result !== null) {
+      pure &&= false;
       const directive = result[1].trim().split(" ")[1];
       hide ?? (hide = directive === "show");
       return {
@@ -92,9 +95,9 @@ function codemoRule({ content, lang, attr, token, defaultFn }: RuleContext) {
     }
   });
   hide ?? (hide = false);
-  const shownContent: string[] = [];
+  const shownLines: string[] = [];
   const shownFocus: number[] = [];
-  const fullContent: string[] = [];
+  const fullLines: string[] = [];
   const fullFocus: number[] = [];
   for (const i of parsed) {
     if (i.type === "directive") {
@@ -106,25 +109,39 @@ function codemoRule({ content, lang, attr, token, defaultFn }: RuleContext) {
           hide = false;
           break;
         case "focus-next-line": {
-          shownFocus.push(shownContent.length + 1);
-          fullFocus.push(fullContent.length);
+          shownFocus.push(shownLines.length + 1);
+          fullFocus.push(fullLines.length);
           break;
         }
       }
     } else if (i.type === "content") {
       if (!hide) {
-        shownContent.push(i.value);
+        shownLines.push(i.value);
       }
-      fullContent.push(i.value);
+      fullLines.push(i.value);
     }
   }
-  token.content = shownContent.join("\n") + "\n";
+  token.content = shownLines.join("\n") + "\n";
   token.info = `${lang} {${shownFocus.join(",")}}`;
-  const rendered = defaultFn();
+  let rendered = defaultFn();
+  const fullContent = fullLines.join("\n");
+
+  // 令复制代码正常工作
+  if (!pure) {
+    const { document } = new JSDOM(`<!DOCTYPE html>${rendered}`).window;
+    const pre = document.querySelector("pre");
+    if (pre === null) throw new Error(`No <pre> found in rendered codemo fence`);
+    pre.classList.add("dirty");
+    const hiddenNode = document.createElement("pre");
+    hiddenNode.innerHTML = escapeHtml(fullContent);
+    hiddenNode.classList.add("hidden-copycode-codeblock");
+    pre.parentElement?.appendChild(hiddenNode);
+    rendered = document.body.innerHTML;
+  }
 
   const props = toPropString([
     ["lang", lang],
-    ["code", fullContent.join("\n")],
+    ["code", fullContent],
     ["focus", fullFocus.length > 0 ? fullFocus.join(",") : void 0],
     ["input", input],
   ]);

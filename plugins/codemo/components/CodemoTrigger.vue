@@ -63,4 +63,7 @@ function trigger() {
 .codemo-trigger:hover:active {
   transform: scale(0.95);
 }
+.hidden-copycode-codeblock {
+  display: none;
+}
 </style>

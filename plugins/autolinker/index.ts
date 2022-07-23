@@ -153,7 +153,7 @@ export const autolinkerPlugin = () =>
 
       addFenceRule(mdi, "cpp", ({ defaultFn, content }): string => {
         const html = defaultFn();
-        const window = new JSDOM(`<!DOCTYPE html>` + html).window;
+        const window = new JSDOM(`<!DOCTYPE html>${html}`).window;
         const codeblock = window.document.querySelector(".language-cpp code");
         if (codeblock === null) return html;
         const linked = addLink(codeblock, content, window);

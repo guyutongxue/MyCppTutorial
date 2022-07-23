@@ -142,7 +142,10 @@ export default defineUserConfig({
       hostname: "https://cpp-tutorial.vercel.app",
     }),
     copyCodePlugin({
-      selector: '.theme-default-content div[class*="language-c"] pre',
+      selector: [
+        '.theme-default-content div[class*="language-c"] pre:not(.dirty)',
+        '.hidden-copycode-codeblock'
+      ]
     }),
     ioBlockPlugin(),
     sdscPlugin(),

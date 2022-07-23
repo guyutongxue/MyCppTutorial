@@ -6,7 +6,8 @@
     "external.d.ts",
   ],
   "exclude": [
-    "plugins/**/client.ts",
+    "plugins/*/client.ts",
+    "plugins/*/components/*.ts",
   ],
   "compilerOptions": {
     "lib": ["DOM.Iterable"],
