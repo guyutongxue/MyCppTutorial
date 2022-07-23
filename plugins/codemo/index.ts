@@ -135,6 +135,7 @@ function codemoRule({ content, lang, attr, token, defaultFn }: RuleContext) {
     const hiddenNode = document.createElement("pre");
     hiddenNode.innerHTML = escapeHtml(fullContent);
     hiddenNode.classList.add("hidden-copycode-codeblock");
+    hiddenNode.setAttribute("v-pre", "");
     pre.parentElement?.appendChild(hiddenNode);
     rendered = document.body.innerHTML;
   }
