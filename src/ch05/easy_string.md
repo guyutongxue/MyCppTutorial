@@ -58,7 +58,7 @@ int main() {
 关于结构体的初始化在 [结构体的定义](/ch03/struct/struct_def) 提到，这里恰好让 `"Hello"` 初始化值初始化第一个成员 `str`。结构体中的函数不用初始化，会被忽略。
 
 所以，整个代码变成了这个样子：
-```cpp codemo(show)
+```cpp codemo
 #include <iostream>
 using namespace std;
 struct String {
@@ -88,8 +88,12 @@ int main() {
 ```
 如果初始化的长度太长，就会导致数组越界。嗯——这个问题解决起来可以很简单，就把 `str` 数组的大小变大就好了，比如大到 `char str[50];`。但保不齐之后会用到 `100` 位长的字符串，然后又不够了。所以仅仅增加 `str` 数组的大小并不是最完美的解决方案。
 
-如果每次 `String` 被初始化的时候，总是能找到足够大的存储空间来放初始化值就好了。所以，[`new[]` 运算符](/ch04/list/arr_new_del)可以帮助我们做这件事情。利用它，我们这样改进 `String` 结构体：
-```cpp
+如果每次 `String` 被初始化的时候，总是能找到足够大的存储空间来放初始化值就好了。所以，[new\[\] 运算符](/ch04/list/arr_new_del)可以帮助我们做这件事情。利用它，我们这样改进 `String` 结构体：
+```cpp codemo
+#include <cstring>
+#include <iostream>
+
+// codemo show
 struct String {
     char* str;
     void init(const char* initVal) {
@@ -98,12 +102,41 @@ struct String {
         for (unsigned i{0}; i <= len; i++)   // 其中 len+1 是为了存储 '\0' 结尾
             str[i] = initVal[i];             // 然后将这片空间逐个赋值
     }
-    unsigned length(); // 同上
+    // codemo hide
+    unsigned length() {
+        unsigned i{0};
+        while (str[i] != '\0') {
+            i++;
+        }
+        return i;
+    }
+    // codemo show
 };
 ```
 
 接下来就需要这样使用这个字符串结构体了：
-```cpp
+```cpp codemo
+#include <cstring>
+#include <iostream>
+
+struct String {
+    char* str;
+    void init(const char* initVal) {
+        unsigned len = std::strlen(initVal); // 求出初始化字符串的长度
+        str = new char[len + 1];             // 分配这么大空间，将 str 指向它；
+        for (unsigned i{0}; i <= len; i++)   // 其中 len+1 是为了存储 '\0' 结尾
+            str[i] = initVal[i];             // 然后将这片空间逐个赋值
+    }
+    unsigned length() {
+        unsigned i{0};
+        while (str[i] != '\0') {
+            i++;
+        }
+        return i;
+    }
+};
+
+// codemo show
 int main() {
     String a, b;
     a.init("Hello"); // 使用 init 成员函数初始化
