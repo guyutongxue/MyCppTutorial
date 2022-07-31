@@ -37,9 +37,7 @@ int main() {
 
 ### 使用 Visual Studio Code
 
-Visual Studio Code 是一款非常现代的文本编辑器，可以支持编译并运行 C++ 代码。现在你需要做的事情非常简单，前往[这里](https://vscch3.vercel.app)下载一个配置工具，然后双击运行它即可。你只需要按照工具的提示一步一步做下去就可以了。
-
-> 配置工具演示： [BV1tf4y1V7F6](https://b23.tv/BV1tf4y1V7F6) 。
+Visual Studio Code 是一款非常现代的文本编辑器，可以支持编译并运行 C++ 代码。现在你需要做的事情非常简单，前往[这里](https://v4.vscch.tk)下载一个配置工具，然后双击运行它即可。你只需要按照工具的提示一步一步做下去就可以了。
 
 当你完成配置的时候，工具会提示生成测试代码，这个代码与我之前给出的代码是相同的。因此你可以直接按照提示编译并运行（或调试），即可观察到下方（或弹窗）输出了 `Hello, world!` 。
 
@@ -85,7 +83,7 @@ xcode-select --install
 
 ### 使用 Visual Studio Code
 
-macOS 下也可以使用 Visual Studio Code。[这里](https://github.com/Guyutongxue/VSCodeConfigHelper/blob/master/VS_Code_in_Mac.md)提供了一个完整的步骤说明（其中第一步我们已经做过了）。该说明结尾也给出了与上文等价的测试代码。当你成功配置、编译并运行后，你将看到弹出一个白底黑字的窗口，并显示了 `Hello, world!` （不一定在第一行）.
+macOS 下也可以使用 Visual Studio Code。前往[这里](https://v4.vscch.tk)下载一个配置工具，然后运行其中的程序即可。你只需要按照工具的提示一步一步做下去就可以了。
 
 ### 使用 CLion
 
@@ -103,13 +101,15 @@ Xcode 是 Apple 官方提供的集成开发环境，但是由于使用它编写 
 
 现在再左侧的子窗口中可以找到一个 main.cpp 的文件（可能位于路径 `<项目名称>/<项目名称>` 下），然后你就可以开始书写代码了。你可以将开头提供的测试代码抄下或者复制粘贴。随后点击左上角的黑色三角（播放）键，就会自动编译并运行；同时右下方的 Output （输出）子窗口会显示 `Hello, world!` 。
 
+> 关于更多 macOS 下开发环境的配置，你可以阅读 [leavelet](https://leavelet.io) 编写的[《Mac 指北》](https://macguide.leavelet.io/Advanced/developmentEnvFromScratch.html)。
+
 ## GNU/Linux
 
 尽管我认为不会有读者使用 GNU/Linux 系统，但是为了保证面面俱到，我仍然将 GNU/Linux 的配置方法简要写出。
 
 ### 使用 Visual Studio Code
 
-参考[本页面](https://github.com/Guyutongxue/VSCodeConfigHelper/blob/master/VS_Code_in_Linux.md)。若配置无误，输出将在下方弹出终端中显示。
+前往[这里](https://v4.vscch.tk)下载一个配置工具，按照工具的说明完成配置。
 
 ### 使用命令行
 
