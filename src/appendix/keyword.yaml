@@ -646,7 +646,7 @@
   - info: 用于控制成分：goto语句可无条件跳转到对应标号的语句。
     sdsc:
     - |
-      "goto" 语句标号";"
+      "goto" 标号";"
     example: |
       loop: x++;
       if (x < 10) goto loop;
