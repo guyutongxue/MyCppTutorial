@@ -177,9 +177,11 @@
         - /ch11/stl_algorithms/compare_with_legacy.md
     - /ch11/advanced/:
         - /ch11/advanced/defaulted_compare.md
-        # - /ch11/advanced/adl.md
+        - /ch11/advanced/adl.md
+        - /ch11/advanced/callable.md
 # - /ch12/:
-#     - /ch12/concept.md
+#     - /ch12/variadic.md
+# - /ch13/: # 并发
 - /appendix/:
     - /appendix/operator.md
     - /appendix/keyword.md

@@ -2,7 +2,7 @@
 
 ## 开发相关
 
-请阅读 [src/contribution.md](./src/contribution.md)。
+请阅读 [src/technical_info.md](./src/technical_info.md)。
 
 ## 联系方式
 

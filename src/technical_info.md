@@ -1,4 +1,4 @@
-# 关于本项目
+# 技术信息
 
 目前，本项目基于 [VuePress](https://v2.vuepress.vuejs.org) 系统。项目将由 [Vercel](https://vercel.com) 自动构建并托管。
 

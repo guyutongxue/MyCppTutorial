@@ -221,13 +221,14 @@ freopen("1.out","w",stdout); // 则重定向到文件输出
 #endif // LIBRARY_FILENAME_H
 ```
 
-`#pragma pack` 指定接下来定义的结构体的[对齐](https://zh.cppreference.com/w/cpp/language/object#.E5.AF.B9.E9.BD.90)。
+`#pragma pack` 指定接下来定义的结构体的[对齐](https://zh.cppreference.com/w/cpp/language/object#.E5.AF.B9.E9.BD.90)。虽然 `alignas` 修饰也可以指定对齐，但它只能让对齐更严格（值更大），而 `#pragma pack` 可以指定更宽松的对齐要求。
 ```sdsc
 "#pragma pack("对齐")"
 "#pragma pack()"
 ```
 `#pragma pack` 可接受一个参数 `@对齐@`，它需要是 2 的整数次幂。当写下这条预处理指令后，之后的结构体对齐皆设置为 `@对齐@`。`#pragma pack()` 取消此设置，恢复默认对齐。比如：
-```cpp codemo(show)
+
+```cpp codemo
 #include <iostream>
 using namespace std;
 #pragma pack(2)
@@ -238,9 +239,12 @@ struct X {
 };
 #pragma pack()
 int main() {
+    cout << alignof(X) << endl; // 2
     cout << sizeof(X) << endl; // 10
 }
 ```
+
+这里，我使用 `alignof` 运算符检查某个类型或对象的对其要求。
 
 但是，如果你使用 GCC 或 Clang，我们更推荐用特性（Attribute）来实现：
 ```cpp codemo(show)
@@ -253,6 +257,7 @@ struct [[using gnu: packed, aligned(2)]] X {
     int16_t c;
 };
 int main() {
+    cout << alignof(X) << endl; // 2
     cout << sizeof(X) << endl; // 10
 }
 ```
