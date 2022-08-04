@@ -121,7 +121,7 @@ struct String {
 然后在 `main` 函数中调用这个新添加的重载：
 ```cpp
 int main() {
-    String a(5, "x");  // 调用重载 #1
+    String a(5, 'x');  // 调用重载 #1
     String b("Hello"); // 调用重载 #2
     std::cout << a.str << std::endl; // "xxxxx"
     std::cout << b.str << std::endl; // "hello"
