@@ -2,7 +2,6 @@ import { addFenceRule, definePluginObject } from "../utils";
 import { JSDOM, type DOMWindow } from "jsdom";
 import indexes from "@gytx/cppreference-index/dist/generated.json";
 import type { Index } from "@gytx/cppreference-index";
-import { escapeHtml } from "markdown-it/lib/common/utils";
 import { path } from "@vuepress/utils";
 
 interface LinkEntry {
@@ -10,88 +9,133 @@ interface LinkEntry {
   end: number;
   link: string;
 }
-interface TraverseContext {
-  currentIndex: number;
-  parent: Element;
-  links: LinkEntry[];
-  window: DOMWindow;
-  // debug: boolean;
+
+type Token = { content: string; classList: Set<string> };
+
+/**
+ * 将 DOM 树拍平
+ * @return 每个叶子 <span> 的类列表和内容
+ */
+function flatten(parent: Element, window: DOMWindow) {
+  const result: Token[] = [];
+  for (const n of parent.childNodes) {
+    if (n instanceof window.Text) {
+      const ele = parent.cloneNode() as Element;
+      result.push({
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        content: n.textContent!,
+        classList: new Set(ele.classList),
+      });
+    } else if (n instanceof window.Element) {
+      n.classList.add(...parent.classList);
+      result.push(...flatten(n, window));
+    }
+  }
+  return result;
 }
 
-function traverse(node: Node, ctx: TraverseContext) {
-  const first: LinkEntry | undefined = ctx.links[0];
-  const firstBegin = (first?.begin ?? Infinity) - ctx.currentIndex;
-  const firstEnd = (first?.end ?? Infinity) - ctx.currentIndex;
-  if (node instanceof ctx.window.Text) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const text = node.textContent!;
-    const len = text.length;
-    // if (ctx.debug) console.log({ c: ctx.currentIndex, len, firstBegin, firstEnd });
-    if (firstBegin >= len) {
-      ctx.parent.append(node.cloneNode());
-    } else if (firstBegin < 0) {
-      if (firstEnd > len) {
-        ctx.parent.append(node.cloneNode());
-      } else {
-        const secondPart = text.substring(0, firstEnd);
-        ctx.parent.append(secondPart);
-        const closingElements: Element[] = [];
-        while (ctx.parent.tagName.toLowerCase() !== "a") {
-          closingElements.push(ctx.parent);
-          const pe = ctx.parent.parentElement;
-          if (pe === null)
-            throw new Error(`Unexpected back-traced to root element`);
-          ctx.parent = pe;
-        }
-        ctx.parent = ctx.parent.parentElement!;
-        // if (ctx.debug) console.log(ctx.parent.innerHTML);
-        while (closingElements.length > 0) {
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          const last = closingElements.pop()!.cloneNode() as Element;
-          last.innerHTML = "";
-          ctx.parent.append(last);
-          ctx.parent = last;
-        }
-        ctx.links.shift();
+/** 将拍平后的 <span> 和链接合并，组成元素 */
+function tokensToElement(
+  tokens: Token[],
+  links: LinkEntry[],
+  document: Document
+) {
+  const anchors = links
+    .flatMap((l) => [
+      {
+        type: "begin" as const,
+        index: l.begin,
+        link: l.link,
+      },
+      {
+        type: "end" as const,
+        index: l.end,
+      },
+    ])
+    .sort((a, b) => a.index - b.index);
+  let currentIndex = 0;
+  const result: Array<
+    | {
+        type: "begin";
+        link: string;
       }
+    | {
+        type: "end";
+      }
+    | {
+        type: "content";
+        classList: Set<string>;
+        content: string;
+      }
+  > = [];
+  while (tokens.length && anchors.length) {
+    const { index } = anchors[0];
+    const { classList, content } = tokens[0];
+    if (index < currentIndex + content.length) {
+      if (index !== currentIndex) {
+        result.push({
+          type: "content",
+          content: content.substring(0, index - currentIndex),
+          classList,
+        });
+        tokens[0].content = content.substring(index - currentIndex);
+      }
+      result.push(anchors[0]);
+      anchors.shift();
+      currentIndex = index;
     } else {
-      const firstPart = text.substring(0, firstBegin);
-      if (firstPart) {
-        ctx.parent.append(firstPart);
-      }
-      const secondPart = text.substring(firstBegin, firstEnd);
-      const linkEle = ctx.window.document.createElement("a");
-      linkEle.href = `https://zh.cppreference.com/w/${first!.link}`;
-      linkEle.target = "_blank";
-      linkEle.innerHTML = escapeHtml(secondPart);
-      ctx.parent.append(linkEle);
-      if (firstEnd > len) {
-        ctx.parent = linkEle;
-      } else {
-        ctx.links.shift();
-      }
+      result.push({
+        type: "content",
+        content,
+        classList,
+      });
+      tokens.shift();
+      currentIndex += content.length;
     }
-    ctx.currentIndex += Math.min(firstEnd, len);
-    if (firstEnd < len) {
-      const remainder = text.substring(firstEnd);
-      traverse(ctx.window.document.createTextNode(remainder), ctx);
-    }
-  } else if (node instanceof ctx.window.Element) {
-    if (node.tagName.toLowerCase() === "a") {
-      throw new Error(`<a> is not allowed`);
-    }
-    const parent = ctx.parent;
-    const currentNode = node.cloneNode() as Element;
-    currentNode.innerHTML = "";
-    ctx.parent = currentNode;
-    parent.append(currentNode);
-    for (const c of node.childNodes) {
-      traverse(c, ctx);
-    }
-    ctx.parent = ctx.parent.parentElement!;
-  } else {
-    throw new Error(`Unrecognized node type: ${node.nodeType}`);
   }
+  result.push(
+    ...tokens.map((t) => ({
+      type: "content" as const,
+      ...t,
+    }))
+  );
+
+  // Debugging
+  // for (const r of result) {
+  //   switch (r.type) {
+  //     case "content": process.stdout.write(r.content); break;
+  //     case "begin": process.stdout.write(`\x1b[34m(${r.link})\x1b[32m[`); break;
+  //     case "end": process.stdout.write(`]\x1b[0m`); break;
+  //   }
+  // }
+  let container: HTMLElement = document.createElement("code");
+  for (const r of result) {
+    switch (r.type) {
+      case "content": {
+        const span = document.createElement("span");
+        span.classList.add(...r.classList);
+        span.textContent = r.content;
+        container.appendChild(span);
+        break;
+      }
+      case "begin": {
+        const anchor = document.createElement("a");
+        anchor.href = `https://zh.cppreference.com/w/${r.link}`;
+        anchor.target = "_blank";
+        container.appendChild(anchor);
+        container = anchor;
+        break;
+      }
+      case "end": {
+        if (container.parentElement === null) {
+          throw new Error("No parent element");
+        }
+        container = container.parentElement;
+        break;
+      }
+    }
+  }
+  return container;
 }
 
 function addLink(ele: Element, code: string, window: DOMWindow) {
@@ -129,16 +173,10 @@ function addLink(ele: Element, code: string, window: DOMWindow) {
       });
     }
   }
+
+  const tokens = flatten(ele, window);
   const root = ele.cloneNode() as Element;
-  root.innerHTML = "";
-
-
-  traverse(ele, {
-    currentIndex: 0,
-    parent: root,
-    links: links.sort((a, b) => a.begin - b.begin),
-    window,
-  });
+  root.innerHTML = tokensToElement(tokens, links, window.document).innerHTML;
   return root;
 }
 
@@ -147,7 +185,6 @@ export const autolinkerPlugin = () =>
     name: "vuepress-plugin-autolinker",
     clientConfigFile: path.resolve(__dirname, "./client.ts"),
     extendsMarkdown: (mdi, app) => {
-
       // 为加快开发时运行速度，仅在构建时启用
       if (!app.env.isBuild) return;
 

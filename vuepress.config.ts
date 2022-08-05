@@ -25,7 +25,7 @@ export default defineUserConfig({
   dest: "./dist",
   theme: defaultTheme({
     sidebar: sidebar.forVueDefaultTheme(),
-    navbar: ["/contribution"],
+    navbar: ["/technical_info"],
     sidebarDepth: 0,
     contributors: false,
     lastUpdatedText: "最近更新",

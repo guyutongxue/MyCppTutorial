@@ -125,6 +125,5 @@ export class MissingGrammarError extends Error {
   constructor(lang: string) {
     super(`Missing syntax highlighting for language "${lang}"`);
     this.lang = lang;
-    Object.setPrototypeOf(this, new.target.prototype);
   }
 }
