@@ -30,16 +30,13 @@ a * 3;
 - **整数类型之间进行算术运算的结果仍然是整数类型**，舍去小数部分；
 - 有浮点类型数据参与的算术运算结果类型**与浮点类型保持一致**。
 
-也就是说：
-`5.0 / 3` 的值为 `double` 类型的 `1.666...` ，而 `5.0f / 3`  的值为 `float` 类型的 `1.666...` 。
+换句话说，如果想得到浮点类型的结果，则需要使用表达式 `5.0 / 3`（值为 `double` 类型的 `1.666...`）或  `5.0f / 3`。
 
-除此之外，若同为整数类型或同为浮点类型但具体类型不相同的，按照以下层级**转换到两者之中较高层级的类型**：
+这种确定算术表达式的类型的过程称为“一般算术转换”，有着复杂但严谨的过程。比如在 64 位 Windows 上，将按照以下层级关系**转换到两者之中的公共最高层级**：
 
-<div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
-  <img alt="QR code" src="https://s1.ax1x.com/2020/11/01/B0CJY9.png">
-</div>
+![usual arithmetic conversion](https://s1.ax1x.com/2022/08/12/vJul4g.png)
 
-> `bool` `char` `short` 和 `unsigned short` 在运算之前将无例外转换为 `int` ，此过程称为*整型提升*。
+> 该图示基于 64 位 Windows，即假设 $\mathtt{sizeof(char)} < \mathtt{sizeof(short)} < \mathtt{sizeof(int)} = \mathtt{sizeof(long)} < \mathtt{sizeof(long long)}$。如果编译器不这样实现，则转换层级也不同。
 
 ## 运算符优先级
 
