@@ -158,6 +158,7 @@
         - /ch10/smart_pointer/special_member_function.md
     - /ch10/adt/:
         - /ch10/adt/tuple.md
+        - /ch10/adt/noreturn.md
 - link: /ch11/
   children:
     - /ch11/grammar/:
