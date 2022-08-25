@@ -40,8 +40,6 @@ using Array = int[10];
 typedef int Array[10];
 ```
 
-C 中没有 `constexpr` 声明。你只能通过 `const` 限定的只读变量或者宏来定义常量。
-
 C 中没有带作用域的枚举，也不可以指定枚举的基。
 
 除此外还有一些细节上的问题，我们会在稍后章节说明。
@@ -49,7 +47,7 @@ C 中没有带作用域的枚举，也不可以指定枚举的基。
 ## 例子
 
 这样的 C++ 程序：
-```cpp codemo(show)
+```cpp codemo
 #include <iostream>
 using namespace std;
 int main() {
@@ -59,7 +57,7 @@ int main() {
 }
 ```
 你需要改写成这样：
-```c codemo(show)
+```c codemo
 #include <stdio.h>
 int main(void) {
     int a = 0, b = 0;
