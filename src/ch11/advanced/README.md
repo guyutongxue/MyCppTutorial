@@ -4,4 +4,5 @@
 
 这一部分目前的内容包括：
 - 预置比较：为自定义的类型定义比较运算符，以更好地应用于基于比较的 STL 算法；
-- ADL 与 CPO：了解实参依赖查找（ADL）的工作原理，从而写出函数式风格的库或者用户代码。
+- ADL 与 `std::swap` 二段式；https://quuxplusone.github.io/blog/2020/07/11/the-std-swap-two-step/
+- 可调用实体与 `std::invoke`；
