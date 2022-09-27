@@ -101,7 +101,7 @@ a = 56; // OK
 
 int globalVar{42};
 int& getGlobalVar() {
-    return glbVar;
+    return globalVar;
 }
 
 int main() {
