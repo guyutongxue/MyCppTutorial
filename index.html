@@ -34,7 +34,7 @@
           "<h1 style='color:red;font-size:3em;z-index:9999'>本页面不支持此浏览器。请改用较新的浏览器，如 Chrome, Edge 或 Firefox。</h1>";
       }
     </script>
-    <div style="background: lightgoldenrodyellow; padding: 1em; z-index: 100">
+    <div style="position: fixed; left: 0; top: 0; right: 0; background: lightgoldenrodyellow; padding: 1em; z-index: 100">
       本页面已停止更新，建议您阅读<a
         style="color: var(--link-color)"
         href="about:blank"
@@ -48,7 +48,7 @@
           .querySelector("#newLink")
           .setAttribute(
             "href",
-            `https://cpp-tutorial.vercel.app/${location.hash
+            `https://learn-cpp.tk/${location.hash
               .slice(2)
               .replace("README", "")}`
           );
