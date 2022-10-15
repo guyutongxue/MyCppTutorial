@@ -1,5 +1,5 @@
 import type { PluginObject } from "vuepress";
-import type * as MarkdownIt from "markdown-it";
+import type MarkdownIt from "markdown-it";
 import type * as Token from "markdown-it/lib/token";
 import type { RenderRule } from "markdown-it/lib/renderer";
 

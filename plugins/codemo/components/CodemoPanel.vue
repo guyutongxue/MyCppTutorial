@@ -11,9 +11,11 @@
 
 <script setup lang="ts">
 // @ts-ignore
-import { Splitpanes, Pane } from "splitpanes";
+import * as splitpanes from "splitpanes";
 import CodemoView from "./CodemoView.vue";
 import CompileView from "./CompileView.vue";
+
+const { Splitpanes, Pane } = splitpanes;
 
 </script>
 

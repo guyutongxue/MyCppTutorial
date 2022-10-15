@@ -45,12 +45,11 @@ export default defineUserConfig({
   },
   bundler: viteBundler({
     viteOptions: {
-      // @ts-expect-error No typing for 'ssr' now
       ssr: {
         // @gytx/gcc-translation is an ESM only package.
         // Vite doesn't support externalize it, see
         // https://vitejs.dev/guide/ssr.html#ssr-externals
-        noExternal: ["@gytx/gcc-translation"],
+        noExternal: ["@gytx/gcc-translation", "splitpanes"],
       },
     },
   }),
@@ -88,7 +87,7 @@ export default defineUserConfig({
       // https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/1892
       flowchart: true,
       tasklist: true,
-      tex: true,
+      katex: true,
     }),
     docsearchPlugin({
       appId: "LX33TRMJGI",

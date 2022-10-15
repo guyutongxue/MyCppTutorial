@@ -1,6 +1,6 @@
 import { addFenceRule, definePluginObject } from "../utils";
 import { JSDOM, type DOMWindow } from "jsdom";
-import indexes from "@gytx/cppreference-index/dist/generated.json";
+import indexes from "@gytx/cppreference-index/dist/generated.js";
 import type { Index } from "@gytx/cppreference-index";
 import { path } from "@vuepress/utils";
 

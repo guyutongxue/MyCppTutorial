@@ -1,5 +1,5 @@
 import { path } from "@vuepress/utils";
-import { escapeHtml } from "markdown-it/lib/common/utils";
+import { escapeHtml } from "markdown-it/lib/common/utils.js";
 import type { RenderRule } from "markdown-it/lib/renderer";
 import { addFenceRule, definePluginObject } from "../utils";
 import { parse } from "./parser";

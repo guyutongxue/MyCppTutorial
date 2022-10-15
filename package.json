@@ -6,8 +6,8 @@
 		"build": "vuepress build src"
 	},
 	"devDependencies": {
+		"@gytx/cppreference-index": "^0.1.10",
 		"@gytx/gcc-translation": "^0.1.1",
-		"@gytx/cppreference-index": "^0.1.5",
 		"@types/codemirror": "^5.60.5",
 		"@types/diff": "^5.0.2",
 		"@types/jsdom": "^16.2.14",
@@ -17,11 +17,11 @@
 		"@typescript-eslint/eslint-plugin": "^5.26.0",
 		"@typescript-eslint/parser": "^5.26.0",
 		"@vue/tsconfig": "^0.1.3",
-		"@vuepress/client": "^2.0.0-beta.49",
-		"@vuepress/plugin-container": "^2.0.0-beta.49",
-		"@vuepress/plugin-docsearch": "^2.0.0-beta.49",
-		"@vuepress/plugin-prismjs": "^2.0.0-beta.49",
-		"@vuepress/theme-default": "^2.0.0-beta.49",
+		"@vuepress/client": "^2.0.0-beta.51",
+		"@vuepress/plugin-container": "^2.0.0-beta.51",
+		"@vuepress/plugin-docsearch": "^2.0.0-beta.51",
+		"@vuepress/plugin-prismjs": "^2.0.0-beta.51",
+		"@vuepress/theme-default": "^2.0.0-beta.51",
 		"@vuepress/utils": "^2.0.0-alpha.1",
 		"codemirror": "^5.65.4",
 		"codemirror-editor-vue3": "^2.1.3",
@@ -36,10 +36,10 @@
 		"splitpanes": "^3.1.1",
 		"typescript": "^4.7.2",
 		"vue": "^3.2.35",
-		"vuepress": "^2.0.0-beta.49",
-		"vuepress-plugin-copy-code2": "^2.0.0-beta.91",
-		"vuepress-plugin-md-enhance": "^2.0.0-beta.91",
-		"vuepress-plugin-sitemap2": "^2.0.0-beta.91",
+		"vuepress": "^2.0.0-beta.51",
+		"vuepress-plugin-copy-code2": "^2.0.0-beta.110",
+		"vuepress-plugin-md-enhance": "^2.0.0-beta.110",
+		"vuepress-plugin-sitemap2": "^2.0.0-beta.110",
 		"yaml": "^2.1.1"
 	}
 }

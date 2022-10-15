@@ -4,6 +4,7 @@ import { defineClientConfig } from "@vuepress/client";
 // 仅支持（现在已经没人用的）AMD 和 UMD。
 // 这里直接向 <head> 添加一个 <script> 标签。
 import raphaelSrc from "raphael/raphael.min.js?raw";
+import { onMounted } from "vue";
 
 const adobeFontSansSerif = `
 (function(d) {
@@ -27,7 +28,17 @@ function loadScript(src: string) {
 }
 
 export default defineClientConfig({
-  setup: async () => {
-    await Promise.all([loadScript(raphaelSrc), loadScript(adobeFontSansSerif)]);
+  setup() {
+    onMounted(() => {
+      Promise.all([raphaelSrc, adobeFontSansSerif].map(loadScript));
+
+      // Only show docsearch when using vercel.app domain
+      if (location.hostname !== "cpp-tutorial.vercel.app") {
+        console.warn(
+          "Docsearch removed, because it only works in https://cpp-tutorial.vercel.app ."
+        );
+        document.querySelector("#docsearch-container")?.remove();
+      }
+    });
   },
 });

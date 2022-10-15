@@ -1,7 +1,7 @@
 import { addFenceRule, definePluginObject } from "../utils";
 import { path } from "@vuepress/utils";
 import type { Grammar } from "prismjs";
-import * as Prism from "prismjs";
+import Prism from "prismjs";
 
 const IO_GRAMMAR: Grammar = {
   input: {

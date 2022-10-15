@@ -1,6 +1,6 @@
 import { path } from "@vuepress/utils";
 import { JSDOM } from "jsdom";
-import { escapeHtml } from "markdown-it/lib/common/utils";
+import { escapeHtml } from "markdown-it/lib/common/utils.js";
 import { definePluginObject, addFenceRule, type RuleContext } from "../utils";
 
 function parseCodemoArgs(args: string) {
@@ -153,12 +153,6 @@ export const codemoPlugin = () => {
   return definePluginObject({
     name: "vuepress-plugin-codemo",
     clientConfigFile: path.resolve(__dirname, "./client.ts"),
-    onInitialized: (app) => {
-      app.layouts["Layout"] = path.resolve(
-        __dirname,
-        "./components/CodemoLayout.vue"
-      );
-    },
     extendsMarkdown: (mdi) => {
       addFenceRule(
         mdi,

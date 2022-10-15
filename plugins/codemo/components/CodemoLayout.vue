@@ -6,8 +6,6 @@
         <Transition
           name="fade-slide-y"
           mode="out-in"
-          @before-enter="onBeforeEnter"
-          @before-leave="onBeforeLeave"
         >
           <Page
             :key="page.path"
@@ -46,12 +44,12 @@
 import Home from "@theme/Home.vue";
 // @ts-ignore
 import Page from "@theme/Page.vue";
-import ParentLayout from "@vuepress/theme-default/lib/client/layouts/Layout.vue";
+// @ts-ignore
+import ParentLayout from "@vuepress/theme-default/layouts/Layout.vue";
 import type { DefaultThemePageFrontmatter } from "@vuepress/theme-default/lib/shared";
 // @ts-ignore
-import { Splitpanes, Pane } from "splitpanes";
+import * as splitpanes from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
-import { useScrollPromise } from "@vuepress/theme-default/lib/client/composables";
 import { usePageData, usePageFrontmatter } from "@vuepress/client";
 import { onMounted, onUnmounted, ref } from "vue";
 import CodemoPanel from "./CodemoPanel.vue";
@@ -59,13 +57,10 @@ import CodemoPanel from "./CodemoPanel.vue";
 import { source } from "./emitter";
 import type { Subscription } from "rxjs";
 
+const { Splitpanes, Pane } = splitpanes;
+
 const page = usePageData();
 const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>();
-
-// handle scrollBehavior with transition
-const scrollPromise = useScrollPromise();
-const onBeforeEnter = scrollPromise.resolve;
-const onBeforeLeave = scrollPromise.pending;
 
 const codemoWidth = ref(0);
 
