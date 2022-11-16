@@ -12,7 +12,7 @@
 ```cpp
 struct A {
     int b;
-}
+};
 A a;
 a.b;
 ```
