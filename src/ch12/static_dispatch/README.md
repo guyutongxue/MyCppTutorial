@@ -13,6 +13,7 @@
 是这样一种常见的情形：标准库提供了某个函数，但库（用户）希望针对某个类型，对这个函数做重新实现。比如，交换函数`std::swap`。假设我们有一个 `String`，没有实现移动语义（从而标准库的三次赋值版本会很慢），我们希望 `String` 的交换能够通过直接交换指针来快速操作。
 
 ```cpp
+#include <utility>
 // 我们希望：
 int main() {
     int a, b;
@@ -25,3 +26,55 @@ int main() {
 
 这就是一个“静态派发”的表现。编译器通过传入的实参，判断要调用标准的实现还是用户定义的实现。那么，它可以通过我们之前说的重载或者模板来实现吗？
 
+模板是不可以的。因为模板的本意是通用性的实现，而这里的需求是提供单独的特殊实现。那么重载呢？貌似是可以的：
+
+```cpp
+#include <utility>
+
+namespace std {
+void swap(String& a, String& b) {
+    // [...] 特殊实现
+}
+}
+
+int main() {
+    int a, b;
+    std::swap(a, b); // 重载选择标准库的模板实现
+    String c, d;
+    std::swap(c, d); // 重载选择接受 String 的 swap
+}
+```
+
+当我们重新打开 `std` 命名空间的时候，意味着某些不妙的事情会开始发生。事实上，大多数向 `std` 命名空间添加声明的操作都是未定义行为，其中就包括添加重载。所以刚才的代码其实是不正确的。
+
+更严重的问题是，如果我们自定义的类型是一个类模板呢？比如我们实现了类型 `Vector`，接受一个类型模板参数 `T`。
+
+```cpp
+#include <utility>
+
+namespace std {
+// 错误：重复定义 std::swap 模板
+template<typename T>
+void swap(Vector<T> a, Vector<T> b) {
+    // [...]
+}
+}
+
+int main() {
+    Vector<int> a, b;
+    std::swap(a, b);
+}
+```
+
+偏特化？不好意思，函数模板不能偏特化。
+```cpp
+namespace std {
+// 错误：函数不允许偏特化
+template<typename T>
+void swap<Vector<T>>(Vector<T> a, Vector<T> b) {
+    // [...]
+}
+}
+```
+
+于是这个问题就这样停滞下来了。
