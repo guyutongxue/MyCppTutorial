@@ -3,9 +3,9 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import yaml from "yaml";
 import type {
+  PluginObject,
   SidebarConfig,
   SidebarGroup,
-  SidebarGroupCollapsible,
 } from "vuepress";
 
 export interface SidebarPluginOptions {
@@ -119,7 +119,7 @@ export class Sidebar {
     }
   }
 
-  forPlugin() {
+  forPlugin(): PluginObject {
     return definePluginObject({
       name: "vuepress-plugin-sidebar",
       onInitialized: (app) => {
@@ -141,7 +141,7 @@ export class Sidebar {
   }
 
   forVueDefaultTheme(): SidebarConfig {
-    const result: SidebarGroupCollapsible[] = [];
+    const result: SidebarGroup[] = [];
     for (const item of this.sidebar) {
       result.push({
         text: item.text ?? item.link,

@@ -2,6 +2,7 @@ import { path } from "@vuepress/utils";
 import { JSDOM } from "jsdom";
 import { escapeHtml } from "markdown-it/lib/common/utils.js";
 import { definePluginObject, addFenceRule, type RuleContext } from "../utils";
+import type { PluginObject } from "vuepress";
 
 function parseCodemoArgs(args: string) {
   const lParen = args.indexOf("(");
@@ -130,7 +131,8 @@ function codemoRule({ content, lang, attr, token, defaultFn }: RuleContext) {
   if (!pure) {
     const { document } = new JSDOM(`<!DOCTYPE html>${rendered}`).window;
     const pre = document.querySelector("pre");
-    if (pre === null) throw new Error(`No <pre> found in rendered codemo fence`);
+    if (pre === null)
+      throw new Error(`No <pre> found in rendered codemo fence`);
     pre.classList.add("dirty");
     const hiddenNode = document.createElement("pre");
     hiddenNode.innerHTML = escapeHtml(fullContent);
@@ -149,7 +151,7 @@ function codemoRule({ content, lang, attr, token, defaultFn }: RuleContext) {
   return `<div style="position: relative">${rendered}<CodemoTrigger title="显示代码" ${props} /></div>`;
 }
 
-export const codemoPlugin = () => {
+export function codemoPlugin(): PluginObject {
   return definePluginObject({
     name: "vuepress-plugin-codemo",
     clientConfigFile: path.resolve(__dirname, "./client.ts"),
@@ -162,4 +164,4 @@ export const codemoPlugin = () => {
       );
     },
   });
-};
+}

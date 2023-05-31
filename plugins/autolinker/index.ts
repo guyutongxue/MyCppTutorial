@@ -3,6 +3,7 @@ import { JSDOM, type DOMWindow } from "jsdom";
 import indexes from "@gytx/cppreference-index/dist/generated.js";
 import type { Index } from "@gytx/cppreference-index";
 import { path } from "@vuepress/utils";
+import type { PluginObject } from "vuepress";
 
 interface LinkEntry {
   begin: number;
@@ -180,8 +181,8 @@ function addLink(ele: Element, code: string, window: DOMWindow) {
   return root;
 }
 
-export const autolinkerPlugin = () =>
-  definePluginObject({
+export function autolinkerPlugin(): PluginObject {
+  return definePluginObject({
     name: "vuepress-plugin-autolinker",
     clientConfigFile: path.resolve(__dirname, "./client.ts"),
     extendsMarkdown: (mdi, app) => {
@@ -199,3 +200,4 @@ export const autolinkerPlugin = () =>
       });
     },
   });
+}

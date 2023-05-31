@@ -1,4 +1,4 @@
-import { defaultTheme, defineUserConfig, viteBundler } from "vuepress";
+import { defaultTheme, viteBundler, type UserConfig } from "vuepress";
 
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 import { containerPlugin } from "@vuepress/plugin-container";
@@ -18,7 +18,7 @@ const sidebar = new Sidebar({
   sourceDir: path.resolve(__dirname, "src"),
 });
 
-export default defineUserConfig({
+const config: UserConfig = {
   lang: "zh-CN",
   title: "谷雨同学的 C++ 教程",
   description: "Learn C++ in a modern way",
@@ -83,8 +83,6 @@ export default defineUserConfig({
     autolinkerPlugin(),
     codemoPlugin(),
     mdEnhancePlugin({
-      // pnpm 下有 bug，改用 npm 即可
-      // https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/1892
       flowchart: true,
       tasklist: true,
       katex: true,
@@ -155,4 +153,5 @@ export default defineUserConfig({
       rowspan: true
     });
   }
-});
+};
+export default config;

@@ -87,7 +87,7 @@ OO 部分本身的新东西不多。像 `=default` `=delete` `final` `override` 
 - 北京大学 2019 级信息科学技术学院本科生　　郭　易
 
 感谢开源社区提供的以下优秀项目：
-- [Vuepress](https://v2.vuepress.vuejs.org) 及各种第三方插件（[列表](/contribution.md#插件)）
+- [Vuepress](https://v2.vuepress.vuejs.org) 及各种第三方插件（[列表](/contribution#插件)）
 - [Vue](https://vuejs.org)
 - [CodeMirror](https://codemirror.net/)
 - [Compiler Explorer](https://godbolt.org) 的开放 API
