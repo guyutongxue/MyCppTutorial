@@ -37,7 +37,7 @@ export default defineClientConfig({
         console.warn(
           "Docsearch removed, because it only works in https://cpp-tutorial.vercel.app ."
         );
-        document.querySelector("#docsearch-container")?.remove();
+        document.querySelector(".DocSearch")?.remove();
       }
     });
   },

@@ -17,7 +17,7 @@
                     </td>
                 </template>
                 <td>
-                    <p>{{u.info}}</p>
+                    <p v-html="u.info"></p>
                     <SdscBlock v-for="s of u.sdsc" :nodesJson="s" />
                 </td>
                 <td>
@@ -49,7 +49,7 @@
                     </td>
                 </template>
                 <td>
-                    <p>{{u.info}}</p>
+                    <p v-html="u.info"></p>
                     <SdscBlock v-for="s of u.sdsc" :nodesJson="s" />
                 </td>
                 <td>
