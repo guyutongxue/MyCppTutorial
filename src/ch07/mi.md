@@ -41,7 +41,7 @@ class SignedInteger : public UnsignedInteger {
 
 int main() {
     SignedInteger si;
-    si.abs(); // 调用 UnsignedInteger::abs，恰好为次数的绝对值
+    si.abs(); // 调用 UnsignedInteger::abs，恰好为此数的绝对值
 }
 ```
 

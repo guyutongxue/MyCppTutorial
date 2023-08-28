@@ -9,5 +9,43 @@
 积类型在编程中更常见。比如 `unsigned` 类型和 `bool` 类型的积，就是 $\{0,1,\cdots,2^{32}-1\}\times\{\mathtt{true},\mathtt{false}\}$。此外，数学定理告诉我们，两个集合的积的大小（基数）恰好是这两个集合的大小的积。在编程上，结构体类型就是积类型的体现：
 
 ```cpp
-struct 
+struct MyStruct {
+    unsigned a;
+    bool b;
+};
 ```
+
+注意所有可能的 `MyStruct` 类型的取值：$\{(0, \mathtt{true}), (0, \mathtt{false}), (1, \mathtt{true}), (1, \mathtt{false}), \cdots, (2^{32}-1, \mathtt{false})\}$（其中每一个有序数对 $(x, y)$ 指代两个成员的取值），这恰好是 `unsigned` 和 `bool` 的笛卡尔积，因此我们或许可以说 `MyStruct` 类型是 `unsigned` 和 `bool` 的积类型。——但一个更弱的描述是更恰当的：`MyStruct` 类型与 `unsigned` $\times$ `bool` 类型**同构**。
+
+另一方面则是集合的并。考虑 `unsigned` $\cup$ `bool`，它的枚举写法应该是：`$\{0,1,\cdots,2^{32}-1,\mathtt{true},\mathtt{false}\}$。这里所对应的 C++ 语法点就是联合体了：
+
+```cpp
+union MyUnion {
+    unsigned a;
+    bool b;
+};
+```
+
+不必多言，`MyUnion` 类型的合法取值就是上述 `unsigned` $\cup$ `bool` 中的 $2^{32}+2$ 个元素。因此可以说，`MyUnion` 类型与 `unsigned` $\cup$ `bool` 类型同构。
+
+但是，结构体和共用体并不能严格说作为积类型、和类型。这是因为，C++ 的类型系统是**具名的**。即只有名字相同的类型，才被视为同一种类型。
+
+```cpp
+struct S1 {
+    unsigned a;
+    bool b;
+};
+struct S2 {
+    unsigned a;
+    bool b;
+};
+int main() {
+    S1 s1{};
+    S2 s2{};
+    s1 = s2; // 编译错误
+}
+```
+
+虽然 `S1` 和 `S2` 在抽象的——将类型作为集合讨论的情况下——是等同的类型，但是 C++ 不会允许两者之间进行随意代换，如代码所示的 `s1 = s2` 是显然错误的表达式。在数学上，我们不会说因为给一个东西起了不同的变量名代指就变成了不同的事物；因此这里出现了代码和理论的偏差。
+
+联合体有着同样的问题。此外，原生的联合体有不安全的特点，你可以随时访问任何一个成员，即便它不是活跃成员。所以，结构体和联合体并不是数学家期望的那种完美的 ADT。C++ 为此引入了两个专门的通用的 ADT，`std::tuple` 和 `std::variant`，以满足他们的胃口。这两个类型以模板的形式，摒弃了具体的类型名，从而绕开了 C++ 的基于名字的类型检查。
