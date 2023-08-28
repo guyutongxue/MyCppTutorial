@@ -3,9 +3,10 @@ import { escapeHtml } from "markdown-it/lib/common/utils.js";
 import type { RenderRule } from "markdown-it/lib/renderer";
 import { addFenceRule, definePluginObject } from "../utils";
 import { parse } from "./parser";
+import type { PluginObject } from "vuepress";
 
-export const sdscPlugin = () =>
-  definePluginObject({
+export function sdscPlugin(): PluginObject {
+  return definePluginObject({
     name: "vuepress-plugin-sdsc",
     clientConfigFile: path.resolve(__dirname, "./client.ts"),
     extendsMarkdown: (mdi) => {
@@ -26,7 +27,10 @@ export const sdscPlugin = () =>
             return html
               .replace(/<code/, `<code class="sdsc-inline"`)
               .replace(/&quot;(.*?)&quot;/g, (m, p1) => {
-                return `<span class="string">${p1.replace(/@/g, '&quot;')}</span>`;
+                return `<span class="string">${p1.replace(
+                  /@/g,
+                  "&quot;"
+                )}</span>`;
               });
           } else {
             return defaultFn(tokens, idx, options, env, slf);
@@ -35,3 +39,4 @@ export const sdscPlugin = () =>
       }
     },
   });
+}

@@ -27,7 +27,7 @@ unsigned int sb{b.width * b.height};
 我们之前说过，相似的运算可以通过函数来实现。这样搞：
 ```cpp
 unsigned int getArea(Rect x) {
-    return a.width * a.height;
+    return x.width * x.height;
 }
 int main() {
     unsigned int sa{getArea(a)};
