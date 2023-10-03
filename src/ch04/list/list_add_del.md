@@ -16,7 +16,7 @@ prev->next = temp;
 
 ```cpp
 Node* temp{new Node{}};
-temp->next = head->next;
+temp->next = head;
 head = temp;
 ```
 
