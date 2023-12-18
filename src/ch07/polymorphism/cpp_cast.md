@@ -52,8 +52,8 @@ static_cast<float>(5 / 3);
 #include <iostream>
 int main() {
     const int a{42};
-    int* q{(int*)(&a)};
-    *q = 56;                     // 会发生什么？
+    int* p{(int*)(&a)};
+    *p = 56;                     // 会发生什么？
     std::cout << a << std::endl; // 又会输出什么？
 }
 ```
@@ -65,8 +65,8 @@ int main() {
 ```cpp codemo(show)
 int main() {
     const int a{42};
-    int* q{const_cast<int*>(&a)};
-    *q = 56;                     // 未定义行为
+    int* p{const_cast<int*>(&a)};
+    *p = 56;                     // 未定义行为
     // [...]
 }
 ```
