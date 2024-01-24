@@ -109,7 +109,7 @@ struct Animal {
 };
 
 // ……可以类外定义
-void Animal::act() {
+void Animal::act() const {
     std::cout << "It says: ";
 }
 
