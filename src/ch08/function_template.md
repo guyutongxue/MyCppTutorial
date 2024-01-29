@@ -111,7 +111,7 @@ int main() {
 ```
 中，`42` 具有 `int` 类型，那么这里期望一个 `void print(int);` 类型的实例。因此，编译器有能力推导出模板声明 `void print(T);` 中的形参 `T` 应该取值为 `int`。这就完成了模板实参的推导。
 
-函数模板实参推导通过一套[及其复杂的流程](https://zh.cppreference.com/w/cpp/language/template_argument_deduction)实现。我们并不深究其原理，它在日常的使用中一般不会遇到麻烦。如果遇到了麻烦，我们也只需再次显式指定模板实参即可。
+函数模板实参推导通过一套[极其复杂的流程](https://zh.cppreference.com/w/cpp/language/template_argument_deduction)实现。我们并不深究其原理，它在日常的使用中一般不会遇到麻烦。如果遇到了麻烦，我们也只需再次显式指定模板实参即可。
 
 > 严格讲，模板实参和形参的结合应称为特化（specialization）而非实例化，实例化是使用模板的特化后才会发生的。但为了避免与后续的模板显式特化语法混淆，这里我只用实例化来代指整个过程。
 

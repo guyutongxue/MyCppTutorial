@@ -98,7 +98,7 @@ int add() {
     return N + M;
 }
 int main() {
-    add<>()   // 实例化 add<42, 56>
+    add<>();  // 实例化 add<42, 56>
     add<1>(); // 实例化 add<1, 56>
 }
 ```

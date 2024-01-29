@@ -71,7 +71,7 @@ class C {
 
 public:
     C(T mem) : mem{mem} { }
-}；
+};
 
 int main() {
     C a(3); // 无需模板实参，推导出应生成 C<int> 类

@@ -94,8 +94,8 @@ int main() {
 
 ```cpp codemo
 struct S {
-    S() = default; // 不允许复制
-    S(const S&) = delete;
+    S() = default;
+    S(const S&) = delete; // 不允许复制
 };
 int main() {
     S a(S{});
