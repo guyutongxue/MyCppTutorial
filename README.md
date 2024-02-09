@@ -1,4 +1,4 @@
-# 谷雨同学的 C++ 教程 [learn-cpp.tk](https://learn-cpp.tk/)
+# 谷雨同学的 C++ 教程 [learn-cpp.tk](https://learn-cpp.guyutongxue.site/)
 
 ## 开发相关
 
