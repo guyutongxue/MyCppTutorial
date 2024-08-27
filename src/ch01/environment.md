@@ -45,7 +45,7 @@ Visual Studio Code 是一款非常现代的文本编辑器，可以支持编译�
 
 若没能玩明白 Visual Studio Code，那么 Visual Studio 也是一个不错的选择。但前提是你需要有更充足的时间和空间（因为它安装所需要的空间和时间开销都比较大）。
 
-首先请前往 [Visual Studio 官方网站](https://visualstudio.microsoft.com/zh-hans/vs/) 获取 Visual Studio。其中，Visual Studio 2019 Community 是面向个人的免费版本。下载并启动安装程序后，你需要勾选“使用C++的桌面工具开发”这一工作负载，然后点击右下角安装。安装时间可能较长，需要耐心等待。
+首先请前往 [Visual Studio 官方网站](https://visualstudio.microsoft.com/zh-hans/vs/) 获取 Visual Studio。其中，Visual Studio 2022 Community 是面向个人的免费版本。下载并启动安装程序后，你需要勾选“使用C++的桌面工具开发”这一工作负载，然后点击右下角安装。安装时间可能较长，需要耐心等待。
 
 安装完成后，你可以从开始菜单启动 Visual Studio。
 
@@ -61,7 +61,7 @@ Visual Studio Code 是一款非常现代的文本编辑器，可以支持编译�
 
 如果你喜欢小巧、可靠的环境，或者说你电脑内的所剩空间有限，那么 Dev-C++ 应该比较适合你。
 
-请注意，网上大多数 Dev-C++ 的安装包都是较为过时的。在这里，我提供一个 [非官方但较新的版本](https://royqh.net/devcpp/download) 并推荐读者使用。（[官方版本](https://github.com/Embarcadero/Dev-Cpp/releases)也可以，但稳定性不高。）使用方法很简单，下载该安装包后运行安装即可。
+请注意，网上大多数 Dev-C++ 的安装包都是较为过时的。在这里，我提供一个 [非官方但较新的版本](https://royqh.net/redpandacpp/download) 并推荐读者使用。（[官方版本](https://github.com/Embarcadero/Dev-Cpp/releases)也可以，但稳定性不高。）使用方法很简单，下载该安装包后运行安装即可。
 
 安装完成后，你可以在 Dev-C++ 内新建一个文件（文件 -> 新建 -> 源文件）。然后你可以将开头提供的代码抄上或者复制粘贴上去。然后点击上方的编译并运行按钮（或者按 `F11` ），选择文件保存的位置。随后你就可以看到黑底白字的弹窗，其中第一行为 `Hello, world!` 。
 
