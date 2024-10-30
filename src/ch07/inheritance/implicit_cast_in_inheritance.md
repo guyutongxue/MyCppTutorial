@@ -66,9 +66,9 @@ void f(Base*);
 int main() {
     Derived d;
     Derived* ptrd{&d};
-    Base* b{d}; // 从 Derived* 类型隐式转换到 Base* 类型
-    b = d;      // 同上
-    f(d);       // 同上
+    Base* b{ptrd}; // 从 Derived* 类型隐式转换到 Base* 类型
+    b = ptrd;      // 同上
+    f(ptrd);       // 同上
 }
 ```
 
