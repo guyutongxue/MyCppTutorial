@@ -55,8 +55,8 @@ public:  // 公开成员有 str 和一些函数
     void assign(const String& assignVal) {
         delete[] str;
         len = assignVal.len;
-        str = new char[len];
-        for (unsigned i{0}; i < len; i++) {
+        str = new char[len + 1];
+        for (unsigned i{0}; i <= len; i++) {
             str[i] = assignVal.str[i];
         }
     }
