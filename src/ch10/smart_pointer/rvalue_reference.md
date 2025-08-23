@@ -66,8 +66,8 @@ public:
         if (str == assignVal.str) return *this;
         delete[] str;
         len = assignVal.len;
-        str = new char[len];
-        for (unsigned i{0}; i < len; i++) {
+        str = new char[len + 1];
+        for (unsigned i{0}; i <= len; i++) {
             str[i] = assignVal.str[i];
         }
         return *this;
@@ -187,8 +187,8 @@ public:
         if (str == assignVal.str) return *this;
         delete[] str;
         len = assignVal.len;
-        str = new char[len];
-        for (unsigned i{0}; i < len; i++) {
+        str = new char[len + 1];
+        for (unsigned i{0}; i <= len; i++) {
             str[i] = assignVal.str[i];
         }
         return *this;
@@ -317,8 +317,8 @@ public:
         if (str == assignVal.str) return *this;
         delete[] str;
         len = assignVal.len;
-        str = new char[len];
-        for (unsigned i{0}; i < len; i++) {
+        str = new char[len + 1];
+        for (unsigned i{0}; i <= len; i++) {
             str[i] = assignVal.str[i];
         }
         return *this;

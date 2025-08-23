@@ -5,6 +5,10 @@
     "dev": "vuepress dev src",
     "build": "vuepress build src"
   },
+  "engines": {
+    "node": "^18"
+  },
+  "packageManager": "pnpm@8.6.10",
   "devDependencies": {
     "@gytx/cppreference-index": "^0.1.10",
     "@gytx/gcc-translation": "^0.1.1",

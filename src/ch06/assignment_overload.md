@@ -8,8 +8,8 @@ public:
     void assign(const String& assignVal) {
         delete[] str;
         len = assignVal.len;
-        str = new char[len];
-        for (unsigned i{0}; i < len; i++) {
+        str = new char[len + 1];
+        for (unsigned i{0}; i <= len; i++) {
             str[i] = assignVal.str[i];
         }
     }
@@ -31,8 +31,8 @@ public:
     String& operator=(const String& assignVal) {
         delete[] str;
         len = assignVal.len;
-        str = new char[len];
-        for (unsigned i{0}; i < len; i++) {
+        str = new char[len + 1];
+        for (unsigned i{0}; i <= len; i++) {
             str[i] = assignVal.str[i];
         }
         return *this; // 返回绑定到自己的引用
@@ -63,8 +63,8 @@ public:
         if (str == assignVal.str) return *this; // 自赋值直接返回
         delete[] str;
         len = assignVal.len;
-        str = new char[len];
-        for (unsigned i{0}; i < len; i++) {
+        str = new char[len + 1];
+        for (unsigned i{0}; i <= len; i++) {
             str[i] = assignVal.str[i];
         }
         return *this;
